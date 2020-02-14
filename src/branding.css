@@ -1,0 +1,63 @@
+/* form component css */
+
+
+.commonlabel{
+    font-size: 16px;
+}
+
+
+/* 1.input andt */
+
+.inputantdstyle .ant-input {
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+    border-color: rgba(0, 0, 0, 0.23);
+}
+
+.inputantdstyle .ant-input:hover {
+    border-color: #40a9ff
+}
+
+/* 2.dropdown antd */
+
+.dropdownantd .ant-select-selection {
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+    border-color: rgba(0, 0, 0, 0.23);
+}
+
+.dropdownantd .ant-select-selection:hover {
+    border-color: #40a9ff
+}
+
+
+/* validation error msg */
+
+.Errorbr .ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd
+
+/* .Errorbr.ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd, .Errorbr .ant-calendar-picker-input */
+{
+    color: red !important;
+    border-color: red !important;
+    box-shadow: none !important;
+}
+
+.Errorbr .ant-input:hover,.Errorbr .ant-select-selection:hover,.Errorbr.testareaantd:hover
+{
+    color: red;
+    border-color: red !important;
+    box-shadow: none;
+}
+
+
+
+.texterrmsg{
+    font-size: 12px;
+    color: red;
+}
+
+.min_h_static{
+    height:18px;
+}

@@ -1,13 +1,13 @@
-.media_upload_header{
+    .media_upload_header{
     height: auto;
     width:100%;
     }
-.media_upload_titleuser h3{
+    .media_upload_titleuser h3{
     color: #86b149;
     margin-left: 12px;
     margin-top: 5px !important;
     }
-.media_upload_header{
+    .media_upload_header{
     width:100%;
     background-color:#F8F8F8;
     padding: 10px;
@@ -15,25 +15,23 @@
     display:flex;
     justify-content: space-between;
     }
-.media_button_create{
+    .media_button_create{
     background-color: #2680EB !important;
     color:white !important;
     border-radius:0px !important;
     margin-right: 20px !important;
     }
-.media_button_cancel{
+    .media_button_cancel{
     background-color: #B1B1B1 !important;
     border-radius:0px !important;
     margin-right: 20px !important;
     }
-.media_upload_container{
-    /* width: 15% !important; */
+    .media_upload_container{
     display: flex;
     justify-content: space-evenly;
     }
     .image_main{
-        display: flex;
-    
+    display: flex;
     }
     .blank{
     width: 5%;
@@ -41,112 +39,72 @@
     border-right: dashed #C0D69E ;
     margin-top: 6px;
     }
-.media_content{
-
+    .media_content{
     border: 1px solid #EFEFEF;
     padding: 24px 34px 50px 39px;
     background-color: #FEFEFE;
     margin-top: 4px;
-
-}
-.media_image h3{
+    }
+    .media_image h3{
     color: #82AE3F;
     border-bottom: dashed #C0D69E !important;
     padding: 1px;
-}
+    }
     .image_media{
-        width: 20% ;
-        color: black !important;
-        border-radius: 1px !important;
-        width: 165px !important;
+    width: 20% ;
+    color: black !important;
+    border-radius: 1px !important;
+    width: 165px !important;
     }
     .image_main_content{
-        width: 50%;
+    width: 50%;
     }
     .image_content{
-
-        display: flex;
-        justify-content: space-between;
-
+    display: flex;
+    justify-content: space-between;
     }
     .image_content h4{
-        display: flex;
-        align-items: flex-end;
-        white-space: nowrap;
-        /* color: #B1B1B1;   */
-       
+    display: flex;
+    align-items: flex-end;
+    white-space: nowrap; 
     }
-
     .media_content_two{
     display: flex;
     flex-direction: column;
     padding-left: 25px;
     }
     .content_image{
-        border-radius: 1px !important;
-        width: 83px !important;
+    border-radius: 1px !important;
+    width: 83px !important;
     }
     .media_content_two h4{
-        display: flex;
-        align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
     }
-    
+
     .content_image_two{
-        width: 83px !important; 
-       
-        border-radius: 1px !important;
+    width: 83px !important; 
+
+    border-radius: 1px !important;
     }
     .media_upload_layer_two{
-        margin-top: 30px;
+    margin-top: 30px;
     }
     .height{
-        margin-right: 40px;
+    margin-right: 40px;
     }
     .width{
-        margin-right: 45px;
+    margin-right: 45px;
     }
     .size{
-        margin-right: 36px;
+    margin-right: 36px;
     }
     .resolution{
-        margin-right: 20px;
+    margin-right: 20px;
     }
     .active{
-        margin-right: 16px;
+    margin-right: 16px;
     }
     .max{
-        margin-right: 60px;
+    margin-right: 60px;
     }
-    /* .image_main_content{
-        width: 90px ;
-    } */
-
-    /* .set_width_mediaupload{
-        width: 50%;
-    } */
-
-     /* @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
-        .image_main {
-            width: 100%;
-        }
-        .set_width_mediaupload {
-            width: 90%;
-        }
-    }
-    @media only screen and (max-device-width : 760px) {
-        .image_media {
-            margin-left: 15px !important;
-        }
-        .blank{
-            margin-left: 15px;
-        }
-        
-    }
-    @media only screen and (min-device-width : 1024px) and (max-device-width : 1366px){
-        .image_main {
-            width: 100%;
-        }
-        .set_width_mediaupload {
-            width: 50%;
-        }
-    } */

@@ -40,6 +40,8 @@ import Paper from '@material-ui/core/Paper';
 import Dashboard from '../component/dashboard';
 import About from '../component/about';
 import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom';
+import Advertise_manage from '../component/Advertisement Management/Advertise_Manage';
+import Media_upload from '../component/Media Upload/Media_upload';
 
 
 const drawerWidth = 260;
@@ -242,6 +244,8 @@ class Homepage extends React.Component {
         {children}
         <Route exact path={`/`} component={Dashboard} />
         <Route exact path={`/about`} component={About} />
+        <Route exact path={"/advertising"} component={Advertise_manage} />
+        <Route exact path={"/mediaupload"} component={Media_upload} />
   
           </div>
         </main>

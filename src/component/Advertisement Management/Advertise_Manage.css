@@ -1,0 +1,193 @@
+.advertise_manage_header{
+    height: auto;
+    width:100%;
+    }
+    .advertise_manage_titleuser h3{
+    color: #86b149;
+    margin-left: 12px;
+    margin-top: 5px !important;
+    }
+    .advertise_manage_header{
+    width:100%;
+    background-color:#F8F8F8;
+    padding: 10px;
+    box-shadow:0px 3px 6px #00000029;;
+    display:flex;
+    justify-content: space-between;
+    }
+    .advertise_button_create{
+        background-color: #2680EB !important;
+        color:white !important;
+        border-radius:0px !important;
+       
+      
+    }
+    .advertise_button_cancel{
+        background-color: #B1B1B1 !important;
+        border-radius:0px !important;
+        
+    }
+    .advertise_manage_container{
+        width: 15% !important;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .advertise_image{
+        margin-top: 20px;
+    }
+    .image_panel{
+        background: transparent linear-gradient(270deg, #82AF3F 0%, #699B21 100%) 0% 0% no-repeat padding-box;
+        border-radius:0px !important;
+        opacity: 1;
+        color: #FFFFFF !important;
+     
+    }
+    .image_panel .MuiCollapse-wrapperInner{
+        background-color: white !important;
+    }
+    .image_panel .MuiExpansionPanelSummary-root.Mui-expanded{
+        height: 35px !important;
+        min-height: 0px !important;
+    }
+    .image_panel .MuiButtonBase-root {
+    height: 35px !important;
+    min-height: 0px !important;
+    }
+    .image_panel .MuiExpansionPanelDetails-root  {
+        display: block !important;
+    }
+    .image_option{
+        width: 20%;
+        color: black !important;
+    }
+    .advertise_image_two{
+        display: flex;
+    }
+    .advertise_image_two .commonlabel{
+        color: black !important;
+    }
+    .advertise_image_two h4{
+        display: flex;
+        align-items: flex-end;
+    }
+    .advertise_image_two {
+        display: flex;
+        width: 50% !important;
+        justify-content: space-around;
+        margin-top: 25px;
+    }
+    .advertise_image_three {
+        display: flex;
+        width: 50% !important;
+        justify-content: space-around;
+        margin-top: 25px;
+    }
+    .advertise_image_four {
+        display: flex;
+        width: 50% !important;
+        justify-content: space-around;
+        margin-top: 25px;
+    }
+    .advertise_image_three h4{
+        display: flex;
+        align-items: flex-end;
+    }
+    .advertise_image_four h4{
+        display: flex;
+        align-items: flex-end;
+    }
+    .advertise_image_five {
+        display: flex;
+        width: 50% !important;
+        justify-content: space-around;
+        margin-top: 25px;
+    }
+    .advertise_image_five h4{
+        display: flex;
+        align-items: flex-end;
+        width: 50%;
+    }
+  
+
+
+
+   .advertise_display{
+    margin-top: 20px;
+}
+.display_panel{
+    background: transparent linear-gradient(270deg, #82AF3F 0%, #699B21 100%) 0% 0% no-repeat padding-box;
+    border-radius:0px !important;
+    opacity: 1;
+    color: #FFFFFF !important;
+ 
+}
+.display_panel .MuiCollapse-wrapperInner{
+    background-color: white !important;
+}
+.display_panel .MuiExpansionPanelSummary-root.Mui-expanded{
+    height: 35px !important;
+    min-height: 0px !important;
+}
+.display_panel .MuiButtonBase-root {
+height: 35px !important;
+min-height: 0px !important;
+}
+.display_panel .MuiExpansionPanelDetails-root  {
+    display: block !important;
+}
+.display_option{
+    width: 20%;
+    color: black !important;
+}
+.advertise_display_two{
+    display: flex;
+}
+.advertise_display_two .commonlabel{
+    color: black !important;
+}
+.advertise_display_two h4{
+    display: flex;
+    align-items: flex-end;
+}
+.advertise_display_two {
+    display: flex;
+    width: 30% !important;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+.advertise_display_three h4{
+    display: flex;
+    align-items: flex-end;
+}
+.advertise_display_three {
+    display: flex;
+    width: 30% !important;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+
+.clrred{
+    color:red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

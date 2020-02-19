@@ -24,30 +24,30 @@ export default class Media_upload extends Component {
           <div className="image_main">
           <div className="set_width_mediaupload">
           <div className="image_content">
-          <h4>Height (Pixel)</h4>
+          <h4 className="height">Height (Pixel)</h4>
           <Inputantd className="image_media "  />
           </div>
           <div className="image_content">
-          <h4>Width (Pixel)</h4>
+          <h4 className="width">Width (Pixel)</h4>
           <Inputantd  className="image_media"  />
           </div>
           <div className="image_content">
-          <h4>Size (Kb / Mb)</h4>
+          <h4 className="size">Size (Kb / Mb)</h4>
           <Inputantd className="image_media"  />
           </div>
           <div className="image_content">
-          <h4>Resolution (DPI)</h4>
+          <h4 className="resolution">Resolution (DPI)</h4>
           <Inputantd className="image_media"  />
           </div>
           </div>
           <div  className="blank"/>
          <div className="media_content_two">
          <div className="image_content">
-          <h4>Max Image</h4>
+          <h4 className="max">Max Image</h4>
           <Inputantd className="content_image"  />
           </div>
           <div className="image_content">
-          <h4>Max Active Image</h4>
+          <h4 className="active">Max Active Image</h4>
           <Inputantd className="content_image_two"  />
           </div>
          </div>
@@ -60,30 +60,30 @@ export default class Media_upload extends Component {
           <div className="image_main">
           <div className="set_width_mediaupload">
           <div className="image_content">
-          <h4>Height (Pixel)</h4>
+          <h4 className="height">Height (Pixel)</h4>
           <Inputantd className="image_media"  />
           </div>
           <div className="image_content">
-          <h4>Width (Pixel)</h4>
+          <h4 className="width">Width (Pixel)</h4>
           <Inputantd  className="image_media"  />
           </div>
           <div className="image_content">
-          <h4>Size (Kb / Mb)</h4>
+          <h4 className="size">Size (Kb / Mb)</h4>
           <Inputantd className="image_media"  />
           </div>
           <div className="image_content">
-          <h4>Resolution (DPI) </h4>
+          <h4 className="resolution">Resolution (DPI) </h4>
           <Inputantd className="image_media"  />
           </div>
           </div>
           <div  className="blank"/>
          <div className="media_content_two">
          <div className="image_content">
-          <h4>Max Video</h4>
+          <h4 className="max">Max Video</h4>
           <Inputantd className="content_image"  />
           </div>
           <div className="image_content">
-          <h4>Max Active Video</h4>
+          <h4  className="active">Max Active Video</h4>
           <Inputantd className="content_image_two"  />
           </div>
          </div>

@@ -31,8 +31,7 @@
     }
     .image_main{
         display: flex;
-    justify-content: space-evenly;
-    /* width: 60% !important; */
+    
     }
     .blank{
     width: 5%;
@@ -57,6 +56,7 @@
         width: 20% ;
         color: black !important;
         border-radius: 1px !important;
+        width: 165px !important;
     }
     .image_main_content{
         width: 50%;
@@ -71,7 +71,8 @@
         display: flex;
         align-items: flex-end;
         white-space: nowrap;
-        color: #B1B1B1;
+        /* color: #B1B1B1;   */
+       
     }
 
     .media_content_two{
@@ -80,25 +81,39 @@
     padding-left: 25px;
     }
     .content_image{
-        display: flex;
-        justify-content: space-between;
         border-radius: 1px !important;
+        width: 83px !important;
     }
     .media_content_two h4{
         display: flex;
         align-items: flex-end;
     }
-    .content_image{
-        margin-left: 62px !important;
-        width: 35% !important;
-    }
+    
     .content_image_two{
-        width: 44% !important;
-        margin-left: 17px !important;
+        width: 83px !important; 
+       
         border-radius: 1px !important;
     }
     .media_upload_layer_two{
         margin-top: 30px;
+    }
+    .height{
+        margin-right: 40px;
+    }
+    .width{
+        margin-right: 45px;
+    }
+    .size{
+        margin-right: 36px;
+    }
+    .resolution{
+        margin-right: 20px;
+    }
+    .active{
+        margin-right: 16px;
+    }
+    .max{
+        margin-right: 60px;
     }
     /* .image_main_content{
         width: 90px ;
@@ -108,7 +123,7 @@
         width: 50%;
     } */
 
-     @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+     /* @media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
         .image_main {
             width: 100%;
         }
@@ -132,4 +147,4 @@
         .set_width_mediaupload {
             width: 50%;
         }
-    }
+    } */

@@ -167,12 +167,50 @@ min-height: 0px !important;
 }
 
 
-.clrred{
-    color:red;
+
+
+ .advertise_rate{
+    margin-top: 20px;
 }
-
-
-
+.rate_panel{
+    background: transparent linear-gradient(270deg, #82AF3F 0%, #699B21 100%) 0% 0% no-repeat padding-box;
+    border-radius:0px !important;
+    opacity: 1;
+    color: #FFFFFF !important;
+ 
+}
+.rate_panel .MuiCollapse-wrapperInner{
+    background-color: white !important;
+}
+.rate_panel .MuiExpansionPanelSummary-root.Mui-expanded{
+    height: 35px !important;
+    min-height: 0px !important;
+}
+.rate_panel .MuiButtonBase-root {
+height: 35px !important;
+min-height: 0px !important;
+}
+.rate_panel .MuiExpansionPanelDetails-root  {
+    display: block !important;
+}
+.advertise_rate_two .commonlabel{
+    color: black !important;
+}
+.advertise_rate_three .commonlabel{
+    color: black !important;
+}
+.rate_option{
+    width: 20%;
+    color: black !important;
+}
+.advertise_rate_three {
+    width: 25% !important;
+    
+}
+.advertise_icon{
+    color: white !important;
+    font-size: 2rem !important;
+}
 
 
 

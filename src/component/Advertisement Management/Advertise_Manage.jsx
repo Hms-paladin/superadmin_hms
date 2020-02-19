@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import Dropdownantd from "../../formcomponent/dropdownantd";
 import Inputantd from "../../formcomponent/inputantd";
+import { FaCaretDown } from "react-icons/fa";
 
 
 export default class Advertise_manage extends Component {
@@ -24,42 +25,33 @@ export default class Advertise_manage extends Component {
           <div className="advertise_image">
           <ExpansionPanel className="image_panel">
           <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />} >
+          expandIcon={<FaCaretDown className="advertise_icon" />} >
           <Typography>IMAGE SPECIFICATION</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className="fields_data">
           <Dropdownantd label="" className="image_option" option={["Full"]} placeholder="Half" />
           <div className="advertise_image_two">
           <h4>Height (Pixel)</h4>
-          <Inputantd label="Min"  className="image_option" placeholder="Name" />
-          <Inputantd label="Max"  className="image_option" placeholder="Name" />
+          <Inputantd label="Min"  className="image_option" placeholder="" />
+          <Inputantd label="Max"  className="image_option" placeholder="" />
           </div>
           <div className="advertise_image_three">
           <h4>Width (Pixel)</h4>
-          <Inputantd label=""  className="image_option" placeholder="Name" />
-          <Inputantd label=""  className="image_option" placeholder="Name" />
+          <Inputantd label=""  className="image_option" placeholder="" />
+          <Inputantd label=""  className="image_option" placeholder="" />
           </div>
           <div className="advertise_image_four">
           <h4>Size (Kb / Mb)</h4>
-          <Inputantd label=""  className="image_option" placeholder="Name" />
-          <Inputantd label=""  className="image_option" placeholder="Name" />
+          <Inputantd label=""  className="image_option" placeholder="" />
+          <Inputantd label=""  className="image_option" placeholder="" />
           </div>
-          {/* <div className="advertise_image_five">
-          <h4>Resolution ( DPI )</h4>
-          <div>
-          <Dropdownantd  divclass="w-100" className="w-100" labelclass="w-100" breakclass="w-100" option={["Full"]} placeholder="Half" />
-          </div>
-          </div> */}
-
-
-          <div className="advertise_image_five">
+         <div className="advertise_image_five">
             <div>
           <span className="clrred">Resolution ( DPI )</span>
           </div><div>
-          <Dropdownantd className="w-50" option={["Full"]} placeholder="Half" />
+          <Dropdownantd className="image-option" option={["Full"]} placeholder="Half" />
           </div>
-
-            </div>
+          </div>
           </ExpansionPanelDetails>
           </ExpansionPanel>
           </div>
@@ -68,17 +60,40 @@ export default class Advertise_manage extends Component {
           <div className="advertise_display">
           <ExpansionPanel className="display_panel">
           <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />} >
-          <Typography>IMAGE SPECIFICATION</Typography>
+          expandIcon={<FaCaretDown className="advertise_icon"/>} >
+          <Typography>DISPLAY DURATION</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className="fields_data">
           <div className="advertise_display_two">
           <h4>Home Page Ad(Sec)</h4>
-          <Inputantd   className="display_option" placeholder="Name" />
+          <Inputantd   className="display_option" placeholder="" />
           </div>
           <div className="advertise_display_three">
           <h4>Vendor Page Ad(Sec)</h4>
-          <Inputantd   className="display_option" placeholder="Name" />
+          <Inputantd   className="display_option" placeholder="" />
+          </div>
+          </ExpansionPanelDetails>
+          </ExpansionPanel>
+          </div>
+
+          <div className="advertise_rate">
+          <ExpansionPanel className="rate_panel">
+          <ExpansionPanelSummary
+          expandIcon={<FaCaretDown className="advertise_icon"/>} >
+          <Typography>RATE DURATION</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails className="fields_data">
+          <div className="advertise_rate_two">
+          <Dropdownantd label="Vendor" className="image_option" option={["Full"]} placeholder="ALL" />
+          </div>
+          <div className="advertise_rate_two">
+          <Dropdownantd label="Placement" className="image_option" option={["Full"]} placeholder="" />
+          </div>
+          <div className="advertise_rate_three">
+          <Inputantd  label="Size" className="rate_option" placeholder="" />
+          </div>
+          <div className="advertise_rate_three">
+          <Inputantd  label="Rate (KWD)" className="rate_option" placeholder="" />
           </div>
           </ExpansionPanelDetails>
           </ExpansionPanel>

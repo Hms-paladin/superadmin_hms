@@ -1,4 +1,5 @@
-.advertise_manage_header{
+
+ .advertise_manage_header{
     height: auto;
     width:100%;
     }
@@ -56,15 +57,21 @@
     .image_panel .MuiExpansionPanelDetails-root  {
         display: block !important;
     }
+    .image_option_drop{
+    width: 165px;
+    border-radius: 2px;
+    color: #808080 !important;
+    }
     .image_option{
-        width: 20%;
-        color: black !important;
+        color: #808080 !important;
+        width: 165px !important;
+        border-radius: 2px!important;
     }
     .advertise_image_two{
         display: flex;
     }
     .advertise_image_two .commonlabel{
-        color: black !important;
+        color: #808080 !important;
     }
     .advertise_image_two h4{
         display: flex;
@@ -137,13 +144,15 @@ min-height: 0px !important;
 }
 .display_option{
     width: 20%;
-    color: black !important;
+    color: #808080 !important;
+    width: 165px !important;
+    border-radius: 2px !important;
 }
 .advertise_display_two{
     display: flex;
 }
 .advertise_display_two .commonlabel{
-    color: black !important;
+    color: #808080 !important;
 }
 .advertise_display_two h4{
     display: flex;
@@ -191,26 +200,47 @@ height: 35px !important;
 min-height: 0px !important;
 }
 .rate_panel .MuiExpansionPanelDetails-root  {
-    display: block !important;
+    display: flex !important;
+    justify-content: flex-start !important;
 }
 .advertise_rate_two .commonlabel{
-    color: black !important;
+    color: #808080 !important;
 }
 .advertise_rate_three .commonlabel{
-    color: black !important;
-}
+ color: #808080 !important; 
+ }
+ .advertise_rate_four .commonlabel{
+    color: #808080 !important; 
+    }
 .rate_option{
-    width: 20%;
-    color: black !important;
+     width: 165px !important;
+    border-radius: 2px !important;
+ }
+ .advertise_rate_two {
+    width: 15% !important;   
 }
 .advertise_rate_three {
-    width: 25% !important;
+    width: 15% !important;
     
+} 
+.advertise_rate_four {
+    width: 15% !important;   
+}
+.advertise_rate_five {
+    width: 15% !important;  
+    color: #808080 !important; 
 }
 .advertise_icon{
     color: white !important;
     font-size: 2rem !important;
 }
+.rate_option_one{
+    color: #808080 !important;
+    width: 165px !important;
+    border-radius: 2px !important;
+ 
+     }
+    
 
 
 
@@ -228,4 +258,5 @@ min-height: 0px !important;
 
 
 
-   
+
+    

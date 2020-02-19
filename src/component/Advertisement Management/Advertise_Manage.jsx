@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Dropdownantd from "../../formcomponent/dropdownantd";
 import Inputantd from "../../formcomponent/inputantd";
 import { FaCaretDown } from "react-icons/fa";
+import {AddBox} from '@material-ui/icons'
 
 
 export default class Advertise_manage extends Component {
@@ -94,9 +95,11 @@ export default class Advertise_manage extends Component {
           <div className="advertise_rate_five">
           <Inputantd  label="Rate (KWD)" className="rate_option" placeholder="" />
           </div>
+          <AddBox  className="rate_icon"/>
           </ExpansionPanelDetails>
           </ExpansionPanel>
           </div>
+       
           </div>
     );
   }

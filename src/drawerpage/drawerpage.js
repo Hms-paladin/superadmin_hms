@@ -42,6 +42,8 @@ import About from '../component/about';
 import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom';
 import Advertise_manage from '../component/Advertisement Management/Advertise_Manage';
 import Media_upload from '../component/Media Upload/Media_upload';
+import Approvalmanagement from '../component/approvalmanagement/approvalmanagement';
+import Ravenupayment from "../component/ravenupayment/ravenupayment"
 
 
 const drawerWidth = 260;
@@ -228,6 +230,23 @@ class Homepage extends React.Component {
               <ListItemText  primary="Revenue" />
             </MenuItem>
 
+            <MenuItem component={Link} to="/arrovalmanagement">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={advertise_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Arroval Management" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/ravenupayment">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={revenue_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Ravenu vendor payment" />
+            </MenuItem>
+
+
             {/* <MenuItem button className={classes.nested} component={Link} to="/Home/Dashboard">
                 <ListItemIcon>
                     <InboxIcon />
@@ -243,9 +262,17 @@ class Homepage extends React.Component {
           <div>
         {children}
         <Route exact path={`/`} component={Dashboard} />
+
         <Route exact path={`/about`} component={About} />
+
         <Route exact path={"/advertising"} component={Advertise_manage} />
+
         <Route exact path={"/mediaupload"} component={Media_upload} />
+
+        <Route exact path={'/arrovalmanagement'} component={Approvalmanagement} />
+        
+        <Route exact path={'/ravenupayment'} component={Ravenupayment} />
+
   
           </div>
         </main>

@@ -1,0 +1,121 @@
+.Dialogmodal .MuiDialogContent-dividers{
+    border-bottom: 0px !important;
+        border-top:0px !important;
+        overflow: hidden;
+    }
+    .Dialogmodal h6{
+            color: #333;
+        font-size: 20px;
+        font-family: Roboto_m;
+    }
+    .modaldiv .cancelbtn{
+        border-radius: 0;
+        background-color: #f1221a;
+        color:white;
+        box-shadow: 0;
+    }
+    
+    .MuiDialog-paperWidthSm {
+        /* max-width: 600px; */
+        max-width: 70% !important;
+    }
+    .Dialogmodal .MuiDialogTitle-root{
+        box-shadow: 0px 0px 3.5px 0px #ccc;
+        /*border-bottom: 1px solid #ccc;*/
+    }
+    .Dialogmodal .MuiIconButton-root:hover{
+        background-color: transparent;
+    }
+    .Dialogmodal .closebtn{
+        background-color: rgb(201, 201, 201);
+        border-radius: 0px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        /* padding: 9px; */
+        margin-right: 10px;
+        color: #000;
+        font-size: 13px;
+        width: 90px;
+    }
+    .Dialogmodal .createbtn{
+        background-color: #2580eb;
+        border-radius: 0px;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        /* padding: 9px; */
+        margin-right: 10px;
+        color: #fff;
+        font-size: 13px;
+        width: 90px;
+    }
+    .Dialogmodal .createbtn:hover {
+        background-color: #2580eb;
+    }
+    /* .Dialogmodal .DialogContent{
+        overflow-y: scroll;
+    } */
+    .modalcomp_closeicon{
+        font-size: 3rem !important;
+        color:#333;
+    }
+    
+    .color{
+        color: green;
+    }
+
+    /* delete model css */
+
+    .media_active{
+        color:#86b149;
+        font-size: 1.25rem;
+        margin-top: 15px;
+     }
+     .media_title_container .labeltxt{
+         color:#333 !important;
+     }
+     .media_title_container{
+         padding:20px;
+     }
+     .green_uploadint{
+         width:15px;
+     }
+     .upload_ins{
+         font-size: 1.5rem;
+         margin-left: 10px;
+         position: relative;
+         top: 3px;
+     }
+     .green_upload_container{
+         margin-bottom: 15px;
+     }
+     .mediadelete_container{
+         display:flex;
+         justify-content: center;
+         align-items: center;
+         width:100%;
+     }
+     .detete_no{
+        background-color: rgb(201, 201, 201) !important; 
+        color:#333;
+        font-size: 1.5rem !important;
+     }
+     .detete_yes{
+         background-color: rgb(38, 128, 235) !important;
+         color:#fff !important;
+       
+         font-size: 1.5rem !important;
+         margin-left: 15px !important;
+     }
+     .delete_para{
+         font-size: 1.5rem;
+       
+     }
+     .media_title_container .MuiButton-root{
+         min-width: 90px !important;
+     }
+     .record_delete_container .MuiDialog-paperWidthSm{
+        width:55% !important;
+     }
+      /* .Dialogmodal h6 {
+      color:#86b149 !important;
+     } */

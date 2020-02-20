@@ -2,12 +2,14 @@
     border-bottom: 0px !important;
         border-top:0px !important;
         overflow: hidden;
+        padding: 40px;
     }
-    .Dialogmodal h6{
-            color: #333;
-        font-size: 20px;
-        font-family: Roboto_m;
-    }
+     .Dialogmodal h6{
+            color: #82AE3F;
+            font-size: 18px;
+           
+       
+    } 
     .modaldiv .cancelbtn{
         border-radius: 0;
         background-color: #f1221a;
@@ -55,8 +57,9 @@
         overflow-y: scroll;
     } */
     .modalcomp_closeicon{
-        font-size: 3rem !important;
-        color:#333;
+        font-size: 21px !important;
+        color:#6E6A6A;
+       
     }
     
     .color{
@@ -69,6 +72,7 @@
         color:#86b149;
         font-size: 1.25rem;
         margin-top: 15px;
+        padding: 40px;
      }
      .media_title_container .labeltxt{
          color:#333 !important;

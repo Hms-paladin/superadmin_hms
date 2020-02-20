@@ -1,0 +1,40 @@
+.doctor_spl_header{
+    height: auto;
+    width:100%;
+    }
+    .doctor_spl_title h3{
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+    }
+    .doctor_spl_header{
+    width:100%;
+    background-color:#F8F8F8;
+    padding: 10px;
+    box-shadow:0px 3px 6px #00000029;;
+    display:flex;
+    justify-content: space-between;
+    }
+    .plus{
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        cursor:pointer;
+    }
+    .spl_button{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    .spl_button_cancel{
+        background-color: #C9C9C9 !important;
+        margin-right: 20px !important;
+        border-radius: 0px !important;
+        
+    }
+    .spl_button_create{
+        background-color: #2680EB !important;
+        color: #FFFFFF !important;
+        border-radius: 0px !important;
+        
+    }

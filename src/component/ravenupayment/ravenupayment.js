@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import clsx from "clsx";
+import { Collapse } from 'antd';
+
 import PropTypes from "prop-types";
 import { lighten, makeStyles, fade } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -31,7 +33,9 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapse } from '@material-ui/core';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+// import { Collapse } from '@material-ui/core';
+
 import "./ravenupayment.css"
 
 // expansepanel
@@ -45,6 +49,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import "./ravenupayment.css";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+
+const { Panel } = Collapse;
+
 
 function createData(
     vendor,
@@ -341,7 +348,8 @@ class Ravenupayment extends Component {
       ],
       viewdata: null,
       type:"",
-      title:""
+      title:"",
+      rotateicon:true
     };
   }
 
@@ -434,11 +442,24 @@ class Ravenupayment extends Component {
       this.loadrows();
     }
   };
+
+  rotateicon=()=>{
+      this.setState({
+        rotateicon:!this.state.rotateicon
+      })
+  }
   
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
+    const customPanelStyle = {
+        background: '#f7f7f7',
+        borderRadius: 4,
+        marginBottom: 24,
+        border: 0,
+        overflow: 'hidden',
+      };
 
 
     return (
@@ -480,38 +501,72 @@ class Ravenupayment extends Component {
                         tabIndex={-1}
                         key={row.name}
                       >
-
-                        {/* <TableCell padding={'none'} colSpan={12}>
-                            <Collapse hidden={false} in={true}>
-                            {
-                                "hai"
-                            }
-                            </Collapse>
-                        </TableCell> */}
-
-
-                        {/* <TableCell
-                          component="th"
-                          id={labelId}
-                          scope="row"
-                          padding="none"
+                        <TableCell padding={'none'} colSpan={12} className="dropdowntable_expanse">
+                        <Collapse 
+                        expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
                         >
-                          {this.state.rowsPerPage * this.state.page -1 +index +2}
-                        </TableCell> */}
+                            <Panel header={<div className="dropdowntable_expanse"><div>{row.vendor}</div>   
+                        <div>{row.revenue}</div>          
+                        <div>{row.revenue}</div>         
+                        <div>{row.topay}</div>           
+                        <div>{row.sevendays}</div>        
+                        <div>{row.fifteen}</div>        
+                        <div>{row.twentyonedays}</div>   
+                        <div>{row.stwentyeightdays}</div> 
+                        <div>{row.ltwentyeightdays}</div></div>} key="1">
 
-                        {/* <TableCell align="right">{row.type}</TableCell> */}
-                        {/* <TableCell> */}
-                        {/* <table> */}
-                        {/* <tr> */}
-                        <TableCell padding={'none'} colSpan={12}>
 
-                        <ExpansionPanel >
+                            <p >
+                        <div className="dropdowntable_expanse_data">
+                        <div>{row.vendor}</div>   
+                        <div>{row.revenue}</div>          
+                        <div>{row.revenue}</div>         
+                        <div>{row.topay}</div>           
+                        <div>{row.sevendays}</div>        
+                        <div>{row.fifteen}</div>        
+                        <div>{row.twentyonedays}</div>   
+                        <div>{row.stwentyeightdays}</div> 
+                        <div>{row.ltwentyeightdays}</div>
+                        </div>
+
+                        <div className="dropdowntable_expanse_data">
+                        <div>{row.vendor}</div>   
+                        <div>{row.revenue}</div>          
+                        <div>{row.revenue}</div>         
+                        <div>{row.topay}</div>           
+                        <div>{row.sevendays}</div>        
+                        <div>{row.fifteen}</div>        
+                        <div>{row.twentyonedays}</div>   
+                        <div>{row.stwentyeightdays}</div> 
+                        <div>{row.ltwentyeightdays}</div>
+                        </div>
+
+                        <div className="dropdowntable_expanse_data">
+                        <div>{row.vendor}</div>   
+                        <div>{row.revenue}</div>          
+                        <div>{row.revenue}</div>         
+                        <div>{row.topay}</div>           
+                        <div>{row.sevendays}</div>        
+                        <div>{row.fifteen}</div>        
+                        <div>{row.twentyonedays}</div>   
+                        <div>{row.stwentyeightdays}</div> 
+                        <div>{row.ltwentyeightdays}</div>
+                        </div>
+                        </p>
+                            </Panel>
+                        </Collapse>
+                        </TableCell>
+
+
+                        {/* <TableCell padding={'none'} colSpan={12} className="dropdowntable_expanse">
+
+                        <ExpansionPanel onClick={this.rotateicon}>
                         <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         >
-                        <Typography className={`${classes.heading} dropdowntable_dis_flex`}>
+                        <Typography className={`${classes.heading} dropdowntable_dis_flex`}> */}
                             {/* <TableCell>{row.vendor}         </TableCell>
                             <TableCell>{row.revenue}        </TableCell>
                             <TableCell>{row.revenue}        </TableCell>
@@ -522,7 +577,9 @@ class Ravenupayment extends Component {
                             <TableCell>{row.stwentyeightdays}</TableCell>
                             <TableCell>{row.ltwentyeightdays}</TableCell> */}
                             {/* <div className="dropdowntable_dis_flex"> */}
-                        <div>{row.vendor}</div>   
+                            {/* <div><ArrowDropUpIcon className={`${this.state.rotateicon?"upside":"downside"}`} /></div> */}
+
+                        {/* <div>{row.vendor}</div>   
                         <div>{row.revenue}</div>          
                         <div>{row.revenue}</div>         
                         <div>{row.topay}</div>           
@@ -531,7 +588,6 @@ class Ravenupayment extends Component {
                         <div>{row.twentyonedays}</div>   
                         <div>{row.stwentyeightdays}</div> 
                         <div>{row.ltwentyeightdays}</div> 
-                        {/* </div> */}
 
                         </Typography>
                         </ExpansionPanelSummary>
@@ -560,7 +616,7 @@ class Ravenupayment extends Component {
                         <div>{row.twentyonedays}</div>   
                         <div>{row.stwentyeightdays}</div> 
                         <div>{row.ltwentyeightdays}</div> 
-                        </div>
+                        </div> */}
                         
                         {/* <TableCell>{row.vendor}</TableCell>
                             <TableCell>{row.revenue}</TableCell>
@@ -571,10 +627,10 @@ class Ravenupayment extends Component {
                             <TableCell>{row.twentyonedays}</TableCell>
                             <TableCell>{row.stwentyeightdays}</TableCell>
                             <TableCell>{row.ltwentyeightdays}</TableCell> */}
-                        </Typography>
+                        {/* </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
-                    </TableCell>                                      
+                    </TableCell>                                       */}
                       </TableRow>
                     );
                   })}

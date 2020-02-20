@@ -51,9 +51,7 @@
     .Dialogmodal .createbtn:hover {
         background-color: #2580eb;
     }
-    .Dialogmodal .DialogContent{
-        overflow-y: scroll;
-    }
+
     .modalcomp_closeicon{
         font-size: 3rem !important;
         color:#333;

@@ -1,24 +1,70 @@
-.VendorDetailsDiv.dropdowntable table {
+/* .VendorDetailsDiv.dropdowntable table {
     padding: 0px !important;
-}
+} */
 
-.MuiTableCell-paddingNone:last-child {
-    /* padding: 0; */
-}
-
-.VendorDetailsDiv.dropdowntable tbody th, .VendorDetailsDiv.dropdowntable tbody td {
+/* .VendorDetailsDiv.dropdowntable tbody th, .VendorDetailsDiv.dropdowntable tbody td {
     padding-top: 0px !important;
-}
+} */
 
 .dropdowntable .table td{
     padding: 0px !important;
 }
 
-.dropdowntable_dis_flex{
+/* .dropdowntable_dis_flex{
     display: flex;
     justify-content: space-around;
-} 
+}  */
 
-.MuiExpansionPanelSummary-content{
-display: table-row;
+.VendorDetailsDiv.dropdowntable tbody tr:hover{
+  box-shadow: none;
+  }
+
+  .VendorDetailsDiv.dropdowntable tbody tr {
+    box-shadow: none;
+}
+
+.dropdowntable_expanse{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdowntable_expanse .ant-collapse-header {
+    background-color: #fff !important;
+    border-radius: 0px !important;
+    /* border: 1px solid #d9d9d9 !important; */
+}
+
+.dropdowntable_expanse .ant-collapse {
+    border: 1px solid #ededed;
+    border-radius: 0px !important;
+}
+
+.dropdowntable_expanse .ant-collapse > .ant-collapse-item {
+    border-bottom: none;
+}
+
+.dropdowntable_expanse .ant-collapse-header:hover {
+    box-shadow:5px 5px 5px 0px #E0E0E0, inset 4px 4px 15px 0px #e4e4e4, -1px 2px 0px 2px rgba(224,224,224,0);
+}
+
+.dropdowntable_expanse .anticon {
+    color: #83AF40 !important;
+}
+
+/* .ant-collapse-content-box p div {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ededed;
+} */
+
+
+.dropdowntable_expanse_data{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ededed;
+}
+
+
+.dropdowntable_expanse .ant-collapse-content > .ant-collapse-content-box {
+    padding: 0px;
 }

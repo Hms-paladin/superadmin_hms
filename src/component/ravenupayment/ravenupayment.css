@@ -1,0 +1,24 @@
+.VendorDetailsDiv.dropdowntable table {
+    padding: 0px !important;
+}
+
+.MuiTableCell-paddingNone:last-child {
+    /* padding: 0; */
+}
+
+.VendorDetailsDiv.dropdowntable tbody th, .VendorDetailsDiv.dropdowntable tbody td {
+    padding-top: 0px !important;
+}
+
+.dropdowntable .table td{
+    padding: 0px !important;
+}
+
+.dropdowntable_dis_flex{
+    display: flex;
+    justify-content: space-around;
+} 
+
+.MuiExpansionPanelSummary-content{
+display: table-row;
+}

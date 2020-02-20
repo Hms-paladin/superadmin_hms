@@ -69,12 +69,14 @@ class Approvalmanagement extends React.Component{
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
+            
         </Modalcomp>
 
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
+            
         </Modalcomp>
               
 

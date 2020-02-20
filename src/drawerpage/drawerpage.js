@@ -40,8 +40,8 @@ import Paper from '@material-ui/core/Paper';
 import Dashboard from '../component/dashboard';
 import About from '../component/about';
 import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom';
-import Tablecomponent from '../component/tablecomponent/tablecomp';
 import Approvalmanagement from '../component/approvalmanagement/approvalmanagement';
+import Ravenupayment from "../component/ravenupayment/ravenupayment"
 
 
 const drawerWidth = 260;
@@ -228,14 +228,6 @@ class Homepage extends React.Component {
               <ListItemText  primary="Revenue" />
             </MenuItem>
 
-            <MenuItem component={Link} to="/table">
-              <ListItemIcon>
-              <div className="icon-container">
-                <ReactSVG  src={schedule_svg}  /></div>  
-               </ListItemIcon>
-              <ListItemText  primary="Table" />
-            </MenuItem>
-
             <MenuItem component={Link} to="/arrovalmanagement">
               <ListItemIcon>
               <div className="icon-container">
@@ -243,6 +235,15 @@ class Homepage extends React.Component {
                </ListItemIcon>
               <ListItemText  primary="Arroval Management" />
             </MenuItem>
+
+            <MenuItem component={Link} to="/ravenupayment">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={revenue_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Ravenu vendor payment" />
+            </MenuItem>
+
 
             {/* <MenuItem button className={classes.nested} component={Link} to="/Home/Dashboard">
                 <ListItemIcon>
@@ -260,8 +261,8 @@ class Homepage extends React.Component {
         {children}
         <Route exact path={`/`} component={Dashboard} />
         <Route exact path={`/about`} component={About} />
-        <Route exact path={`/table`} component={Tablecomponent} />
         <Route exact path={'/arrovalmanagement'} component={Approvalmanagement} />
+        <Route exact path={'/ravenupayment'} component={Ravenupayment} />
 
   
           </div>

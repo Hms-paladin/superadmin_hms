@@ -298,7 +298,6 @@ export default class Tablecomponent extends Component {
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
-    console.log(this.props.tableicon_align,"this.props.tableicon_align")
 
     return (
       <div className="VendorDetailsDiv">

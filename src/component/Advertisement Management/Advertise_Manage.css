@@ -53,13 +53,13 @@
     display: block !important;
     }
     .image_option_drop{
-    width: 165px;
+    width:120px;
     border-radius: 2px;
     color: #808080 !important;
     }
     .image_option{
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px!important;
     margin-right: 40px !important; 
     }
@@ -128,7 +128,7 @@
     .display_option{
     width: 20%;
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .advertise_display_two{
@@ -189,7 +189,7 @@
     color: #808080 !important; 
     }
     .rate_option{
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .advertise_rate_two {
@@ -211,7 +211,7 @@
     }
     .rate_option_one{
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .rate_icon{
@@ -223,7 +223,26 @@
     cursor: pointer;
     }
 
-
+    .radio_head{
+        display: flex;
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+    .radio_head_one{
+        display: flex;
+        margin-right: 20px;
+    }
+    .radio_head_one h4{
+       margin-top: 9px;
+       margin-bottom: 0px;
+    }
+    .radio_head_two{
+        display: flex;
+    }
+    .radio_head_two h4{
+       margin-top: 9px;
+       margin-bottom: 0px;
+    }
 
 
 

@@ -8,11 +8,38 @@
     import Dropdownantd from "../../formcomponent/dropdownantd";
     import Inputantd from "../../formcomponent/inputantd";
     import { FaCaretDown } from "react-icons/fa";
-    import {AddBox} from '@material-ui/icons'
+    import {AddBox} from '@material-ui/icons';
+    import { withStyles } from '@material-ui/core/styles';
+    import { green } from '@material-ui/core/colors';
+    import Radio from '@material-ui/core/Radio';
 
+   
+
+    const GreenRadio = withStyles({
+        root: {
+          color: green[500],
+          '&$checked': {
+            color: green[500],
+          },
+        },
+        checked: {},
+      })(props => <Radio color="default" {...props} />);
 
     export default class Advertise_manage extends Component {
+        state = {
+            gender: "",
+            selectedValue:"a"
+         
+          };
+          
+        handleChange=(data)=>{
+            this.setState({
+                selectedValue:data
+            })
+        }
+
     render() {
+        
     return (
     <div className="advertise_manage">
     <div className="advertise_manage_header">
@@ -29,7 +56,34 @@
     <Typography>IMAGE SPECIFICATION</Typography>
     </ExpansionPanelSummary>
     <ExpansionPanelDetails className="fields_data">
-    <Dropdownantd label="" className="image_option_drop" option={["Full"]} placeholder="Half" />
+
+      <div class="radio_head">
+          <div className="radio_head_one">
+        <GreenRadio
+        checked={this.state.selectedValue === 'a'}
+        onChange={(e)=>this.handleChange("a")}
+        value="a"
+        name="radio-button-one"
+        inputProps={{ 'aria-label': 'C' }}
+        className="radio_one" />
+        <h4>Half</h4>
+        </div>
+
+        <div className="radio_head_two">
+        <GreenRadio
+        checked={this.state.selectedValue === 'b'}
+        onChange={(e)=>this.handleChange("b")}
+        value="b"
+        name="radio-button-two"
+        label="full"
+        inputProps={{ 'aria-label': 'C' }}
+        className="radio_two" />
+         <h4>Full</h4>
+         </div>
+
+      </div>
+
+
     <div className="advertise_image_two">
     <h4>Height (Pixel)</h4>
     <Inputantd label="Min"  className="image_option" placeholder="" />

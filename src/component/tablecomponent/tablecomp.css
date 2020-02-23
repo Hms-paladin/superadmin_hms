@@ -94,20 +94,20 @@
 }
 .VendorDetailsDiv thead tr,
 .VendorDetailsDiv thead th {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  /* font-weight: bold; */
   /* color: #333; */
 }
 .VendorDetailsDiv .cancelbtn {
   background: darkgrey;
   margin-right: 2%;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: #000;
   width: 100px;
 }
 .VendorDetailsDiv .savebtn {
   background: #82af3f;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: #fff;
   width: 100px;
 }

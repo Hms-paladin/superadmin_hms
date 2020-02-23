@@ -19,25 +19,43 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { withStyles } from '@material-ui/core/styles';
 
-import "./ravenupayment.css"
+import { green } from '@material-ui/core/colors';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
+import "./groupaccess.css"
 
 const { Panel } = Collapse;
 
+const GreenCheckbox = withStyles({
+    root: {
+      color: green[400],
+      '&$checked': {
+        color: green[600],
+      },
+    },
+    checked: {},
+  })(props => <Checkbox color="default" {...props} />);
 
-function createData(
-    vendor,
-    revenue,
-    commission,
-    topay,
-    sevendays,
-    fifteen,
-    twentyonedays,
-    stwentyeightdays,
-    ltwentyeightdays
+// function createData(
+//     vendor,
+//     revenue,
+//     commission,
+//     topay,
+//     sevendays,
+//     fifteen,
+//     twentyonedays,
+//     stwentyeightdays,
+//     ltwentyeightdays
 
-) {
-  return { vendor, revenue, commission, topay, sevendays, fifteen, twentyonedays,stwentyeightdays,ltwentyeightdays };
-}
+// ) {
+//   return { vendor, revenue, commission, topay, sevendays, fifteen, twentyonedays,stwentyeightdays,ltwentyeightdays };
+// }
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -113,17 +131,16 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow> */}
 
-        <div className="customheading_size">
+        <div className="group_heading_size">
 
-        <div>Vendor</div>    
-        <div>Revenue</div>   
-        <div>Commission</div>
-        <div>To pay</div>    
-        <div>{"<7days"}</div>    
-        <div>{"<15days"}</div>   
-        <div>{"<21days"}</div>   
-        <div>{"<28days"}</div>   
-        <div>{">28days"}</div>   
+        <div>{"Module Name"}</div>    
+        <div>{"All"}</div>   
+        <div>{"View"}</div>   
+        <div>{"Add"}</div>   
+        <div>{"Edit"}</div>   
+        <div>{"Delete"}</div>   
+        <div>{"Print"}</div>   
+
         </div>
 
 
@@ -230,22 +247,14 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-class Ravenupayment extends Component {
+class Groupaccess extends Component {
   constructor(props) {
     super(props);
     function createData(
-    vendor,
-    revenue,
-    commission,
-    topay,
-    sevendays,
-    fifteen,
-    twentyonedays,
-    stwentyeightdays,
-    ltwentyeightdays
+    name, all, view, add, edit, delete_chk, print
 
 ) {
-  return { vendor, revenue, commission, topay, sevendays, fifteen, twentyonedays,stwentyeightdays,ltwentyeightdays };
+  return { name, all, view, add, edit, delete_chk, print};
 }
     this.state = {
       order: "",
@@ -258,15 +267,28 @@ class Ravenupayment extends Component {
       DeleteView:false,
       EditView:false,
       rows: [
-        createData("Dr.rahuman","50000","1000","2000","1000","1277","1400","280","15","10"),
-        createData("VIP Consulting","400000","4000","10000","1000","1277","1400","280","15","10"),
-        createData("Tooth Polishing","15000","1500","30000","1000","1277","1400","280","15","10"),
-        createData("Normal Consulting","35000","2000","2000","1000","1277","1400","280","15","10"),
-        createData("VIP Consulting","95000","7500","2000","1000","1277","1400","280","15","10"),
-        createData("Normal Consulting","70000","5000","2000","1000","1277","1400","280","15","10"),
-        createData("VIP Consulting","80000","7400","2000","1000","1277","1400","280","15","10"),
+        createData("Doctor speciality",
+        <div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={handleChange('checkedG')}
+            value="checkedG"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>
+        ),
+        createData("Media upload",   ),
+        createData("Trainer"   ),
+        createData("Holiday Master"   ),
+        createData("Advertising Management"   ),
+        createData("Group Access"   ),
+        createData("Rights"   ),
       ],
-      viewdata: null,
+      viewdata:"",
       type:"",
       title:"",
       rotateicon:true
@@ -383,7 +405,7 @@ class Ravenupayment extends Component {
 
 
     return (
-      <div className="VendorDetailsDiv dropdowntable">
+      <div className="VendorDetailsDiv grp_dropdown_tble">
         <Paper className="paper">
           <div className="tableWrapper">
             <Table
@@ -421,56 +443,50 @@ class Ravenupayment extends Component {
                         tabIndex={-1}
                         key={row.name}
                       >
-                        <TableCell padding={'none'} colSpan={12} className="dropdowntable_expansehead">
+                        <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
                         <Collapse 
                         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
                         >
-                            <Panel header={<div className="dropdowntable_expanse"><div className="firstdata_clr">{row.vendor}</div>   
-                        <div>{row.revenue}</div>          
-                        <div>{row.revenue}</div>         
-                        <div>{row.topay}</div>           
-                        <div>{row.sevendays}</div>        
-                        <div>{row.fifteen}</div>        
-                        <div>{row.twentyonedays}</div>   
-                        <div>{row.stwentyeightdays}</div> 
-                        <div>{row.ltwentyeightdays}</div></div>} key="1">
+                            <Panel header={<div className="grp_expanse_firstdata"><div className="grp_firstdata_clr">
+                                {row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete}</div>
+                        <div>{row.print}</div>
+                        </div>} key="1">
 
 
                             <p >
-                        <div className="dropdowntable_expanse_data">
-                        <div>{row.vendor}</div>   
-                        <div>{row.revenue}</div>          
-                        <div>{row.revenue}</div>         
-                        <div>{row.topay}</div>           
-                        <div>{row.sevendays}</div>        
-                        <div>{row.fifteen}</div>        
-                        <div>{row.twentyonedays}</div>   
-                        <div>{row.stwentyeightdays}</div> 
-                        <div>{row.ltwentyeightdays}</div>
+                        <div className="grp_expanse_data">
+                        <div>{row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete}</div>
+                        <div>{row.print}</div>       
                         </div>
 
-                        <div className="dropdowntable_expanse_data">
-                        <div>{row.vendor}</div>   
-                        <div>{row.revenue}</div>          
-                        <div>{row.revenue}</div>         
-                        <div>{row.topay}</div>           
-                        <div>{row.sevendays}</div>        
-                        <div>{row.fifteen}</div>        
-                        <div>{row.twentyonedays}</div>   
-                        <div>{row.stwentyeightdays}</div> 
-                        <div>{row.ltwentyeightdays}</div>
+                        <div className="grp_expanse_data">
+                        <div>{row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete}</div>
+                        <div>{row.print}</div>      
                         </div>
 
-                        <div className="dropdowntable_expanse_data">
-                        <div>{row.vendor}</div>   
-                        <div>{row.revenue}</div>          
-                        <div>{row.revenue}</div>         
-                        <div>{row.topay}</div>           
-                        <div>{row.sevendays}</div>        
-                        <div>{row.fifteen}</div>        
-                        <div>{row.twentyonedays}</div>   
-                        <div>{row.stwentyeightdays}</div> 
-                        <div>{row.ltwentyeightdays}</div>
+                        <div className="grp_expanse_data">
+                        <div>{row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete}</div>
+                        <div>{row.print}</div>     
                         </div>
                         </p>
                             </Panel>
@@ -502,4 +518,4 @@ class Ravenupayment extends Component {
   }
 }
 
-export default Ravenupayment;
+export default Groupaccess;

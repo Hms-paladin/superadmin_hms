@@ -1,10 +1,10 @@
 import React from "react";
 import Tablecomponent from "../tablecomponent/tablecomp";
 import Modalcomp from "../../helper/Modalcomp";
+import { Input } from 'antd'
+import "./Approval_manage.css"
 
-import "./approvalmanagement.css"
-
-class Approvalmanagement extends React.Component{
+export default class Approval_manage extends React.Component{
 
     state={
         openview:false
@@ -37,29 +37,36 @@ class Approvalmanagement extends React.Component{
 
 
     render(){
-         
+         const { Search} = Input;
         return(
             <div>
-                Approvalmanagements
+                 <div className="approval_manage_header">
+                     
+                <div className="approval_manage_title">
+                    <h3>APPROVAL MANAGEMENT</h3>
+                </div>
+                <Search className="search"
+                  placeholder=" search "
+                  onSearch={value => console.log(value)}
+                  style={{ width: 150 }}/>
+          </div>
+                
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "name", label: "Name" },
-                    { id: "number", label: "Number" },
-                    { id: "age", label: "Age" },
-                    { id: "time", label: "Time" },
-                    { id: "service", label: "Service" },
+                    { id: "date", label: "Date" },
+                    { id: "vendor_name", label: "Vendor Name" },
+                    { id: "type", label: "Type" },
+                    { id: "details", label: "Details" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "test", number: "1", age: "35", time: "10.00 AM", service: "Consulting"}),
-                this.createData({name: "ashwin", number: "2", age: "35", time: "10.30 AM", service: "Tooth Whitening"}),
-                this.createData({name: "syed", number: "3", age: "35", time: "11.30 AM", service: "Root Canal"}),
-                this.createData({name: "edwin", number: "4", age: "35", time: "11.30 AM", service: "Root Canal"}),
-                this.createData({name: "arjun", number: "5", age: "35", time: "11.30 AM", service: "Root Canal"}),
-                this.createData({name: "raja", number: "6", age: "32", time: "11.30 AM", service: "Root Canal"}),
-                this.createData({name: "rani", number: "7", age: "35", time: "11.30 AM", service: "Root Canal"}),
+                this.createData({date: "10 Aug 2020", vendor_name: "Doctor", type: "Advertise", details: "Image"}),
+                this.createData({date: "11 Aug 2020", vendor_name: "Trainer", type: "Media", details: "Video"}),
+                this.createData({date: "12 Aug 2020", vendor_name: "Diet", type: "Deal", details: "10% Discount"}),
+                this.createData({date: "13 Aug 2020", vendor_name: "Nurse", type: "Media", details: "20% Discount"}),
+                
             ]}
 
     tableicon_align={""}
@@ -70,7 +77,7 @@ class Approvalmanagement extends React.Component{
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            <h1>view massage</h1>
+            <h1>HIIIIIIIIIII</h1>
         </Modalcomp>
 
 
@@ -86,4 +93,3 @@ class Approvalmanagement extends React.Component{
     }
 }
 
-export default Approvalmanagement;

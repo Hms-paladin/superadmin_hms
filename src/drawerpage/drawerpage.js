@@ -28,7 +28,7 @@ import schedule_svg from '../images/schedule_svg.svg'
 import advertise_svg from '../images/advertise_svg.svg'
 import revenue_svg from '../images/revenue_svg.svg'
 import upload_svg from '../images/upload_svg.svg' 
-import Appointment from '../images/appointment.svg'
+import appointment_svg from '../images/appointment.svg'
 import Cancel from '../images/cancel.svg'
 import Availability from '../images/availability.svg'
 import Total from '../images/total.svg'
@@ -40,8 +40,15 @@ import Paper from '@material-ui/core/Paper';
 import Dashboard from '../component/dashboard';
 import About from '../component/about';
 import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom';
-import Approvalmanagement from '../component/approvalmanagement/approvalmanagement';
+import Advertise_manage from '../component/Advertisement Management/Advertise_Manage';
+import Media_upload from '../component/Media Upload/Media_upload';
+import Approval_manage from '../component/Approval Management/Approval_manage';
 import Ravenupayment from "../component/ravenupayment/ravenupayment"
+import Doctor_spl from '../component/Doctor Speciality/Doctor_spl';
+import training_cat from '../component/Training Category/Training_cat';
+import training_center from '../component/Training Center/Training_center';
+import Training_mode from '../component/Training Mode/Training_mode';
+import Groupaccess from '../component/Groupaccess/groupaccess';
 
 
 const drawerWidth = 260;
@@ -228,12 +235,60 @@ class Homepage extends React.Component {
               <ListItemText  primary="Revenue" />
             </MenuItem>
 
-            <MenuItem component={Link} to="/arrovalmanagement">
+            <MenuItem component={Link} to="/advertisemanage">
               <ListItemIcon>
               <div className="icon-container">
                 <ReactSVG  src={advertise_svg}  /></div>  
                </ListItemIcon>
-              <ListItemText  primary="Arroval Management" />
+              <ListItemText  primary="Advertisement Management" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/approvalmanage">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={schedule_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Approval Management" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/mediaupload">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={upload_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Media Upload" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/doctorspecial">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={appointment_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Doctor Speciality" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/trainingcategory">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={home_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Training Category" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/trainingcenter">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={schedule_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Training Center" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/trainingmode">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={appointment_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Training Mode" />
             </MenuItem>
 
             <MenuItem component={Link} to="/ravenupayment">
@@ -242,6 +297,14 @@ class Homepage extends React.Component {
                 <ReactSVG  src={revenue_svg}  /></div>  
                </ListItemIcon>
               <ListItemText  primary="Ravenu vendor payment" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/groupaccess">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={Total}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Group Access Rights" />
             </MenuItem>
 
 
@@ -260,9 +323,27 @@ class Homepage extends React.Component {
           <div>
         {children}
         <Route exact path={`/`} component={Dashboard} />
+
         <Route exact path={`/about`} component={About} />
-        <Route exact path={'/arrovalmanagement'} component={Approvalmanagement} />
+
+        <Route exact path={"/advertisemanage"} component={Advertise_manage} />
+
+        <Route exact path={"/mediaupload"} component={Media_upload} />
+
+        <Route exact path={'/approvalmanage'} component={Approval_manage} />
+
+        <Route exact path={'/doctorspecial'} component={Doctor_spl} />
+
+        <Route exact path={'/trainingcategory'} component={training_cat} />
+
+        <Route exact path={'/trainingcenter'} component={training_center} />
+
+        <Route exact path={'/trainingmode'} component={Training_mode} />
+        
         <Route exact path={'/ravenupayment'} component={Ravenupayment} />
+
+        <Route exact path={'/groupaccess'} component={Groupaccess} />
+
 
   
           </div>

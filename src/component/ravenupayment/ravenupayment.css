@@ -1,19 +1,7 @@
-/* .VendorDetailsDiv.dropdowntable table {
-    padding: 0px !important;
-} */
-
-/* .VendorDetailsDiv.dropdowntable tbody th, .VendorDetailsDiv.dropdowntable tbody td {
-    padding-top: 0px !important;
-} */
 
 .dropdowntable .table td{
     padding: 0px !important;
 }
-
-/* .dropdowntable_dis_flex{
-    display: flex;
-    justify-content: space-around;
-}  */
 
 .VendorDetailsDiv.dropdowntable tbody tr:hover{
   box-shadow: none;
@@ -25,46 +13,95 @@
 
 .dropdowntable_expanse{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
-.dropdowntable_expanse .ant-collapse-header {
+.dropdowntable_expansehead .ant-collapse-header {
     background-color: #fff !important;
     border-radius: 0px !important;
-    /* border: 1px solid #d9d9d9 !important; */
 }
 
-.dropdowntable_expanse .ant-collapse {
+.dropdowntable_expansehead .ant-collapse {
     border: 1px solid #ededed;
     border-radius: 0px !important;
 }
 
-.dropdowntable_expanse .ant-collapse > .ant-collapse-item {
+.dropdowntable_expansehead .ant-collapse > .ant-collapse-item {
     border-bottom: none;
 }
 
-.dropdowntable_expanse .ant-collapse-header:hover {
+.dropdowntable_expansehead .ant-collapse-header:hover {
     box-shadow:5px 5px 5px 0px #E0E0E0, inset 4px 4px 15px 0px #e4e4e4, -1px 2px 0px 2px rgba(224,224,224,0);
 }
 
-.dropdowntable_expanse .anticon {
+.dropdowntable_expansehead .anticon {
     color: #83AF40 !important;
 }
-
-/* .ant-collapse-content-box p div {
-    padding: 12px 16px;
-    border-bottom: 1px solid #ededed;
-} */
 
 
 .dropdowntable_expanse_data{
     display: flex;
-    justify-content: space-between;
     padding: 12px 16px;
     border-bottom: 1px solid #ededed;
 }
 
+.dropdowntable_expanse_data div{
+    display: flex;
+    /* justify-content: space-between; */
+    width: 11.1111111111%;
+    padding: 0px 1px;
+    /* border-bottom: 1px solid #ededed; */
+}
 
-.dropdowntable_expanse .ant-collapse-content > .ant-collapse-content-box {
+.dropdowntable_expansehead .ant-collapse-content > .ant-collapse-content-box {
     padding: 0px;
+}
+
+
+.dropdowntable .table > thead > tr > th {
+    text-align: right;
+}
+
+.dropdowntable .table > thead > tr > th:first-child {
+    padding-right: 60px;
+}
+
+.dropdowntable .table > thead > tr > th:nth-child(4) {
+    white-space: nowrap;
+}
+
+.firstdata_clr{
+    color: #83AF40 !important;
+    width: 13% !important;
+}
+
+.customheading_size{
+    font-size: 1.1vw;
+font-weight: bold;
+display: flex;
+padding-left: 50px;
+}
+
+.customheading_size div{
+    width:11.1111111111%
+}
+
+.dropdowntable_expanse div{
+    width:11.1111111111%;
+}
+
+.dropdowntable_expanse div:nth-child(9){
+    width:10.1111111111% !important;
+}
+
+.dropdowntable_expanse_data{
+    padding-left: 39px;
+}
+
+.dropdowntable_expanse_data div:nth-child(9){
+    width:10.1111111111% !important;
+}
+
+.dropdowntable_expanse_data div:nth-child(1){
+    width:13.1111111111% !important;
 }

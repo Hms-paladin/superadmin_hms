@@ -5,9 +5,9 @@ import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 
-import "./Doctor_spl.css";
+import "./User_type.css";
 
-export default class Doctor_spl extends React.Component{
+export default class User_type extends React.Component{
 
     state={
         openview:false,
@@ -50,39 +50,27 @@ export default class Doctor_spl extends React.Component{
          
         return(
             <div>
-               <div className="doctor_spl_header">
-                   <div className="doctor_spl_title"><h3>DOCTOR SPECIALITY</h3></div>
+               <div className="user_type_header">
+                   <div className="user_type_title"><h3>USER TYPE</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "spl", label: "Speciality" },
+                    { id: "type_name", label: "Type Name" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "speciality"}),
-                this.createData({name: "Gynaecology"}),
-                this.createData({name: "Odontology"}),
-                this.createData({name: "Orthopedic"}),
-                this.createData({name: "Dermatology"}),
-                this.createData({name: "Dentist"})
-              
+                this.createData({name: "Admin"}),
+                this.createData({name: "Vendor"})  
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_doctorhead"
+    // EditIcon="close"
+    VisibilityIcon="close"
   />
-
-        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <h1>HIIIIIIIIIII</h1>
-        </Modalcomp>
-
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
@@ -90,14 +78,14 @@ export default class Doctor_spl extends React.Component{
             
         </Modalcomp>
 
-        <Modalcomp className="doc_spl_modal" visible={this.state.insertmodalopen} title={"CREATE DOCTOR SPECIALITY"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp className="user_type_modal" visible={this.state.insertmodalopen} title={"ADD USER TYPE"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            <div className="create_spl">
-            <Inputantd label="Speciality" className="spl_option" placeholder="" />
-            <div className="spl_button">
-            <Button className="spl_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="spl_button_create">Create</Button>
+            <div className="create_type">
+            <Inputantd label="Type Name" className="type_option" placeholder="" />
+            <div className="type_button">
+            <Button className="type_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <Button className="type_button_create">Create</Button>
             </div>
             </div>
         </Modalcomp>

@@ -1,6 +1,11 @@
 import React from "react";
 import Tablecomponent from "../tablecomponent/tablecomp";
 import Modalcomp from "../../helper/Modalcomp";
+import CloseIcon from '@material-ui/icons/Close';
+import CheckIcon from '@material-ui/icons/Check';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+
 import { Input } from 'antd'
 import "./Approval_manage.css"
 
@@ -62,16 +67,17 @@ export default class Approval_manage extends React.Component{
   
 
             rowdata={[
-                this.createData({date: "10 Aug 2020", vendor_name: "Doctor", type: "Advertise", details: "Image"}),
-                this.createData({date: "11 Aug 2020", vendor_name: "Trainer", type: "Media", details: "Video"}),
-                this.createData({date: "12 Aug 2020", vendor_name: "Diet", type: "Deal", details: "10% Discount"}),
-                this.createData({date: "13 Aug 2020", vendor_name: "Nurse", type: "Media", details: "20% Discount"}),
+                this.createData({date: "10 Aug 2020", vendor_name: "Doctor", type: "Advertise", details: "Image",Action:<div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon" /><CheckIcon className="tableedit_icon" /><CloseIcon className="tabledelete_icon" /></div>}),
+                this.createData({date: "11 Aug 2020", vendor_name: "Trainer", type: "Media", details: "Video",Action:<div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon"/><CheckIcon className="tableedit_icon"/><CloseIcon className="tabledelete_icon"/></div>}),
+                this.createData({date: "12 Aug 2020", vendor_name: "Diet", type: "Deal", details: "10% Discount",Action:<div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon"/><CheckIcon className="tableedit_icon"/><CloseIcon className="tabledelete_icon"/></div>}),
+                this.createData({date: "13 Aug 2020", vendor_name: "Nurse", type: "Media", details: "20% Discount",Action:<div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon"/><CheckIcon className="tableedit_icon"/><CloseIcon className="tabledelete_icon"/></div>}),
                 
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
+    actionclose="close"
+    tablemasterclass="approval_cus_iconadd"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

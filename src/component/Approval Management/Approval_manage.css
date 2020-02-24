@@ -15,10 +15,19 @@
     display:flex;
     justify-content: space-between;
     }
+
     .search{
         border-radius: 1px !important;
-        width: 165px !important;
+        width: 200px !important;
         margin-right: 20px !important;
         height: 34px !important;
     }
     
+    .approval_cus_iconalign{
+        display:flex;
+      }
+
+
+.approval_cus_iconadd table>tbody >tr >td:last-child{
+        padding-left:0px !important;
+    }

@@ -7,12 +7,41 @@
     import Typography from '@material-ui/core/Typography';
     import Dropdownantd from "../../formcomponent/dropdownantd";
     import Inputantd from "../../formcomponent/inputantd";
-    import { FaCaretDown } from "react-icons/fa";
-    import {AddBox} from '@material-ui/icons'
+    import Inputnumber from "../../formcomponent/inputnumberantd";
 
+    import { FaCaretDown } from "react-icons/fa";
+    import {AddBox} from '@material-ui/icons';
+    import { withStyles } from '@material-ui/core/styles';
+    import { green } from '@material-ui/core/colors';
+    import Radio from '@material-ui/core/Radio';
+
+   
+
+    const GreenRadio = withStyles({
+        root: {
+          color: green[500],
+          '&$checked': {
+            color: green[500],
+          },
+        },
+        checked: {},
+      })(props => <Radio color="default" {...props} />);
 
     export default class Advertise_manage extends Component {
+        state = {
+            gender: "",
+            selectedValue:"a"
+         
+          };
+          
+        handleChange=(data)=>{
+            this.setState({
+                selectedValue:data
+            })
+        }
+
     render() {
+        
     return (
     <div className="advertise_manage">
     <div className="advertise_manage_header">
@@ -29,27 +58,53 @@
     <Typography>IMAGE SPECIFICATION</Typography>
     </ExpansionPanelSummary>
     <ExpansionPanelDetails className="fields_data">
-    <Dropdownantd label="" className="image_option_drop" option={["Full"]} placeholder="Half" />
+
+      <div class="radio_head">
+          <div className="radio_head_one">
+        <GreenRadio
+        checked={this.state.selectedValue === 'a'}
+        onChange={(e)=>this.handleChange("a")}
+        value="a"
+        name="radio-button-one"
+        inputProps={{ 'aria-label': 'C' }}
+        className="radio_one" />
+        <h4>Half</h4>
+        </div>
+
+        <div className="radio_head_two">
+        <GreenRadio
+        checked={this.state.selectedValue === 'b'}
+        onChange={(e)=>this.handleChange("b")}
+        value="b"
+        name="radio-button-two"
+        label="full"
+        inputProps={{ 'aria-label': 'C' }}
+        className="radio_two" />
+         <h4>Full</h4>
+         </div>
+
+      </div>
+
+
     <div className="advertise_image_two">
     <h4>Height (Pixel)</h4>
-    <Inputantd label="Min"  className="image_option" placeholder="" />
-    <Inputantd label="Max"  className="image_option" placeholder="" />
+    <Inputnumber label="Min"  className="image_option" placeholder="" />
+    <Inputnumber label="Max"  className="image_option" placeholder="" />
     </div>
     <div className="advertise_image_three">
     <h4>Width (Pixel)</h4>
-    <Inputantd label=""  className="image_option" placeholder="" />
-    <Inputantd label=""  className="image_option" placeholder="" />
+    <Inputnumber label=""  className="image_option" placeholder="" />
+    <Inputnumber label=""  className="image_option" placeholder="" />
     </div>
     <div className="advertise_image_four">
     <h4>Size (Kb / Mb)</h4>
-    <Inputantd label=""  className="image_option" placeholder="" />
-    <Inputantd label=""  className="image_option" placeholder="" />
+    <Inputnumber label=""  className="image_option" placeholder="" />
+    <Inputnumber label=""  className="image_option" placeholder="" />
     </div>
     <div className="advertise_image_five">
+    <h4>Resolution(DPI)</h4>
     <div>
-    <span className="clrred">Resolution ( DPI )</span>
-    </div><div>
-    <Dropdownantd className="image-option w-50" option={["Full"]} placeholder="Half" />
+    <Dropdownantd className="image-option w-50" divclass={"cus_wid_dpi"} option={["Full"]} placeholder="Half" />
     </div>
     </div>
     </ExpansionPanelDetails>
@@ -66,11 +121,11 @@
     <ExpansionPanelDetails className="fields_data">
     <div className="advertise_display_two">
     <h4>Home Page Ad(Sec)</h4>
-    <Inputantd   className="display_option" placeholder="" />
+    <Inputnumber   className="display_option" placeholder="" />
     </div>
     <div className="advertise_display_three">
     <h4>Vendor Page Ad(Sec)</h4>
-    <Inputantd   className="display_option" placeholder="" />
+    <Inputnumber   className="display_option" placeholder="" />
     </div>
     </ExpansionPanelDetails>
     </ExpansionPanel>
@@ -90,10 +145,10 @@
     <Dropdownantd label="Placement" className="rate_option_one" option={["Full"]} placeholder="" />
     </div>
     <div className="advertise_rate_four">
-    <Inputantd  label="Size" className="rate_option" placeholder="" />
+    <Inputnumber  label="Size" className="rate_option" placeholder="" />
     </div>
     <div className="advertise_rate_five">
-    <Inputantd  label="Rate (KWD)" className="rate_option" placeholder="" />
+    <Inputnumber  label="Rate (KWD)" className="rate_option" placeholder="" />
     </div>
     <AddBox  className="rate_icon"/>
     </ExpansionPanelDetails>

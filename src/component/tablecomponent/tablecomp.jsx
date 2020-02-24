@@ -81,7 +81,8 @@ function EnhancedTableHead(props) {
   console.log(props.heading,"heading")
 
   return (
-    <TableHead>
+            
+    <TableHead className={props.alignheading}>
       <TableRow>
         {props.heading.map(row => (
           <TableCell
@@ -300,7 +301,7 @@ export default class Tablecomponent extends Component {
     const { rows, rowsPerPage, page } = this.state;
 
     return (
-      <div className="VendorDetailsDiv">
+      <div className={`VendorDetailsDiv ${this.props.tablemasterclass}`}>
         <Paper className="paper">
           <div className="tableWrapper">
             <Table
@@ -316,6 +317,7 @@ export default class Tablecomponent extends Component {
                 heading={this.props.heading}
                 onRequestSort={this.handleRequestSort}
                 rowCount={this.state.rows &&this.state.rows.length}
+                alignheading={this.props.alignheading}
               />
               <TableBody>
                 {stableSort(
@@ -353,7 +355,7 @@ export default class Tablecomponent extends Component {
                           var keys=Object.keys(data)
                           var tablearr=[]
                           for(var m=0;m<keys.length;m++){
-                              tablearr.push(<TableCell align="right">{data[keys[m]]}</TableCell>)
+                              tablearr.push(<TableCell>{data[keys[m]]}</TableCell>)
                           }
                           return(tablearr)
                         })}

@@ -38,7 +38,6 @@ import calendar_svg from '../images/calendar_svg.svg'
 import ReactSVG from 'react-svg'
 import Paper from '@material-ui/core/Paper';
 import Dashboard from '../component/dashboard';
-import About from '../component/about';
 import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-router-dom';
 import Advertise_manage from '../component/Advertisement Management/Advertise_Manage';
 import Media_upload from '../component/Media Upload/Media_upload';
@@ -49,6 +48,11 @@ import training_cat from '../component/Training Category/Training_cat';
 import training_center from '../component/Training Center/Training_center';
 import Training_mode from '../component/Training Mode/Training_mode';
 import Groupaccess from '../component/Groupaccess/groupaccess';
+import Vendor_master from '../component/Vendor Master/Vendor_master';
+import Commission from '../component/Commission Management/Commission';
+import Health_tips from '../component/Health Tips/Health_tips'
+import User_group from '../component/User Group/User_group';
+import User_type from '../component/User Type/User_type'
 
 
 const drawerWidth = 260;
@@ -227,13 +231,6 @@ class Homepage extends React.Component {
               <ListItemText  primary="Home" />
             </MenuItem>
 
-            <MenuItem component={Link} to="/about">
-              <ListItemIcon>
-              <div className="icon-container">
-                <ReactSVG  src={queue_svg}  /></div>  
-               </ListItemIcon>
-              <ListItemText  primary="Revenue" />
-            </MenuItem>
 
             <MenuItem component={Link} to="/advertisemanage">
               <ListItemIcon>
@@ -291,6 +288,49 @@ class Homepage extends React.Component {
               <ListItemText  primary="Training Mode" />
             </MenuItem>
 
+            <MenuItem component={Link} to="/vendormaster">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={advertise_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Vendor Master" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/commission">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={schedule_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Commission Management" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/healthtips">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={upload_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Health Tips" />
+            </MenuItem>
+
+            
+            <MenuItem component={Link} to="/usergroup">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={queue_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="User Group" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/usertype">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={advertise_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="User Type" />
+            </MenuItem>
+
+
+
             <MenuItem component={Link} to="/ravenupayment">
               <ListItemIcon>
               <div className="icon-container">
@@ -324,8 +364,6 @@ class Homepage extends React.Component {
         {children}
         <Route exact path={`/`} component={Dashboard} />
 
-        <Route exact path={`/about`} component={About} />
-
         <Route exact path={"/advertisemanage"} component={Advertise_manage} />
 
         <Route exact path={"/mediaupload"} component={Media_upload} />
@@ -339,6 +377,16 @@ class Homepage extends React.Component {
         <Route exact path={'/trainingcenter'} component={training_center} />
 
         <Route exact path={'/trainingmode'} component={Training_mode} />
+
+        <Route exact path={'/vendormaster'} component={Vendor_master} />
+
+        <Route exact path={'/commission'} component={Commission} />
+
+        <Route exact path={'/healthtips'} component={Health_tips} />
+
+        <Route exact path={'/usergroup'} component={User_group} />
+
+        <Route exact path={'/usertypes'} component={User_type} />
         
         <Route exact path={'/ravenupayment'} component={Ravenupayment} />
 

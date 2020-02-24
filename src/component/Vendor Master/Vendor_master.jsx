@@ -5,9 +5,9 @@ import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 
-import "./Doctor_spl.css";
+import "./Vendor_master.css";
 
-export default class Doctor_spl extends React.Component{
+export default class Vendor_master extends React.Component{
 
     state={
         openview:false,
@@ -50,31 +50,30 @@ export default class Doctor_spl extends React.Component{
          
         return(
             <div>
-               <div className="doctor_spl_header">
-                   <div className="doctor_spl_title"><h3>DOCTOR SPECIALITY</h3></div>
+               <div className="vendor_master_header">
+                   <div className="vendor_master_title"><h3>VENDOR MASTER</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "spl", label: "Speciality" },
+                    { id: "vendor", label: "Vendor" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "speciality"}),
-                this.createData({name: "Gynaecology"}),
-                this.createData({name: "Odontology"}),
-                this.createData({name: "Orthopedic"}),
-                this.createData({name: "Dermatology"}),
-                this.createData({name: "Dentist"})
-              
+                this.createData({name: "Doctor"}),
+                this.createData({name: "Diet Meal"}),
+                this.createData({name: "Pharmacy"}),
+                this.createData({name: "Lab"}),
+                this.createData({name: "Trainer"}),
+                this.createData({name: "Clinic"})  
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_doctorhead"
+    // EditIcon="close"
+    VisibilityIcon="close"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
@@ -90,14 +89,14 @@ export default class Doctor_spl extends React.Component{
             
         </Modalcomp>
 
-        <Modalcomp className="doc_spl_modal" visible={this.state.insertmodalopen} title={"CREATE DOCTOR SPECIALITY"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp className="vendor_master_modal" visible={this.state.insertmodalopen} title={"CREATE VENDOR"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            <div className="create_spl">
-            <Inputantd label="Speciality" className="spl_option" placeholder="" />
-            <div className="spl_button">
-            <Button className="spl_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="spl_button_create">Create</Button>
+            <div className="create_master">
+            <Inputantd label="Vendor Name" className="master_option" placeholder="" />
+            <div className="master_button">
+            <Button className="master_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <Button className="master_button_create">Create</Button>
             </div>
             </div>
         </Modalcomp>

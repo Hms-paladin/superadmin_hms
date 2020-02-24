@@ -5,9 +5,9 @@ import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 
-import "./Doctor_spl.css";
+import "./Health_tips.css";
 
-export default class Doctor_spl extends React.Component{
+export default class Health_tips extends React.Component{
 
     state={
         openview:false,
@@ -50,56 +50,34 @@ export default class Doctor_spl extends React.Component{
          
         return(
             <div>
-               <div className="doctor_spl_header">
-                   <div className="doctor_spl_title"><h3>DOCTOR SPECIALITY</h3></div>
-                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+               <div className="health_tips_header">
+                   <div className="health_tips_title"><h3>HEALTH TIPS</h3></div>
+                  
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "spl", label: "Speciality" },
+                    { id: "type", label: "Type" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "speciality"}),
-                this.createData({name: "Gynaecology"}),
-                this.createData({name: "Odontology"}),
-                this.createData({name: "Orthopedic"}),
-                this.createData({name: "Dermatology"}),
-                this.createData({name: "Dentist"})
-              
+                this.createData({type: "Pregnant"}),
+                this.createData({type: "Mother"}),
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_doctorhead"
+    VisibilityIcon="close"
   />
 
-        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <h1>HIIIIIIIIIII</h1>
-        </Modalcomp>
+       
 
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
             
-        </Modalcomp>
-
-        <Modalcomp className="doc_spl_modal" visible={this.state.insertmodalopen} title={"CREATE DOCTOR SPECIALITY"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <div className="create_spl">
-            <Inputantd label="Speciality" className="spl_option" placeholder="" />
-            <div className="spl_button">
-            <Button className="spl_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="spl_button_create">Create</Button>
-            </div>
-            </div>
         </Modalcomp>
               
 

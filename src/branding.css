@@ -32,6 +32,18 @@
     border-color: #40a9ff
 }
 
+/* 3.inputnumber antd */
+
+.inputnumber.ant-input-number{
+    background-color: #ffffff;
+    border-radius: 2px;
+    border-color: rgba(0, 0, 0, 0.23);
+}
+
+.inputnumber.ant-input-number:hover{
+    border-color: #40a9ff; 
+}
+
 
 /* validation error msg */
 
@@ -63,7 +75,23 @@
 }
 
 body {
-    font-family: 'Roboto';
-  
-    
-    }
+    font-family: 'Roboto';  
+}
+
+
+/* button css */
+.MuiButton-root {
+    text-transform: none !important;
+    font-size: 12px !important;
+    border-radius: 2px !important;
+    min-width: 80px !important;
+}
+
+
+.drawerpage_container .MuiDrawer-paper{
+    overflow-y: unset;
+}
+
+.drawerpage_container .MuiList-root{
+    overflow-y: scroll;
+}

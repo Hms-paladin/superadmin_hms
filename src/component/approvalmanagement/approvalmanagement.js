@@ -1,6 +1,9 @@
 import React from "react";
 import Tablecomponent from "../tablecomponent/tablecomp";
 import Modalcomp from "../../helper/Modalcomp";
+import CloseIcon from '@material-ui/icons/Close';
+import CheckIcon from '@material-ui/icons/Check';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import "./approvalmanagement.css"
 
@@ -48,12 +51,12 @@ class Approvalmanagement extends React.Component{
                     { id: "age", label: "Age" },
                     { id: "time", label: "Time" },
                     { id: "service", label: "Service" },
-                    { id: "", label: "Action" }
+                    // { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "test", number: "1", age: "35", time: "10.00 AM", service: "Consulting"}),
+                this.createData({name: "test", number: "1", age: "35", time: "10.00 AM", service: "Consulting",Action:<div className="approval_cus_iconalign"><VisibilityIcon/><CheckIcon/><CloseIcon/></div>}),
                 this.createData({name: "ashwin", number: "2", age: "35", time: "10.30 AM", service: "Tooth Whitening"}),
                 this.createData({name: "syed", number: "3", age: "35", time: "11.30 AM", service: "Root Canal"}),
                 this.createData({name: "edwin", number: "4", age: "35", time: "11.30 AM", service: "Root Canal"}),
@@ -64,7 +67,7 @@ class Approvalmanagement extends React.Component{
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
+    actionclose="close"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

@@ -18,12 +18,10 @@
     .advertise_button_create{
     background-color: #2680EB !important;
     color:white !important;
-    border-radius:0px !important;
     margin-right: 20px !important;
     }
     .advertise_button_cancel{
     background-color: #B1B1B1 !important;
-    border-radius:0px !important;
     margin-right: 20px !important;
     }
     .advertise_manage_container{
@@ -53,13 +51,13 @@
     display: block !important;
     }
     .image_option_drop{
-    width: 165px;
+    width:120px;
     border-radius: 2px;
     color: #808080 !important;
     }
     .image_option{
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px!important;
     margin-right: 40px !important; 
     }
@@ -100,7 +98,7 @@
     .advertise_image_five h4{
     display: flex;
     align-items: flex-end;
-    margin-right: 45px;
+    margin-right: 35px;
     }
     .advertise_display{
     margin-top: 20px;
@@ -128,7 +126,7 @@
     .display_option{
     width: 20%;
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .advertise_display_two{
@@ -189,21 +187,21 @@
     color: #808080 !important; 
     }
     .rate_option{
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .advertise_rate_two {
-    margin-right: 40px;;   
+    margin-right: 15px; 
     }
     .advertise_rate_three {
-    margin-right: 40px;;
+        margin-right: 15px; 
     } 
     .advertise_rate_four {
-    margin-right: 40px;;   
+        margin-right: 15px;  
     }
     .advertise_rate_five {
-    margin-right: 40px;;  
-    color: #808080 !important; 
+        margin-right: 15px; 
+        color: #808080 !important; 
     }
     .advertise_icon{
     color: white !important;
@@ -211,7 +209,7 @@
     }
     .rate_option_one{
     color: #808080 !important;
-    width: 165px !important;
+    width:120px !important;
     border-radius: 2px !important;
     }
     .rate_icon{
@@ -223,8 +221,33 @@
     cursor: pointer;
     }
 
+    .radio_head{
+        display: flex;
+        margin-top: 15px;
+    }
+    .radio_head_one{
+        display: flex;
+        margin-right: 20px;
+    }
+    .radio_head_one h4{
+       margin-top: 9px;
+       margin-bottom: 0px;
+    }
+    .radio_head_two{
+        display: flex;
+    }
+    .radio_head_two h4{
+       margin-top: 9px;
+       margin-bottom: 0px;
+    }
 
+    .cus_wid_dpi{
+        width: 236px;
+    }
 
+    .radio_head_one svg,.radio_head_two svg{
+        font-size: 21px;
+    }
 
 
 

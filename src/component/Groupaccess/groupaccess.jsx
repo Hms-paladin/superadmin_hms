@@ -442,6 +442,7 @@ class Groupaccess extends Component {
                         role="checkbox"
                         tabIndex={-1}
                         key={row.name}
+
                       >
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
                         <Collapse 

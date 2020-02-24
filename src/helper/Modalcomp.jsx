@@ -86,7 +86,6 @@ class Modalcomp extends React.Component {
     return (
       <div className="modaldiv">
         <Dialog
-          // className="Dialogmodal"
           className={`${this.props.customwidth_dialog} Dialogmodal`}
           onClose={this.handleClose}
           aria-labelledby="customized-dialog-title"

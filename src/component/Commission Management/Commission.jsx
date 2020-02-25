@@ -78,6 +78,8 @@ export default class Commission extends React.Component{
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
     EditIcon="close"
+    alignheading="cus_wid_commission_head"
+   
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

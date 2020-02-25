@@ -1,13 +1,13 @@
-.user_type_header{
+.trainer_header{
     height: auto;
     width:100%;
     }
-    .user_type_title h3{
+    .trainer_title h3{
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
     }
-    .user_type_header{
+    .trainer_header{
     width:100%;
     background-color:#F8F8F8;
     padding: 10px;
@@ -21,27 +21,40 @@
         margin-right: 20px;
         cursor:pointer;
     }
-    .type_button{
+    .trainer_button{
         display: flex;
         justify-content: flex-end;
         margin-top: 20px;
     }
-    .type_button_cancel{
+    .trainer_button_cancel{
         background-color: #C9C9C9 !important;
         margin-right: 20px !important;
         border-radius: 0px !important;
         
     }
-    .type_button_create{
+    .trainer_button_create{
         background-color: #2680EB !important;
         color: #FFFFFF !important;
         border-radius: 0px !important;
         
     }
-    .cus_wid_usertype_head tr th:first-child {
-        width:40%;
+    .create_trainer{
+        display: flex;
+    }
+    .trainer_option{
+        width:235px !important;
+        margin-right: 40px !important;
     }
 
-    .cus_wid_usertype_head tr th:nth-child(2){
-        width:50%;
+    .trainer_modal .MuiDialog-paperWidthXs {
+        max-width: 640px;
+    }
+    .cus_wid_trainer_head tr th:first-child{
+        width: 30%;
+    }
+    .cus_wid_trainer_head tr th:nth-child(2){
+        width: 35%;
+    }
+    .cus_wid_trainer_head tr th:nth-child(3){
+        width: 35%;
     }

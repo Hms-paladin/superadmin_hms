@@ -40,11 +40,12 @@
         margin-right: 140px; 
     }
     .commission_modal .MuiDialog-paperScrollPaper  {
-        max-width: 800px; 
+        max-width: 850px; 
+        max-height: none;
     } 
     .commission_modal_content{
         display: flex;
-        width: 980px !important;
+        /* width: 980px !important; */
         background: #FFFFFF 0% 0% no-repeat padding-box;  
     }
     .box_one{
@@ -80,7 +81,7 @@
         margin-bottom: 15px ;
     }
     .header_modal_two{
-        width: 325px;
+        width: 330px;
     }  
 .blank_two{
        border-right: dashed #C0D69E;
@@ -103,4 +104,13 @@
     color: #FFFFFF !important;
     border-radius: 0px !important;
     
+}
+.cus_wid_commission_head tr th:first-child{
+    width: 30%;
+}
+.cus_wid_commission_head tr th:nth-child(2){
+    width: 35%;
+}
+.cus_wid_commission_head tr th:nth-child(3){
+    width: 35%;
 }

@@ -38,3 +38,12 @@
         border-radius: 0px !important;
         
     }
+    .cus_wid_usergroup_head tr th:first-child {
+        width:40%;
+    }
+
+    .cus_wid_usergroup_head tr th:nth-child(2){
+        width:50%;
+    }
+
+    

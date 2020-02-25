@@ -70,6 +70,7 @@ export default class User_type extends React.Component{
     modelopen={(e)=>this.modelopen(e)}
     // EditIcon="close"
     VisibilityIcon="close"
+    alignheading="cus_wid_usertype_head"
   />
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}

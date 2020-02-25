@@ -42,10 +42,16 @@
         display: flex;
     }
     .center_option{
-        width:260px !important;
+        width:235px !important;
         margin-right: 40px !important;
     }
 
     .training_center_modal .MuiDialog-paperWidthXs {
         max-width: 640px;
+    }
+    .cus_wid_trainingcenter_head tr th:first-child{
+        width: 40%;
+    }
+    .cus_wid_trainingcenter_head tr th:nth-child(2){
+        width: 50%;
     }

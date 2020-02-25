@@ -247,6 +247,10 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
+  function handleChange(){
+    // alert("hai")
+  }
+
 class Groupaccess extends Component {
   constructor(props) {
     super(props);
@@ -273,25 +277,525 @@ class Groupaccess extends Component {
         control={
           <GreenCheckbox
             // checked={state.checkedG}
-            // onChange={handleChange('checkedG')}
+            // onChange={()=>handleChange('checkedG')}
             value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      /></div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
           />
         }
         // label="Custom color"
       />
       </div>
         ),
-        createData("Media upload",   ),
-        createData("Trainer"   ),
-        createData("Holiday Master"   ),
-        createData("Advertising Management"   ),
-        createData("Group Access"   ),
-        createData("Rights"   ),
+        createData("Media upload",<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>  ),
+        createData("Trainer",<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div> ,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>  ),
+        createData("Holiday Master",<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>   ),
+        createData("Advertising Management",<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>  ),
+        createData("Group Access",<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>  ,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div> ),
+        createData("Rights" ,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+            className="all_head_clr"
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>,<div>
+        <FormControlLabel
+        control={
+          <GreenCheckbox
+            // checked={state.checkedG}
+            // onChange={()=>handleChange('checkedG')}
+            value="checkedG"
+            onClick={event => event.stopPropagation()}
+          />
+        }
+        // label="Custom color"
+      />
+      </div>  ),
       ],
       viewdata:"",
       type:"",
       title:"",
-      rotateicon:true
+      rotateicon:true,
+      conditionalrendering:false
     };
   }
 
@@ -395,13 +899,6 @@ class Groupaccess extends Component {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
-    const customPanelStyle = {
-        background: '#f7f7f7',
-        borderRadius: 4,
-        marginBottom: 24,
-        border: 0,
-        overflow: 'hidden',
-      };
 
 
     return (
@@ -447,49 +944,60 @@ class Groupaccess extends Component {
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
                         <Collapse 
                         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
+                        
                         >
-                            <Panel header={<div className="grp_expanse_firstdata"><div className="grp_firstdata_clr">
+                            <Panel header={<div className="grp_expanse_firstdata"><div className="grp_firstdata_clr firstname_grpaccs">
                                 {row.name}</div>   
                         <div>{row.all}</div>          
                         <div>{row.view}</div>         
                         <div>{row.add}</div>           
                         <div>{row.edit}</div>        
-                        <div>{row.delete}</div>
+                        <div>{row.delete_chk}</div>
                         <div>{row.print}</div>
                         </div>} key="1">
 
+                        <Collapse 
+                        expandIcon={({ isActive }) => <Icon type="caret-right" className="nested_iconclr" rotate={isActive ? 90 : 0} />}
+                        
+                        > 
+                        <Panel header={
+                          <div className="grp_expanse_nested">
+                          <div className="firstname_grpaccs">{row.name}</div>   
+                          <div>{row.all}</div>          
+                          <div>{row.view}</div>         
+                          <div>{row.add}</div>           
+                          <div>{row.edit}</div>        
+                          <div>{row.delete_chk}</div>
+                          <div>{row.print}</div>       
+                          </div>
+
+                        } key="1">
 
                             <p >
-                        <div className="grp_expanse_data">
-                        <div>{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete}</div>
-                        <div>{row.print}</div>       
-                        </div>
+                        
 
                         <div className="grp_expanse_data">
-                        <div>{row.name}</div>   
+                        <div className="firstname_grpaccs">{row.name}</div>   
                         <div>{row.all}</div>          
                         <div>{row.view}</div>         
                         <div>{row.add}</div>           
                         <div>{row.edit}</div>        
-                        <div>{row.delete}</div>
+                        <div>{row.delete_chk}</div>
                         <div>{row.print}</div>      
                         </div>
 
                         <div className="grp_expanse_data">
-                        <div>{row.name}</div>   
+                        <div className="firstname_grpaccs">{row.name}</div>   
                         <div>{row.all}</div>          
                         <div>{row.view}</div>         
                         <div>{row.add}</div>           
                         <div>{row.edit}</div>        
-                        <div>{row.delete}</div>
+                        <div>{row.delete_chk}</div>
                         <div>{row.print}</div>     
                         </div>
                         </p>
+                        </Panel>
+                      </Collapse>
                             </Panel>
                         </Collapse>
                         </TableCell>

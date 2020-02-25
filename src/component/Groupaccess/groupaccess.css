@@ -41,6 +41,7 @@ padding-left: 50px;
 
 .grp_dropdown_datahead .ant-collapse {
     border: 1px solid #ededed;
+    /* border-bottom:none; */
     border-radius: 0px !important;
 }
 
@@ -58,13 +59,12 @@ padding-left: 50px;
 
 .grp_expanse_firstdata{
     display: flex;
-    /* justify-content: space-between; */
 }
 
 
 .grp_expanse_data{
     display: flex;
-    padding: 12px 16px;
+    padding: 0px 16px;
     border-bottom: 1px solid #ededed;
 }
 
@@ -80,7 +80,7 @@ padding-left: 50px;
 }
 
 .group_heading_size div:first-child{
-width:60% !important;
+width:59% !important;
 }
 
 .grp_firstdata_clr{
@@ -89,4 +89,88 @@ width:60% !important;
 
 .grp_expanse_data{
     padding-left: 39px;
+}
+
+.grp_expanse_firstdata div:first-child{
+    width:59% ;
+    position: relative;
+    left: 23px;
+    top: 12px;
+}
+
+.grp_expanse_firstdata div div label span svg{
+    font-size: 23px !important;
+    height: 23px;
+    color:#5377ee;
+
+}
+
+.grp_expanse_firstdata div{
+    width: 6.52%;
+}
+
+
+.grp_expanse_data div:first-child{
+    width:60% ;
+    position: relative;
+    top: 12px;
+}
+
+.grp_expanse_data div{
+    width: 6.66666666667%;
+}
+.grp_expanse_data div div label span svg{
+    font-size: 23px !important;
+    height: 23px;
+    color:#5377ee;
+}
+
+
+.grp_dropdown_tble .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding: 0px 16px;
+}
+
+.grp_expanse_data .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding: 0px 16px;
+}
+
+
+/* nested css */
+
+.grp_expanse_nested{
+    display: flex;
+    /* padding: 0px 16px;
+    border-bottom: 1px solid #ededed; */
+}
+
+.grp_expanse_nested{
+    padding-left: 23px;
+}
+
+.grp_expanse_nested div:first-child{
+    width:60% ;
+    position: relative;
+    top: 12px;
+}
+
+.grp_expanse_nested div{
+    width: 6.66666666667%;
+}
+.grp_expanse_nested div div label span svg{
+    font-size: 23px !important;
+    height: 23px;
+    color:#5377ee;
+
+}
+
+.all_head_clr span svg,.nested_iconclr svg{
+    color:#615656 !important;
+}
+
+.ant-collapse-content-box p{
+    margin:0;
+}
+
+.grp_expanse_data:nth-child(2) {
+    border-bottom: none;
 }

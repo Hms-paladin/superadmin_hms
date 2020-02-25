@@ -237,7 +237,7 @@ class Homepage extends React.Component {
               <div className="icon-container">
                 <ReactSVG  src={advertise_svg}  /></div>  
                </ListItemIcon>
-              <ListItemText  primary="Advertisement Management" />
+              <ListItemText  primary="Advertise Management" />
             </MenuItem>
 
             <MenuItem component={Link} to="/approvalmanage">

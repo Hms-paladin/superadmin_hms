@@ -4,10 +4,16 @@ import Modalcomp from "../../helper/Modalcomp";
 import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
+import Dropdownantd from "../../formcomponent/dropdownantd";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
 
-import "./Training_mode.css";
 
-export default class Training_mode extends React.Component{
+import "./Trainer.css";
+
+export default class Trainer extends React.Component{
 
     state={
         openview:false,
@@ -50,28 +56,29 @@ export default class Training_mode extends React.Component{
          
         return(
             <div>
-               <div className="training_mode_header">
-                   <div className="training_mode_title"><h3>TRAINING MODE</h3></div>
+               <div className="trainer_header">
+                   <div className="trainer_title"><h3>TRAINER</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "training_mode", label: "Training mode" },
+                    { id: "training", label: "Training" },
+                    { id: "category", label: "Category" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "Indoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "On Campus"})  
+                this.createData({name: "Fitness", category:"Indoor"}),
+                this.createData({name: "Tennis", category:"Indoor"}),
+                this.createData({name: "Chess", category:"Outdoor"}),
+                this.createData({name: "Karate", category:"Self Defense"})  
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
     EditIcon="close"
-    alignheading="cus_wid_trainingmode_head"
+    alignheading="cus_wid_trainer_head"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
@@ -87,16 +94,23 @@ export default class Training_mode extends React.Component{
             
         </Modalcomp>
 
-        <Modalcomp className="training_mode_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING MODE"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <div className="create_mode">
-            <Inputantd label="Mode" className="mode_option" placeholder="" />
-            <div className="mode_button">
-            <Button className="mode_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="mode_button_create">Create</Button>
+        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINER"} closemodal={(e)=>this.closemodal(e)}
+         xswidth={"xs"}>
+             <Grid container spacing={2}>
+                 <Grid item xs={12} md={6}>
+            <div className="create_trainer">
+            <div className="trainer_dropdown">
+            <Dropdownantd label="Category" className="trainer_option" option={["Indoor", "Outdoor", "Self Defense"]} placeholder="Indoor" />
             </div>
+            <Inputantd label="Training" className="trainer_option" placeholder="" />
             </div>
+            </Grid>
+            </Grid>
+            <div className="trainer_button">
+            <Button className="trainer_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <Button className="trainer_button_create">Create</Button>
+            </div>
+            
         </Modalcomp>
               
 

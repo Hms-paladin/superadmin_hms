@@ -74,6 +74,7 @@ export default class Vendor_master extends React.Component{
     modelopen={(e)=>this.modelopen(e)}
     // EditIcon="close"
     VisibilityIcon="close"
+    alignheading="cus_wid_vendor_head"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

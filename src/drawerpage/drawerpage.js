@@ -53,6 +53,8 @@ import Commission from '../component/Commission Management/Commission';
 import Health_tips from '../component/Health Tips/Health_tips'
 import User_group from '../component/User Group/User_group';
 import User_type from '../component/User Type/User_type'
+import User_master from '../component/User Master/User_master';
+import Trainer from '../component/Trainer/Trainer'
 
 
 const drawerWidth = 260;
@@ -237,7 +239,7 @@ class Homepage extends React.Component {
               <div className="icon-container">
                 <ReactSVG  src={advertise_svg}  /></div>  
                </ListItemIcon>
-              <ListItemText  primary="Advertisement Management" />
+              <ListItemText  primary="Advertise Management" />
             </MenuItem>
 
             <MenuItem component={Link} to="/approvalmanage">
@@ -262,6 +264,14 @@ class Homepage extends React.Component {
                 <ReactSVG  src={appointment_svg}  /></div>  
                </ListItemIcon>
               <ListItemText  primary="Doctor Speciality" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/trainer">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={upload_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Trainer" />
             </MenuItem>
 
             <MenuItem component={Link} to="/trainingcategory">
@@ -329,7 +339,13 @@ class Homepage extends React.Component {
               <ListItemText  primary="User Type" />
             </MenuItem>
 
-
+            <MenuItem component={Link} to="/usermaster">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={upload_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="User Master" />
+            </MenuItem>
 
             <MenuItem component={Link} to="/ravenupayment">
               <ListItemIcon>
@@ -372,6 +388,8 @@ class Homepage extends React.Component {
 
         <Route exact path={'/doctorspecial'} component={Doctor_spl} />
 
+        <Route exact path={'/trainer'} component={Trainer} />
+
         <Route exact path={'/trainingcategory'} component={training_cat} />
 
         <Route exact path={'/trainingcenter'} component={training_center} />
@@ -386,7 +404,9 @@ class Homepage extends React.Component {
 
         <Route exact path={'/usergroup'} component={User_group} />
 
-        <Route exact path={'/usertypes'} component={User_type} />
+        <Route exact path={'/usertype'} component={User_type} />
+
+        <Route exact path={'/usermaster'} component={User_master} />
         
         <Route exact path={'/ravenupayment'} component={Ravenupayment} />
 

@@ -1,13 +1,13 @@
-.user_type_header{
+.user_master_header{
     height: auto;
     width:100%;
     }
-    .user_type_title h3{
+    .user_master_title h3{
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
     }
-    .user_type_header{
+    .user_master_header{
     width:100%;
     background-color:#F8F8F8;
     padding: 10px;
@@ -21,27 +21,36 @@
         margin-right: 20px;
         cursor:pointer;
     }
-    .type_button{
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
+  
+    .user_master_modal .MuiDialog-paperScrollPaper  {
+   width: 60%;
+        max-height: none;
     }
-    .type_button_cancel{
+    .usermaster_drop{
+        width: 100%;
+    }
+    .usermaster_button_cancel{
         background-color: #C9C9C9 !important;
         margin-right: 20px !important;
         border-radius: 0px !important;
-        
     }
-    .type_button_create{
+    .usermaster_button_create{
         background-color: #2680EB !important;
         color: #FFFFFF !important;
         border-radius: 0px !important;
-        
     }
-    .cus_wid_usertype_head tr th:first-child {
-        width:40%;
+    .usermasrter_grid_three{
+        display: flex;
+        justify-content: space-between;
     }
-
-    .cus_wid_usertype_head tr th:nth-child(2){
-        width:50%;
+    .usermaster_switch{
+        display: flex;
+        width: 85px;
+        justify-content: space-around;
     }
+    .usermaster_switch p{
+        font-size: 13px;
+    }
+    .switch_grid.ant-switch-checked {
+       background-color:#82AE3F !important ;
+   } 

@@ -8,6 +8,8 @@ import Dropdownantd from "../../formcomponent/dropdownantd";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+
 
 import "./Training_center.css";
 
@@ -75,6 +77,7 @@ export default class training_center extends React.Component{
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
     EditIcon="close"
+    alignheading="cus_wid_trainingcenter_head"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
@@ -92,12 +95,16 @@ export default class training_center extends React.Component{
 
         <Modalcomp customwidth_dialog="training_center_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING CENTER"} closemodal={(e)=>this.closemodal(e)}
          xswidth={"xs"}>
+             <Grid container spacing={2}>
+                 <Grid item xs={12} md={6}>
             <div className="create_center">
             <div className="center_dropdown">
             <Dropdownantd label="Center" className="center_option" option={["Outdoor"]} placeholder="Indoor" />
             </div>
             <Inputantd label="Training" className="center_option" placeholder="" />
             </div>
+            </Grid>
+            </Grid>
             <div className="center_button">
             <Button className="center_button_cancel" onClick={this.closemodal}>Cancel</Button>
             <Button className="center_button_create">Create</Button>

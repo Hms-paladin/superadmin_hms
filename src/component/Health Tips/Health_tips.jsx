@@ -69,6 +69,7 @@ export default class Health_tips extends React.Component{
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
     VisibilityIcon="close"
+    alignheading="cus_wid_healthtips_head"
   />
 
        

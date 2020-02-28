@@ -46,4 +46,13 @@
         width:50%;
     }
 
+    .cus_wid_delmodel .MuiDialog-paperWidthXs{
+        max-width: 463px;
+    }
+
+
+    .cus_wid_delmodel .MuiDialogContent-dividers {
+        padding: 0px;
+    }
+
     

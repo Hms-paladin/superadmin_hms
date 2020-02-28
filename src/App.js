@@ -12,6 +12,8 @@ import configureStore, { history } from './store/configureStore';
 
 const store = configureStore();
 
+export const apiurl="http://52.200.251.222:8158/api/v1/"
+
 class App extends React.Component {
   render(){
     return (

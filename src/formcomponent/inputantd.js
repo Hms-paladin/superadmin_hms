@@ -13,10 +13,10 @@ class Inputantd extends React.Component{
                 className={`inputantdstyle ${this.props.className && this.props.className}
                 ${this.props.error && "Errorbr"}`}
                 placeholder={this.props.placeholder && this.props.placeholder} 
-                // onChange={(e)=>this.props.changeData&&this.props.changeData(e.target.value)}
-                // name={this.props.name && this.props.name}
-                // prefix={this.props.prefix && this.props.prefix}
-                // value={this.props.value}
+                onChange={(e)=>this.props.changeData&&this.props.changeData(e.target.value)}
+                name={this.props.name && this.props.name}
+                prefix={this.props.prefix && this.props.prefix}
+                value={this.props.value}
                 />
                 {/* <div className="texterrmsg">
                 {

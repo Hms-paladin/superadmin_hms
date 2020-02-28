@@ -1,4 +1,4 @@
-import React from "react";
+åimport React from "react";
 import Tablecomponent from "../tablecomponent/tablecomp";
 import Modalcomp from "../../helper/Modalcomp";
 import PlusIcon from '../../images/plus.png';

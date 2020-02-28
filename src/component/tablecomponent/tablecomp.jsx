@@ -22,9 +22,15 @@ import { Icon, message, Popconfirm } from "antd";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import {apiurl} from "../../../src/App.js";
+
+
 
 
 import "./tablecomp.css";
+const axios = require('axios');
+
+
 
 
 function desc(a, b, orderBy) {
@@ -225,16 +231,42 @@ export default class Tablecomponent extends Component {
   closemodal = () => {
     this.setState({ view: false,DeleteView:false });
   };
-  handleClickOpen=(t,title)=>
-  {
-    console.log("type",t,title)
-    this.setState({
-      type:t,
-      title
-    })
-    this.setState({view:true,DeleteView:false})
+  // handleClickOpen=(t,title)=>
+  // {
+
+    // var self=this
+    // axios({
+    //     method: 'delete',
+    //     url: `${apiurl}${this.props.endpoint}`,
+    //     data:{
+    //         "id":"20",
+    //         "modified_by":"1"
+    //     }
+    //   })
+    //   .then(function (response) {
+    //     alert("success")
+    //     console.log(response,"deleteres")
+    //   // self.lastdata()
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error,"error");
+    //   });
+    //   this.setState({
+    //     insertmodalopen:false
+    //   })
+
+
+
+
+
+  //   console.log("type",t,title)
+  //   this.setState({
+  //     type:t,
+  //     title
+  //   })
+  //   this.setState({view:true,DeleteView:false})
   
-  }
+  // }
 
   handleClick = (event, name) => {
     const selectedIndex = this.state.selected.indexOf(name);
@@ -295,10 +327,20 @@ export default class Tablecomponent extends Component {
       this.loadDoctorDetails();
     }
   };
+
+  UNSAFE_componentWillReceiveProps(newProps){
+    console.log(newProps,"componentWillReceivePropsrowdata")
+    let tablebodydata=this.props.rowdata
+    this.setState({
+      rows:newProps.rowdata
+    })
+    console.log("current state",this.state.rows)
+  }
   
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
+    console.log(this.props.rowdata,"rowdata")
 
     return (
       <div className={`VendorDetailsDiv ${this.props.tablemasterclass}`}>
@@ -332,6 +374,7 @@ export default class Tablecomponent extends Component {
                   .map((row, index, item) => {
                     const isItemSelected = isSelected(row.name);
                     const labelId = `enhanced-table-checkbox-${index}`;
+                    console.log("labelid",labelId)
                     console.log("rendering", row);
                     return (
                       <TableRow
@@ -339,7 +382,7 @@ export default class Tablecomponent extends Component {
                         onClick={event => this.handleClick(event, row.name)}
                         role="checkbox"
                         tabIndex={-1}
-                        key={row.name}
+                        key={index}
                       >
                        
                         <TableCell
@@ -351,23 +394,25 @@ export default class Tablecomponent extends Component {
                           {this.state.rowsPerPage * this.state.page -1 +index +2}
                         </TableCell>
 
-                        {[row].map((data)=>{
+                        {[row].map(((data,key)=>{
+                          // console.log("datassss",key)
                           var keys=Object.keys(data)
-                          var tablearr=[]
-                          for(var m=0;m<keys.length;m++){
-                              tablearr.push(<TableCell>{data[keys[m]]}</TableCell>)
+                          console.log(data.id,"tabledata")
+                          for(var m=0;m<keys.length-1;m++){
+                            // alert(data.id)
+                              return<TableCell key={data.id}>{data[keys[m]]}</TableCell>
                           }
-                          return(tablearr)
-                        })}
+                        })
+                        )}
 
                         {this.props.actionclose==="close"?null:
                         <TableCell className={`${this.props.tableicon_align}`}>
                           {this.props.VisibilityIcon==="close"?null:
                           <VisibilityIcon className="tableeye_icon"  onClick={()=>this.props.modelopen("view")}/>}
                           {this.props.EditIcon==="close"?null:
-                          <EditIcon className="tableedit_icon" onClick={()=>this.props.modelopen("edit")}/>}
+                          <EditIcon className="tableedit_icon" onClick={()=>this.props.modelopen("edit",row.id)}/>}
                           {this.props.DeleteIcon==="close"?null:
-                          <DeleteIcon className="tabledelete_icon" onClick={() => this.handleClickOpen("delete_profile","Delete Media")}/>}
+                          <DeleteIcon className="tabledelete_icon" onClick={() => this.props.deleteopen("delete",row.id)}/>}
                           
                         </TableCell>}
                       </TableRow>
@@ -393,9 +438,9 @@ export default class Tablecomponent extends Component {
                 />
           
         </Paper>
-        <Modalcomp  visible={this.state.view} title={this.state.title} closemodal={this.closemodal}xswidth={"xs"}>
-          {this.state.type === "delete_profile" && <DeleteMedia /> }
-           </Modalcomp> 
+        {/* <Modalcomp  visible={this.state.view} title={this.state.title} closemodal={this.closemodal} customwidth_dialog="" xswidth={"xs"}>
+          {this.state.type === "delete_profile" && <DeleteMedia onClick={()=>this.props.deletebody_data("hai")}/> }
+           </Modalcomp>  */}
 
       </div>
     );

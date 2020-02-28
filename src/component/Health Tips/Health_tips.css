@@ -44,3 +44,27 @@
     .cus_wid_healthtips_head tr th:nth-child(2){
         width: 50%;
     }
+    .health_tips_option{
+        height: 90px !important;
+    }
+    .health_tips_button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+    }
+    .healthtips_button_cancel{
+        background-color: #C9C9C9 !important;
+        margin-right: 20px !important;
+        border-radius: 0px !important;
+        margin-right: 25px !important;
+        
+    }
+    .healthtips_button_create{
+        background-color: #2680EB !important;
+        color: #FFFFFF !important;
+        border-radius: 0px !important;
+        
+    }
+    .health_tips_modal .MuiDialog-paperScrollPaper{
+        max-height: none !important;
+    }

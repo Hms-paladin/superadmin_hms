@@ -75,9 +75,9 @@
      .media_title_container .labeltxt{
          color:#333 !important;
      }
-     .media_title_container{
+     /* .media_title_container{
          padding:20px;
-     }
+     } */
      .green_uploadint{
          width:15px;
      }

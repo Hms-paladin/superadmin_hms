@@ -28,7 +28,6 @@
 
     export default class Advertise_manage extends Component {
         state = {
-            gender: "",
             selectedValue:"a"
          
           };
@@ -37,7 +36,7 @@
             this.setState({
                 selectedValue:data
             })
-        }
+        } 
 
     render() {
         
@@ -58,7 +57,7 @@
     </ExpansionPanelSummary>
     <ExpansionPanelDetails className="fields_data">
 
-      <div class="radio_head">
+      <div className="radio_head">
           <div className="radio_head_one">
         <GreenRadio
         checked={this.state.selectedValue === 'a'}
@@ -87,18 +86,18 @@
 
     <div className="advertise_image_two">
     <h4>Height (Pixel)</h4>
-    <Inputnumber label="Min"  className="image_option" placeholder="" />
-    <Inputnumber label="Max"  className="image_option" placeholder="" />
+    <Inputnumber label="Min"  className="image_option"  />
+    <Inputnumber label="Max"  className="image_option" />
     </div>
     <div className="advertise_image_three">
     <h4>Width (Pixel)</h4>
-    <Inputnumber label=""  className="image_option" placeholder="" />
-    <Inputnumber label=""  className="image_option" placeholder="" />
+    <Inputnumber  className="image_option"  />
+    <Inputnumber  className="image_option"  />
     </div>
     <div className="advertise_image_four">
     <h4>Size (Kb / Mb)</h4>
-    <Inputnumber label=""  className="image_option" placeholder="" />
-    <Inputnumber label=""  className="image_option" placeholder="" />
+    <Inputnumber   className="image_option"  />
+    <Inputnumber   className="image_option"  />
     </div>
     <div className="advertise_image_five">
     <h4>Resolution(DPI)</h4>
@@ -120,15 +119,16 @@
     <ExpansionPanelDetails className="fields_data">
     <div className="advertise_display_two">
     <h4>Home Page Ad(Sec)</h4>
-    <Inputnumber   className="display_option" placeholder="" />
+    <Inputnumber   className="display_option"  />
     </div>
     <div className="advertise_display_three">
     <h4>Vendor Page Ad(Sec)</h4>
-    <Inputnumber   className="display_option" placeholder="" />
+    <Inputnumber   className="display_option" />
     </div>
     </ExpansionPanelDetails>
     </ExpansionPanel>
     </div>
+
 
     <div className="advertise_rate">
     <ExpansionPanel className="rate_panel">
@@ -144,12 +144,12 @@
     <Dropdownantd label="Placement" className="rate_option_one" option={["Full"]} placeholder="" />
     </div>
     <div className="advertise_rate_four">
-    <Inputnumber  label="Size" className="rate_option" placeholder="" />
+    <Inputnumber  label="Size" className="rate_option" />
     </div>
     <div className="advertise_rate_five">
-    <Inputnumber  label="Rate (KWD)" className="rate_option" placeholder="" />
+    <Inputnumber  label="Rate (KWD)" className="rate_option" />
     </div>
-    <AddBox  className="rate_icon"/>
+    <AddBox  className="rate_icon" />
     </ExpansionPanelDetails>
     </ExpansionPanel>
     </div>

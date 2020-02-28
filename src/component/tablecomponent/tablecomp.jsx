@@ -231,42 +231,6 @@ export default class Tablecomponent extends Component {
   closemodal = () => {
     this.setState({ view: false,DeleteView:false });
   };
-  // handleClickOpen=(t,title)=>
-  // {
-
-    // var self=this
-    // axios({
-    //     method: 'delete',
-    //     url: `${apiurl}${this.props.endpoint}`,
-    //     data:{
-    //         "id":"20",
-    //         "modified_by":"1"
-    //     }
-    //   })
-    //   .then(function (response) {
-    //     alert("success")
-    //     console.log(response,"deleteres")
-    //   // self.lastdata()
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error,"error");
-    //   });
-    //   this.setState({
-    //     insertmodalopen:false
-    //   })
-
-
-
-
-
-  //   console.log("type",t,title)
-  //   this.setState({
-  //     type:t,
-  //     title
-  //   })
-  //   this.setState({view:true,DeleteView:false})
-  
-  // }
 
   handleClick = (event, name) => {
     const selectedIndex = this.state.selected.indexOf(name);
@@ -336,7 +300,7 @@ export default class Tablecomponent extends Component {
     })
     console.log("current state",this.state.rows)
   }
-  
+
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
@@ -438,9 +402,6 @@ export default class Tablecomponent extends Component {
                 />
           
         </Paper>
-        {/* <Modalcomp  visible={this.state.view} title={this.state.title} closemodal={this.closemodal} customwidth_dialog="" xswidth={"xs"}>
-          {this.state.type === "delete_profile" && <DeleteMedia onClick={()=>this.props.deletebody_data("hai")}/> }
-           </Modalcomp>  */}
 
       </div>
     );

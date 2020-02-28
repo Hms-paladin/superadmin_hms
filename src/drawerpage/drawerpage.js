@@ -42,20 +42,22 @@ import { Route, NavLink, withRouter, BrowserRouter as Router } from 'react-route
 import Advertise_manage from '../component/Advertisement Management/Advertise_Manage';
 import Media_upload from '../component/Media Upload/Media_upload';
 import Approval_manage from '../component/Approval Management/Approval_manage';
-import Ravenupayment from "../component/ravenupayment/ravenupayment"
 import Doctor_spl from '../component/Doctor Speciality/Doctor_spl';
-import training_cat from '../component/Training Category/Training_cat';
-import training_center from '../component/Training Center/Training_center';
+import Training_cat from '../component/Training Category/Training_cat';
+import Training_center from '../component/Training Center/Training_center';
 import Training_mode from '../component/Training Mode/Training_mode';
 import Groupaccess from '../component/Groupaccess/groupaccess';
 import Vendor_master from '../component/Vendor Master/Vendor_master';
 import Commission from '../component/Commission Management/Commission';
 import Health_tips from '../component/Health Tips/Health_tips'
 import User_group from '../component/User Group/User_group';
-import User_type from '../component/User Type/User_type'
+import User_type from '../component/User Type/User_type';
 import User_master from '../component/User Master/User_master';
-import Trainer from '../component/Trainer/Trainer'
-
+import Trainer from '../component/Trainer/Trainer';
+import Holiday_master from '../component/Holiday Master/Holiday_master';
+import Revenue_payment from '../component/Revenue Payment/Revenue_payment';
+import Notification_manage from '../component/Notification Management/Notification_manage';
+import Moment from 'react-moment'
 
 const drawerWidth = 260;
 const styles = theme => ({
@@ -149,6 +151,7 @@ class Homepage extends React.Component {
   }
   render() {
     const { classes, theme,children } = this.props;
+     let date= new Date();
 
     return (
       <div className="drawerpage_container">
@@ -192,7 +195,7 @@ class Homepage extends React.Component {
 <div className="date-wrapper1">
 <div className="date-wrapper2">
 
-<large className="date">04-09-2019 10.00am</large>
+<large className="date">  <Moment format='DD-MM-YYYY h:mm A'>{date}</Moment> </large>
 </div>
 </div>
 </div>
@@ -232,8 +235,7 @@ class Homepage extends React.Component {
                </ListItemIcon>
               <ListItemText  primary="Home" />
             </MenuItem>
-
-
+ 
             <MenuItem component={Link} to="/advertisemanage">
               <ListItemIcon>
               <div className="icon-container">
@@ -347,12 +349,20 @@ class Homepage extends React.Component {
               <ListItemText  primary="User Master" />
             </MenuItem>
 
-            <MenuItem component={Link} to="/ravenupayment">
+            <MenuItem component={Link} to="/holidaymaster">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={queue_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Holiday Master" />
+            </MenuItem>
+
+            <MenuItem component={Link} to="/revenuepayment">
               <ListItemIcon>
               <div className="icon-container">
                 <ReactSVG  src={revenue_svg}  /></div>  
                </ListItemIcon>
-              <ListItemText  primary="Ravenu vendor payment" />
+              <ListItemText  primary="Revenue vendor payment" />
             </MenuItem>
 
             <MenuItem component={Link} to="/groupaccess">
@@ -361,6 +371,15 @@ class Homepage extends React.Component {
                 <ReactSVG  src={Total}  /></div>  
                </ListItemIcon>
               <ListItemText  primary="Group Access Rights" />
+            </MenuItem>
+
+            
+            <MenuItem component={Link} to="/notification">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={queue_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Notification Management" />
             </MenuItem>
 
 
@@ -390,9 +409,9 @@ class Homepage extends React.Component {
 
         <Route exact path={'/trainer'} component={Trainer} />
 
-        <Route exact path={'/trainingcategory'} component={training_cat} />
+        <Route exact path={'/trainingcategory'} component={Training_cat} />
 
-        <Route exact path={'/trainingcenter'} component={training_center} />
+        <Route exact path={'/trainingcenter'} component={Training_center} />
 
         <Route exact path={'/trainingmode'} component={Training_mode} />
 
@@ -407,13 +426,16 @@ class Homepage extends React.Component {
         <Route exact path={'/usertype'} component={User_type} />
 
         <Route exact path={'/usermaster'} component={User_master} />
+
+        <Route exact path={'/holidaymaster'} component={Holiday_master} />
         
-        <Route exact path={'/ravenupayment'} component={Ravenupayment} />
+        <Route exact path={'/revenuepayment'} component={Revenue_payment} />
 
         <Route exact path={'/groupaccess'} component={Groupaccess} />
 
+        <Route exact path={'/notification'} component={Notification_manage} />
 
-  
+
           </div>
         </main>
       </div>

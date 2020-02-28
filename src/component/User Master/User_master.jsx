@@ -7,6 +7,7 @@ import Inputantd from "../../formcomponent/inputantd";
 import Dropdownantd from "../../formcomponent/dropdownantd";
 import Grid from '@material-ui/core/Grid';
 import { Switch } from 'antd';
+import Chip from '@material-ui/core/Chip';
 
 import "./User_master.css";
 
@@ -70,19 +71,19 @@ export default class User_master extends React.Component{
                     { id: "mobile_no", label: "Mobile Number" },
                     { id: "user_type", label: "User Type" },
                     { id: "user_group", label: "User Group" },
+                   
+                    { id: "status", label: "Status" },
 
-                    { id: "", label: "Action" },
-
-                    { id: "status", label: "Status" }
+                    { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({user_name: "Pradish", mobile_no:"123456789", user_type:"Admin", user_group:"Accountant",  status:""}),
-                this.createData({user_name: "Mani", mobile_no:"789321654", user_type:"Vendor", user_group:"Chef", status:""}),
-                this.createData({user_name: "Jerald", mobile_no:"963258147", user_type:"Admin", user_group:"Lab Technician", status:""}),
-                this.createData({user_name: "Arjun", mobile_no:"852369741", user_type:"Vendor", user_group:"Nurse", status:""}),
-                this.createData({user_name: "Ranjith", mobile_no:"741963258", user_type:"Admin", user_group:"Accountant", status:""}),
+                this.createData({user_name: "Pradish", mobile_no:"123456789", user_type:"Admin", user_group:"Accountant",  status:<Chip label="Active" className="status_usermaster_active" variant="outlined"/>}),
+                this.createData({user_name: "Mani", mobile_no:"789321654", user_type:"Vendor", user_group:"Chef",status:<Chip label="In-Active" className="status_usermaster" variant="outlined"/>}),
+                this.createData({user_name: "Jerald", mobile_no:"963258147", user_type:"Admin", user_group:"Lab Technician", status:<Chip label="Active" className="status_usermaster_active" variant="outlined"/>}),
+                this.createData({user_name: "Arjun", mobile_no:"852369741", user_type:"Vendor", user_group:"Nurse", status:<Chip label="In-Active" className="status_usermaster" variant="outlined"/>}),
+                this.createData({user_name: "Ranjith", mobile_no:"741963258", user_type:"Admin", user_group:"Accountant", status:<Chip label="Active" className="status_usermaster_active" variant="outlined"/>}),
 
             ]}
 

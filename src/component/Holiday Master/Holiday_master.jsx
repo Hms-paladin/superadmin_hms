@@ -8,12 +8,10 @@ import Dropdownantd from "../../formcomponent/dropdownantd";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
 
+import "./Holiday_master.css";
 
-import "./Training_center.css";
-
-export default class Training_center extends React.Component{
+export default class Holiday_master extends React.Component{
 
     state={
         openview:false,
@@ -56,60 +54,48 @@ export default class Training_center extends React.Component{
          
         return(
             <div>
-               <div className="training_center_header">
-                   <div className="training_center_title"><h3>TRAINING CENTER</h3></div>
+               <div className="holiday_master_header">
+                   <div className="holiday_master_title"><h3>HOLIDAY MASTER</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "training_center", label: "Training center" },
+                    { id: "holiday", label: "Holiday" },
+                    { id: "day", label: "Day" },
                     { id: "", label: "Action" }
                 ]}
   
 
             rowdata={[
-                this.createData({name: "Indoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "On Campus"})  
+                this.createData({holiday: "Eid Al Adha" , day: "Friday"}),
+                this.createData({holiday: "Eid Al Adha" , day: "Sunday"}),
+                this.createData({holiday: "Eid Ul Fitr" , day: "Tuesday"})
             ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_trainingcenter_head"
+    VisibilityIcon="close"
+    alignheading="cus_wid_commission_head"
+   
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            <h1>HIIIIIIIIIII</h1>
+         
         </Modalcomp>
 
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            
+               <h1>CALENDAR EDIT</h1>
         </Modalcomp>
 
-        <Modalcomp customwidth_dialog="training_center_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING CENTER"} closemodal={(e)=>this.closemodal(e)}
-         xswidth={"xs"}>
-             <Grid container spacing={2}>
-                 <Grid item xs={12} md={6}>
-            <div className="create_center">
-            <div className="center_dropdown">
-            <Dropdownantd label="Center" className="center_option" option={["Outdoor"]} placeholder="Indoor" />
-            </div>
-            <Inputantd label="Training" className="center_option" placeholder="" />
-            </div>
-            </Grid>
-            </Grid>
-            <div className="center_button">
-            <Button className="center_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="center_button_create">Create</Button>
-            </div>
-            
+        <Modalcomp customwidth_dialog="holiday_master_modal" visible={this.state.insertmodalopen} title={"CREATE HOLIDAY MASTER"} closemodal={(e)=>this.closemodal(e)}
+        xswidth={"lg"} 
+        >
+         <h1>CALENDAR</h1>
         </Modalcomp>
               
 

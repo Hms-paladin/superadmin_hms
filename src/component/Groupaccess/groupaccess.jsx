@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Collapse } from 'antd';
-
 import PropTypes from "prop-types";
 import { lighten, makeStyles, fade } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -11,14 +10,13 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
-
+import Button from '@material-ui/core/Button';
 import { Icon, message, Popconfirm } from "antd";
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { withStyles } from '@material-ui/core/styles';
-
 import { green } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -27,6 +25,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Dropdownantd from "../../formcomponent/dropdownantd";
 
 import "./groupaccess.css"
 
@@ -190,6 +189,7 @@ const actionsStyles = theme => ({
       const { classes, count, page, rowsPerPage, theme } = this.props;
   
       return (
+        
         <div className={classes.root}>
           <IconButton
             onClick={this.handleFirstPageButtonClick}
@@ -900,9 +900,21 @@ class Groupaccess extends Component {
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
 
-
     return (
       <div className="VendorDetailsDiv grp_dropdown_tble">
+         <div className="group_accessrights_header">
+          <div className="group_accessrights_titleuser"><h3>GROUP ACCESS RIGHTS</h3></div>
+
+          <div className="group_accessrights_dropdown">
+          <h4>Group</h4>
+          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={["Full"]} />
+          </div>
+          
+          
+          <div className="btn_group_acceess_flex">
+          <Button className="accessrights_button_cancel">Cancel</Button>
+          <Button className="accessrights_button_save">Save</Button></div>
+          </div>
         <Paper className="paper">
           <div className="tableWrapper">
             <Table

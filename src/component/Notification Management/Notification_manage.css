@@ -1,0 +1,44 @@
+.Notification_manage_header{
+    height: auto;
+    width:100%;
+    }
+    .Notification_manage_title h3{
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+    }
+    .Notification_manage_header{
+    width:100%;
+    background-color:#F8F8F8;
+    padding: 10px;
+    box-shadow:0px 3px 6px #00000029;;
+    display:flex;
+    justify-content: space-between;
+    }
+    .cus_wid_notification_head tr th:nth-child(4){
+        width: 5%;
+    }
+    .cus_wid_notification_head tr th:nth-child(5){
+        width: 5%;
+    }
+    .cus_wid_notification_head tr th:nth-child(6){
+        width: 5%;
+    }
+    .cus_wid_notification_head tr th:nth-child(7){
+        width: 2%;
+    }
+    .notification_check{
+        color:#8494FF!important;
+        border-color:#8494FF !important;
+     
+        
+    }
+    .notification_check  .MuiSvgIcon-root   {
+        font-size: 20px !important;
+    }
+    .notification_check.MuiIconButton-colorSecondary:hover{
+        background-color: rgba(0, 0, 0, 0.04) !important;
+    }
+    .notification_check .MuiCheckbox-colorSecondary .Mui-checked:hover{
+        background-color: rgba(0, 0, 0, 0.04) !important;
+    }

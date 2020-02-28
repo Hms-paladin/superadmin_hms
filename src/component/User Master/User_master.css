@@ -54,3 +54,22 @@
     .switch_grid.ant-switch-checked {
        background-color:#82AE3F !important ;
    } 
+   .status_usermaster_active{
+       font-size: 1.5rem !important;
+       border-radius: 8px !important;
+       height: 25px !important;
+       background-color: #E6EFD8 !important;
+       color: #82AE3F  !important;
+       width: 88px;
+       border-color:#82AE3F !important;
+    }
+   
+   .status_usermaster{
+    font-size: 1.5rem !important;
+    border-radius: 8px !important;
+    height: 25px !important;
+    background-color: #FFDADA !important;
+    color: #FF4747  !important;
+    width: 88px;
+    border-color:#FF4747 !important;
+}

@@ -68,3 +68,15 @@
     .health_tips_modal .MuiDialog-paperScrollPaper{
         max-height: none !important;
     }
+
+    .resizenone_tips {
+        resize: none;
+        height:100px !important;
+     }
+
+     .body_cur_name_tips{
+        font-size: 1.75rem;
+        position: relative;
+        bottom: 21px;
+        color: #82AE3F;
+     }

@@ -19,7 +19,6 @@ export default class User_group extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            openview:false,
             insertmodalopen:false,
             currentdata:[],
             modeltype:"",
@@ -170,21 +169,24 @@ export default class User_group extends React.Component{
 
             
         modelopen=(data,id)=>{
-            // if(data==="view"){
-            //     this.setState({openview:true,modeltype:data})
-            // }
-            // else if(data==="edit"){
-            //     this.setState({openview:true,modeltype:data})
-            // }
-
-            var iddata=this.state.currentdata.filter((value)=>
+            if(data==="view"){
+                this.setState({insertmodalopen:true,modeltype:data})
+            }
+            else if(data==="edit"){
+                var iddata=this.state.currentdata.filter((value)=>
                 value.id===id 
             )
-            this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,idnamedata:iddata[0].name})
+                this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,idnamedata:iddata[0].name})
+            }
+
+            // var iddata=this.state.currentdata.filter((value)=>
+            //     value.id===id 
+            // )
+            // this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,idnamedata:iddata[0].name})
         }
 
         closemodal=()=>{
-                this.setState({openview:false,editopen:false,insertmodalopen:false,deleteopen:false})
+                this.setState({editopen:false,insertmodalopen:false,deleteopen:false})
         }
 
         insertdata=()=>{
@@ -212,7 +214,7 @@ export default class User_group extends React.Component{
 
 
     render(){
-        console.log(this.state.iddata,"iddata")
+        console.log(this.state.currentdata,"currentdatayy")
          
         return(
             <div>

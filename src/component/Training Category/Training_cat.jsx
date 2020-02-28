@@ -4,44 +4,190 @@ import Modalcomp from "../../helper/Modalcomp";
 import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
+import {apiurl} from "../../../src/App.js";
+import DeleteMedia from "../../helper/deletemodel";
+
 
 import "./Training_cat.css";
+
+const axios = require('axios');
+
 
 export default class Training_cat extends React.Component{
 
     state={
-        openview:false,
-        insertmodalopen:false
+        insertmodalopen:false,
+        currentdata:[],
+        idname:"",
+        modeltype:"",
+        cur_id:"",
+        deleteopen:false,
+
+
     }
 
-    createData=(parameter) =>{
-        var keys=Object.keys(parameter)
-        var values=Object.values(parameter)
-  
-        var returnobj={}
-        
-        for(var i=0;i<keys.length;i++){
-        returnobj[keys[i]]=values[i]
-        }
-        return(returnobj)
-        }
 
-        modelopen=(data)=>{
-            if(data==="view"){
-                this.setState({openview:true})
-            }
-            else if(data==="edit"){
-                this.setState({editopen:true})
-            }
+    componentDidMount(){
+
+        var self=this
+      axios({
+        method: 'post',
+        url: `${apiurl}getTrainingCategoryList`
+      })
+      .then(function (response) {
+        var arrval=[]
+        response.data.data.map((value)=>{
+            arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
+        })
+        self.setState({
+            currentdata:arrval
+        })
+        console.log(response,"train_cat")
+      })
+      .catch(function (error) {
+        console.log(error,"error");
+      });
+}
+
+recall=()=>{
+    var self=this
+      axios({
+        method: 'post',
+        url: `${apiurl}getTrainingCategoryList`
+      })
+      .then(function (response) {
+        var arrval=[]
+        response.data.data.map((value)=>{
+            arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
+        })
+        self.setState({
+            currentdata:arrval
+        })
+        console.log(response,"train_cat")
+      })
+      .catch(function (error) {
+        console.log(error,"error");
+      });
+}
+
+add_data=()=>{
+
+    var self=this
+    axios({
+    method: 'post',
+    url: `${apiurl}insertTrainingCategory`,
+    data:{
+        "trainingCatName":this.state.create_group,
+        "createdBy":"1"
+    },
+    })
+    .then(function (response) {
+        console.log(response,"responsed");
+        self.recall()
+    })
+    .catch(function (error) {
+    console.log(error,"error");
+    });
+
+    this.setState({
+        insertmodalopen:false,
+        create_group:""
+    })
+}
+
+
+update_data=()=>{
+    var self=this
+    axios({
+        method: 'post',
+        url: `${apiurl}updateTrainingCategory`,
+        data:{
+            "trainingCatName":this.state.idname,
+            "updatedBy":"1",
+            "trainingCatId":this.state.cur_id
         }
+        })
+        .then(function (response) {
+            self.recall()
+        })
+        .catch(function (error) {
+            console.log(error,"error");
+        });
+        this.setState({
+            insertmodalopen:false
+        })
+}
+
+
+
+
+
+
+modelopen=(data,id)=>{
+    if(data==="view"){
+        this.setState({insertmodalopen:true,modeltype:data})
+    }
+    else if(data==="edit"){
+        var iddata=this.state.currentdata.filter((value)=>
+        value.id===id 
+    )
+        this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id})
+    }
+
+}
+
+deleteopen=(type,id)=>{
+    this.setState({
+        deleteopen:true,
+        cur_id:id
+    })
+}
+
+
 
         closemodal=()=>{
-                this.setState({openview:false,editopen:false,insertmodalopen:false})
+                this.setState({insertmodalopen:false,deleteopen:false})
         }
 
         insertdata=()=>{
             this.setState({
-                insertmodalopen:true
+                insertmodalopen:true,
+                modeltype:"view"
+            })
+        }
+
+        changeDynamic=(data)=>{
+            if(this.state.modeltype==="view"){
+                this.setState({
+                    create_group:data
+                })
+            }else{
+                this.setState({
+                    idname:data
+                })
+            }
+            
+        }
+
+        deleterow=()=>{
+            var self=this
+            axios({
+                method: 'delete',
+                url: `${apiurl}deleteGroup`,
+                data:{
+                    "id":this.state.iddata.toString(),
+                    "modified_by":"1"
+                }
+            })
+            .then(function (response) {
+                console.log(response,"deleteres")
+                self.recall()
+            })
+            .catch(function (error) {
+                console.log(error,"error");
+            });
+            this.setState({
+                insertmodalopen:false
             })
         }
 
@@ -56,48 +202,42 @@ export default class Training_cat extends React.Component{
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "training_category", label: "Training Category" },
+                    { id: "trainingCatName", label: "Training Category" },
                     { id: "", label: "Action" }
                 ]}
   
 
-            rowdata={[
-                this.createData({name: "Indoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "On Campus"})  
-            ]}
+            rowdata={this.state.currentdata && this.state.currentdata}
 
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_trainingcategory_head"
-  />
-
-        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <h1>HIIIIIIIIIII</h1>
-        </Modalcomp>
+            tableicon_align={""}
+            modelopen={(e,id)=>this.modelopen(e,id)}
+            VisibilityIcon="close"
+            alignheading="cus_wid_trainingcategory_head"
+            deleteopen={this.deleteopen}
+        />
 
 
-        <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            
-        </Modalcomp>
-
-        <Modalcomp className="training_category_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING CATEGORY"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp className="training_category_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINING CATEGORY":"EDIT TRAINING CATEGORY"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
             <div className="create_category">
-            <Inputantd label="Category" className="category_option" placeholder="" />
+            <Inputantd label="Category" className="category_option" placeholder="" 
+            changeData={(data)=>this.changeDynamic(data)} 
+            value={this.state.modeltype==="view"?this.state.create_group:this.state.idname}
+            />
             <div className="category_button">
             <Button className="category_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="category_button_create">Create</Button>
+            {this.state.modeltype==="view"?
+            <Button className="category_button_create" onClick={this.add_data}>Create</Button>:
+            <Button className="group_button_create" onClick={this.update_data}>Update</Button>
+    }
             </div>
             </div>
         </Modalcomp>
+
+        <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
+                <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
+           </Modalcomp> 
               
 
             </div>

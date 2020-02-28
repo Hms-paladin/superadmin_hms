@@ -1,13 +1,60 @@
+
+    .group_accessrights_titleuser h3{
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+    }
+    .group_accessrights_header{
+    width:100%;
+    height: auto;
+    background-color:#F8F8F8;
+    padding: 10px;
+    box-shadow:0px 3px 6px #00000029;;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .accessrights_button_save{
+    background-color: #2680EB !important;
+    color:white !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+    }
+    .accessrights_button_cancel{
+    background-color: #B1B1B1 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+    }
+    .group_accessrights_container{
+        display: flex;
+     
+    }
+    .drop_down_br{
+        display: none !important;
+    }
+        .group_accessrights_dropdown{
+            display: flex;
+         
+            } 
+            .group_accessrights_dropdown h4{
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+           
+            } 
+        .accessrights-option{
+            color: #808080 !important;
+            width:220px !important;
+            border-radius: 0px!important;
+            /* margin-right: 40px !important;  */
+        } 
+
 .group_heading_size{
     font-size: 1.1vw;
 font-weight: bold;
 display: flex;
 padding-left: 50px;
 }
-
-
-
-
 .grp_dropdown_tble .table td{
     padding: 0px !important;
 }
@@ -99,8 +146,8 @@ width:59% !important;
 }
 
 .grp_expanse_firstdata div div label span svg{
-    font-size: 23px !important;
-    height: 23px;
+    font-size: 20px !important;
+    height: 20px;
     color:#5377ee;
 
 }
@@ -120,8 +167,8 @@ width:59% !important;
     width: 6.66666666667%;
 }
 .grp_expanse_data div div label span svg{
-    font-size: 23px !important;
-    height: 23px;
+    font-size: 20px !important;
+    height: 20px;
     color:#5377ee;
 }
 
@@ -157,8 +204,8 @@ width:59% !important;
     width: 6.66666666667%;
 }
 .grp_expanse_nested div div label span svg{
-    font-size: 23px !important;
-    height: 23px;
+    font-size: 20px !important;
+    height: 20px;
     color:#5377ee;
 
 }
@@ -173,4 +220,28 @@ width:59% !important;
 
 .grp_expanse_data:nth-child(2) {
     border-bottom: none;
+}
+.btn_group_acceess_flex{
+    display: flex;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 930px){
+    .accessrights-option{
+        width: 130px !important;
+    }
+    .accessrights_button_save{
+        margin-right:0px !important;
+    }
+    .accessrights_button_cancel {
+        margin-right: 10px !important;
+  }
+  .group_accessrights_dropdown h4 {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+    .group_accessrights_titleuser h3{
+    font-size: 1.35rem;
+    margin-left: 5px;
+}
 }

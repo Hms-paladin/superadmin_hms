@@ -19,7 +19,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import { withStyles } from '@material-ui/core/styles';
 
-import "./ravenupayment.css"
+import "./Revenue_payment.css"
 
 const { Panel } = Collapse;
 
@@ -173,6 +173,7 @@ const actionsStyles = theme => ({
       const { classes, count, page, rowsPerPage, theme } = this.props;
   
       return (
+       
         <div className={classes.root}>
           <IconButton
             onClick={this.handleFirstPageButtonClick}
@@ -230,7 +231,7 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-class Ravenupayment extends Component {
+class Revenue_payment extends Component {
   constructor(props) {
     super(props);
     function createData(
@@ -370,6 +371,7 @@ class Ravenupayment extends Component {
   }
   
   render() {
+
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
@@ -383,7 +385,13 @@ class Ravenupayment extends Component {
 
 
     return (
+      
       <div className="VendorDetailsDiv dropdowntable">
+        <div className="revenue_vendorpayment_header">
+          <div className="revenue_vendorpayment_titleuser">
+            <h3>REVENUE - VENDOR PAYMENT</h3>
+          </div>
+        </div>
         <Paper className="paper">
           <div className="tableWrapper">
             <Table
@@ -502,4 +510,4 @@ class Ravenupayment extends Component {
   }
 }
 
-export default Ravenupayment;
+export default Revenue_payment;

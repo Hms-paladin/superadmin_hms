@@ -7,7 +7,7 @@ import Inputantd from "../../formcomponent/inputantd";
 
 import "./Training_cat.css";
 
-export default class training_cat extends React.Component{
+export default class Training_cat extends React.Component{
 
     state={
         openview:false,

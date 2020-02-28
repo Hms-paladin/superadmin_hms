@@ -58,7 +58,7 @@ const DialogActions = withStyles(theme => ({
 class Modalcomp extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+ 
     this.state = { open: true };
   }
 

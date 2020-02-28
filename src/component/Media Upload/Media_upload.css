@@ -106,3 +106,9 @@
     .max{
     margin-right: 60px;
     }
+    @media only screen and (max-width: 950px){
+        .set_width_mediaupload{
+            padding-right: 20px !important;
+        }
+
+    }

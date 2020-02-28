@@ -295,7 +295,9 @@ export default class Tablecomponent extends Component {
       this.loadDoctorDetails();
     }
   };
-  
+  componentWillReceiveProps(){
+    console.log("table props",this.props)
+  }
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;

@@ -14,7 +14,7 @@ export default class Routes extends Component {
                 <Route path="/Home" component={Homepage} />
                 <Route path="/advertising" component={Advertise_manage} />
                 <Route path="/mediaupload" component={Media_upload} />
-                <Route path="/mediaupload" component={Approval_manage} />
+                <Route path="/approvalmanage" component={Approval_manage} />
             </Router>
         );
     }

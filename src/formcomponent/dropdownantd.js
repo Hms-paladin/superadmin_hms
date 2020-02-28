@@ -25,6 +25,7 @@ class Dropdownantd extends React.Component{
                     // onSearch={this.props.onSearch && this.props.onBlur}
                     // name={this.props.name && this.props.name}
                     defaultValue={this.props.defaultValue && this.props.defaultValue}
+                    dropdownStyle={{ zIndex: 2000 }}
                     // value={this.props.value}
                 >
 

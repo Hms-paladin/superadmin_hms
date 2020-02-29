@@ -62,7 +62,8 @@ export default class Training_center extends React.Component{
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "training_center", label: "Training center" },
+                    { id: "training_center", label: "Training" },
+                    { id: "training_center", label: "Category" },
                     { id: "", label: "Action" }
                 ]}
   
@@ -99,7 +100,7 @@ export default class Training_center extends React.Component{
                  <Grid item xs={12} md={6}>
             <div className="create_center">
             <div className="center_dropdown">
-            <Dropdownantd label="Center" className="center_option" option={["Outdoor"]} placeholder="Indoor" />
+            <Dropdownantd label="Category" className="center_option" option={["Outdoor"]} placeholder="Indoor" />
             </div>
             <Inputantd label="Training" className="center_option" placeholder="" />
             </div>

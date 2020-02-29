@@ -54,6 +54,7 @@ import User_group from '../component/User Group/User_group';
 import User_type from '../component/User Type/User_type';
 import User_master from '../component/User Master/User_master';
 import Trainer from '../component/Trainer/Trainer';
+import Trainer_category from '../component/Trainer category/trainer_cat';
 import Holiday_master from '../component/Holiday Master/Holiday_master';
 import Revenue_payment from '../component/Revenue Payment/Revenue_payment';
 import Notification_manage from '../component/Notification Management/Notification_manage';
@@ -276,6 +277,14 @@ class Homepage extends React.Component {
               <ListItemText  primary="Trainer" />
             </MenuItem>
 
+            <MenuItem component={Link} to="/trainercategory">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={schedule_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="Trainer Category" />
+            </MenuItem>
+
             <MenuItem component={Link} to="/trainingcategory">
               <ListItemIcon>
               <div className="icon-container">
@@ -434,6 +443,11 @@ class Homepage extends React.Component {
         <Route exact path={'/groupaccess'} component={Groupaccess} />
 
         <Route exact path={'/notification'} component={Notification_manage} />
+
+        <Route exact path={'/trainercategory'} component={Trainer_category} />
+
+
+        
 
 
           </div>

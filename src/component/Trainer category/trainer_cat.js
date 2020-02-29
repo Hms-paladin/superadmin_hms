@@ -8,7 +8,7 @@ import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
 
 
-import "./Training_cat.css";
+import "./trainer_cat.css";
 
 const axios = require('axios');
 
@@ -32,12 +32,12 @@ export default class Training_cat extends React.Component{
         var self=this
       axios({
         method: 'post',
-        url: `${apiurl}getTrainingCategoryList`
+        url: `${apiurl}getTrainerCategoryList`
       })
       .then(function (response) {
         var arrval=[]
         response.data.data.map((value)=>{
-            arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
+            arrval.push({trainerCatName:value.trainerCatName,id:value.trainerCatId})
         })
         self.setState({
             currentdata:arrval
@@ -53,12 +53,12 @@ recall=()=>{
     var self=this
       axios({
         method: 'post',
-        url: `${apiurl}getTrainingCategoryList`
+        url: `${apiurl}getTrainerCategoryList`
       })
       .then(function (response) {
         var arrval=[]
         response.data.data.map((value)=>{
-            arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
+            arrval.push({trainerCatName:value.trainerCatName,id:value.trainerCatId})
         })
         self.setState({
             currentdata:arrval
@@ -75,9 +75,9 @@ add_data=()=>{
     var self=this
     axios({
     method: 'post',
-    url: `${apiurl}insertTrainingCategory`,
+    url: `${apiurl}insertTrainerCategory`,
     data:{
-        "trainingCatName":this.state.create_group,
+        "trainerCatName":this.state.create_group,
         "createdBy":"1"
     },
     })
@@ -100,11 +100,11 @@ update_data=()=>{
     var self=this
     axios({
         method: 'post',
-        url: `${apiurl}updateTrainingCategory`,
+        url: `${apiurl}updateTrainerCategory`,
         data:{
-            "trainingCatName":this.state.idname,
+            "trainerCatName":this.state.idname,
             "updatedBy":"1",
-            "trainingCatId":this.state.cur_id
+            "trainerCatId":this.state.cur_id
         }
         })
         .then(function (response) {
@@ -131,7 +131,7 @@ modelopen=(data,id)=>{
         var iddata=this.state.currentdata.filter((value)=>
         value.id===id 
     )
-        this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id})
+        this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainerCatName,cur_id:id})
     }
 
 }
@@ -173,10 +173,10 @@ deleteopen=(type,id)=>{
             var self=this
             axios({
                 method: 'post',
-                url: `${apiurl}deleteTrainingCategory`,
+                url: `${apiurl}deleteTrainerCategory`,
                 data:{
                     "updatedBy":"1",
-	                "trainingCatId":this.state.cur_id.toString()
+	                "trainerCatId":this.state.cur_id.toString()
                 }
             })
             .then(function (response) {
@@ -198,12 +198,12 @@ deleteopen=(type,id)=>{
         return(
             <div>
                <div className="training_category_header">
-                   <div className="training_category_title"><h3>TRAINING CATEGORY</h3></div>
+                   <div className="training_category_title"><h3>TRAINER CATEGORY</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "trainingCatName", label: "Training Category" },
+                    { id: "trainerCatName", label: "Training Category" },
                     { id: "", label: "Action" }
                 ]}
   
@@ -218,7 +218,7 @@ deleteopen=(type,id)=>{
         />
 
 
-        <Modalcomp className="training_category_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINING CATEGORY":"EDIT TRAINING CATEGORY"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp className="training_category_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINER CATEGORY":"EDIT TRAINER CATEGORY"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
             <div className="create_category">

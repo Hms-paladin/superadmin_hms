@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
-
+import { Spin,notification } from 'antd';
 
 
 import "./Doctor_spl.css";
@@ -28,7 +28,9 @@ export default class Doctor_spl extends React.Component{
         currentdata:[],
         iddata:"",
         idnamedata:"",
-        deleteopen:false
+        deleteopen:false,
+        loading:true,
+        props_loading:false,
     }
 
     componentDidMount(){
@@ -44,7 +46,8 @@ export default class Doctor_spl extends React.Component{
             arrval.push({speciality:value.speciality,id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
         })
       })
       .catch(function (error) {
@@ -52,7 +55,8 @@ export default class Doctor_spl extends React.Component{
       });
 }
 
-recall=()=>{
+recall=(type,msgdyn)=>{
+    
     var self=this
       axios({
         method: 'get',
@@ -64,8 +68,13 @@ recall=()=>{
             arrval.push({speciality:value.speciality,id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            props_loading:false
         })
+        notification[type]({
+            className:"show_frt",
+            message: "Record" +" "+msgdyn+" "+"sucessfully",
+          });
       console.log(arrval,"recall")
 
       })
@@ -76,6 +85,8 @@ recall=()=>{
 
 
 add_data=()=>{
+    this.setState({props_loading:true})
+
 
     var self=this
     axios({
@@ -93,8 +104,9 @@ add_data=()=>{
         
     })
     .then(function (response) {
-        console.log(response,"responsed");
-        self.recall()
+        console.log(response,"responsed")
+        self.recall("success","added")
+
     })
     .catch(function (error) {
     console.log(error,"error");
@@ -117,6 +129,8 @@ add_data=()=>{
         }
 
         update_data=()=>{
+        this.setState({props_loading:true})
+
             var self=this
             axios({
                 method: 'put',
@@ -134,7 +148,8 @@ add_data=()=>{
 
                 })
                 .then(function (response) {
-                    self.recall()
+                    self.recall("success","edited")
+
                 })
                 .catch(function (error) {
                     console.log(error,"error");
@@ -193,6 +208,8 @@ add_data=()=>{
 
 
         deleterow=()=>{
+        this.setState({props_loading:true})
+
             var self=this
             axios({
                 method: 'delete',
@@ -203,7 +220,8 @@ add_data=()=>{
             })
             .then(function (response) {
                 console.log(response,"deleteres")
-                self.recall()
+                self.recall("info","deleted")
+
             })
             .catch(function (error) {
                 console.log(error,"error");
@@ -217,6 +235,8 @@ add_data=()=>{
     render(){
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="doctor_spl_header">
                    <div className="doctor_spl_title"><h3>DOCTOR SPECIALITY</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
@@ -229,13 +249,12 @@ add_data=()=>{
   
 
                 rowdata={this.state.currentdata && this.state.currentdata}
-
-
-    tableicon_align={""}
-    modelopen={(e,id)=>this.modelopen(e,id)}
-    VisibilityIcon="close"
-    alignheading="cus_wid_doctorhead"
-    deleteopen={this.deleteopen}
+                tableicon_align={""}
+                modelopen={(e,id)=>this.modelopen(e,id)}
+                VisibilityIcon="close"
+                alignheading="cus_wid_doctorhead"
+                deleteopen={this.deleteopen}
+                props_loading={this.state.props_loading}
   />
 
 
@@ -267,7 +286,7 @@ add_data=()=>{
         <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
                 <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
            </Modalcomp> 
-              
+           </div>}
 
             </div>
         )

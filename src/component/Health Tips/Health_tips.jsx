@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import { Input } from 'antd';
 import {apiurl} from "../../../src/App.js";
+import { Spin,notification } from 'antd';
 import 'antd/dist/antd.css';
 
 import "./Health_tips.css";
@@ -25,6 +26,8 @@ export default class Health_tips extends React.Component{
         api_res:"",
         cur_healthTipId:"",
         cur_healthTipContentId:"",
+        loading:true,
+        props_loading:false,
      
     }
 
@@ -52,7 +55,9 @@ export default class Health_tips extends React.Component{
         self.setState({
             currentdata:arrval,
             tipsContent:tipsContentarr,
-            api_res:response.data.data
+            api_res:response.data.data,
+            loading:false
+
             
         })
       })
@@ -109,7 +114,7 @@ export default class Health_tips extends React.Component{
         }
 
 
-        recall=()=>{
+        recall=(type,msgdyn)=>{
             var self=this
             axios({
               method: 'post',
@@ -130,9 +135,14 @@ export default class Health_tips extends React.Component{
               self.setState({
                   currentdata:arrval,
                   tipsContent:tipsContentarr,
-                  api_res:response.data.data
+                  api_res:response.data.data,
+                  props_loading:false
                   
               })
+              notification[type]({
+                className:"show_frt",
+                message: "Record" +" "+msgdyn+" "+"sucessfully",
+              });
             })
             .catch(function (error) {
               console.log(error,"error");
@@ -140,6 +150,7 @@ export default class Health_tips extends React.Component{
         }
 
         update_data=()=>{
+            this.setState({props_loading:true})
             var self=this
             axios({
             method: 'post',
@@ -153,7 +164,7 @@ export default class Health_tips extends React.Component{
             })
             .then(function (response) {
                 console.log(response,"health_response");
-                self.recall()
+                self.recall("success","edited")
             })
             .catch(function (error) {
             console.log(error,"error");
@@ -170,6 +181,8 @@ export default class Health_tips extends React.Component{
       
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="health_tips_header">
                    <div className="health_tips_title"><h3>HEALTH TIPS</h3></div>
                   
@@ -186,6 +199,8 @@ export default class Health_tips extends React.Component{
                 modelopen={(e,id)=>this.modelopen(e,id)}
                 VisibilityIcon="close"
                 alignheading="cus_wid_healthtips_head"
+                props_loading={this.state.props_loading}
+                DeleteIcon="close"
    
   />
 
@@ -205,6 +220,7 @@ export default class Health_tips extends React.Component{
             </div>
          
         </Modalcomp>
+        </div>}
               
 
             </div>

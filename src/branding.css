@@ -95,3 +95,25 @@ body {
 .drawerpage_container .MuiList-root{
     overflow-y: scroll;
 }
+
+
+/* notification css */
+
+.ant-notification{
+    z-index:1202 !important;
+    width:330px !important;
+}
+
+.show_frt .ant-notification-notice-icon {
+    position: absolute;
+    margin-left: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: -2px;
+}
+
+.show_frt .ant-notification-notice-with-icon .ant-notification-notice-message {
+    margin-bottom: 0px;
+    margin-left: 48px;
+    font-size: 15px;
+}

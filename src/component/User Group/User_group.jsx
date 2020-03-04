@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
-import { Spin } from 'antd';
+import { Spin,notification } from 'antd';
 
 
 import "./User_group.css";
@@ -72,7 +72,7 @@ export default class User_group extends React.Component{
         .then(function (response) {
             console.log(response,"responsed");
 
-            self.recall()
+            self.recall("success","added")
 
         })
         .catch(function (error) {
@@ -82,7 +82,6 @@ export default class User_group extends React.Component{
         this.setState({
             insertmodalopen:false,
             create_group:"",
-            // props_loading:false
         })
 }
     
@@ -101,7 +100,7 @@ export default class User_group extends React.Component{
             })
             .then(function (response) {
 
-                self.recall()
+                self.recall("success","edited")
             })
             .catch(function (error) {
                 console.log(error,"error");
@@ -127,7 +126,7 @@ export default class User_group extends React.Component{
         .then(function (response) {
             console.log(response,"deleteres")
 
-            self.recall()
+            self.recall("info","deleted")
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -137,7 +136,7 @@ export default class User_group extends React.Component{
         })
     }
 
-        recall=()=>{
+        recall=(type,msgdyn)=>{
             var self=this
               axios({
                 method: 'get',
@@ -153,6 +152,13 @@ export default class User_group extends React.Component{
                     currentdata:arrval,
                     props_loading:false
                 })
+
+                notification[type]({
+                    className:"show_frt",
+                    message: "Record" +" "+msgdyn+" "+"sucessfully",
+                    // description:
+                    //   'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+                  });
 
               console.log(arrval,"recall")
 

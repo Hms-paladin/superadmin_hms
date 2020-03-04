@@ -7,6 +7,8 @@ import Inputantd from "../../formcomponent/inputantd";
 // import Checkbox from '@material-ui/core/Checkbox';
 import {apiurl} from "../../../src/App.js";
 import { Checkbox } from 'antd';
+import { Spin,notification } from 'antd';
+
 
 
 import "./Notification_manage.css";
@@ -28,12 +30,15 @@ export default class Notification_manage extends React.Component{
             openview:false,
             insertmodalopen:false,
             currentdata:[],
-            app1:true
+            app1:true,
+            loading:true,
+            props_loading:false,
         }
     }
 
 
     secondcall = (value,name,nameval) => {
+        this.setState({props_loading:true})
 
     console.log(value,name,nameval,"getvalue")
 
@@ -72,7 +77,7 @@ export default class Notification_manage extends React.Component{
             console.log(error,"error");
         });
         this.setState({
-            insertmodalopen:false
+            insertmodalopen:false,
         })
 
        };
@@ -96,7 +101,8 @@ export default class Notification_manage extends React.Component{
                 id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            props_loading:false
         })
           })
           .catch(function (error) {
@@ -110,6 +116,7 @@ export default class Notification_manage extends React.Component{
     componentDidMount(){
         
         const handleChange = (value,name,nameval) => {
+            this.setState({props_loading:true})
 
         console.log(value,name,nameval,"getvalue")
 
@@ -151,7 +158,7 @@ export default class Notification_manage extends React.Component{
                 console.log(error,"error");
             });
             this.setState({
-                insertmodalopen:false
+                insertmodalopen:false,
             })
 
            };
@@ -175,25 +182,14 @@ export default class Notification_manage extends React.Component{
                 id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
         })
       })
       .catch(function (error) {
         console.log(error,"error");
       });
 }
-
-    createData=(parameter) =>{
-        var keys=Object.keys(parameter)
-        var values=Object.values(parameter)
-  
-        var returnobj={}
-        
-        for(var i=0;i<keys.length;i++){
-        returnobj[keys[i]]=values[i]
-        }
-        return(returnobj)
-        }
 
         modelopen=(data)=>{
             if(data==="view"){
@@ -220,6 +216,8 @@ export default class Notification_manage extends React.Component{
          
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="Notification_manage_header">
                    <div className="Notification_manage_title"><h3>NOTIFICATION MANAGEMENT</h3></div>
                   
@@ -234,36 +232,18 @@ export default class Notification_manage extends React.Component{
 
                   
                 ]}
-  
-
-            // rowdata={[
-            //     this.createData({category: "Pharmacy", notification: "Quotation Ready", app:<Checkbox className="notification_check"/>, sms:<Checkbox className="notification_check" />, email:<Checkbox className="notification_check" />}),
-            //     this.createData({category: "Pharmacy", notification: "Out For Delivery", app:<Checkbox className="notification_check"/>, sms:<Checkbox className="notification_check" />, email:<Checkbox className="notification_check" />}),
-            //     this.createData({category: "Shopping", notification: "Order Booked",app:<Checkbox className="notification_check"/>, sms:<Checkbox className="notification_check" />, email:<Checkbox className="notification_check" />}),
-            //     this.createData({category: "Shopping", notification: "Payment Success", app:<Checkbox className="notification_check"/>, sms:<Checkbox className="notification_check" />, email:<Checkbox className="notification_check" />}),
-            //     this.createData({category: "Shopping", notification: "Order Dispacthed",app:<Checkbox className="notification_check"/>, sms:<Checkbox className="notification_check" />, email:<Checkbox className="notification_check" />})
-            // ]}
 
             rowdata={this.state.currentdata && this.state.currentdata}
-
-
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    VisibilityIcon="close"
-    EditIcon="close"
-    DeleteIcon="close"
-    alignheading="cus_wid_notification_head"
+            tableicon_align={""}
+            modelopen={(e)=>this.modelopen(e)}
+            VisibilityIcon="close"
+            EditIcon="close"
+            DeleteIcon="close"
+            alignheading="cus_wid_notification_head"
+            props_loading={this.state.props_loading}
   />
 
-       
-
-
-        <Modalcomp  visible={this.state.editopen} title={""} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"md"}
-        >
-            
-            
-        </Modalcomp>
+        </div>}
               
 
             </div>

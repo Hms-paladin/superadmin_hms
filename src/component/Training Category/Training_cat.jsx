@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
+import { Spin,notification } from 'antd';
 
 
 import "./Training_cat.css";
@@ -22,7 +23,8 @@ export default class Training_cat extends React.Component{
         modeltype:"",
         cur_id:"",
         deleteopen:false,
-
+        loading:true,
+        props_loading:false,
 
     }
 
@@ -40,7 +42,9 @@ export default class Training_cat extends React.Component{
             arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
+
         })
         console.log(response,"train_cat")
       })
@@ -49,7 +53,7 @@ export default class Training_cat extends React.Component{
       });
 }
 
-recall=()=>{
+recall=(type,msgdyn)=>{
     var self=this
       axios({
         method: 'post',
@@ -61,8 +65,16 @@ recall=()=>{
             arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            props_loading:false
+
         })
+        notification[type]({
+            className:"show_frt",
+            message: "Record" +" "+msgdyn+" "+"sucessfully",
+            // description:
+            //   'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+          });
         console.log(response,"train_cat")
       })
       .catch(function (error) {
@@ -71,6 +83,7 @@ recall=()=>{
 }
 
 add_data=()=>{
+    this.setState({props_loading:true})
 
     var self=this
     axios({
@@ -83,7 +96,7 @@ add_data=()=>{
     })
     .then(function (response) {
         console.log(response,"responsed");
-        self.recall()
+        self.recall("success","added")
     })
     .catch(function (error) {
     console.log(error,"error");
@@ -97,6 +110,8 @@ add_data=()=>{
 
 
 update_data=()=>{
+    this.setState({props_loading:true})
+
     var self=this
     axios({
         method: 'post',
@@ -108,7 +123,7 @@ update_data=()=>{
         }
         })
         .then(function (response) {
-            self.recall()
+            self.recall("success","edited")
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -170,6 +185,8 @@ deleteopen=(type,id)=>{
         }
 
         deleterow=()=>{
+    this.setState({props_loading:true})
+
             var self=this
             axios({
                 method: 'post',
@@ -181,7 +198,7 @@ deleteopen=(type,id)=>{
             })
             .then(function (response) {
                 console.log(response,"deleteres")
-                self.recall()
+                self.recall("info","deleted")
             })
             .catch(function (error) {
                 console.log(error,"error");
@@ -197,6 +214,8 @@ deleteopen=(type,id)=>{
          
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="training_category_header">
                    <div className="training_category_title"><h3>TRAINING CATEGORY</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
@@ -215,6 +234,7 @@ deleteopen=(type,id)=>{
             VisibilityIcon="close"
             alignheading="cus_wid_trainingcategory_head"
             deleteopen={this.deleteopen}
+            props_loading={this.state.props_loading}
         />
 
 
@@ -239,6 +259,7 @@ deleteopen=(type,id)=>{
         <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
                 <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
            </Modalcomp> 
+           </div>}
               
 
             </div>

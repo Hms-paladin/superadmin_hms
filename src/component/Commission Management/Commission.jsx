@@ -9,7 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import {apiurl} from "../../../src/App.js";
-
+import { Spin,notification } from 'antd';
 
 import "./Commission.css";
 
@@ -22,6 +22,8 @@ export default class Commission extends React.Component{
         openview:false,
         insertmodalopen:false,
         currentdata:[],
+        loading:true,
+        props_loading:false,
     }
 
     componentDidMount(){
@@ -38,7 +40,8 @@ export default class Commission extends React.Component{
             arrval.push({vendor:value.vendor,commission:value.commission,id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
         })
       })
       .catch(function (error) {

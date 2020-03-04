@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
+import { Spin,notification } from 'antd';
 
 import "./Training_mode.css";
 
@@ -23,7 +24,9 @@ export default class Training_mode extends React.Component{
         insertmodalopen:false,
         currentdata:[],
         training_mode:"",
-        deleteopen:false
+        deleteopen:false,
+        loading:true,
+        props_loading:false,
     }
 
 
@@ -40,7 +43,8 @@ export default class Training_mode extends React.Component{
             arrval.push({training_mode:value.training_mode,id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
         })
       })
       .catch(function (error) {
@@ -49,6 +53,7 @@ export default class Training_mode extends React.Component{
 }
 
     add_data=()=>{
+        this.setState({props_loading:true})
 
         var self=this
         axios({
@@ -65,7 +70,7 @@ export default class Training_mode extends React.Component{
         })
         .then(function (response) {
             console.log(response,"responsed");
-            self.recall()
+            self.recall("success","added")
         })
         .catch(function (error) {
         console.log(error,"error");
@@ -77,7 +82,7 @@ export default class Training_mode extends React.Component{
         })
     }
 
-    recall=()=>{
+    recall=(type,msgdyn)=>{
         var self=this
         axios({
             method: 'get',
@@ -89,8 +94,13 @@ export default class Training_mode extends React.Component{
                 arrval.push({training_mode:value.training_mode,id:value.id})
             })
             self.setState({
-                currentdata:arrval
+                currentdata:arrval,
+                props_loading:false
             })
+            notification[type]({
+                className:"show_frt",
+                message: "Record" +" "+msgdyn+" "+"sucessfully",
+              });
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -98,6 +108,8 @@ export default class Training_mode extends React.Component{
     }
 
     deleterow=()=>{
+        this.setState({props_loading:true})
+
         var self=this
         axios({
             method: 'delete',
@@ -108,7 +120,7 @@ export default class Training_mode extends React.Component{
         })
         .then(function (response) {
             console.log(response,"deleteres")
-            self.recall()
+            self.recall("info","deleted")
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -139,6 +151,8 @@ export default class Training_mode extends React.Component{
     }
 
     update_data=()=>{
+        this.setState({props_loading:true})
+
         var self=this
         axios({
             method: 'put',
@@ -155,7 +169,7 @@ export default class Training_mode extends React.Component{
                 
             })
             .then(function (response) {
-                self.recall()
+                self.recall("success","edited")
             })
             .catch(function (error) {
                 console.log(error,"error");
@@ -194,6 +208,8 @@ export default class Training_mode extends React.Component{
          
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="vendor_master_header">
                    <div className="vendor_master_title"><h3>TRAINING MODE</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
@@ -210,6 +226,7 @@ export default class Training_mode extends React.Component{
                 VisibilityIcon="close"
                 alignheading="cus_wid_vendor_head"
                 deleteopen={this.deleteopen}
+                props_loading={this.state.props_loading}
 
   />
 
@@ -234,7 +251,7 @@ export default class Training_mode extends React.Component{
         <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
                 <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
            </Modalcomp> 
-              
+           </div>}
 
             </div>
         )

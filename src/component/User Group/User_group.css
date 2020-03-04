@@ -54,5 +54,10 @@
     .cus_wid_delmodel .MuiDialogContent-dividers {
         padding: 0px;
     } */
+.spinner_align{
+    padding: 260px 20px 20px 44%;
+}
 
-    
+.spinner_align span i{
+    background-color: #82AE3F;
+}

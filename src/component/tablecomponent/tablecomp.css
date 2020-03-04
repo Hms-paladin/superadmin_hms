@@ -46,7 +46,7 @@
   /* color: #b5abab; */
   color:#7b7171;
   font-size: 1.45rem;
-  padding-top: 15px !important;
+  /* padding-top: 15px !important; */
 
 }
 .Mui-selected th,
@@ -90,11 +90,11 @@
 .VendorDetailsDiv .tableWrapper {
   overflow-x: auto;
   margin-top: 5px;
-  min-height: 375px;
+  min-height: 320px;
 }
 .VendorDetailsDiv thead tr,
 .VendorDetailsDiv thead th {
-  font-size: 18px;
+  font-size: 16px;
   /* font-weight: bold; */
   /* color: #333; */
 }
@@ -138,8 +138,8 @@
 .VendorDetailsDiv tbody tr{
   /* box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12) !important; */
   box-shadow: 0px 0px 0px 0.5px #c3c3c399;
-  height: 50px;
-border-radius: 2px !important;
+  /* height: 50px; */
+/* border-radius: 2px !important; */
 
 
 }
@@ -184,6 +184,3 @@ border-radius: 2px !important;
   font-size: 20px !important;
   cursor: pointer;  
 }
-
-
-

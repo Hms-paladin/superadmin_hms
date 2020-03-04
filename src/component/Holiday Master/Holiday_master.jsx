@@ -8,6 +8,7 @@ import Dropdownantd from "../../formcomponent/dropdownantd";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Range_Calendar from "./react_range_calender";
 
 import "./Holiday_master.css";
 
@@ -95,7 +96,7 @@ export default class Holiday_master extends React.Component{
         <Modalcomp customwidth_dialog="holiday_master_modal" visible={this.state.insertmodalopen} title={"CREATE HOLIDAY MASTER"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"lg"} 
         >
-         <h1>CALENDAR</h1>
+         <Range_Calendar/>
         </Modalcomp>
               
 

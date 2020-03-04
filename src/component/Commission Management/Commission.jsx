@@ -8,15 +8,57 @@ import Dropdownantd from "../../formcomponent/dropdownantd";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import {apiurl} from "../../../src/App.js";
+
 
 import "./Commission.css";
+
+const axios = require('axios');
+
 
 export default class Commission extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false
+        insertmodalopen:false,
+        currentdata:[],
     }
+
+    componentDidMount(){
+
+        var self=this
+      axios({
+        method: 'get',
+        url: `${apiurl}get_mas_commission`
+      })
+      .then(function (response) {
+          console.log(response,"response_comm") 
+        var arrval=[]
+        response.data.data.map((value)=>{
+            arrval.push({vendor:value.vendor,commission:value.commission,id:value.id})
+        })
+        self.setState({
+            currentdata:arrval
+        })
+      })
+      .catch(function (error) {
+        console.log(error,"error");
+      });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     createData=(parameter) =>{
         var keys=Object.keys(parameter)
@@ -66,19 +108,11 @@ export default class Commission extends React.Component{
                 ]}
   
 
-            rowdata={[
-                this.createData({vendor: "Doctor" , commission: "2"}),
-                this.createData({vendor: "Diet Meal" , commission: "5"}),
-                this.createData({vendor: "Pharmacy" , commission: "5"}),
-                this.createData({vendor: "Lab" , commission: "10"}),
-                this.createData({vendor: "Trainer" , commission: "2"}),
-                this.createData({vendor: "Clinic" , commission: "5"})
-            ]}
-
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_commission_head"
+                rowdata={this.state.currentdata && this.state.currentdata}
+                tableicon_align={""}
+                modelopen={(e)=>this.modelopen(e)}
+                VisibilityIcon="close"
+                alignheading="cus_wid_commission_head"
    
   />
 

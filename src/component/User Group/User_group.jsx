@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
 import {apiurl} from "../../../src/App.js";
 import DeleteMedia from "../../helper/deletemodel";
+import { Spin } from 'antd';
 
 
 import "./User_group.css";
@@ -25,7 +26,9 @@ export default class User_group extends React.Component{
             create_group:"",
             iddata:"",
             idnamedata:"",
-            deleteopen:false
+            deleteopen:false,
+            loading:true,
+            props_loading:false,
         }
     }
 
@@ -45,7 +48,8 @@ export default class User_group extends React.Component{
             arrval.push({name:value.groupname,id:value.id})
         })
         self.setState({
-            currentdata:arrval
+            currentdata:arrval,
+            loading:false
         })
       })
       .catch(function (error) {
@@ -54,6 +58,7 @@ export default class User_group extends React.Component{
 }
 
     add_data=()=>{
+        this.setState({props_loading:true})
 
         var self=this
         axios({
@@ -66,7 +71,9 @@ export default class User_group extends React.Component{
         })
         .then(function (response) {
             console.log(response,"responsed");
+
             self.recall()
+
         })
         .catch(function (error) {
         console.log(error,"error");
@@ -74,11 +81,14 @@ export default class User_group extends React.Component{
 
         this.setState({
             insertmodalopen:false,
-            create_group:""
+            create_group:"",
+            // props_loading:false
         })
 }
     
     update_data=()=>{
+        this.setState({props_loading:true})
+
         var self=this
         axios({
             method: 'put',
@@ -90,6 +100,7 @@ export default class User_group extends React.Component{
                 }
             })
             .then(function (response) {
+
                 self.recall()
             })
             .catch(function (error) {
@@ -102,6 +113,8 @@ export default class User_group extends React.Component{
 
 
     deleterow=()=>{
+        this.setState({props_loading:true})
+
         var self=this
         axios({
             method: 'delete',
@@ -113,6 +126,7 @@ export default class User_group extends React.Component{
         })
         .then(function (response) {
             console.log(response,"deleteres")
+
             self.recall()
         })
         .catch(function (error) {
@@ -136,8 +150,10 @@ export default class User_group extends React.Component{
                     arrval.push({name:value.groupname,id:value.id})
                 })
                 self.setState({
-                    currentdata:arrval
+                    currentdata:arrval,
+                    props_loading:false
                 })
+
               console.log(arrval,"recall")
 
               })
@@ -214,10 +230,12 @@ export default class User_group extends React.Component{
 
 
     render(){
-        console.log(this.state.currentdata,"currentdatayy")
          
         return(
             <div>
+           
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="user_group_header">
                    <div className="user_group_title"><h3>USER GROUP</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
@@ -234,14 +252,10 @@ export default class User_group extends React.Component{
             alignheading="cus_wid_usergroup_head"
             endpoint="deleteGroup"
             deleteopen={this.deleteopen}
+            props_loading={this.state.props_loading}
             
   />
 
-        {/* <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            
-        </Modalcomp> */}
 
         <Modalcomp className="user_group_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"ADD USER GROUP":"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
@@ -264,8 +278,18 @@ export default class User_group extends React.Component{
             <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
                 <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
            </Modalcomp> 
+           </div>
+    }
+
               
             </div>
         )
     }
 }
+
+
+        {/* <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
+        xswidth={"xs"}
+        >
+            
+        </Modalcomp> */}

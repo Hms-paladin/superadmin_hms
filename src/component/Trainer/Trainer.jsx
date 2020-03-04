@@ -9,16 +9,55 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
+import {apiurl} from "../../../src/App.js";
+import DeleteMedia from "../../helper/deletemodel";
 
 
 import "./Trainer.css";
+
+
+const axios = require('axios');
+
 
 export default class Trainer extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false
+        insertmodalopen:false,
+        currentdata:[],
+
     }
+
+    componentDidMount(){
+
+        var self=this
+
+    //   axios({
+    //     method: 'get',
+    //     url: `${apiurl}get_mas_trainer`
+    //   })
+    //   .then(function (response) {
+    //     var arrval=[]
+    //     response.data.data.map((value)=>{
+    //         arrval.push({training:value.training,id:value.id})
+    //         trainer_cat_id.push({trainer_cat_id:value.trainer_trainingcategory_id})
+    //     })
+    //     self.setState({
+    //         currentdata:arrval,
+    //     })
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error,"error");
+    //   });
+}
+
+
+
+
+
+
+
+
 
     createData=(parameter) =>{
         var keys=Object.keys(parameter)
@@ -68,17 +107,12 @@ export default class Trainer extends React.Component{
                 ]}
   
 
-            rowdata={[
-                this.createData({name: "Fitness", category:"Indoor"}),
-                this.createData({name: "Tennis", category:"Indoor"}),
-                this.createData({name: "Chess", category:"Outdoor"}),
-                this.createData({name: "Karate", category:"Self Defense"})  
-            ]}
+            rowdata={this.state.currentdata && this.state.currentdata}
 
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_trainer_head"
+            tableicon_align={""}
+            modelopen={(e)=>this.modelopen(e)}
+            EditIcon="close"
+            alignheading="cus_wid_trainer_head"
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

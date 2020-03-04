@@ -4,21 +4,27 @@ import Modalcomp from "../../helper/Modalcomp";
 import PlusIcon from '../../images/plus.png';
 import Button from '@material-ui/core/Button';
 import Inputantd from "../../formcomponent/inputantd";
-import {apiurl} from "../../../src/App.js";
 
-import "./User_group.css";
+import "./Training_mode.css";
 
-
-const axios = require('axios');
-
-
-export default class User_group extends React.Component{
+export default class Training_mode extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false,
-        currentdata:[]
+        insertmodalopen:false
     }
+
+    createData=(parameter) =>{
+        var keys=Object.keys(parameter)
+        var values=Object.values(parameter)
+  
+        var returnobj={}
+        
+        for(var i=0;i<keys.length;i++){
+        returnobj[keys[i]]=values[i]
+        }
+        return(returnobj)
+        }
 
         modelopen=(data)=>{
             if(data==="view"){
@@ -39,67 +45,41 @@ export default class User_group extends React.Component{
             })
         }
 
-        
-
-        componentDidMount(){
-
-            
-                var self=this
-              axios({
-                method: 'get',
-                url: `${apiurl}getGroup`
-              })
-              .then(function (response) {
-                console.log(response,"response");
-                var arrval=[]
-                response.data.data.map((value)=>{
-                    arrval.push(self.createData({name:value.groupname}))
-                    // arrval.push({group_name:value.groupname})
-                    console.log(value,"value")
-                })
-                self.setState({
-                    currentdata:arrval
-                })
-
-                console.log(arrval,"arrval")
-                // numbers.map((number) => number * 2)
-
-              })
-              .catch(function (error) {
-                console.log(error,"error");
-              });
-        }
-
 
     render(){
-        console.log(this.state.currentdata,"currentdata")
          
         return(
             <div>
-               <div className="user_group_header">
-                   <div className="user_group_title"><h3>USER GROUP</h3></div>
+               <div className="training_mode_header">
+                   <div className="training_mode_title"><h3>TRAINING MODE</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "group_name", label: "Group Name" },
+                    { id: "training_mode", label: "Training mode" },
                     { id: "", label: "Action" }
                 ]}
   
 
-            // rowdata={[
-            //     this.createData({name: "Accountant"}),
-            //     this.createData({name: "Chef"})  
-            // ]}
-
-            rowdata={this.state.currentdata}
+            rowdata={[
+                this.createData({name: "Indoor"}),
+                this.createData({name: "Outdoor"}),
+                this.createData({name: "Outdoor"}),
+                this.createData({name: "On Campus"})  
+            ]}
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
-    // EditIcon="close"
-    VisibilityIcon="close"
-    alignheading="cus_wid_usergroup_head"
+    EditIcon="close"
+    alignheading="cus_wid_trainingmode_head"
   />
+
+        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
+        xswidth={"xs"}
+        >
+            <h1>HIIIIIIIIIII</h1>
+        </Modalcomp>
+
 
         <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
@@ -107,14 +87,14 @@ export default class User_group extends React.Component{
             
         </Modalcomp>
 
-        <Modalcomp className="user_group_modal" visible={this.state.insertmodalopen} title={"ADD USER GROUP"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp className="training_mode_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING MODE"} closemodal={(e)=>this.closemodal(e)}
         xswidth={"xs"}
         >
-            <div className="create_group">
-            <Inputantd label="Group Name" className="group_option" placeholder="" />
-            <div className="group_button">
-            <Button className="group_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="group_button_create">Create</Button>
+            <div className="create_mode">
+            <Inputantd label="Mode" className="mode_option" placeholder="" />
+            <div className="mode_button">
+            <Button className="mode_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <Button className="mode_button_create">Create</Button>
             </div>
             </div>
         </Modalcomp>
@@ -126,15 +106,130 @@ export default class User_group extends React.Component{
 }
 
 
+==============================================================================================================
 
-createData=(parameter) =>{
-  var keys=Object.keys(parameter)
-  var values=Object.values(parameter)
 
-  var returnobj={}
+
+
+import React from "react";
+import Tablecomponent from "../tablecomponent/tablecomp";
+import Modalcomp from "../../helper/Modalcomp";
+import PlusIcon from '../../images/plus.png';
+import Button from '@material-ui/core/Button';
+import Inputantd from "../../formcomponent/inputantd";
+import Dropdownantd from "../../formcomponent/dropdownantd";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+
+
+import "./Trainer.css";
+
+export default class Trainer extends React.Component{
+
+    state={
+        openview:false,
+        insertmodalopen:false
+    }
+
+    createData=(parameter) =>{
+        var keys=Object.keys(parameter)
+        var values=Object.values(parameter)
   
-  for(var i=0;i<keys.length;i++){
-  returnobj[keys[i]]=values[i]
-  }
-  return(returnobj)
-  }
+        var returnobj={}
+        
+        for(var i=0;i<keys.length;i++){
+        returnobj[keys[i]]=values[i]
+        }
+        return(returnobj)
+        }
+
+        modelopen=(data)=>{
+            if(data==="view"){
+                this.setState({openview:true})
+            }
+            else if(data==="edit"){
+                this.setState({editopen:true})
+            }
+        }
+
+        closemodal=()=>{
+                this.setState({openview:false,editopen:false,insertmodalopen:false})
+        }
+
+        insertdata=()=>{
+            this.setState({
+                insertmodalopen:true
+            })
+        }
+
+
+    render(){
+         
+        return(
+            <div>
+               <div className="trainer_header">
+                   <div className="trainer_title"><h3>TRAINER</h3></div>
+                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+               </div>
+                <Tablecomponent heading={[
+                    { id: "", label: "S.No" },
+                    { id: "training", label: "Training" },
+                    { id: "category", label: "Category" },
+                    { id: "", label: "Action" }
+                ]}
+  
+
+            rowdata={[
+                this.createData({name: "Fitness", category:"Indoor"}),
+                this.createData({name: "Tennis", category:"Indoor"}),
+                this.createData({name: "Chess", category:"Outdoor"}),
+                this.createData({name: "Karate", category:"Self Defense"})  
+            ]}
+
+    tableicon_align={""}
+    modelopen={(e)=>this.modelopen(e)}
+    EditIcon="close"
+    alignheading="cus_wid_trainer_head"
+  />
+
+        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
+        xswidth={"xs"}
+        >
+            <h1>HIIIIIIIIIII</h1>
+        </Modalcomp>
+
+
+        <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
+        xswidth={"xs"}
+        >
+            
+        </Modalcomp>
+
+        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINER"} closemodal={(e)=>this.closemodal(e)}
+         xswidth={"xs"}>
+             <Grid container spacing={2}>
+                 <Grid item xs={12} md={6}>
+            <div className="create_trainer">
+            <div className="trainer_dropdown">
+            <Dropdownantd label="Category" className="trainer_option" option={["Indoor", "Outdoor", "Self Defense"]} placeholder="Indoor" />
+            </div>
+            <Inputantd label="Training" className="trainer_option" placeholder="" />
+            </div>
+            </Grid>
+            </Grid>
+            <div className="trainer_button">
+            <Button className="trainer_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <Button className="trainer_button_create">Create</Button>
+            </div>
+            
+        </Modalcomp>
+              
+
+            </div>
+        )
+    }
+}
+
+

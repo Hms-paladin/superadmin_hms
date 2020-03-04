@@ -17,6 +17,8 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import Modalcomp from "../../helper/Modalcomp";
 import DeleteMedia from "../../helper/deletemodel";
 import { Icon, message, Popconfirm } from "antd";
+import { Spin } from 'antd';
+
 
 // standard icons
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -28,6 +30,7 @@ import {apiurl} from "../../../src/App.js";
 
 
 import "./tablecomp.css";
+import { arrayRemoveAll } from "redux-form";
 const axios = require('axios');
 
 
@@ -307,6 +310,7 @@ export default class Tablecomponent extends Component {
     console.log(this.props.rowdata,"rowdata")
 
     return (
+      <Spin className="spinner_align" spinning={this.props.props_loading}>
       <div className={`VendorDetailsDiv ${this.props.tablemasterclass}`}>
         <Paper className="paper">
           <div className="tableWrapper">
@@ -359,13 +363,14 @@ export default class Tablecomponent extends Component {
                         </TableCell>
 
                         {[row].map(((data,key)=>{
-                          // console.log("datassss",key)
+                          // console.log("datassss",data)
                           var keys=Object.keys(data)
-                          console.log(data.id,"tabledata")
+                          // console.log(keys.length,"tabledata")
+                          var arrval=[]
                           for(var m=0;m<keys.length-1;m++){
-                            // alert(data.id)
-                              return<TableCell key={data.id}>{data[keys[m]]}</TableCell>
+                            arrval.push(<TableCell key={data.id}>{data[keys[m]]}</TableCell>)
                           }
+                          return arrval
                         })
                         )}
 
@@ -404,6 +409,7 @@ export default class Tablecomponent extends Component {
         </Paper>
 
       </div>
+      </Spin>
     );
   }
 }

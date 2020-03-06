@@ -16,7 +16,8 @@ export default class Holiday_master extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false
+        insertmodalopen:false,
+        props_loading:false
     }
 
     createData=(parameter) =>{
@@ -73,10 +74,12 @@ export default class Holiday_master extends React.Component{
                 this.createData({holiday: "Eid Ul Fitr" , day: "Tuesday"})
             ]}
 
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    VisibilityIcon="close"
-    alignheading="cus_wid_commission_head"
+            tableicon_align={""}
+            modelopen={(e)=>this.modelopen(e)}
+            VisibilityIcon="close"
+            alignheading="cus_wid_commission_head"
+            props_loading={this.state.props_loading}
+
    
   />
 

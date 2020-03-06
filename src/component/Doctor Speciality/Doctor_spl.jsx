@@ -267,10 +267,7 @@ add_data=()=>{
             <div className="create_spl">
             <Inputantd label="Speciality" className="spl_option" placeholder="" 
             changeData={(data)=>this.changeDynamic(data)} 
-            // value={this.state.modeltype==="view"?this.state.create_group:this.state.idnamedata}
             value={this.state.modeltype==="view"?this.state.speciality:this.state.idnamedata} 
-
-            // value={this.state.speciality}
             />
             <div className="spl_button">
             <Button className="spl_button_cancel" onClick={this.closemodal}>Cancel</Button>

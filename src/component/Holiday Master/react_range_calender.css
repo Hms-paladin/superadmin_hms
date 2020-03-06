@@ -5,6 +5,10 @@
 
 .range_calender  .rdrDays button{
     border: 1px solid #dddddd;
+    height: 8vh;
+
+        /* height: 4.6em; */
+
     /* height: 55px;
     width: 74px; */
 }
@@ -13,6 +17,8 @@
     color:#c8e2a2 !important;
     /* height:30px;
     margin-top: 10px; */
+    height: 35px;
+    top: 14px;
     
 }
 
@@ -31,6 +37,9 @@
 
 .range_calender .rdrDayStartPreview,.range_calender .rdrDayInPreview,.range_calender .rdrDayEndPreview{
     color:#82AF3F !important;
+    height: 35px;
+    top: 14px;
+
 }
 
 /* .range_calender .rdrMonthsVertical {
@@ -77,11 +86,12 @@
 }
 
 .wid_40_calrange_first{
-    width: 400px;
+    /* width: 400px; */
 }
 
 .rdrCalendarWrapper {
     font-size: 18px;
+    /* font-size: 1.2vw; */
 }
 
 /* .wid_60_calrange_sec{
@@ -90,7 +100,9 @@
 } */
 
 .range_calender .rdrMonth {
-    width: 38.667em;
+    /* width: 38.667em; */
+    width: 50vw;
+    padding: 0px 40px 27px 40px;
 }
 
 .date_tx_align_cal{
@@ -104,9 +116,11 @@
 
 .dotted_line_cal{
     border: 1px dashed gray;
-    height: 411px;
+    /* height: 411px; */
     padding: 15px;
-    border-radius: 3px
+    border-radius: 3px;
+    height: 58vh;
+
 }
 
 .dotted_line_cal .ant-card-body {
@@ -141,3 +155,118 @@ margin-top: 2px;
     border-radius: 0px;
     font-size: 20px;
 }
+.holiday_master_modal .MuiDialogContent-dividers{
+    padding:16px !important;
+}
+
+.cus_wid_input_calran_end input{
+    border:none;
+}
+
+
+  @media (max-width: 959px){
+  .set_order_range {
+    order:2;
+  }
+  .calran_grid_nonetop{
+    order: 2;
+    }
+  .rdrCalendarWrapper {
+    font-size: 1.6vw;
+}
+.set_order_range~ div{
+    padding-bottom: 0px !important;
+    padding-left: 40px !important;
+
+}
+.holiday_master_modal .MuiDialog-paperWidthLg {
+    width: 66% !important;
+}
+.range_calender .rdrMonth {
+    width: 62.7vw;
+}
+.range_calender .rdrMonth {
+    padding: 0px 20px 27px 20px;
+}
+}
+
+
+.calran_grid_nonebtm{
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+
+}
+.set_order_range{
+    padding-bottom: 0px !important;
+}
+
+.calran_grid_nonetop{
+    padding-top:0px !important;
+    padding-bottom:0px !important;  
+}
+
+.app_reg_tx_size{
+    font-size: 15px;
+    margin-top: 16px;
+    margin-right: 15px;
+}
+
+.app_reg_icon_size{
+    width: 37px !important;
+    height: 37px !important;
+    margin-top: 11px;
+    color: #82AF3F;
+    margin-left: 115px;
+}
+
+.app_reg_flex{
+    display: flex;
+}
+
+.cus_wid_app_calreg{
+    width:165%;
+}
+
+.val_app_reg_grid{
+    padding-top:0px !important;
+}
+
+.region_tx_style{
+    width: 15%;
+    font-size: 16px;
+    margin-top: 15px;
+    background-color: #bfd2a1;
+    color: black;
+    padding-left: 7px;
+    height: 30px;
+    padding-top: 4px;
+    border-radius: 2px;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.crs_region_align{
+    position: relative;
+    bottom: 15px;
+    left: 7px;
+    color: #ca7979;
+    cursor: pointer;
+}
+
+.region_tx_style div  svg{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.overflow_y_app_reg{
+    overflow-y: scroll;
+    width: 95%;
+    padding-bottom: 15px !important;
+    margin-right: 37px !important;
+}
+
+.holiday_master_modal .MuiDialog-paper{
+    width:88% ;
+    height: 88%;
+}
+

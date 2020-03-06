@@ -18,21 +18,21 @@ class Dropdownantd extends React.Component{
                     ${this.props.error && "Errorbr"}`}
                     placeholder={this.props.placeholder && this.props.placeholder}
                     // optionFilterProp={this.props.optionFilterProp && this.props.optionFilterProp}
-                    // onChange={this.props.onChange && this.props.onChange }
-                    // onChange={(e)=>this.props.changeData&&this.props.changeData(e)}
+                    onChange={(e)=>this.props.changeData&&this.props.changeData(e)}
                     // onFocus={this.props.onFocus && this.props.onFocus}
                     // onBlur={this.props.onBlur && this.props.onBlur}
                     // onSearch={this.props.onSearch && this.props.onBlur}
                     // name={this.props.name && this.props.name}
-                    defaultValue={this.props.defaultValue && this.props.defaultValue}
+                    // defaultValue={this.props.defaultValue && this.props.defaultValue}
+                    defaultValue={{ key: '1' }}
                     dropdownStyle={{ zIndex: 2000 }}
-                    // value={this.props.value}
+                    value={this.props.value}
                 >
 
-                 {this.props.option && (this.props.option).map((val,index)=>{
+                 {(this.props.option).map((val,index)=>{
                         return(
-                            <Option key={index} value={index+1}>
-                                {val}
+                            <Option value={val.id}>
+                                {val.dropdown_val}
                             </Option>
                         )
                     })}

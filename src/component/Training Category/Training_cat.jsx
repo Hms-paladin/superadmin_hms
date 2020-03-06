@@ -53,110 +53,104 @@ export default class Training_cat extends React.Component{
       });
 }
 
-recall=(type,msgdyn)=>{
-    var self=this
-      axios({
-        method: 'post',
-        url: `${apiurl}getTrainingCategoryList`
-      })
-      .then(function (response) {
-        var arrval=[]
-        response.data.data.map((value)=>{
-            arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
-        })
-        self.setState({
-            currentdata:arrval,
-            props_loading:false
+        recall=(type,msgdyn)=>{
+            var self=this
+            axios({
+                method: 'post',
+                url: `${apiurl}getTrainingCategoryList`
+            })
+            .then(function (response) {
+                var arrval=[]
+                response.data.data.map((value)=>{
+                    arrval.push({trainingCatName:value.trainingCatName,id:value.trainingCatId})
+                })
+                self.setState({
+                    currentdata:arrval,
+                    props_loading:false
 
-        })
-        notification[type]({
-            className:"show_frt",
-            message: "Record" +" "+msgdyn+" "+"sucessfully",
-            // description:
-            //   'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-          });
-        console.log(response,"train_cat")
-      })
-      .catch(function (error) {
-        console.log(error,"error");
-      });
-}
-
-add_data=()=>{
-    this.setState({props_loading:true})
-
-    var self=this
-    axios({
-    method: 'post',
-    url: `${apiurl}insertTrainingCategory`,
-    data:{
-        "trainingCatName":this.state.create_group,
-        "createdBy":"1"
-    },
-    })
-    .then(function (response) {
-        console.log(response,"responsed");
-        self.recall("success","added")
-    })
-    .catch(function (error) {
-    console.log(error,"error");
-    });
-
-    this.setState({
-        insertmodalopen:false,
-        create_group:""
-    })
-}
-
-
-update_data=()=>{
-    this.setState({props_loading:true})
-
-    var self=this
-    axios({
-        method: 'post',
-        url: `${apiurl}updateTrainingCategory`,
-        data:{
-            "trainingCatName":this.state.idname,
-            "updatedBy":"1",
-            "trainingCatId":this.state.cur_id
+                })
+                notification[type]({
+                    className:"show_frt",
+                    message: "Record" +" "+msgdyn+" "+"sucessfully",
+                });
+                console.log(response,"train_cat")
+            })
+            .catch(function (error) {
+                console.log(error,"error");
+            });
         }
-        })
-        .then(function (response) {
-            self.recall("success","edited")
-        })
-        .catch(function (error) {
+
+        add_data=()=>{
+            this.setState({props_loading:true})
+
+            var self=this
+            axios({
+            method: 'post',
+            url: `${apiurl}insertTrainingCategory`,
+            data:{
+                "trainingCatName":this.state.create_group,
+                "createdBy":"1"
+            },
+            })
+            .then(function (response) {
+                console.log(response,"responsed");
+                self.recall("success","added")
+            })
+            .catch(function (error) {
             console.log(error,"error");
-        });
-        this.setState({
-            insertmodalopen:false
-        })
-}
+            });
+
+            this.setState({
+                insertmodalopen:false,
+                create_group:""
+            })
+        }
 
 
+        update_data=()=>{
+            this.setState({props_loading:true})
+
+            var self=this
+            axios({
+                method: 'post',
+                url: `${apiurl}updateTrainingCategory`,
+                data:{
+                    "trainingCatName":this.state.idname,
+                    "updatedBy":"1",
+                    "trainingCatId":this.state.cur_id
+                }
+                })
+                .then(function (response) {
+                    self.recall("success","edited")
+                })
+                .catch(function (error) {
+                    console.log(error,"error");
+                });
+                this.setState({
+                    insertmodalopen:false
+                })
+        }
 
 
+        modelopen=(data,id)=>{
+            if(data==="view"){
+                this.setState({insertmodalopen:true,modeltype:data})
+            }
+            else if(data==="edit"){
+                var iddata=this.state.currentdata.filter((value)=>
+                value.id===id 
+            )
+                this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id})
+            }
 
+        }
 
-modelopen=(data,id)=>{
-    if(data==="view"){
-        this.setState({insertmodalopen:true,modeltype:data})
-    }
-    else if(data==="edit"){
-        var iddata=this.state.currentdata.filter((value)=>
-        value.id===id 
-    )
-        this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id})
-    }
-
-}
-
-deleteopen=(type,id)=>{
-    this.setState({
-        deleteopen:true,
-        cur_id:id
-    })
-}
+        deleteopen=(type,id)=>{
+            this.setState({
+                deleteopen:true,
+                cur_id:id
+            })
+        }
 
 
 

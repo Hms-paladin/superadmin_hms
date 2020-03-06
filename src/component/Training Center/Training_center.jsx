@@ -9,28 +9,51 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
-
+import {apiurl} from "../../../src/App.js";
+import DeleteMedia from "../../helper/deletemodel";
+import { Spin,notification } from 'antd';
 
 import "./Training_center.css";
+
+const axios = require('axios');
+
 
 export default class Training_center extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false
+        insertmodalopen:false,
+        loading:true,
+        props_loading:false,
+        currentdata:[],
+        trainining_cat_list:[],
+        speciality:""
     }
 
-    createData=(parameter) =>{
-        var keys=Object.keys(parameter)
-        var values=Object.values(parameter)
-  
-        var returnobj={}
-        
-        for(var i=0;i<keys.length;i++){
-        returnobj[keys[i]]=values[i]
-        }
-        return(returnobj)
-        }
+
+    componentDidMount(){
+
+        var self=this
+      axios({
+        method: 'post',
+        url: `${apiurl}getTrainingList`
+      })
+      .then(function (response) {
+        var arrval=[]
+        response.data.data.map((value)=>{
+            // arrval.push(self.createData({name:value.groupname,id:value.id}))
+            arrval.push({trainingName:value.trainingName,training_category:value.training_category,id:value.trainingId})
+        })
+        self.setState({
+            currentdata:arrval,
+            loading:false
+        })
+      })
+      .catch(function (error) {
+        console.log(error,"error");
+      });
+}
+
 
         modelopen=(data)=>{
             if(data==="view"){
@@ -46,11 +69,50 @@ export default class Training_center extends React.Component{
         }
 
         insertdata=()=>{
+
+
+            var self=this
+            axios({
+              method: 'post',
+              url: `${apiurl}getTrainingCategoryList`
+            })
+            .then(function (response) {
+              var arrval=[]
+              response.data.data.map((value)=>{
+                  arrval.push({dropdown_val:value.trainingCatName,id:value.trainingCatId})
+              })
+              
+              self.setState({
+                  trainining_cat_list:arrval,
+                  speciality:arrval[0].dropdown_val
+      
+              })
+              console.log(response,"train_cat")
+            })
+            .catch(function (error) {
+              console.log(error,"error");
+            })
+
+
             this.setState({
-                insertmodalopen:true
+                insertmodalopen:true,
+                modeltype:"view"
             })
         }
 
+        changeDynamic=(data)=>{
+            alert(data)
+            if(this.state.modeltype==="view"){
+                this.setState({
+                    speciality:data
+                })
+            }else{
+                this.setState({
+                    idnamedata:data
+                })
+            }
+            
+        }
 
     render(){
          
@@ -62,23 +124,18 @@ export default class Training_center extends React.Component{
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
-                    { id: "training_center", label: "Training" },
-                    { id: "training_center", label: "Category" },
+                    { id: "trainingName", label: "Training" },
+                    { id: "training_category", label: "Category" },
                     { id: "", label: "Action" }
                 ]}
   
 
-            rowdata={[
-                this.createData({name: "Indoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "Outdoor"}),
-                this.createData({name: "On Campus"})  
-            ]}
-
-    tableicon_align={""}
-    modelopen={(e)=>this.modelopen(e)}
-    EditIcon="close"
-    alignheading="cus_wid_trainingcenter_head"
+                rowdata={this.state.currentdata && this.state.currentdata}
+                tableicon_align={""}
+                modelopen={(e)=>this.modelopen(e)}
+                EditIcon="close"
+                alignheading="cus_wid_trainingcenter_head"
+                props_loading={this.state.props_loading}
   />
 
         <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
@@ -100,7 +157,16 @@ export default class Training_center extends React.Component{
                  <Grid item xs={12} md={6}>
             <div className="create_center">
             <div className="center_dropdown">
-            <Dropdownantd label="Category" className="center_option" option={["Outdoor"]} placeholder="Indoor" />
+            
+            <Dropdownantd defaultValue={6} label="Category" className="center_option" option={this.state.trainining_cat_list} 
+            changeData={(data)=>this.changeDynamic(data)} 
+            value={this.state.modeltype==="view"?this.state.speciality:this.state.idnamedata} 
+            />
+
+            {/* <Inputantd label="Speciality" className="spl_option" placeholder="" 
+            changeData={(data)=>this.changeDynamic(data)} 
+            value={this.state.modeltype==="view"?this.state.speciality:this.state.idnamedata} 
+            /> */}
             </div>
             <Inputantd label="Training" className="center_option" placeholder="" />
             </div>

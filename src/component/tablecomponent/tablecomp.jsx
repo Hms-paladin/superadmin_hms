@@ -362,13 +362,14 @@ export default class Tablecomponent extends Component {
                           {this.state.rowsPerPage * this.state.page -1 +index +2}
                         </TableCell>
 
-                        {[row].map(((data,key)=>{
-                          // console.log("datassss",data)
+                        {[row].map(((data,index)=>{
+                          console.log(index,"tyu")
                           var keys=Object.keys(data)
                           // console.log(keys.length,"tabledata")
+
                           var arrval=[]
                           for(var m=0;m<keys.length-1;m++){
-                            arrval.push(<TableCell key={data.id}>{data[keys[m]]}</TableCell>)
+                            arrval.push(<TableCell key={data.id+""+m}>{data[keys[m]]}</TableCell>)
                           }
                           return arrval
                         })

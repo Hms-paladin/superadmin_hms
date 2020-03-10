@@ -105,12 +105,25 @@
     border-radius: 0px !important;
     
 }
-.cus_wid_commission_head tr th:first-child{
-    width: 30%;
+.cus_wid_commission tr th:first-child{
+    width: 40%;
 }
-.cus_wid_commission_head tr th:nth-child(2){
-    width: 35%;
+.cus_wid_commission tr th:nth-child(2){
+    width: 48%;
 }
-.cus_wid_commission_head tr th:nth-child(3){
-    width: 35%;
+
+.com_editicon_align{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #82AE3F;
+    border-radius: 36px;
+}
+
+.Edit_Out_Icon_align{
+    font-size: 26px !important;
+    color: white;
+    margin-top: 7px;
+    margin-left: 7px;
 }

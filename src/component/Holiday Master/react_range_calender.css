@@ -188,6 +188,10 @@ margin-top: 2px;
 .range_calender .rdrMonth {
     padding: 0px 20px 27px 20px;
 }
+.val_app_reg_grid {
+    order: 2;
+    margin-bottom: 20px !important;
+}
 }
 
 

@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import {apiurl} from "../../../src/App.js";
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import { Spin,notification } from 'antd';
 
 import "./Commission.css";
@@ -52,17 +53,13 @@ export default class Commission extends React.Component{
 
 
 
+    editdata=()=>{
+        
+    }
 
 
 
-
-
-
-
-
-
-
-
+    
     createData=(parameter) =>{
         var keys=Object.keys(parameter)
         var values=Object.values(parameter)
@@ -96,26 +93,28 @@ export default class Commission extends React.Component{
 
 
     render(){
+        
          
         return(
             <div>
                <div className="commission_header">
                    <div className="commission_title"><h3>COMMISSION MANAGEMENT</h3></div>
-                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+                   <div className="com_editicon_align" onClick={this.editdata}><EditOutlinedIcon className="Edit_Out_Icon_align"/></div>
+                   
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
                     { id: "vendor", label: "Vendor" },
                     { id: "commission", label: "Commission %" },
-                    { id: "", label: "Action" }
                 ]}
   
 
                 rowdata={this.state.currentdata && this.state.currentdata}
                 tableicon_align={""}
                 modelopen={(e)=>this.modelopen(e)}
-                VisibilityIcon="close"
-                alignheading="cus_wid_commission_head"
+                actionclose="close"
+                alignheading="cus_wid_commission"
+                props_loading={this.state.props_loading}
    
   />
 

@@ -256,7 +256,6 @@ export default class User_group extends React.Component{
             modelopen={(e,id)=>this.modelopen(e,id)}
             VisibilityIcon="close"
             alignheading="cus_wid_usergroup_head"
-            endpoint="deleteGroup"
             deleteopen={this.deleteopen}
             props_loading={this.state.props_loading}
             

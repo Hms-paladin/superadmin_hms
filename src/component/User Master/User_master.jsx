@@ -17,8 +17,44 @@ export default class User_master extends React.Component{
     state={
         openview:false,
         insertmodalopen:false,
-        status:false
+        status:false,
+        props_loading:false,
        }
+
+
+//        componentDidMount(){
+
+//         var self=this
+//       axios({
+//         method: 'get',
+//         url: `${apiurl}getuser`
+//       })
+//       .then(function (response) {
+//         var arrval=[]
+//         response.data.data.map((value)=>{
+//             arrval.push({name:value.groupname,id:value.id})
+//         })
+//         self.setState({
+//             currentdata:arrval,
+//             loading:false
+//         })
+//       })
+//       .catch(function (error) {
+//         console.log(error,"error");
+//       });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
     createData=(parameter) =>{
         var keys=Object.keys(parameter)
@@ -57,6 +93,8 @@ export default class User_master extends React.Component{
             })
         }
 
+
+
     render(){
          
         return(
@@ -69,11 +107,10 @@ export default class User_master extends React.Component{
                     { id: "", label: "S.No" },
                     { id: "user_name", label: "User Name" },
                     { id: "mobile_no", label: "Mobile Number" },
+                    {id:"email_id",label:"E-mail Id"},
                     { id: "user_type", label: "User Type" },
                     { id: "user_group", label: "User Group" },
-                   
                     { id: "status", label: "Status" },
-
                     { id: "", label: "Action" }
                 ]}
   
@@ -89,6 +126,7 @@ export default class User_master extends React.Component{
 
     tableicon_align={""}
     modelopen={(e)=>this.modelopen(e)}
+    props_loading={this.state.props_loading}
     // EditIcon="close"
     VisibilityIcon="close"
   />
@@ -116,6 +154,9 @@ export default class User_master extends React.Component{
                     </Grid>
 
                   <Grid container spacing={3} className="content_master_two">
+                  <Grid item xs={12} md={4}>
+                    <Inputantd label="E-mail Id" className="usermaster_option" placeholder="" />
+                    </Grid>
                     <Grid item xs={12} md={4}>
                     <Dropdownantd label="User Type" className="usermaster_drop" option={["Admin" , "Vendor"]} placeholder="Indoor" />               
                     </Grid>

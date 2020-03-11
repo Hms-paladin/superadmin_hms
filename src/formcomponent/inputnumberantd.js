@@ -13,9 +13,9 @@ class Inputnumber extends React.Component{
                 max={this.props.max && this.props.max} 
                 defaultValue={this.props.defaultValue && this.props.defaultValue} 
                 step={this.props.step && this.props.step}
-                // onChange={this.props.onChange && this.props.onChange }
+                onChange={this.props.changeData && this.props.changeData }
                 name={this.props.name && this.props.name}
-                // value={this.props.value}
+                value={this.props.value}
                 />
                  {/* <div className="texterrmsg">
                 {

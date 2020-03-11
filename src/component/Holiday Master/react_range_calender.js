@@ -37,7 +37,9 @@ class Range_Calendar extends React.Component{
       rangevalue:[item.selection]
     })
   }
-
+  onShownDateChange=(DateRange,Calendar)=>{
+    console.log(DateRange,Calendar,"onShownDateChange")
+  }
 
   changeDynamic=(data)=>{
         this.setState({
@@ -99,6 +101,10 @@ add_region=()=>{
             moveRangeOnFirstSelection={false}
             ranges={this.state.rangevalue}
             fixedHeight={true}
+            showDateDisplay={true}
+            onShownDateChange={true}
+            // initialFocusedRange={true}
+            showPreview={true}
         />
         <div className="holiday_align_cal"><span className="dot_icon_cal"><FiberManualRecordIcon /></span>Holiday</div>
         </div>

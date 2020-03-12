@@ -7,6 +7,11 @@ import Grid from '@material-ui/core/Grid';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import Inputantd from '../../formcomponent/inputantd';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+import moment from 'moment';
+import dateformat from 'dateformat';
+// import format from 'date-fns/format';
+
+// import getDaysInMonth from 'date-fns/get_days_in_month';
 
 
 import 'react-date-range/dist/styles.css'; 
@@ -29,9 +34,39 @@ class Range_Calendar extends React.Component{
 
 
   seleteddate=(item)=>{
+    
 
-    console.log("startDate",item.selection.startDate)
-    console.log("endDate",item.selection.endDate)
+// find number of dates in given month and year
+
+    var startDate = moment(item.selection.startDate).format('YYYY-MM');
+    // var mn_yr_startDate=moment(startDate, "YYYY-MM").daysInMonth();
+
+    var endDate = moment(item.selection.endDate).format("YYYY-MM");
+    var mn_yr_endDate=moment(endDate,"YYYY-MM").daysInMonth();
+
+    console.log(mn_yr_endDate,"result")
+
+
+
+    var month=moment(item.selection.startDate).format('MM')
+    var year=moment(item.selection.startDate).format('YYYY')
+
+  //   var monthIndex = month - 1; 
+  //   // # 0..11 instead of 1..12
+  // var names = [ 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' ];
+  // var date = new Date(year, monthIndex, 1);
+  // var result = [];
+  // while (date.getMonth() == monthIndex) {
+  //   result.push(date.getDate() + "-" + names[date.getDay()]);
+  //   date.setDate(date.getDate() + 1);
+  // }
+  // console.log(result,"result")
+
+
+
+
+    console.log("startDate",startDate)
+    console.log("endDate",endDate)
 
     this.setState({
       rangevalue:[item.selection]

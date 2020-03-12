@@ -6,11 +6,6 @@
 .range_calender  .rdrDays button{
     border: 1px solid #dddddd;
     height: 8vh;
-
-        /* height: 4.6em; */
-
-    /* height: 55px;
-    width: 74px; */
 }
 
 .range_calender .rdrStartEdge,.range_calender .rdrInRange,.range_calender .rdrEndEdge{
@@ -18,7 +13,7 @@
     /* height:30px;
     margin-top: 10px; */
     height: 35px;
-    top: 14px;
+    top: 11px;
     
 }
 
@@ -38,7 +33,7 @@
 .range_calender .rdrDayStartPreview,.range_calender .rdrDayInPreview,.range_calender .rdrDayEndPreview{
     color:#82AF3F !important;
     height: 35px;
-    top: 14px;
+    top: 11px;
 
 }
 

@@ -16,7 +16,7 @@ export default class Holiday_master extends React.Component{
 
     state={
         openview:false,
-        insertmodalopen:false,
+        insertmodalopen:true,
         props_loading:false
     }
 

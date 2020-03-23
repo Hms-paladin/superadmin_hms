@@ -179,6 +179,17 @@ border-radius: 2px !important;
   cursor: pointer;
 }
 
+
+/* .tableedit_icon:active{
+  font-size: 20px !important;
+  margin-right: 7px;
+  cursor: pointer;
+  color: white;
+  background-color: #9c9a9a;
+  border-radius: 25px;
+} */
+
+
 .tabledelete_icon{
   color:#ee534f;
   font-size: 20px !important;

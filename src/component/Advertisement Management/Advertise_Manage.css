@@ -16,7 +16,7 @@
     justify-content: space-between;
     }
     .advertise_button_create{
-    background-color: #2680EB !important;
+    background: transparent linear-gradient(270deg, #82AF3F 0%, #699B21 100%) 0% 0% no-repeat padding-box;
     color:white !important;
     margin-right: 20px !important;
     }
@@ -94,6 +94,7 @@
     .advertise_image_five {
     display: flex;
     margin-top: 25px;
+    justify-content: space-between;
     }
     .advertise_image_five h4{
     display: flex;
@@ -152,6 +153,7 @@
     .advertise_display_three {
     display: flex;
     margin-top: 25px;
+    justify-content: space-between;
     }
     .advertise_rate{
     margin-top: 20px;
@@ -169,10 +171,10 @@
     height: 35px !important;
     min-height: 0px !important;
     }
-    .rate_panel .MuiButtonBase-root {
+    /* .rate_panel .MuiButtonBase-root {
     height: 35px !important;
     min-height: 0px !important;
-    }
+    } */
     .rate_panel .MuiExpansionPanelDetails-root  {
     display: flex !important;
     justify-content: flex-start !important;
@@ -247,6 +249,45 @@
 
     .radio_head_one svg,.radio_head_two svg{
         font-size: 21px;
+    }
+
+    .mr_adver_25{
+        margin-left: 24px;
+    }
+
+    .ad_card_align{
+        width: 525px !important;
+    }
+
+    .ad_card_align div{
+        padding: 6px 0px 0px 6px;
+    }
+
+    .align_inside_con_ad p:first-child{
+        width: 25%;
+    }
+
+    .align_inside_con_ad p:nth-child(2){
+        width: 26.2%;
+    }
+
+    .align_inside_con_ad p:nth-child(3){
+        width: 26.2%;
+    }
+
+    .del_edit_ad_aln{
+        margin-top: 10px;
+        margin-left: 18px;
+    }
+
+    .jus_spabt_adset{
+        justify-content: space-between;
+    }
+
+    .add_ad_topalign{
+        margin-top:27px !important;
+        /* height: 32.5px; */
+        height: 52%;
     }
 
 

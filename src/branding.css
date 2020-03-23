@@ -117,3 +117,16 @@ body {
     margin-left: 48px;
     font-size: 15px;
 }
+
+
+body *::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    transition: 0.3s ;
+  }
+  
+  body *::-webkit-scrollbar-thumb {
+    background: #ADAAA8;
+    border-radius: 5px;
+
+  }

@@ -56,13 +56,25 @@
    } 
    .status_usermaster_active{
        font-size: 1.5rem !important;
-       border-radius: 8px !important;
+       border-radius: 3px !important;
        height: 25px !important;
        background-color: #E6EFD8 !important;
        color: #82AE3F  !important;
        width: 88px;
        border-color:#82AE3F !important;
     }
+
+    .status_usermaster_inactive{
+        font-size: 1.5rem !important;
+        border-radius: 3px !important;
+        height: 25px !important;
+        width: 88px;
+        color: #ee534f !important;
+        border-color: #ee534f !important;
+        background-color: #f9bebe !important;
+     }
+
+
    
    .status_usermaster{
     font-size: 1.5rem !important;
@@ -73,3 +85,10 @@
     width: 88px;
     border-color:#FF4747 !important;
 }
+
+.cus_wid_usermaster_head~tbody tr td:nth-child(7){
+    /* padding-left: 0px; */
+    position: relative;
+    left: -17px;
+}
+

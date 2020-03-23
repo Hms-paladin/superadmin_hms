@@ -39,7 +39,7 @@ class Range_Calendar extends React.Component{
 // find number of dates in given month and year
 
     var startDate = moment(item.selection.startDate).format('YYYY-MM');
-    // var mn_yr_startDate=moment(startDate, "YYYY-MM").daysInMonth();
+    var mn_yr_startDate=moment(startDate, "YYYY-MM").daysInMonth();
 
     var endDate = moment(item.selection.endDate).format("YYYY-MM");
     var mn_yr_endDate=moment(endDate,"YYYY-MM").daysInMonth();
@@ -47,24 +47,46 @@ class Range_Calendar extends React.Component{
     console.log(mn_yr_endDate,"result")
 
 
+    var st_date=moment(item.selection.startDate).format('DD')
+    var st_month=moment(item.selection.startDate).format('MM')
+    var st_year=moment(item.selection.startDate).format('YYYY')
+    var en_date=moment(item.selection.endDate).format('DD')
+    var en_month=moment(item.selection.endDate).format('MM')
+    var en_year=moment(item.selection.endDate).format('YYYY')
+    // alert(en_date+1)
 
-    var month=moment(item.selection.startDate).format('MM')
-    var year=moment(item.selection.startDate).format('YYYY')
+    if(st_month===en_month && st_year===en_year){
+      for(let i=st_date;i<Number(en_date)+1;i++){
+        console.log(i+"-"+st_month+"-"+st_year)
+      }
+    }
 
-  //   var monthIndex = month - 1; 
-  //   // # 0..11 instead of 1..12
-  // var names = [ 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' ];
-  // var date = new Date(year, monthIndex, 1);
-  // var result = [];
-  // while (date.getMonth() == monthIndex) {
-  //   result.push(date.getDate() + "-" + names[date.getDay()]);
-  //   date.setDate(date.getDate() + 1);
-  // }
-  // console.log(result,"result")
+    var one_mon_diff=en_month==1 && st_month==12 ?13:en_month
+    var one_yr_diff=en_year==Number(st_year)+1?Number(en_year)-1:en_year
+
+    // alert(one_yr_diff)
+
+    if(Number(st_month)+1==one_mon_diff && st_year==one_yr_diff){
+      // alert("success")
+      // console.log(mn_yr_startDate,"mn_yr_startDate")
+      // console.log(mn_yr_endDate,"mn_yr_endDate")
+      for(let j=st_date;j<Number(mn_yr_startDate)+1;j++){
+        console.log(j+"-"+st_month+"-"+st_year)
+      }
+
+      for(let k=1;k<Number(en_date)+1;k++){
+        console.log(k+"-"+en_month+"-"+en_year)
+      }
+
+    }
+
+    // if(Number(st_month)+1<en_month || st_year<en_year){
+
+    // }
 
 
 
-
+    
     console.log("startDate",startDate)
     console.log("endDate",endDate)
 
@@ -177,3 +199,16 @@ add_region=()=>{
   }
 }
 export default Range_Calendar;
+
+
+
+  //   var monthIndex = month - 1; 
+  //   // # 0..11 instead of 1..12
+  // var names = [ 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' ];
+  // var date = new Date(year, monthIndex, 1);
+  // var result = [];
+  // while (date.getMonth() == monthIndex) {
+  //   result.push(date.getDate() + "-" + names[date.getDay()]);
+  //   date.setDate(date.getDate() + 1);
+  // }
+  // console.log(result,"result")

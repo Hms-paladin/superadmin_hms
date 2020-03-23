@@ -5,15 +5,16 @@
 
 .range_calender  .rdrDays button{
     border: 1px solid #dddddd;
-    height: 8vh;
+    /* height: 8vh; */
 }
 
 .range_calender .rdrStartEdge,.range_calender .rdrInRange,.range_calender .rdrEndEdge{
     color:#c8e2a2 !important;
-    /* height:30px;
-    margin-top: 10px; */
     height: 35px;
-    top: 11px;
+    top: 9px;
+
+    /* height: 5.5vh;
+    top: 7px; */
     
 }
 
@@ -33,7 +34,7 @@
 .range_calender .rdrDayStartPreview,.range_calender .rdrDayInPreview,.range_calender .rdrDayEndPreview{
     color:#82AF3F !important;
     height: 35px;
-    top: 11px;
+    top: 9px;
 
 }
 
@@ -105,8 +106,16 @@
     font-size: 19px;
     font-weight: 900;
     color: #82AF3F;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     margin-bottom: 10px;
+}
+
+.date_tx_align_cal:first-child{
+    margin-left:11%
+}
+
+.date_tx_align_cal div ~ div{
+    margin-left:37%
 }
 
 .dotted_line_cal{
@@ -114,7 +123,10 @@
     /* height: 411px; */
     padding: 15px;
     border-radius: 3px;
-    height: 58vh;
+    /* height: 58vh; */
+    height: 46.69em;
+    /* height:380px; */
+    width: 90%;
 
 }
 
@@ -124,20 +136,20 @@
 
 .add_input_calran{
     display:flex;
-    height: 60px;
+    height: 55px;
 }
 
 
 .cus_wid_input_calran_start{
     width: 30%;
     background-color: #82AF3F;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
     padding-inline-start: 20px;
     font-weight: bold;
 }
 .cus_wid_input_calran_start div:first-child{
-margin-top: 2px;
+margin-top: 7px;
 }
 
 .cus_wid_input_calran_end{
@@ -146,9 +158,9 @@ margin-top: 2px;
 }
 
 .input_cus_align_calran{
-    height: 60px;
+    height: 55px;
     border-radius: 0px;
-    font-size: 20px;
+    font-size: 17px;
 }
 .holiday_master_modal .MuiDialogContent-dividers{
     padding:16px !important;
@@ -193,21 +205,26 @@ margin-top: 2px;
 .calran_grid_nonebtm{
     padding-bottom: 0px !important;
     padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: -36px !important;
 
 }
 .set_order_range{
     padding-bottom: 0px !important;
+    margin-left: 20px !important;
 }
 
 .calran_grid_nonetop{
     padding-top:0px !important;
     padding-bottom:0px !important;  
+    
 }
 
 .app_reg_tx_size{
     font-size: 15px;
     margin-top: 16px;
     margin-right: 15px;
+    white-space: nowrap;
 }
 
 .app_reg_icon_size{

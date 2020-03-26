@@ -59,6 +59,7 @@ import Holiday_master from '../component/Holiday Master/Holiday_master';
 import Revenue_payment from '../component/Revenue Payment/Revenue_payment';
 import Notification_manage from '../component/Notification Management/Notification_manage';
 import Moment from 'react-moment'
+import Useraccess_rights from '../component/User Access/user_access_rights';
 
 const drawerWidth = 260;
 const styles = theme => ({
@@ -391,6 +392,14 @@ class Homepage extends React.Component {
               <ListItemText  primary="Notification Management" />
             </MenuItem>
 
+            <MenuItem component={Link} to="/useraccess">
+              <ListItemIcon>
+              <div className="icon-container">
+                <ReactSVG  src={schedule_svg}  /></div>  
+               </ListItemIcon>
+              <ListItemText  primary="User Access Rights" />
+            </MenuItem>
+
 
             {/* <MenuItem button className={classes.nested} component={Link} to="/Home/Dashboard">
                 <ListItemIcon>
@@ -446,10 +455,11 @@ class Homepage extends React.Component {
 
         <Route exact path={'/trainercategory'} component={Trainer_category} />
 
+        <Route exact path={'/useraccess'} component={Useraccess_rights} />
+
+
 
         
-
-
           </div>
         </main>
       </div>

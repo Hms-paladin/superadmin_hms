@@ -18,6 +18,11 @@ import "./Training_center.css";
 const axios = require('axios');
 
 
+var dateFormat = require('dateformat');
+var now = new Date();
+var current_da_n_ti=dateFormat(now, "yyyy-mm-dd hh:MM:ss ")
+
+
 export default class Training_center extends React.Component{
 
     state={
@@ -27,7 +32,8 @@ export default class Training_center extends React.Component{
         props_loading:false,
         currentdata:[],
         trainining_cat_list:[],
-        speciality:""
+        speciality:"",
+        nochange_speciality:"",
     }
 
 
@@ -35,13 +41,12 @@ export default class Training_center extends React.Component{
 
         var self=this
       axios({
-        method: 'post',
+        method: 'get',
         url: `${apiurl}getTrainingList`
       })
       .then(function (response) {
         var arrval=[]
         response.data.data.map((value)=>{
-            // arrval.push(self.createData({name:value.groupname,id:value.id}))
             arrval.push({trainingName:value.trainingName,training_category:value.training_category,id:value.trainingId})
         })
         self.setState({
@@ -52,72 +57,210 @@ export default class Training_center extends React.Component{
       .catch(function (error) {
         console.log(error,"error");
       });
+
+
+      var self=this
+      axios({
+        method: 'post',
+        url: `${apiurl}getTrainingCategoryList`
+      })
+      .then(function (response) {
+        var arrval=[]
+        response.data.data.map((value)=>{
+            arrval.push({dropdown_val:value.trainingCatName,id:value.trainingCatId})
+        })
+        
+        self.setState({
+            trainining_cat_list:arrval,
+            speciality:arrval[0].dropdown_val,
+            nochange_speciality:arrval[0].dropdown_val
+
+        })
+      })
+      .catch(function (error) {
+        console.log(error,"error");
+      })
+
+
+      this.setState({
+      })
 }
 
 
-        modelopen=(data)=>{
-            if(data==="view"){
-                this.setState({openview:true})
+add_data=()=>{
+    this.setState({props_loading:true})
+
+    var self=this
+
+    var trainingCatId=this.state.speciality
+
+    this.state.trainining_cat_list.map((val)=>{
+      if(this.state.speciality===val.dropdown_val){
+         trainingCatId=val.id
+      }
+    })
+
+
+    axios({
+        method: 'post',
+        url: `${apiurl}insertTraining`,
+        data:{
+                "trainingName":this.state.training_name,
+                "trainingCatId":trainingCatId,
+                "createdBy":current_da_n_ti
             }
-            else if(data==="edit"){
-                this.setState({editopen:true})
+        })
+        .then(function (response) {
+            self.recall("success","added")
+        })
+        .catch(function (error) {
+            console.log(error,"error");
+        });
+        this.setState({
+            insertmodalopen:false,
+            training_name:"",
+            speciality:this.state.nochange_speciality,
+
+        })
+}
+
+
+
+recall=(type,msgdyn)=>{
+    var self=this
+    axios({
+      method: 'get',
+      url: `${apiurl}getTrainingList`
+    })
+    .then(function (response) {
+      var arrval=[]
+      response.data.data.map((value)=>{
+          arrval.push({trainingName:value.trainingName,training_category:value.training_category,id:value.trainingId})
+      })
+      self.setState({
+          currentdata:arrval,
+          loading:false,
+          props_loading:false
+      })
+      notification[type]({
+        className:"show_frt",
+        message: "Record" +" "+msgdyn+" "+"sucessfully",
+      });
+    })
+    .catch(function (error) {
+      console.log(error,"error");
+    });
+}
+
+update_data=()=>{
+    this.setState({props_loading:true})
+
+
+    var upd_trainingCatId=this.state.speciality
+
+    this.state.trainining_cat_list.map((val)=>{
+      if(this.state.speciality===val.dropdown_val){
+        upd_trainingCatId=val.id
+      }
+    })
+
+        var self=this
+        axios({
+            method: 'put',
+            url: `${apiurl}updateTraining`,
+            data:
+                {
+                    "trainingName":this.state.training_name,
+                    "trainingCatId":upd_trainingCatId,
+                    "trainingId":this.state.cur_edit_id,
+                    "modified_by":"1",
+
             }
+
+            })
+            .then(function (response) {
+                self.recall("success","edited")
+
+            })
+            .catch(function (error) {
+                console.log(error,"error");
+            });
+            this.setState({
+                insertmodalopen:false
+            })
+    }
+
+    deleterow=()=>{
+        this.setState({props_loading:true})
+
+            var self=this
+            axios({
+                method: 'delete',
+                url: `${apiurl}deleteTraining`,
+                data:{
+                    "trainingId":this.state.del_iddata,
+                }
+            })
+            .then(function (response) {
+                self.recall("info","deleted")
+
+            })
+            .catch(function (error) {
+                console.log(error,"error");
+            });
+            this.setState({
+                insertmodalopen:false
+            })
+        }
+
+
+        modelopen=(data,id)=>{
+
+            var setdata=this.state.currentdata.filter((set_data)=>{
+                return id===set_data.id
+            })
+
+            this.setState({insertmodalopen:true,modeltype:data,cur_edit_id:id,speciality:setdata[0].training_category,training_name:setdata[0].trainingName})
         }
 
         closemodal=()=>{
-                this.setState({openview:false,editopen:false,insertmodalopen:false})
+                this.setState({openview:false,editopen:false,insertmodalopen:false,deleteopen:false})
         }
 
         insertdata=()=>{
 
-
-            var self=this
-            axios({
-              method: 'post',
-              url: `${apiurl}getTrainingCategoryList`
-            })
-            .then(function (response) {
-              var arrval=[]
-              response.data.data.map((value)=>{
-                  arrval.push({dropdown_val:value.trainingCatName,id:value.trainingCatId})
-              })
-              
-              self.setState({
-                  trainining_cat_list:arrval,
-                  speciality:arrval[0].dropdown_val
-      
-              })
-              console.log(response,"train_cat")
-            })
-            .catch(function (error) {
-              console.log(error,"error");
-            })
-
-
             this.setState({
                 insertmodalopen:true,
-                modeltype:"view"
+                modeltype:"view",
+                training_name:"",
+            speciality:this.state.nochange_speciality,
+
             })
+
         }
 
-        changeDynamic=(data)=>{
-            alert(data)
-            if(this.state.modeltype==="view"){
-                this.setState({
-                    speciality:data
-                })
-            }else{
-                this.setState({
-                    idnamedata:data
-                })
-            }
-            
+        changeDynamic=(data,name)=>{
+
+            this.setState({
+                        [name]:data
+                    })
+        }
+
+        deleteopen=(type,id)=>{
+            this.setState({
+                deleteopen:true,
+                del_iddata:id
+            })
         }
 
     render(){
+
+        console.log(this.state.currentdata,"currentdata")
          
         return(
             <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+                <div>
                <div className="training_center_header">
                    <div className="training_center_title"><h3>TRAINING CENTER</h3></div>
                    <img className="plus" onClick={this.insertdata} src={PlusIcon} />
@@ -132,26 +275,17 @@ export default class Training_center extends React.Component{
 
                 rowdata={this.state.currentdata && this.state.currentdata}
                 tableicon_align={""}
-                modelopen={(e)=>this.modelopen(e)}
-                EditIcon="close"
+                modelopen={(e,id)=>this.modelopen(e,id)}
+                VisibilityIcon="close"
                 alignheading="cus_wid_trainingcenter_head"
                 props_loading={this.state.props_loading}
+                deleteopen={this.deleteopen}
   />
 
-        <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            <h1>HIIIIIIIIIII</h1>
-        </Modalcomp>
 
-
-        <Modalcomp  visible={this.state.editopen} title={"Edit details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-            
-        </Modalcomp>
-
-        <Modalcomp customwidth_dialog="training_center_modal" visible={this.state.insertmodalopen} title={"CREATE TRAINING CENTER"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp customwidth_dialog="training_center_modal" visible={this.state.insertmodalopen} 
+        title={this.state.modeltype==="view"?"CREATE TRAINING CENTER":"EDIT TRAINING CENTER"}
+         closemodal={(e)=>this.closemodal(e)}
          xswidth={"xs"}>
              <Grid container spacing={2}>
                  <Grid item xs={12} md={6}>
@@ -159,29 +293,37 @@ export default class Training_center extends React.Component{
             <div className="center_dropdown">
             
             <Dropdownantd defaultValue={6} label="Category" className="center_option" option={this.state.trainining_cat_list} 
-            changeData={(data)=>this.changeDynamic(data)} 
-            value={this.state.modeltype==="view"?this.state.speciality:this.state.idnamedata} 
+            changeData={(data)=>this.changeDynamic(data,"speciality")} 
+            value={this.state.speciality} 
             />
 
-            {/* <Inputantd label="Speciality" className="spl_option" placeholder="" 
-            changeData={(data)=>this.changeDynamic(data)} 
-            value={this.state.modeltype==="view"?this.state.speciality:this.state.idnamedata} 
-            /> */}
             </div>
-            <Inputantd label="Training" className="center_option" placeholder="" />
+            <Inputantd label="Training" className="center_option" placeholder="" 
+            changeData={(data)=>this.changeDynamic(data,"training_name")} 
+            value={this.state.training_name}
+            />
             </div>
             </Grid>
             </Grid>
             <div className="center_button">
             <Button className="center_button_cancel" onClick={this.closemodal}>Cancel</Button>
-            <Button className="center_button_create">Create</Button>
+            {this.state.modeltype==="view"?
+            <Button className="group_button_create" onClick={this.add_data}>Create</Button>:
+            <Button className="group_button_create" onClick={this.update_data}>Update</Button>
+    }
             </div>
             
         </Modalcomp>
+        <Modalcomp  visible={this.state.deleteopen} title={"Delete"} closemodal={this.closemodal} customwidth_dialog="cus_wid_delmodel" xswidth={"xs"}>
+                <DeleteMedia deleterow={this.deleterow} closemodal={this.closemodal}/> 
+           </Modalcomp> 
+           </div>
+    }
               
-
             </div>
         )
     }
 }
+
+
 

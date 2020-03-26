@@ -67,7 +67,11 @@ export default class Advertise_manage extends Component {
         size_id:"",
         img_size:"",
         btn_change:true,
-        display_id:""
+        display_id:"",
+        loading:false,
+        insideloading_img:false,
+        img_spin:false,
+        insideloading_rate:false,
       
       };
       
@@ -94,7 +98,10 @@ export default class Advertise_manage extends Component {
 
 
     iconclick=()=>{
-    //   var storeval=[]
+      this.setState({
+        insideloading_rate:true
+      })
+    
 
       var vendor_val
       var place_val
@@ -140,12 +147,15 @@ export default class Advertise_manage extends Component {
     }
 
     componentDidMount(){
+      this.setState({
+        loading:true
+      })
 
       var self=this
     axios({
       method: 'post',
       url: `${apiurl}get_mas_ad_settings`,
-      data:{"size_id":"2"}
+      data:{"size_id":"1"}
     })
     .then(function (response) {
 
@@ -203,8 +213,8 @@ export default class Advertise_manage extends Component {
       self.setState({
           currentdata:arrval,
           nochange_vendor:arrval[0].dropdown_val,
-          vendor:arrval[0].dropdown_val
-          // loading:false
+          vendor:arrval[0].dropdown_val,
+          loading:false
       })
       console.log(arrval,"arrval")
     })
@@ -295,7 +305,7 @@ didmount_recall=(type,msgdyn)=>{
       <div className="del_edit_ad_aln">
         <EditIcon className="tableedit_icon" onClick={(e)=>this.edit_data_rate(adrate_val.id)}/>
         <Popconfirm
-          title="Are you sure delete this task?"
+          title="Are you sure delete this record?"
           onConfirm={(e)=>this.delete_data_rate(adrate_val.id)}
           onCancel={""}
           okText="Yes"
@@ -314,9 +324,9 @@ didmount_recall=(type,msgdyn)=>{
       "size_id": "1080",
       "img_size": "",
       addedval:match_val,
-      rate_ven_place_arrval:rate_ven_place_arrval
-
-
+      rate_ven_place_arrval:rate_ven_place_arrval,
+      insideloading_dis:false,
+      insideloading_rate:false,
     })
 
     msgdyn && notification[type]({
@@ -330,18 +340,23 @@ didmount_recall=(type,msgdyn)=>{
 }
 
 update_img=()=>{
+  this.setState({
+    insideloading_img:true,
+  })
+
+  var resolution_up=this.state.resolution
+  if(this.state.resolution==="1080"){
+    resolution_up=1
+  }else if(this.state.resolution==="720"){
+    resolution_up=2
+  }
+
 
   var self=this
     axios({
       method: 'put',
-      url: `${apiurl}insert_mas_ad_settings`,
-      data:{"size_id":"2"}
-    })
-    .then(function (response) {
-
-      var resolution=this.state.resolution===1?"1080":"720"
-
-      self.setState({
+      url: `${apiurl}edit_mas_ad_settings`,
+      data:{
         "id": this.state.id,
         "min_height": this.state.min_height,
         "max_height": this.state.max_height,
@@ -349,10 +364,13 @@ update_img=()=>{
         "max_width": this.state.max_width,
         "min_size": this.state.min_size,
         "max_size": this.state.max_size,
-        "resolution": resolution,
-        "selectedValue":this.state.selectedValue,
-        loading:false,
-      })
+        "resolution": resolution_up,
+        // "selectedValue":this.state.selectedValue,
+        "active_flag": "1",
+        "size_id": "1",
+      }
+    })
+    .then(function (response) {
 
       self.recall("success","edited")
     })
@@ -368,7 +386,7 @@ recall=(type,msgdyn)=>{
   axios({
     method: 'post',
     url: `${apiurl}get_mas_ad_settings`,
-    data:{"size_id":"2"}
+    data:{"size_id":this.state.selectedValue}
   })
   .then(function (response) {
 
@@ -377,7 +395,7 @@ recall=(type,msgdyn)=>{
     self.setState({
       "id": response.data.data[0].id,
       "min_height": response.data.data[0].min_height,
-      "max_height": response.data.data[0].max_height,
+      "max_height": response.data.data[0].max_height, 
       "min_width": response.data.data[0].min_width,
       "max_width": response.data.data[0].max_width,
       "min_size": response.data.data[0].min_size,
@@ -385,6 +403,9 @@ recall=(type,msgdyn)=>{
       "resolution": resolution,
       "selectedValue":response.data.data[0].size_id,
       loading:false
+    })
+    self.setState({
+      insideloading_img:false,
     })
     notification[type]({
       className:"show_frt",
@@ -426,6 +447,10 @@ this.setState({
 }
 
 Update_rate=()=>{
+  this.setState({
+    insideloading_rate:true
+  })
+
   var self=this
 
   var vendor_update_val
@@ -479,6 +504,9 @@ Update_rate=()=>{
 }
 
 delete_data_rate=(id)=>{
+  this.setState({
+    insideloading_rate:true
+  })
   var self=this
   axios({
     method: 'delete',
@@ -499,14 +527,18 @@ delete_data_rate=(id)=>{
 }
 
 update_disduration=()=>{
-  alert(this.state.home_page_ad_duration)
-  alert(this.state.vendor_area_ad_duration)
-  alert(this.state.display_id)
+  // alert(this.state.home_page_ad_duration)
+  // alert(this.state.vendor_area_ad_duration)
+  // alert(this.state.display_id)
+
+  this.setState({
+    insideloading_dis:true
+  })
 
   var self=this
   axios({
     method: 'put',
-    url: `${apiurl}addDuration`,
+    url: `${apiurl}editDuration`,
     data:{
       "id": this.state.display_id,
       "homepageadduration":this.state.home_page_ad_duration,
@@ -514,9 +546,10 @@ update_disduration=()=>{
   }
   })
   .then(function (response) {
-    self.didmount_recall("success","edited")
     // self.setState({
     // })
+    self.didmount_recall("success","edited")
+
   })
   .catch(function (error) {
     console.log(error,"error");
@@ -528,6 +561,10 @@ render() {
   console.log(this.state,"state")
     
 return (
+  <div>
+     {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+     <div>
+       
 <div className="advertise_manage">
 <div className="advertise_manage_header">
 <div className="advertise_manage_titleuser"><h3>ADVERTISING MANAGEMENT</h3></div>
@@ -537,7 +574,9 @@ return (
 </div>
 </div>
 <div className="advertise_image">
-<ExpansionPanel className="image_panel" >
+<Spin className="spinner_align" spinning={this.state.insideloading_img}>
+
+<ExpansionPanel className="image_panel" defaultExpanded>
 <ExpansionPanelSummary
 expandIcon={<FaCaretDown className="advertise_icon" />} >
 <Typography>IMAGE SPECIFICATION</Typography>
@@ -630,11 +669,14 @@ placeholder="DPI" />
 
 </ExpansionPanelDetails>
 </ExpansionPanel>
+</Spin>
+
 </div>
 
-
 <div className="advertise_display">
-<ExpansionPanel className="display_panel" >
+<Spin className="spinner_align" spinning={this.state.insideloading_dis}>
+
+<ExpansionPanel className="display_panel">
 <ExpansionPanelSummary
 expandIcon={<FaCaretDown className="advertise_icon"/>} >
 <Typography>DISPLAY DURATION</Typography>
@@ -662,11 +704,13 @@ value={this.state.vendor_area_ad_duration}/>
 </div>
 </ExpansionPanelDetails>
 </ExpansionPanel>
+</Spin>
 </div>
 
 
 <div className="advertise_rate">
-<ExpansionPanel className="rate_panel" defaultExpanded>
+<Spin className="spinner_align" spinning={this.state.insideloading_rate}>
+<ExpansionPanel className="rate_panel">
 <ExpansionPanelSummary
 expandIcon={<FaCaretDown className="advertise_icon"/>} >
 <Typography>RATE DURATION</Typography>
@@ -718,7 +762,11 @@ value={this.state.img_size}/>
 {this.state.addedval}
 </div>
 </ExpansionPanel>
+</Spin>
 </div>
+</div>
+</div>
+}
 </div>
 );
 }

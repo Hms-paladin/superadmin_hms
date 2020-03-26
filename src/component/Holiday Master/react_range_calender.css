@@ -1,53 +1,60 @@
-.range_calender .rdrCalendarWrapper{
+.range_calender .rdrCalendarWrapper {
     border: 1px solid #dddddd;
     border-radius: 3px;
 }
 
-.range_calender  .rdrDays button{
+.range_calender .rdrDays button {
     border: 1px solid #dddddd;
     /* height: 8vh; */
+    height: 60px;
 }
 
-.range_calender .rdrStartEdge,.range_calender .rdrInRange,.range_calender .rdrEndEdge{
-    color:#c8e2a2 !important;
+.range_calender .rdrStartEdge,
+.range_calender .rdrInRange,
+.range_calender .rdrEndEdge {
+    color: #c8e2a2 !important;
     height: 35px;
-    top: 9px;
+    top: 11px;
 
-    /* height: 5.5vh;
-    top: 7px; */
-    
 }
+
 
 /* .range_calender .rdrStartEdge .rdrDayNumber span{
     color:black !important;
     
 } */
 
-.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
-    color:black !important;
+.rdrDay:not(.rdrDayPassive) .rdrInRange~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrSelected~.rdrDayNumber span {
+    color: black !important;
 }
+
 
 /* .rdrDayHovered{
     color:red !important;
 } */
 
-.range_calender .rdrDayStartPreview,.range_calender .rdrDayInPreview,.range_calender .rdrDayEndPreview{
-    color:#82AF3F !important;
+.range_calender .rdrDayStartPreview,
+.range_calender .rdrDayInPreview,
+.range_calender .rdrDayEndPreview {
+    color: #82AF3F !important;
     height: 35px;
-    top: 9px;
-
+    top: 11px;
 }
+
 
 /* .range_calender .rdrMonthsVertical {
     height: 260px;
 } */
 
 .range_calender button:focus {
-    outline:none;
+    outline: none;
 }
 
 .range_calender .rdrDateDisplayWrapper {
-    display:none;
+    display: none;
 }
 
 .range_calender .rdrMonthAndYearWrapper {
@@ -61,27 +68,27 @@
     padding-top: 0px;
 }
 
-.holiday_align_cal{
+.holiday_align_cal {
     font-size: 12px;
     position: relative;
     bottom: 16px;
-    left: 9px;
+    left: 39px;
 }
 
-.dot_icon_cal{
-    color:red;
+.dot_icon_cal {
+    color: red;
     position: relative;
     bottom: 2px;
 }
 
-.wid_100_calrange{
-    width:100%;
-    display:flex;
+.wid_100_calrange {
+    width: 100%;
+    display: flex;
     /* margin: auto;  */
     justify-content: space-between;
 }
 
-.wid_40_calrange_first{
+.wid_40_calrange_first {
     /* width: 400px; */
 }
 
@@ -90,18 +97,19 @@
     /* font-size: 1.2vw; */
 }
 
+
 /* .wid_60_calrange_sec{
     width: 60%;
     margin: auto; 
 } */
 
 .range_calender .rdrMonth {
-    /* width: 38.667em; */
-    width: 50vw;
+    width: 38.667em;
+    /* width: 50vw; */
     padding: 0px 40px 27px 40px;
 }
 
-.date_tx_align_cal{
+.date_tx_align_cal {
     display: flex;
     font-size: 19px;
     font-weight: 900;
@@ -110,37 +118,33 @@
     margin-bottom: 10px;
 }
 
-.date_tx_align_cal:first-child{
-    margin-left:11%
+.date_tx_align_cal:first-child {
+    margin-left: 11%
 }
 
-.date_tx_align_cal div ~ div{
-    margin-left:37%
+.date_tx_align_cal div~div {
+    margin-left: 28%
 }
 
-.dotted_line_cal{
+.dotted_line_cal {
     border: 1px dashed gray;
     /* height: 411px; */
     padding: 15px;
     border-radius: 3px;
-    /* height: 58vh; */
-    height: 46.69em;
-    /* height:380px; */
-    width: 90%;
-
+    height: 50.69em;
+    width: 87%;
 }
 
 .dotted_line_cal .ant-card-body {
     padding: 0px;
 }
 
-.add_input_calran{
-    display:flex;
+.add_input_calran {
+    display: flex;
     height: 55px;
 }
 
-
-.cus_wid_input_calran_start{
+.cus_wid_input_calran_start {
     width: 30%;
     background-color: #82AF3F;
     font-size: 15px;
@@ -148,106 +152,106 @@
     padding-inline-start: 20px;
     font-weight: bold;
 }
-.cus_wid_input_calran_start div:first-child{
-margin-top: 7px;
+
+.cus_wid_input_calran_start div:first-child {
+    margin-top: 7px;
 }
 
-.cus_wid_input_calran_end{
+.cus_wid_input_calran_end {
     width: 70%;
-
 }
 
-.input_cus_align_calran{
+.input_cus_align_calran {
     height: 55px;
     border-radius: 0px;
     font-size: 17px;
 }
-.holiday_master_modal .MuiDialogContent-dividers{
-    padding:16px !important;
+
+.holiday_master_modal .MuiDialogContent-dividers {
+    /* padding: 16px !important; */
+    padding: 15px 40px 0px 22px !important;
 }
 
-.cus_wid_input_calran_end input{
-    border:none;
+.cus_wid_input_calran_end input {
+    border: none;
 }
 
-
-  @media (max-width: 959px){
-  .set_order_range {
-    order:2;
-  }
-  .calran_grid_nonetop{
-    order: 2;
+@media (max-width: 959px) {
+    .set_order_range {
+        order: 2;
     }
-  .rdrCalendarWrapper {
-    font-size: 1.6vw;
+    .calran_grid_nonetop {
+        order: 2;
+    }
+    .rdrCalendarWrapper {
+        font-size: 1.6vw;
+    }
+    .set_order_range~div {
+        padding-bottom: 0px !important;
+        padding-left: 40px !important;
+    }
+    .holiday_master_modal .MuiDialog-paperWidthLg {
+        width: 66% !important;
+    }
+    .range_calender .rdrMonth {
+        width: 62.7vw;
+    }
+    .range_calender .rdrMonth {
+        padding: 0px 20px 27px 20px;
+    }
+    .val_app_reg_grid {
+        order: 2;
+        margin-bottom: 20px !important;
+    }
 }
-.set_order_range~ div{
-    padding-bottom: 0px !important;
-    padding-left: 40px !important;
 
-}
-.holiday_master_modal .MuiDialog-paperWidthLg {
-    width: 66% !important;
-}
-.range_calender .rdrMonth {
-    width: 62.7vw;
-}
-.range_calender .rdrMonth {
-    padding: 0px 20px 27px 20px;
-}
-.val_app_reg_grid {
-    order: 2;
-    margin-bottom: 20px !important;
-}
-}
-
-
-.calran_grid_nonebtm{
+.calran_grid_nonebtm {
     padding-bottom: 0px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
     margin-left: -36px !important;
-
 }
-.set_order_range{
+
+.set_order_range {
     padding-bottom: 0px !important;
     margin-left: 20px !important;
 }
 
-.calran_grid_nonetop{
-    padding-top:0px !important;
-    padding-bottom:0px !important;  
-    
+.calran_grid_nonetop {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
 
-.app_reg_tx_size{
+.app_reg_tx_size {
     font-size: 15px;
     margin-top: 16px;
     margin-right: 15px;
+    margin-left: 19px;
     white-space: nowrap;
 }
 
-.app_reg_icon_size{
+.app_reg_icon_size {
     width: 37px !important;
     height: 37px !important;
     margin-top: 11px;
     color: #82AF3F;
-    margin-left: 115px;
+    margin-left: 104px;
 }
 
-.app_reg_flex{
+.app_reg_flex {
     display: flex;
+    width: 69.8% !important;
 }
 
-.cus_wid_app_calreg{
-    width:165%;
+.cus_wid_app_calreg {
+    width: 168%;
 }
 
-.val_app_reg_grid{
-    padding-top:0px !important;
+.val_app_reg_grid {
+    padding-top: 0px !important;
 }
 
-.region_tx_style{
+.region_tx_style {
     width: 15%;
     font-size: 16px;
     margin-top: 15px;
@@ -261,7 +265,7 @@ margin-top: 7px;
     white-space: nowrap;
 }
 
-.crs_region_align{
+.crs_region_align {
     position: relative;
     bottom: 15px;
     left: 7px;
@@ -269,20 +273,19 @@ margin-top: 7px;
     cursor: pointer;
 }
 
-.region_tx_style div  svg{
+.region_tx_style div svg {
     background-color: white;
     border-radius: 10px;
 }
 
-.overflow_y_app_reg{
+.overflow_y_app_reg {
     overflow-y: scroll;
     width: 95%;
     padding-bottom: 15px !important;
     margin-right: 37px !important;
 }
 
-.holiday_master_modal .MuiDialog-paper{
-    width:88% ;
+.holiday_master_modal .MuiDialog-paper {
+    width: 75%;
     height: 88%;
 }
-

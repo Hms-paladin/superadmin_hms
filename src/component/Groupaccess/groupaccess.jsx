@@ -26,10 +26,13 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Dropdownantd from "../../formcomponent/dropdownantd";
+import {apiurl} from "../../../src/App.js";
 
 import "./groupaccess.css"
 
 const { Panel } = Collapse;
+const axios = require('axios');
+
 
 const GreenCheckbox = withStyles({
     root: {
@@ -260,6 +263,8 @@ class Groupaccess extends Component {
 ) {
   return { name, all, view, add, edit, delete_chk, print};
 }
+
+
     this.state = {
       order: "",
       orderBy: "media_title",
@@ -270,527 +275,9 @@ class Groupaccess extends Component {
       view: false,
       DeleteView:false,
       EditView:false,
-      rows: [
-        createData("Doctor speciality",
-        <div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      /></div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>
-        ),
-        createData("Media upload",<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>  ),
-        createData("Trainer",<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div> ,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>  ),
-        createData("Holiday Master",<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>   ),
-        createData("Advertising Management",<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>  ),
-        createData("Group Access",<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div>  ,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div> ),
-        createData("Rights" ,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-            className="all_head_clr"
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>,<div>
-        <FormControlLabel
-        control={
-          <GreenCheckbox
-            // checked={state.checkedG}
-            // onChange={()=>handleChange('checkedG')}
-            value="checkedG"
-            onClick={event => event.stopPropagation()}
-          />
-        }
-        // label="Custom color"
-      />
-      </div>  ),
-      ],
+      group:"",
+      group_arr:[],
+      rows:[],
       viewdata:"",
       type:"",
       title:"",
@@ -894,6 +381,525 @@ class Groupaccess extends Component {
         rotateicon:!this.state.rotateicon
       })
   }
+  changeDynamic=(data,setname)=>{
+    this.setState({
+        [setname]:data
+    })
+
+}
+
+componentDidMount(){
+
+  var self=this
+axios({
+  method: 'get',
+  url: `${apiurl}getGroup`
+})
+.then(function (response) {
+  var arrval=[]
+  response.data.data.map((value)=>{
+      arrval.push({dropdown_val:value.groupname,id:value.id})
+  })
+  self.setState({
+    group:arrval[0].dropdown_val,
+      group_arr:arrval,
+      loading:false
+  })
+})
+.catch(function (error) {
+  console.log(error,"error");
+});
+
+
+// axios({
+//   method: 'get',
+//   url: `${apiurl}getGroup`
+// })
+// .then(function (response) {
+//   var arrval=[]
+//   response.data.data.map((value)=>{
+//       arrval.push({dropdown_val:value.groupname,id:value.id})
+//   })
+//   self.setState({
+//     group:arrval[0].dropdown_val,
+//       group_arr:arrval,
+//       loading:false
+//   })
+// })
+// .catch(function (error) {
+//   console.log(error,"error");
+// });
+
+var data1= [
+  {
+      "id": 1,
+      "module_name": "Super Admin",
+      "item": [
+          {
+              "id": null,
+              "submodule_name": null,
+              "item": [
+                  {
+                      "id": 2,
+                      "screen_name": "Media Upload",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+              ]
+          }
+      ]
+  }
+]
+
+var data2= [
+  {
+      "id": 3,
+      "module_name": "Doctor",
+      "item": [
+          {
+              "id": 4,
+              "submodule_name": null,
+              "item": [
+                  {
+                      "id": 5,
+                      "screen_name": " img_Upload",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+              ]
+          }]
+        }]
+
+var data3= [
+  {
+      "id": 6,
+      "module_name": "Doctor",
+      "item": [
+          {
+              "id": 7,
+              "submodule_name": "Doctor1",
+              "item": [
+                  {
+                      "id": 8,
+                      "screen_name": " img_Upload",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+              ]
+          },
+          {
+            "id": 9,
+            "submodule_name": "Doctor2",
+            "item": [
+                {
+                    "id": 10,
+                    "screen_name": "vid_Upload",
+                    "allow_add": "Y",
+                    "allow_edit": "Y",
+                    "allow_delete": "Y",
+                    "allow_view": "N",
+                    "allow_print": "N"
+                },{
+                  "id": 11,
+                  "screen_name": "vid_Upload2",
+                  "allow_add": "Y",
+                  "allow_edit": "Y",
+                  "allow_delete": "Y",
+                  "allow_view": "N",
+                  "allow_print": "N"
+              }
+            ]
+        } 
+      ]
+  }
+]
+
+
+
+// {
+//   {
+//       "id": 7,
+//       "submodule_name": "Doctor_Submodule_1",
+//       "item": []
+// },
+//  {
+//       "id": 7,
+//       "submodule_name": "Doctor_Submodule_2",
+//       "item": []
+// },
+// {
+
+//        "id": 8,
+//       "submodule_name": "Doctor1_Submodule_3",
+//       "item": [
+//           {
+//               "id": 0,
+//               "screen_name": " img_Upload",
+//               "allow_add": "Y",
+//               "allow_edit": "Y",
+//               "allow_delete": "Y",
+//               "allow_view": "N",
+//               "allow_print": "N"
+//           }
+//   ]
+
+// }
+// },
+
+
+var data4=[
+  {
+
+      "id": 6,
+      "module_name": "Doctor",
+      "item": [[
+        
+          {
+              "id": 7,
+              "submodule_name": "Doctor_Submodule_1",
+              "item": []
+			  },
+			   {
+              "id": 7,
+              "submodule_name": "Doctor_Submodule_2",
+              "item": []
+			  },
+		{
+
+               "id": 8,
+              "submodule_name": "Doctor1_Submodule_3",
+              "item": [
+                  {
+                      "id": 0,
+                      "screen_name": " img_Upload",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+				  ]
+		
+    },
+  ],
+
+          [{
+            "id": 9,
+            "submodule_name": "Doctor1_row2",
+            "item": [[
+                {
+                    "id": 10,
+                    "screen_name": "vid_Upload",
+                    "allow_add": "Y",
+                    "allow_edit": "Y",
+                    "allow_delete": "Y",
+                    "allow_view": "N",
+                    "allow_print": "N"
+                },{
+                  "id": 11,
+                  "screen_name": "vid_Upload2",
+                  "allow_add": "Y",
+                  "allow_edit": "Y",
+                  "allow_delete": "Y",
+                  "allow_view": "N",
+                  "allow_print": "N"
+              }
+            ]]
+        }] ,
+          [{
+            "id": 9,
+            "submodule_name": "Doctor2_row3",
+            "item": [[
+                {
+                    "id": 10,
+                    "screen_name": "vid_Upload",
+                    "allow_add": "Y",
+                    "allow_edit": "Y",
+                    "allow_delete": "Y",
+                    "allow_view": "N",
+                    "allow_print": "N"
+                },{
+                  "id": 11,
+                  "screen_name": "vid_Upload2",
+                  "allow_add": "Y",
+                  "allow_edit": "Y",
+                  "allow_delete": "Y",
+                  "allow_view": "N",
+                  "allow_print": "N"
+              }
+            ]
+          ]
+        }],
+          // [
+          //   {
+          //     "id": 3,
+          //     "module_name": "nulldoctor",
+          //     "item": [
+          //         {
+          //             "id": 4,
+          //             "submodule_name": null,
+          //             "item": [
+          //                 {
+          //                     "id": 5,
+          //                     "screen_name": " img_Upload",
+          //                     "allow_add": "Y",
+          //                     "allow_edit": "Y",
+          //                     "allow_delete": "Y",
+          //                     "allow_view": "N",
+          //                     "allow_print": "N"
+          //                 }
+          //             ]
+          //         }]
+          //       }
+          // ] 
+    
+      ]
+  }
+]
+
+for(let r=0;r<20;r++){
+
+  // var find_nested=data4[0][item[0]]
+  // if(!find_nested.screen_name){
+    // return r
+    // find_nested.push("_item[0]")
+
+  // }
+  // console.log(find_nested,"test")
+
+}
+
+
+function setobject(
+  name
+
+) {
+return { name};
+}
+
+var stroe_table_arr=data4.map((val)=>{
+                      return setobject(val.module_name && <div>
+                        <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                          <Panel header={<div className="grp_expanse_firstdata">
+                          <div className="grp_firstdata_clr firstname_grpaccs">{
+                            val.module_name}</div>   
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div>          
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div>         
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div>           
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div>        
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div> 
+                          <div>{
+                            <FormControlLabel
+                            control={
+                              <GreenCheckbox
+                                checked={""}
+                                onChange={()=>handleChange('')}
+                                value=""
+                                onClick={event => event.stopPropagation()}
+                              />
+                            }
+                          />}</div>
+                          </div>} key="1">
+
+
+
+                          {val.item.map((fir_sub)=>{
+                            for(let r=0;r<1;r++){
+                              console.log(fir_sub.length,"fir_sub")
+                              if(fir_sub.length>1){
+                                // console.log(fir_sub,"insidefir_sub")
+                                for(let l=0;l<fir_sub.length;l++){
+                                return(fir_sub.map((sec_sub)=>{
+                                  console.log(sec_sub,"sec_sub")
+    
+                                return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                              <Panel header={<div className="grp_expanse_firstdata">
+                              <div className="grp_firstdata_clr firstname_grpaccs">{
+                                sec_sub.submodule_name}</div>   
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>          
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>         
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>           
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>        
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div> 
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>
+                              </div>} key="1">
+                                {""}
+    
+                                
+                                
+                                
+                              </Panel>
+                            </Collapse>)
+                                }))
+                              }
+                              }
+                            }
+                            
+
+                            
+                          })
+                          }
+
+
+                          
+
+
+                            
+                            
+                            
+                          </Panel>
+                        </Collapse>
+                      </div>
+                      )
+
+})
+
+
+    this.setState({
+      rows:stroe_table_arr
+    })
+
+    console.log(stroe_table_arr,"stroe_table_arr")
+                    // data[0]
+                      // <Collapse 
+                      //   expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
+                      //   >
+                      //   <Panel header={
+                      //   <div className="grp_expanse_firstdata"><div className="grp_firstdata_clr firstname_grpaccs">{row.name}</div>   
+                      //   <div>{row.all}</div>          
+                      //   <div>{row.view}</div>         
+                      //   <div>{row.add}</div>           
+                      //   <div>{row.edit}</div>        
+                      //   <div>{row.delete_chk}</div> 
+                      //   <div>{row.print}</div>
+                      //   </div>} key="1"></Panel>
+                      //   </Collapse>
+                        
+
+
+
+
+
+}
   
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
@@ -907,7 +913,8 @@ class Groupaccess extends Component {
 
           <div className="group_accessrights_dropdown">
           <h4>Group</h4>
-          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={["Full"]} />
+          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={this.state.group_arr} changeData={(data)=>this.changeDynamic(data,"Group")} 
+          value={this.state.group} />
           </div>
           
           
@@ -954,7 +961,9 @@ class Groupaccess extends Component {
 
                       >
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
-                        <Collapse 
+                        <div>{row.name}</div> 
+                          {/* {this.state.stroe_table_arr} */}
+                        {/* <Collapse 
                         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
                         
                         >
@@ -1011,7 +1020,7 @@ class Groupaccess extends Component {
                         </Panel>
                       </Collapse>
                             </Panel>
-                        </Collapse>
+                        </Collapse> */}
                         </TableCell>
                       </TableRow>
                     );
@@ -1040,3 +1049,30 @@ class Groupaccess extends Component {
 }
 
 export default Groupaccess;
+
+
+
+
+                            {/* <p >
+                        
+
+                        <div className="grp_expanse_data">
+                        <div className="firstname_grpaccs">{row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete_chk}</div>
+                        <div>{row.print}</div>      
+                        </div>
+
+                        <div className="grp_expanse_data">
+                        <div className="firstname_grpaccs">{row.name}</div>   
+                        <div>{row.all}</div>          
+                        <div>{row.view}</div>         
+                        <div>{row.add}</div>           
+                        <div>{row.edit}</div>        
+                        <div>{row.delete_chk}</div>
+                        <div>{row.print}</div>     
+                        </div>
+                        </p> */}

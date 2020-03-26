@@ -168,7 +168,7 @@ add_region=()=>{
         </Grid>
 
         <Grid item xs={12} md={7} className="calran_grid_nonetop">
-          <div className={"app_reg_flex w-75"}>
+          <div className={"app_reg_flex"}>
             <div className="app_reg_tx_size">Application Region</div> 
             <div><Inputantd className="cus_wid_app_calreg"
             changeData={(data)=>this.changeDynamic(data)} 

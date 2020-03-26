@@ -119,14 +119,14 @@ add_data=()=>{
 }
 
 
-        modelopen=(data)=>{
-            if(data==="view"){
-                this.setState({openview:true})
-            }
-            else if(data==="edit"){
-                this.setState({editopen:true})
-            }
-        }
+        // modelopen=(data)=>{
+        //     if(data==="view"){
+        //         this.setState({openview:true})
+        //     }
+        //     else if(data==="edit"){
+        //         this.setState({editopen:true})
+        //     }
+        // }
 
         update_data=()=>{
         this.setState({props_loading:true})

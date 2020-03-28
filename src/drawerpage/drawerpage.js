@@ -126,7 +126,7 @@ const styles = theme => ({
 
 class Homepage extends React.Component {
   state = {
-    open: false,logout:false
+    open: false,logout:false,current_location:""
   };
 
   handleDrawerOpen = () => {
@@ -151,9 +151,27 @@ class Homepage extends React.Component {
   {
     this.setState({logout:false})
   }
+
+  componentDidMount(){
+    this.setState({
+      current_location:window.location.pathname
+    })
+  }
+
+  active_box=()=>{
+    this.setState({
+      current_location:window.location.pathname
+    })
+  }
+
+
   render() {
     const { classes, theme,children } = this.props;
      let date= new Date();
+
+    //  var current_location=window.location.pathname
+     console.log(this.state.current_location,"current_location")
+
 
     return (
       <div className="drawerpage_container">
@@ -228,9 +246,9 @@ class Homepage extends React.Component {
           </div>
           <Divider />
 
-          <MenuList className="appbar_sideicons">
+          <MenuList className="appbar_sideicons" onClick={this.active_box}>
           
-            <MenuItem component={Link} to="/">
+            <MenuItem component={Link} to="/" className={"active_text_heading"}>
               <ListItemIcon>
               <div className="icon-container">
                 <ReactSVG  src={home_svg}  /></div>  

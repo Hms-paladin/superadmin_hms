@@ -1377,4 +1377,173 @@ export default Groupaccess;
                                     ]
                                 } 
                            
-                              ]                        
+                              ]         
+                              
+                              
+
+
+
+
+
+
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>          
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>         
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>           
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>        
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div> 
+                              <div>{
+                                <FormControlLabel
+                                control={
+                                  <GreenCheckbox
+                                    checked={""}
+                                    onChange={()=>handleChange('')}
+                                    value=""
+                                    onClick={event => event.stopPropagation()}
+                                  />
+                                }
+                              />}</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { themr } from 'react-css-themr';
+import { CompanyLogo, LargePrimaryButton } from '@esi/ui-components';
+/* component specific styles */
+import defaultTheme from './login.module.scss';
+import LoginBackgroundImg from '../../assets/images/LoginBackground.png';
+
+import Footer from '../../components/footer/Footer';
+import LoginWidgets from '../../components/login/LoginWidgets';
+import Slider from '../../components/Slider/Slider.module.js';
+
+
+var test=false
+
+//  const handleClick = (val) => {
+//     alert("test")
+//     return (test=true)
+// };
+
+// export default handleClick
+
+const Login = ({ theme }) => (<div>
+    <div className={ theme.loginHeader }>
+        <CompanyLogo />
+        <LargePrimaryButton className={ theme.logInBtn } onClick={""}>Log In</LargePrimaryButton>
+    </div>
+
+    <div className={ theme.loginBackgroundImg }>
+        <img
+            src={ LoginBackgroundImg } alt="Background"
+            role="presentation"
+        />
+    </div>
+    <LoginWidgets />
+    {test && <Slider/>}
+
+
+    <div className={ theme.loginInfo }>
+        <p>Need help logging in? <Link to="/faq" className={ theme.action }>Find
+            information in the FAQs</Link> or call us toll free at 1 866 996-3326. <br />
+            Support is available 8:00 a.m. to 8:00 p.m. EST, Monday through Friday. Messages received outside these
+            hours
+            will be returned the next business day.</p>
+    </div>
+    <Footer />
+</div>
+);
+
+Login.propTypes = {
+    /* Styles used for component presentation */
+    theme: PropTypes.any.isRequired
+};
+
+/* Pass a default theme */
+export default themr('Login', defaultTheme)(Login);
+
+
+
+const Login = () => (<div>
+  <div className={ "" }>
+      <CompanyLogo />
+      <input className={ ""} onClick={""}>Log In</input>
+  </div>
+
+  <div className={""}>
+      <img
+          src={ "" } alt="Background"
+          role="presentation"
+      />
+  </div>
+  {test && <Slider/>}
+
+</div>
+);
+
+
+export default themr('Login', defaultTheme)(Login);

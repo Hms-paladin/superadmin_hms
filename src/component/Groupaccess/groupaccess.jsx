@@ -768,81 +768,31 @@ var stroe_table_arr=data4.map((val)=>{
                               if(fir_sub.length>1){
                                 // console.log(fir_sub,"insidefir_sub")
                                 for(let l=0;l<fir_sub.length;l++){
-                                return(fir_sub.map((sec_sub)=>{
+                                return(fir_sub.map((sec_sub,index)=>{
+
                                   console.log(sec_sub,"sec_sub")
+
+                                  var testarr=<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                                  <Panel header={<div className="grp_expanse_firstdata" key="1">
+                                  <div className="grp_firstdata_clr firstname_grpaccs">{
+                                    sec_sub.submodule_name}</div>   
+                                  
+                                  </div>} key="1">
+                                    {testarr}
+        
+                                    
+                                    
+                                    
+                                  </Panel>
+                                </Collapse> 
     
                                 return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                              <Panel header={<div className="grp_expanse_firstdata">
+                              <Panel header={<div className="grp_expanse_firstdata" key="1">
                               <div className="grp_firstdata_clr firstname_grpaccs">{
                                 sec_sub.submodule_name}</div>   
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>         
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div> 
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>
+                              
                               </div>} key="1">
-                                {""}
+                                {testarr}
     
                                 
                                 

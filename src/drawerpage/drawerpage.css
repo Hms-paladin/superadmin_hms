@@ -183,25 +183,25 @@ font-size: 1.75rem;
     .appbar_sideicons .MuiListItem-button:hover{
         color: #86B149;
      }
-     .appbar_sideicons .MuiListItem-button:focus{
-      text-decoration: none;
-      color: #86B149;     
-      outline: none !important;   
-     }
-     .appbar_sideicons .MuiMenuItem-root:hover path  {
-        fill: #86b149 ;
-     }
-    
-     .appbar_sideicons .MuiMenuItem-root:focus path  {
-        fill: #86b149 ;
-     }
-     .appbar_sideicons .MuiMenuItem-root:hover rect  {
-        fill: #86b149 ;
-     }
-     .appbar_sideicons .MuiMenuItem-root:focus rect  {
-        fill: #86b149 ;
-     }
-     
+        /* .appbar_sideicons .MuiListItem-button:focus{
+        text-decoration: none;
+        color: #86B149;     
+        outline: none !important;   
+        } */
+        .appbar_sideicons .MuiMenuItem-root:hover path  {
+            fill: #86b149 ;
+        }
+        
+        /* .appbar_sideicons .MuiMenuItem-root:focus path  {
+            fill: #86b149 ;
+        } */
+        .appbar_sideicons .MuiMenuItem-root:hover rect  {
+            fill: #86b149 ;
+        }
+        /* .appbar_sideicons .MuiMenuItem-root:focus rect  {
+            fill: #86b149 ;
+        }
+      */
      
 
      
@@ -416,3 +416,11 @@ font-size: 1.75rem;
         }
         
     }
+
+    .active_text_heading,.active_text_heading.MuiMenuItem-root path,.active_text_heading.MuiMenuItem-root rect{
+        color: #86B149 !important;
+        text-decoration: none !important;
+        background-color: rgba(0, 0, 0, 0.04) !important;
+        fill: #86b149 ;
+    }
+

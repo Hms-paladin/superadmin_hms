@@ -26,6 +26,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Dropdownantd from "../../formcomponent/dropdownantd";
+import Green_checkBox from "../../formcomponent/Green_checkBox" 
 import {apiurl} from "../../../src/App.js";
 
 import "./groupaccess.css"
@@ -33,16 +34,6 @@ import "./groupaccess.css"
 const { Panel } = Collapse;
 const axios = require('axios');
 
-
-const GreenCheckbox = withStyles({
-    root: {
-      color: green[400],
-      '&$checked': {
-        color: green[600],
-      },
-    },
-    checked: {},
-  })(props => <Checkbox color="default" {...props} />);
 
 // function createData(
 //     vendor,
@@ -282,7 +273,9 @@ class Groupaccess extends Component {
       type:"",
       title:"",
       rotateicon:true,
-      conditionalrendering:false
+      conditionalrendering:false,
+      // head_a:true,
+      once_open:false,
     };
   }
 
@@ -411,24 +404,6 @@ axios({
 });
 
 
-// axios({
-//   method: 'get',
-//   url: `${apiurl}getGroup`
-// })
-// .then(function (response) {
-//   var arrval=[]
-//   response.data.data.map((value)=>{
-//       arrval.push({dropdown_val:value.groupname,id:value.id})
-//   })
-//   self.setState({
-//     group:arrval[0].dropdown_val,
-//       group_arr:arrval,
-//       loading:false
-//   })
-// })
-// .catch(function (error) {
-//   console.log(error,"error");
-// });
 
 var data1= [
   {
@@ -454,6 +429,181 @@ var data1= [
   }
 ]
 
+
+
+var data3= [
+  {
+      "id": 6,
+      "module_name": "Doctor",
+      "item": [
+          {
+              "id": 7,
+              "submodule_name": "sub_module1",
+              "item": [
+                  {
+                      "id": 8,
+                      "screen_name": " sub1_data1",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "Y",
+                      "allow_print": "Y"
+                  },{
+                    "id": 11,
+                    "screen_name": "sub1_data2",
+                    "allow_add": "Y",
+                    "allow_edit": "Y",
+                    "allow_delete": "Y",
+                    "allow_view": "Y",
+                    "allow_print": "Y"
+                }
+              ]
+          },
+          {
+            "id": 9,
+            "submodule_name": "sub_module2",
+            "item": [
+                {
+                    "id": 10,
+                    "screen_name": "sub2_data1",
+                    "allow_add": "N",
+                    "allow_edit": "Y",
+                    "allow_delete": "Y",
+                    "allow_view": "Y",
+                    "allow_print": "N"
+                },{
+                  "id": 11,
+                  "screen_name": "sub2_data2",
+                  "allow_add": "Y",
+                  "allow_edit": "Y",
+                  "allow_delete": "Y",
+                  "allow_view": "Y",
+                  "allow_print": "N"
+              }
+            ]
+        } 
+      ]
+  }
+]
+
+
+
+
+var data4=[
+  {
+      "id": 6,
+      "module_name": "Doctor",
+      "item": [
+          {
+              "id": 7,
+              "submodule_name": "Doctor_Submodule_1",
+              "item": [
+		{
+
+               "id": 8,
+              "submodule_name": "Doctor1_Submodule_2",
+              "item": [
+                  {
+                      "id": 0,
+                      "screen_name": " img_Upload",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "Y"
+                  }
+		]
+		}
+              ]
+          },
+          {
+            "id": 9,
+            "submodule_name": "Doctor2",
+            "item": [
+              {
+                "id": 7,
+                "submodule_name": "test",
+                "item": [
+                    {
+                        "id": 8,
+                        "screen_name": " img_Upload1",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "Y",
+                        "allow_print": "N"
+                    },
+                    ,{
+                      "id": 11,
+                      "screen_name": "img_Upload2",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "Y",
+                      "allow_print": "Y"
+                  }
+                ]
+            }
+            ]
+        } ,
+
+              {
+                  "id": 4,
+                  "submodule_name": "vid_Upload",
+                  "item": [
+                      {
+                          "id": 5,
+                          "screen_name": "vid_Upload1",
+                          "allow_add": "Y",
+                          "allow_edit": "Y",
+                          "allow_delete": "N",
+                          "allow_view": "Y",
+                          "allow_print": "Y"
+                      },{
+                        "id": 11,
+                        "screen_name": "vid_Upload2",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "Y",
+                        "allow_print": "Y"
+                    }
+                  ]
+            }
+        //   {
+        //     "id": 9,
+        //     "submodule_name": "Doctor3",
+        //     "item": [
+        //       {
+        //         "id": 4,
+        //         "submodule_name": null,
+        //         "item": [
+        //             {
+        //                 "id": 5,
+        //                 "screen_name": " img_Upload",
+        //                 "allow_add": "Y",
+        //                 "allow_edit": "Y",
+        //                 "allow_delete": "Y",
+        //                 "allow_view": "N",
+        //                 "allow_print": "N"
+        //             },{
+        //               "id": 11,
+        //               "screen_name": "vid_Upload2",
+        //               "allow_add": "Y",
+        //               "allow_edit": "Y",
+        //               "allow_delete": "Y",
+        //               "allow_view": "N",
+        //               "allow_print": "N"
+        //           }
+        //         ]
+        //     }
+        //     ]
+        // } 
+   
+      ]
+  }
+]
+
 var data2= [
   {
       "id": 3,
@@ -469,392 +619,501 @@ var data2= [
                       "allow_add": "Y",
                       "allow_edit": "Y",
                       "allow_delete": "Y",
-                      "allow_view": "N",
-                      "allow_print": "N"
-                  }
+                      "allow_view": "Y",
+                      "allow_print": "Y"
+                  },
+                  {
+                    "id": 5,
+                    "screen_name": " img_Upload",
+                    "allow_add": "Y",
+                    "allow_edit": "N",
+                    "allow_delete": "Y",
+                    "allow_view": "Y",
+                    "allow_print": "Y"
+                },
+                {
+                  "id": 5,
+                  "screen_name": " img_Upload",
+                  "allow_add": "N",
+                  "allow_edit": "Y",
+                  "allow_delete": "Y",
+                  "allow_view": "Y",
+                  "allow_print": "N"
+              },
+              {
+                "id": 5,
+                "screen_name": " img_Upload",
+                "allow_add": "Y",
+                "allow_edit": "Y",
+                "allow_delete": "Y",
+                "allow_view": "N",
+                "allow_print": "Y"
+            }
               ]
           }]
         }]
 
-var data3= [
-  {
-      "id": 6,
-      "module_name": "Doctor",
-      "item": [
-          {
-              "id": 7,
-              "submodule_name": "Doctor1",
-              "item": [
-                  {
-                      "id": 8,
-                      "screen_name": " img_Upload",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "N",
-                      "allow_print": "N"
-                  }
-              ]
-          },
-          {
-            "id": 9,
-            "submodule_name": "Doctor2",
-            "item": [
-                {
-                    "id": 10,
-                    "screen_name": "vid_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "N",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "vid_Upload2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "N",
-                  "allow_print": "N"
-              }
-            ]
-        } 
-      ]
-  }
-]
+
+var stroe_table_arr=data4.map((val,index)=>{
+  console.log(val,"firstval")
+  console.log(this.state.head_a,"this.state.head_a")
+  var head_all=val.item[0].item.map((ck_1)=>{
+    // if(val.item[0].submodule_name===null){
+      return([ck_1.allow_view==="Y",ck_1.allow_add==="Y",ck_1.allow_edit==="Y",ck_1.allow_delete==="Y",ck_1.allow_print==="Y"])
+    // }
+    })
 
 
 
-// {
-//   {
-//       "id": 7,
-//       "submodule_name": "Doctor_Submodule_1",
-//       "item": []
-// },
-//  {
-//       "id": 7,
-//       "submodule_name": "Doctor_Submodule_2",
-//       "item": []
-// },
-// {
-
-//        "id": 8,
-//       "submodule_name": "Doctor1_Submodule_3",
-//       "item": [
-//           {
-//               "id": 0,
-//               "screen_name": " img_Upload",
-//               "allow_add": "Y",
-//               "allow_edit": "Y",
-//               "allow_delete": "Y",
-//               "allow_view": "N",
-//               "allow_print": "N"
-//           }
-//   ]
-
-// }
-// },
 
 
-var data4=[
-  {
+    
+    var head_all_concat=head_all
 
-      "id": 6,
-      "module_name": "Doctor",
-      "item": [[
+    if(head_all.length>1){
+      var head_all_concat=[]
+
+    for(let m=0;m<head_all.length;m++){
+      head_all_concat.push(...head_all[m])
+      
+    }
+
+    var head_view=[]
+    var head_add=[]
+    var head_edit=[]
+    var head_delete=[]
+    var head_print=[]
+
+
+    for(let n=0;n<head_all.length;n++){
+      head_view.push(head_all_concat[n*5])
+      head_add.push(head_all_concat[n*5+1])
+      head_edit.push(head_all_concat[n*5+2])
+      head_delete.push(head_all_concat[n*5+3])
+      head_print.push(head_all_concat[n*5+4])
+    }
+
+
+    }else{
+
+      var head_view=[]
+      var head_add=[]
+      var head_edit=[]
+      var head_delete=[]
+      var head_print=[]
+      
+      var head_all_concat=head_all[0]
+      head_view.push(head_all[0][0])
+      head_add.push(head_all[0][1])
+      head_edit.push(head_all[0][2])
+      head_delete.push(head_all[0][3])
+      head_print.push(head_all[0][4])
+    }
+
+
+
+
+    if(val.item[0].submodule_name!==null){
+      var subdata_ch_arr=[]
+      val.item.map((ck_sub,index)=>{
+      subdata_ch_arr.push(ck_sub)        
+      })
+
+      var sub_data_arr=[]
+      var inside_sub=[]
+
+      for(let x=0;x<subdata_ch_arr.length;x++){
+        sub_data_arr.push(...subdata_ch_arr[x].item)
+      }
+      console.log(sub_data_arr,"sub_data_arr")
+      var head_all_concat=[]
+      for(let y=0;y<sub_data_arr.length;y++){
+      if(sub_data_arr[y].screen_name){
+        head_all_concat.push(sub_data_arr[y].allow_view==="Y",sub_data_arr[y].allow_add==="Y",sub_data_arr[y].allow_edit==="Y",sub_data_arr[y].allow_delete==="Y",sub_data_arr[y].allow_print==="Y")
+      }else if(sub_data_arr[y].item){
+        console.log(sub_data_arr[y].item,"sub_data_arr[y].submodule_name")
+        for(let z=0;z<sub_data_arr[y].item.length;z++){
+          sub_data_arr[y].item[z]&& inside_sub.push(sub_data_arr[y].item[z])
+        }
+
+        for(let a=0;a<inside_sub.length;a++){
+          head_all_concat.push(inside_sub[a].allow_view==="Y",inside_sub[a].allow_add==="Y",inside_sub[a].allow_edit==="Y",inside_sub[a].allow_delete==="Y",inside_sub[a].allow_print==="Y")
+
+        }
+
+
+
+      }
+    }
+    console.log(inside_sub,"inside_sub")
+
+    console.log(head_all_concat,"head_all_concat")
+
+
+      var head_view=[]
+      var head_add=[]
+      var head_edit=[]
+      var head_delete=[]
+      var head_print=[]
+  
+  
+      for(let z=0;z<(head_all_concat.length/5);z++){
+        head_view.push(head_all_concat[z*5])
+        head_add.push(head_all_concat[z*5+1])
+        head_edit.push(head_all_concat[z*5+2])
+        head_delete.push(head_all_concat[z*5+3])
+        head_print.push(head_all_concat[z*5+4])
+      }
+
+      console.log(head_all_concat,"head_all")
+      console.log(head_view,"head_view")
+      console.log(head_add,"head_add")
+      console.log(head_edit,"head_edit")
+      console.log(head_delete,"head_delete")
+      console.log(head_print,"head_print")
         
-          {
-              "id": 7,
-              "submodule_name": "Doctor_Submodule_1",
-              "item": []
-			  },
-			   {
-              "id": 7,
-              "submodule_name": "Doctor_Submodule_2",
-              "item": []
-			  },
-		{
 
-               "id": 8,
-              "submodule_name": "Doctor1_Submodule_3",
-              "item": [
-                  {
-                      "id": 0,
-                      "screen_name": " img_Upload",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "N",
-                      "allow_print": "N"
-                  }
-				  ]
-		
-    },
-  ],
+    }
 
-          [{
-            "id": 9,
-            "submodule_name": "Doctor1_row2",
-            "item": [[
-                {
-                    "id": 10,
-                    "screen_name": "vid_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "N",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "vid_Upload2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "N",
-                  "allow_print": "N"
-              }
-            ]]
-        }] ,
-          [{
-            "id": 9,
-            "submodule_name": "Doctor2_row3",
-            "item": [[
-                {
-                    "id": 10,
-                    "screen_name": "vid_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "N",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "vid_Upload2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "N",
-                  "allow_print": "N"
-              }
-            ]
-          ]
-        }],
-          // [
-          //   {
-          //     "id": 3,
-          //     "module_name": "nulldoctor",
-          //     "item": [
-          //         {
-          //             "id": 4,
-          //             "submodule_name": null,
-          //             "item": [
-          //                 {
-          //                     "id": 5,
-          //                     "screen_name": " img_Upload",
-          //                     "allow_add": "Y",
-          //                     "allow_edit": "Y",
-          //                     "allow_delete": "Y",
-          //                     "allow_view": "N",
-          //                     "allow_print": "N"
-          //                 }
-          //             ]
-          //         }]
-          //       }
-          // ] 
-    
-      ]
-  }
-]
-
-for(let r=0;r<20;r++){
-
-  // var find_nested=data4[0][item[0]]
-  // if(!find_nested.screen_name){
-    // return r
-    // find_nested.push("_item[0]")
-
-  // }
-  // console.log(find_nested,"test")
-
-}
-
-
-function setobject(
-  name
-
-) {
-return { name};
-}
-
-var stroe_table_arr=data4.map((val)=>{
-                      return setobject(val.module_name && <div>
-                        <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                          <Panel header={<div className="grp_expanse_firstdata">
-                          <div className="grp_firstdata_clr firstname_grpaccs">{
-                            val.module_name}</div>   
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>          
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>         
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>           
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>        
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div> 
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>
-                          </div>} key="1">
+    // console.log(head_all_concat,"head_all_concat")
 
 
 
-                          {val.item.map((fir_sub)=>{
-                            for(let r=0;r<1;r++){
-                              console.log(fir_sub.length,"fir_sub")
-                              if(fir_sub.length>1){
-                                // console.log(fir_sub,"insidefir_sub")
-                                for(let l=0;l<fir_sub.length;l++){
-                                return(fir_sub.map((sec_sub,index)=>{
+          return this.setobject(<div>
+            <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                val.module_name}</div>   
+                <div>{<Green_checkBox checked={head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox("head_a",false)} value={this.state.head_a} />
+                    }</div>          
+                  <div>{
+                    <Green_checkBox checked={head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} />
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              
+              </div>} key="1">
+                {val.item.map((first_item)=>{
+        console.log(first_item,"first_item")
+          if(first_item.submodule_name===null){
 
-                                  console.log(sec_sub,"sec_sub")
+            return(first_item.item.map((first_item_insidedata,index)=>{
+              console.log(first_item_insidedata.allow_add,"allow_add")
+                  var alltrue_enable_row=[first_item_insidedata.allow_view==="Y",first_item_insidedata.allow_add==="Y",first_item_insidedata.allow_edit==="Y",first_item_insidedata.allow_delete==="Y",first_item_insidedata.allow_print==="Y"]
 
-                                  var testarr=<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                                  <Panel header={<div className="grp_expanse_firstdata" key="1">
-                                  <div className="grp_firstdata_clr firstname_grpaccs">{
-                                    sec_sub.submodule_name}</div>   
-                                  
-                                  </div>} key="1">
-                                    {testarr}
-        
-                                    
-                                    
-                                    
-                                  </Panel>
-                                </Collapse> 
-    
-                                return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                              <Panel header={<div className="grp_expanse_firstdata" key="1">
-                              <div className="grp_firstdata_clr firstname_grpaccs">{
-                                sec_sub.submodule_name}</div>   
-                              
-                              </div>} key="1">
-                                {testarr}
-    
-                                
-                                
-                                
-                              </Panel>
-                            </Collapse>)
-                                }))
-                              }
-                              }
-                            }
-                            
+                  console.log(alltrue_enable_row.every((val)=>{return(val===true)}),"alltrue_enable_row")
 
-                            
-                          })
-                          }
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs sub_module_name_top">{first_item_insidedata.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>      
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+              </div> 
+              </p>
+                  )
+            }
+            )
+            )
+            }else if(first_item.submodule_name){
+
+              console.log(first_item.item,"submodule_first")
+
+              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                first_item.submodule_name}</div>   
+                {/* <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   */}
+              
+              </div>} key="1">
+
+              {first_item.item.map((second_item)=>{
+          if(second_item.screen_name){
+            var second_module_row=[second_item.allow_view==="Y",second_item.allow_add==="Y",second_item.allow_edit==="Y",second_item.allow_delete==="Y",second_item.allow_print==="Y"].every((val)=>{return(val===true)})
 
 
-                          
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs sub_module_name_top">{second_item.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={second_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={second_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={second_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={second_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={second_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={second_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              </div> 
+              </p>
+                  )
+            
+            }
+          else if(second_item.submodule_name){
+              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                second_item.submodule_name}</div>   
+                {/* <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   */}
+              
+              </div>} key="1">
+
+              {second_item.item.map((third_item)=>{
+        console.log(third_item,"third_item")
+          if(third_item.screen_name){
+
+            var third_module_row=[third_item.allow_view==="Y",third_item.allow_add==="Y",third_item.allow_edit==="Y",third_item.allow_delete==="Y",third_item.allow_print==="Y"].every((val)=>{return(val===true)})
+
+        console.log(third_module_row,"third_module_row")
+            
 
 
-                            
-                            
-                            
-                          </Panel>
-                        </Collapse>
-                      </div>
-                      )
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs sub_module_name_top">{third_item.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={third_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={third_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>      
+                  <div>{
+                    <Green_checkBox checked={third_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={third_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={third_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+                  <div>{
+                    <Green_checkBox checked={third_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+              </div> 
+              </p>
+                  )
+            
+            }
+          // else if(third_item.submodule_name){
+          //     return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+          //     <Panel header={<div className="grp_expanse_firstdata">
+          //     <div className="grp_firstdata_clr firstname_grpaccs">{
+          //       third_item.submodule_name}</div>   
+          //       <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>          
+          //         <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>         
+          //         <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>           
+          //         <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>        
+          //         <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>  
+          //         <div>{
+          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+          //           }
+          //         </div>  
+              
+          //     </div>} key="1">
+
+
+          //       </Panel>
+          //       </Collapse>
+          //     )
+
+          //   }
+            })}
+
+
+                </Panel>
+                </Collapse>
+              )
+
+            }
+
+                })}
+
+
+                </Panel>
+                </Collapse>
+              )
+
+            }
+
+                })}
+              </Panel>
+              </Collapse>
+          </div>
+          )
 
 })
 
+console.log(stroe_table_arr,"stroe_table_arr")
 
-    this.setState({
-      rows:stroe_table_arr
-    })
-
-    console.log(stroe_table_arr,"stroe_table_arr")
-                    // data[0]
-                      // <Collapse 
-                      //   expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
-                      //   >
-                      //   <Panel header={
-                      //   <div className="grp_expanse_firstdata"><div className="grp_firstdata_clr firstname_grpaccs">{row.name}</div>   
-                      //   <div>{row.all}</div>          
-                      //   <div>{row.view}</div>         
-                      //   <div>{row.add}</div>           
-                      //   <div>{row.edit}</div>        
-                      //   <div>{row.delete_chk}</div> 
-                      //   <div>{row.print}</div>
-                      //   </div>} key="1"></Panel>
-                      //   </Collapse>
-                        
-
-
-
-
+this.setState({
+rows:stroe_table_arr
+})
 
 }
+
+change_checkbox=(name,val)=>{
+  // alert(name)
+  // alert(val)
+  // var enable_val="y"
+  // if(this.state[name]===true){
+  //   enable_val="n"
+  // }
+
+  // alert(enable_val)
+
+
+//  this.setState({
+//    [name]:enable_val,
+//    once_open:true
+//  })
+ 
+}
+
+setobject=(name)=>{
+  return name
+}
   
+check_recall=()=>{
+
+ 
+}
+
+
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
+console.log(rows[0],"rows")
+//  if(this.state.once_open){
+//   this.check_recall()
+//   this.setState({
+//     once_open:false
+//   })
+//  }
+
+
+
 
     return (
       <div className="VendorDetailsDiv grp_dropdown_tble">
@@ -911,7 +1170,7 @@ var stroe_table_arr=data4.map((val)=>{
 
                       >
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
-                        <div>{row.name}</div> 
+                        <div>{row}</div> 
                           {/* {this.state.stroe_table_arr} */}
                         {/* <Collapse 
                         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
@@ -999,30 +1258,3 @@ var stroe_table_arr=data4.map((val)=>{
 }
 
 export default Groupaccess;
-
-
-
-
-                            {/* <p >
-                        
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>      
-                        </div>
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>     
-                        </div>
-                        </p> */}

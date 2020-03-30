@@ -106,12 +106,13 @@ padding-left: 50px;
 
 .grp_expanse_firstdata{
     display: flex;
+    height: 40px;
 }
 
 
 .grp_expanse_data{
     display: flex;
-    padding: 0px 16px;
+    /* padding: 0px 16px; */
     border-bottom: 1px solid #ededed;
 }
 
@@ -142,7 +143,7 @@ width:59% !important;
     width:59% ;
     position: relative;
     left: 23px;
-    top: 12px;
+    top: 2px;
 }
 
 .grp_expanse_firstdata div div label span svg{
@@ -158,13 +159,14 @@ width:59% !important;
 
 
 .grp_expanse_data div:first-child{
-    width:60% ;
+    /* width:60% ; */
+    width: 59.366%;
     position: relative;
-    top: 12px;
+    top: 4px;
 }
 
 .grp_expanse_data div{
-    width: 6.66666666667%;
+    width: 6.588%;
 }
 .grp_expanse_data div div label span svg{
     font-size: 20px !important;
@@ -244,4 +246,15 @@ width:59% !important;
     font-size: 1.35rem;
     margin-left: 5px;
 }
+}
+
+.module_name_top{
+    /* width: 59%; */
+    position: relative;
+    left: 23px;
+    top: 9px !important;
+}
+
+.sub_module_name_top{
+    top: 10px !important;
 }

@@ -26,6 +26,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Dropdownantd from "../../formcomponent/dropdownantd";
+import Green_checkBox from "../../formcomponent/Green_checkBox" 
 import {apiurl} from "../../../src/App.js";
 
 import "./groupaccess.css"
@@ -33,16 +34,6 @@ import "./groupaccess.css"
 const { Panel } = Collapse;
 const axios = require('axios');
 
-
-const GreenCheckbox = withStyles({
-    root: {
-      color: green[400],
-      '&$checked': {
-        color: green[600],
-      },
-    },
-    checked: {},
-  })(props => <Checkbox color="default" {...props} />);
 
 // function createData(
 //     vendor,
@@ -282,7 +273,9 @@ class Groupaccess extends Component {
       type:"",
       title:"",
       rotateicon:true,
-      conditionalrendering:false
+      conditionalrendering:false,
+      // head_a:true,
+      once_open:false,
     };
   }
 
@@ -557,555 +550,587 @@ var data4=[
             "id": 9,
             "submodule_name": "Doctor2",
             "item": [
-                {
-                    "id": 10,
-                    "screen_name": "vid_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "N",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "vid_Upload2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "N",
-                  "allow_print": "N"
-              }
+              {
+                "id": 7,
+                "submodule_name": "test",
+                "item": [
+                    {
+                        "id": 8,
+                        "screen_name": " img_Upload1",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "N",
+                        "allow_print": "N"
+                    },
+                    ,{
+                      "id": 11,
+                      "screen_name": "img_Upload2",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+                ]
+            }
             ]
         } ,
-          {
-            "id": 9,
-            "submodule_name": "Doctor3",
-            "item": [
-                {
-                    "id": 10,
-                    "screen_name": "vid_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "N",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "vid_Upload2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "N",
-                  "allow_print": "N"
-              }
-            ]
-        } 
+
+              {
+                  "id": 4,
+                  "submodule_name": "vid_Upload",
+                  "item": [
+                      {
+                          "id": 5,
+                          "screen_name": "vid_Upload1",
+                          "allow_add": "Y",
+                          "allow_edit": "Y",
+                          "allow_delete": "Y",
+                          "allow_view": "N",
+                          "allow_print": "N"
+                      },{
+                        "id": 11,
+                        "screen_name": "vid_Upload2",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "N",
+                        "allow_print": "N"
+                    }
+                  ]
+            }
+        //   {
+        //     "id": 9,
+        //     "submodule_name": "Doctor3",
+        //     "item": [
+        //       {
+        //         "id": 4,
+        //         "submodule_name": null,
+        //         "item": [
+        //             {
+        //                 "id": 5,
+        //                 "screen_name": " img_Upload",
+        //                 "allow_add": "Y",
+        //                 "allow_edit": "Y",
+        //                 "allow_delete": "Y",
+        //                 "allow_view": "N",
+        //                 "allow_print": "N"
+        //             },{
+        //               "id": 11,
+        //               "screen_name": "vid_Upload2",
+        //               "allow_add": "Y",
+        //               "allow_edit": "Y",
+        //               "allow_delete": "Y",
+        //               "allow_view": "N",
+        //               "allow_print": "N"
+        //           }
+        //         ]
+        //     }
+        //     ]
+        // } 
    
       ]
   }
 ]
 
-for(let r=0;r<20;r++){
 
-  // var find_nested=data4[0][item[0]]
-  // if(!find_nested.screen_name){
-    // return r
-    // find_nested.push("_item[0]")
-
-  // }
-  // console.log(find_nested,"test")
-
-}
-
-// while(true){
-//   var find_nested=[]
-//   if(!find_nested.screen_name){
-//     find_nested.push(find_nested+"item[0]")
-//   }
-//   console.log(find_nested,"test")
-
+// function setobject(
+//   name
+// ) {
+// return { name};
 // }
 
-function setobject(
-  name
+//  const change_checkbox=(name)=>{
+//    alert(name)
+//   this.setState({
+//     [name]:name
+//   })
+// }
 
-) {
-return { name};
+this.check_recall()
+
+
+
+    // this.setState({
+    //   rows:stroe_table_arr
+    // })
 }
 
-var stroe_table_arr=data4.map((val)=>{
-                      return setobject(<div>
-                        <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                          <Panel header={<div className="grp_expanse_firstdata">
-                          <div className="grp_firstdata_clr firstname_grpaccs">{
-                            val.module_name}</div>   
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>          
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>         
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>           
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>        
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div> 
-                          <div>{
-                            <FormControlLabel
-                            control={
-                              <GreenCheckbox
-                                checked={""}
-                                onChange={()=>handleChange('')}
-                                value=""
-                                onClick={event => event.stopPropagation()}
-                              />
-                            }
-                          />}</div>
-                          </div>} key="1">
+change_checkbox=(name,val)=>{
+  // alert(name)
+  // alert(val)
+  var enable_val="y"
+  if(this.state[name]==="y" && name!=="head_all" && !name.includes("first_data_row_all")){
+    enable_val="n"
+  }
+
+  // alert(enable_val)
 
 
-                            
-                            
-                          {
-                            val.item.map((fir_sub)=>{
-                              if(fir_sub.submodule_name!==null){
-                              return (
-                                <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                              <Panel header={<div className="grp_expanse_firstdata">
-                              <div className="grp_firstdata_clr firstname_grpaccs">{
-                                fir_sub.submodule_name}</div>   
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>         
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div> 
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>
-                              </div>} key="1">
-                                {
-                                  fir_sub.item.map((sub_dat)=>{
-                                    if(sub_dat.screen_name){
-                                    return(
-                                      <p>
-                                  
-                          <div className="grp_expanse_data">
-                          <div className="firstname_grpaccs">{sub_dat.screen_name}</div>   
-                          <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>   
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>      
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                          </div>
+ this.setState({
+   [name]:enable_val,
+   once_open:true
+ })
+ 
+}
+
+setobject=(name)=>{
+  return name
+}
+  
+check_recall=()=>{
+
+
+  var data2= [
+    {
+        "id": 3,
+        "module_name": "Doctor",
+        "item": [
+            {
+                "id": 4,
+                "submodule_name": null,
+                "item": [
+                    {
+                        "id": 5,
+                        "screen_name": " img_Upload",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "N",
+                        "allow_print": "N"
+                    },
+                    {
+                      "id": 5,
+                      "screen_name": " img_Upload2",
+                      "allow_add": "Y",
+                      "allow_edit": "Y",
+                      "allow_delete": "Y",
+                      "allow_view": "N",
+                      "allow_print": "N"
+                  }
+                ]
+            }]
+          }]
+
+  var data4=[
+    {
+        "id": 6,
+        "module_name": "Doctor",
+        "item": [
+            {
+                "id": 7,
+                "submodule_name": "Doctor_Submodule_1",
+                "item": [
+      {
+  
+                 "id": 8,
+                "submodule_name": "Doctor1_Submodule_2",
+                "item": [
+                    {
+                        "id": 0,
+                        "screen_name": " img_Upload",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "N",
+                        "allow_print": "N"
+                    }
+      ]
+      }
+                ]
+            },
+            {
+              "id": 9,
+              "submodule_name": "Doctor2",
+              "item": [
+                {
+                  "id": 7,
+                  "submodule_name": "test",
+                  "item": [
+                      {
+                          "id": 8,
+                          "screen_name": " img_Upload1",
+                          "allow_add": "Y",
+                          "allow_edit": "Y",
+                          "allow_delete": "Y",
+                          "allow_view": "N",
+                          "allow_print": "N"
+                      },
+                      ,{
+                        "id": 11,
+                        "screen_name": "img_Upload2",
+                        "allow_add": "Y",
+                        "allow_edit": "Y",
+                        "allow_delete": "Y",
+                        "allow_view": "N",
+                        "allow_print": "N"
+                    }
+                  ]
+              }
+              ]
+          } ,
+  
+                {
+                    "id": 4,
+                    "submodule_name": "vid_Upload",
+                    "item": [
+                        {
+                            "id": 5,
+                            "screen_name": "vid_Upload1",
+                            "allow_add": "Y",
+                            "allow_edit": "Y",
+                            "allow_delete": "Y",
+                            "allow_view": "N",
+                            "allow_print": "N"
+                        },{
+                          "id": 11,
+                          "screen_name": "vid_Upload2",
+                          "allow_add": "Y",
+                          "allow_edit": "Y",
+                          "allow_delete": "Y",
+                          "allow_view": "N",
+                          "allow_print": "N"
+                      }
+                    ]
+              }
+          //   {
+          //     "id": 9,
+          //     "submodule_name": "Doctor3",
+          //     "item": [
+          //       {
+          //         "id": 4,
+          //         "submodule_name": null,
+          //         "item": [
+          //             {
+          //                 "id": 5,
+          //                 "screen_name": " img_Upload",
+          //                 "allow_add": "Y",
+          //                 "allow_edit": "Y",
+          //                 "allow_delete": "Y",
+          //                 "allow_view": "N",
+          //                 "allow_print": "N"
+          //             },{
+          //               "id": 11,
+          //               "screen_name": "vid_Upload2",
+          //               "allow_add": "Y",
+          //               "allow_edit": "Y",
+          //               "allow_delete": "Y",
+          //               "allow_view": "N",
+          //               "allow_print": "N"
+          //           }
+          //         ]
+          //     }
+          //     ]
+          // } 
+     
+        ]
+    }
+  ]
 
 
 
-                                </p>
-                                    )
-                              }
-                              else{
-                                return(
-                                sub_dat.item.map((two_sub)=>{
-                                  return(
-                                    <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-                              <Panel header={<div className="grp_expanse_firstdata">
-                              <div className="grp_firstdata_clr firstname_grpaccs">{
-                                two_sub.screen_name}</div>   
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>         
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>  
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>
-                              </div>} key="1">
-                                </Panel>
-                                </Collapse>
+  var stroe_table_arr=data2.map((val,index)=>{
+    console.log(val,"firstval")
+    console.log(this.state.head_a,"this.state.head_a")
+            return this.setobject(<div>
+              <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                <Panel header={<div className="grp_expanse_firstdata">
+                <div className="grp_firstdata_clr firstname_grpaccs">{
+                  val.module_name}</div>   
+                  <div>{<Green_checkBox checked={this.state.head_all==="y" && true} change_checkbox={()=>this.change_checkbox("head_all",false)} value={this.state.head_a} />
+                      }</div>          
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true ||this.state.head_a==="y" && true } change_checkbox={()=>this.change_checkbox("head_a",false)}/>
+                      }
+                    </div>         
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.head_b==="y" && true} change_checkbox={()=>this.change_checkbox("head_b",false)} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.head_c==="y" && true} change_checkbox={()=>this.change_checkbox("head_c",false)} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.head_d==="y" && true} change_checkbox={()=>this.change_checkbox("head_d",false)} value={""}/>
+                      }
+                    </div>  
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.head_e==="y" && true} change_checkbox={()=>this.change_checkbox("head_e",false)} value={""}/>
+                      }
+                    </div>  
+                
+                </div>} key="1">
+                  {val.item.map((first_item)=>{
+          console.log(first_item,"first_item")
+            if(first_item.submodule_name===null){
 
-                                  )
-                                })
-                                )
+              return(first_item.item.map((first_item_insidedata,index)=>{
 
-                                
+                    return(
+                      <p>
+                <div className="grp_expanse_data">
+                <div className="firstname_grpaccs">{first_item_insidedata.screen_name}</div>
+                <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state["first_data_row_all"+index]==="y" && true} change_checkbox={()=>this.change_checkbox("first_data_row_all"+index,false)} value={""}/>
+                      }
+                    </div>   
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.first_data_row==="y" && true || this.state.first_data_a==="y" && true || this.state["first_data_row_all"+index]==="y" && true ||this.state.head_a==="y" && true } change_checkbox={()=>this.change_checkbox("first_data_a"+index,false)} value={""}/>
+                      }
+                    </div>      
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.first_data_row==="y" && true || this.state.first_data_b==="y" && true || this.state["first_data_row_all"+index]==="y" && true ||this.state.head_b==="y" && true } change_checkbox={()=>this.change_checkbox("first_data_b",false)} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.first_data_row==="y" && true || this.state.first_data_c==="y" && true || this.state["first_data_row_all"+index]==="y" && true ||this.state.head_c==="y" && true } change_checkbox={()=>this.change_checkbox("first_data_c",false)} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.first_data_row==="y" && true || this.state.first_data_d==="y" && true || this.state["first_data_row_all"+index]==="y" && true ||this.state.head_d==="y" && true } change_checkbox={()=>this.change_checkbox("first_data_d",false)} value={""}/>
+                      }
+                    </div> 
+                    <div>{
+                      <Green_checkBox checked={this.state.head_all==="y" && true || this.state.first_data_row==="y" && true || this.state.first_data_e==="y" && true || this.state["first_data_row_all"+index]==="y" && true ||this.state.head_e==="y" && true } change_checkbox={()=>this.change_checkbox("first_data_e",false)} value={""}/>
+                      }
+                    </div> 
+                </div> 
+                </p>
+                    )
+              }
+              )
+              )
+              }else if(first_item.submodule_name){
+                return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                <Panel header={<div className="grp_expanse_firstdata">
+                <div className="grp_firstdata_clr firstname_grpaccs">{
+                  first_item.submodule_name}</div>   
+                  <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>          
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>         
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                
+                </div>} key="1">
 
-                              }
-                                  })
-                                }
-
-                              </Panel>
-                            </Collapse>
-                              )}
-
-                            //   "item": [
-                            //     {
-                            //         "id": 5,
-                            //         "screen_name": " img_Upload",
-                            //         "allow_add": "Y",
-                            //         "allow_edit": "Y",
-                            //         "allow_delete": "Y",
-                            //         "allow_view": "N",
-                            //         "allow_print": "N"
-                            //     }
-                            // ]
-
-                              else if(fir_sub.submodule_name===null){
-                                return (fir_sub.item.map((leafnode)=>{
-                                  console.log(leafnode,"leafnode")
-                                  return(
-                                    <p>
-                                  
-                          <div className="grp_expanse_data">
-                          <div className="firstname_grpaccs">{leafnode.screen_name}</div>   
-                          <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>   
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>      
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                          </div>
+                {first_item.item.map((second_item)=>{
+          console.log(second_item,"second_item")
+            if(second_item.screen_name){
 
 
+                    return(
+                      <p>
+                <div className="grp_expanse_data">
+                <div className="firstname_grpaccs">{second_item.screen_name}</div>
+                <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>   
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>      
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div> 
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div> 
+                </div> 
+                </p>
+                    )
+              
+              }
+            else if(second_item.submodule_name){
+                return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                <Panel header={<div className="grp_expanse_firstdata">
+                <div className="grp_firstdata_clr firstname_grpaccs">{
+                  second_item.submodule_name}</div>   
+                  <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>          
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>         
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                
+                </div>} key="1">
 
-                                </p>
-                                  )
-
-                                })
-                                )
-                              }
+                {second_item.item.map((third_item)=>{
+          console.log(third_item,"third_item")
+            if(third_item.screen_name){
 
 
+                    return(
+                      <p>
+                <div className="grp_expanse_data">
+                <div className="firstname_grpaccs">{third_item.screen_name}</div>
+                <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>   
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>      
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div> 
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div> 
+                </div> 
+                </p>
+                    )
+              
+              }
+            else if(third_item.submodule_name){
+                return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                <Panel header={<div className="grp_expanse_firstdata">
+                <div className="grp_firstdata_clr firstname_grpaccs">{
+                  third_item.submodule_name}</div>   
+                  <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>          
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>         
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>           
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>        
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                    <div>{
+                      <Green_checkBox checked={this.state.head_a==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                      }
+                    </div>  
+                
+                </div>} key="1">
 
 
-                            })
-                          }
-                          </Panel>
-                          
+                  </Panel>
+                  </Collapse>
+                )
+
+              }})}
 
 
-                      
+                  </Panel>
+                  </Collapse>
+                )
+
+              }
+
+                  })}
 
 
+                  </Panel>
+                  </Collapse>
+                )
 
+              }
 
-                        </Collapse>
-                      </div>
-                      )
+                  })}
+                </Panel>
+                </Collapse>
+            </div>
+            )
 
 })
 
+console.log(stroe_table_arr,"stroe_table_arr")
 
-    this.setState({
-      rows:stroe_table_arr
-    })
-
-    console.log(stroe_table_arr,"stroe_table_arr")
-                    // data[0]
-                      // <Collapse 
-                      //   expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
-                      //   >
-                      //   <Panel header={
-                      //   <div className="grp_expanse_firstdata"><div className="grp_firstdata_clr firstname_grpaccs">{row.name}</div>   
-                      //   <div>{row.all}</div>          
-                      //   <div>{row.view}</div>         
-                      //   <div>{row.add}</div>           
-                      //   <div>{row.edit}</div>        
-                      //   <div>{row.delete_chk}</div> 
-                      //   <div>{row.print}</div>
-                      //   </div>} key="1"></Panel>
-                      //   </Collapse>
-                        
-
-
-
-
+this.setState({
+  rows:stroe_table_arr
+})
 
 }
-  
+
+
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
+console.log(rows[0],"rows")
+ if(this.state.once_open){
+  this.check_recall()
+  this.setState({
+    once_open:false
+  })
+ }
+
+
+ console.log(this.state,"state")
+
+
+
 
     return (
       <div className="VendorDetailsDiv grp_dropdown_tble">
@@ -1162,7 +1187,7 @@ var stroe_table_arr=data4.map((val)=>{
 
                       >
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
-                        <div>{row.name}</div> 
+                        <div>{row}</div> 
                           {/* {this.state.stroe_table_arr} */}
                         {/* <Collapse 
                         expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
@@ -1253,297 +1278,283 @@ export default Groupaccess;
 
 
 
-
-                            {/* <p >
-                        
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>      
-                        </div>
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>     
-                        </div>
-                        </p> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        var data4=[
-                          {
-                              "id": 6,
-                              "module_name": "Doctor",
-                              "item": [
-                                  {
-                                      "id": 7,
-                                      "submodule_name": "Doctor_Submodule_1",
-                                      "item": []
-                                  },{
-                                    "id": 77,
-                                    "submodule_name": "Doctor_Submodule_11",
-                                    "item": []
-                                },{
-                        
-                                       "id": 8,
-                                      "submodule_name": "Doctor1_Submodule_2",
-                                      "item": [
-                                          {
-                                              "id": 0,
-                                              "screen_name": " img_Upload",
-                                              "allow_add": "Y",
-                                              "allow_edit": "Y",
-                                              "allow_delete": "Y",
-                                              "allow_view": "N",
-                                              "allow_print": "N"
-                                          }
-                            ]
-                          }
-                                      ]
-                                  },
-                                  {
-                                    "id": 9,
-                                    "submodule_name": "Doctor2",
-                                    "item": [
-                                        {
-                                            "id": 10,
-                                            "screen_name": "vid_Upload",
-                                            "allow_add": "Y",
-                                            "allow_edit": "Y",
-                                            "allow_delete": "Y",
-                                            "allow_view": "N",
-                                            "allow_print": "N"
-                                        },{
-                                          "id": 11,
-                                          "screen_name": "vid_Upload2",
-                                          "allow_add": "Y",
-                                          "allow_edit": "Y",
-                                          "allow_delete": "Y",
-                                          "allow_view": "N",
-                                          "allow_print": "N"
-                                      }
-                                    ]
-                                } ,
-                                  {
-                                    "id": 9,
-                                    "submodule_name": "Doctor3",
-                                    "item": [
-                                        {
-                                            "id": 10,
-                                            "screen_name": "vid_Upload",
-                                            "allow_add": "Y",
-                                            "allow_edit": "Y",
-                                            "allow_delete": "Y",
-                                            "allow_view": "N",
-                                            "allow_print": "N"
-                                        },{
-                                          "id": 11,
-                                          "screen_name": "vid_Upload2",
-                                          "allow_add": "Y",
-                                          "allow_edit": "Y",
-                                          "allow_delete": "Y",
-                                          "allow_view": "N",
-                                          "allow_print": "N"
-                                      }
-                                    ]
-                                } 
-                           
-                              ]         
-                              
-                              
-
-
-
-
-
-
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>          
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>         
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>           
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>        
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div> 
-                              <div>{
-                                <FormControlLabel
-                                control={
-                                  <GreenCheckbox
-                                    checked={""}
-                                    onChange={()=>handleChange('')}
-                                    value=""
-                                    onClick={event => event.stopPropagation()}
-                                  />
-                                }
-                              />}</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                              import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { themr } from 'react-css-themr';
-import { CompanyLogo, LargePrimaryButton } from '@esi/ui-components';
-/* component specific styles */
-import defaultTheme from './login.module.scss';
-import LoginBackgroundImg from '../../assets/images/LoginBackground.png';
-
-import Footer from '../../components/footer/Footer';
-import LoginWidgets from '../../components/login/LoginWidgets';
-import Slider from '../../components/Slider/Slider.module.js';
-
-
-var test=false
-
-//  const handleClick = (val) => {
-//     alert("test")
-//     return (test=true)
-// };
-
-// export default handleClick
-
-const Login = ({ theme }) => (<div>
-    <div className={ theme.loginHeader }>
-        <CompanyLogo />
-        <LargePrimaryButton className={ theme.logInBtn } onClick={""}>Log In</LargePrimaryButton>
-    </div>
-
-    <div className={ theme.loginBackgroundImg }>
-        <img
-            src={ LoginBackgroundImg } alt="Background"
-            role="presentation"
-        />
-    </div>
-    <LoginWidgets />
-    {test && <Slider/>}
-
-
-    <div className={ theme.loginInfo }>
-        <p>Need help logging in? <Link to="/faq" className={ theme.action }>Find
-            information in the FAQs</Link> or call us toll free at 1 866 996-3326. <br />
-            Support is available 8:00 a.m. to 8:00 p.m. EST, Monday through Friday. Messages received outside these
-            hours
-            will be returned the next business day.</p>
-    </div>
-    <Footer />
-</div>
-);
-
-Login.propTypes = {
-    /* Styles used for component presentation */
-    theme: PropTypes.any.isRequired
-};
-
-/* Pass a default theme */
-export default themr('Login', defaultTheme)(Login);
-
-
-
-const Login = () => (<div>
-  <div className={ "" }>
-      <CompanyLogo />
-      <input className={ ""} onClick={""}>Log In</input>
-  </div>
-
-  <div className={""}>
-      <img
-          src={ "" } alt="Background"
-          role="presentation"
-      />
-  </div>
-  {test && <Slider/>}
-
-</div>
-);
-
-
-export default themr('Login', defaultTheme)(Login);
+var stroe_table_arr=data2.map((val,index)=>{
+  console.log(val,"firstval")
+  console.log(this.state.head_a,"this.state.head_a")
+          return this.setobject(<div>
+            <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs">{
+                val.module_name}</div>   
+                <div>{<Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox("head_a",false)} value={this.state.head_a} />
+                    }</div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} />
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              
+              </div>} key="1">
+                {val.item.map((first_item)=>{
+        console.log(first_item,"first_item")
+          if(first_item.submodule_name===null){
+
+            return(first_item.item.map((first_item_insidedata)=>{
+
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs">{first_item_insidedata.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={first_item_insidedata.allow_view==="y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>      
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+              </div> 
+              </p>
+                  )
+            }
+            )
+            )
+            }else if(first_item.submodule_name){
+              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs">{
+                first_item.submodule_name}</div>   
+                <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              
+              </div>} key="1">
+
+              {first_item.item.map((second_item)=>{
+        console.log(second_item,"second_item")
+          if(second_item.screen_name){
+
+
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs">{second_item.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>      
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+              </div> 
+              </p>
+                  )
+            
+            }
+          else if(second_item.submodule_name){
+              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs">{
+                second_item.submodule_name}</div>   
+                <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              
+              </div>} key="1">
+
+              {second_item.item.map((third_item)=>{
+        console.log(third_item,"third_item")
+          if(third_item.screen_name){
+
+
+                  return(
+                    <p>
+              <div className="grp_expanse_data">
+              <div className="firstname_grpaccs">{third_item.screen_name}</div>
+              <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>   
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>      
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div> 
+              </div> 
+              </p>
+                  )
+            
+            }
+          else if(third_item.submodule_name){
+              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              <Panel header={<div className="grp_expanse_firstdata">
+              <div className="grp_firstdata_clr firstname_grpaccs">{
+                third_item.submodule_name}</div>   
+                <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>          
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>         
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>           
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>        
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+                  <div>{
+                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                    }
+                  </div>  
+              
+              </div>} key="1">
+
+
+                </Panel>
+                </Collapse>
+              )
+
+            }})}
+
+
+                </Panel>
+                </Collapse>
+              )
+
+            }
+
+                })}
+
+
+                </Panel>
+                </Collapse>
+              )
+
+            }
+
+                })}
+              </Panel>
+              </Collapse>
+          </div>
+          )
+
+})
+
+console.log(stroe_table_arr,"stroe_table_arr")
+
+this.setState({
+rows:stroe_table_arr
+})

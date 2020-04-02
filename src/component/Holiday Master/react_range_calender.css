@@ -6,7 +6,14 @@
 .range_calender .rdrDays button {
     border: 1px solid #dddddd;
     /* height: 8vh; */
-    height: 60px;
+    height: 58px;
+}
+.range_calender .rdrDayStartPreview,
+.range_calender .rdrDayInPreview,
+.range_calender .rdrDayEndPreview {
+    color: #82AF3F !important;
+    height: 35px;
+    top: 11px;
 }
 
 .range_calender .rdrStartEdge,
@@ -36,13 +43,7 @@
     color:red !important;
 } */
 
-.range_calender .rdrDayStartPreview,
-.range_calender .rdrDayInPreview,
-.range_calender .rdrDayEndPreview {
-    color: #82AF3F !important;
-    height: 35px;
-    top: 11px;
-}
+
 
 
 /* .range_calender .rdrMonthsVertical {
@@ -98,13 +99,12 @@
 }
 
 
-/* .wid_60_calrange_sec{
-    width: 60%;
-    margin: auto; 
-} */
+.wid_60_calrange_sec{
+    margin-top: 7px; 
+}
 
 .range_calender .rdrMonth {
-    width: 38.667em;
+    width: 32.9999em;
     /* width: 50vw; */
     padding: 0px 40px 27px 40px;
 }
@@ -131,8 +131,9 @@
     /* height: 411px; */
     padding: 15px;
     border-radius: 3px;
-    height: 50.69em;
+    height: 50.12em;
     width: 87%;
+    overflow-y: scroll;
 }
 
 .dotted_line_cal .ant-card-body {
@@ -149,7 +150,7 @@
     background-color: #82AF3F;
     font-size: 15px;
     color: white;
-    padding-inline-start: 20px;
+    padding-inline-start: 14px;
     font-weight: bold;
 }
 
@@ -168,8 +169,9 @@
 }
 
 .holiday_master_modal .MuiDialogContent-dividers {
-    /* padding: 16px !important; */
-    padding: 15px 40px 0px 22px !important;
+    padding-left: 30px;
+    padding-top: 10px;
+
 }
 
 .cus_wid_input_calran_end input {
@@ -235,7 +237,7 @@
     height: 37px !important;
     margin-top: 11px;
     color: #82AF3F;
-    margin-left: 104px;
+    margin-left: 67px;
 }
 
 .app_reg_flex {
@@ -283,9 +285,32 @@
     width: 95%;
     padding-bottom: 15px !important;
     margin-right: 37px !important;
+    margin-left: 16px !important;
 }
 
 .holiday_master_modal .MuiDialog-paper {
-    width: 75%;
+    width: 80%;
     height: 88%;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+    bottom: 9px;
+    background: #3d91ff !important;
+}
+
+
+
+/* Single select calender */
+
+.rdrSelected {
+    height: 35px;
+    top: 11px;
+    background-color: #c8e2a2;
+}
+
+
+.rdrDayNumber{
+    height: 31px;
+    top: 13px;
+    color: #82AF3F !important;
 }

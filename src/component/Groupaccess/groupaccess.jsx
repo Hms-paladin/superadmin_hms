@@ -246,6 +246,7 @@ const useStyles = makeStyles(theme => ({
   }
 
 class Groupaccess extends Component {
+
   constructor(props) {
     super(props);
     function createData(
@@ -403,6 +404,8 @@ axios({
   console.log(error,"error");
 });
 
+
+this.recall_permission()
 
 
 var data1= [
@@ -654,463 +657,540 @@ var data2= [
         }]
 
 
-var stroe_table_arr=data4.map((val,index)=>{
-  console.log(val,"firstval")
-  console.log(this.state.head_a,"this.state.head_a")
-  var head_all=val.item[0].item.map((ck_1)=>{
-    // if(val.item[0].submodule_name===null){
-      return([ck_1.allow_view==="Y",ck_1.allow_add==="Y",ck_1.allow_edit==="Y",ck_1.allow_delete==="Y",ck_1.allow_print==="Y"])
-    // }
-    })
+        var api_data= [
+          {
+              "id": 1,
+              "module_name": "Super Admin",
+              "item": [
+                  {
+                      "id": null,
+                      "submodule_name": null,
+                      "item": [
+                          {
+                              "id": 1,
+                              "screen_name": "Media Upload",
+                              "allow_add": "Y",
+                              "allow_edit": "Y",
+                              "allow_delete": "Y",
+                              "allow_view": "N",
+                              "allow_print": "N"
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "id": 2,
+              "module_name": "Doctor"
+          },
+          {
+              "id": 3,
+              "module_name": "Lab"
+          },
+          {
+              "id": 4,
+              "module_name": "Pharmacy"
+          },
+          {
+              "id": 5,
+              "module_name": "Health Checkup"
+          },
+          {
+              "id": 6,
+              "module_name": "Nurse"
+          },
+          {
+              "id": 7,
+              "module_name": "Shopping"
+          },
+          {
+              "id": 8,
+              "module_name": "Book a Room"
+          },
+          {
+              "id": 9,
+              "module_name": "Diet"
+          },
+          {
+              "id": 10,
+              "module_name": "Trainer"
+          },
+          {
+              "id": 11,
+              "module_name": "Training Center"
+          },
+          {
+              "id": 12,
+              "module_name": "Clinic"
+          }
+      ]
+
+}
+
+recall_permission=()=>{
+
+  function setobject(name){
+    return name
+  }
 
 
+  axios({
+    method: 'post',
+    url: `${apiurl}get_mas_group_permission`,
+    data:{
+      "group_id":"74"
+    }
+}).then( response=> {
+    console.log(response.data.data,"response_get")
 
+    var stroe_table_arr=response.data.data.map((val,index)=>{
+      
+      if(val.item){
 
+      var head_all=val.item[0].item.map((ck_1)=>{
+        // if(val.item[0].submodule_name===null){
+          return([ck_1.allow_view==="Y",ck_1.allow_add==="Y",ck_1.allow_edit==="Y",ck_1.allow_delete==="Y",ck_1.allow_print==="Y"])
+        // }
+        })
+    
+        var head_all_concat=head_all
+    
+        if(head_all.length>1){
+          var head_all_concat=[]
+    
+        for(let m=0;m<head_all.length;m++){
+          head_all_concat.push(...head_all[m])
+          
+        }
+    
+        var head_view=[]
+        var head_add=[]
+        var head_edit=[]
+        var head_delete=[]
+        var head_print=[]
+    
+    
+        for(let n=0;n<head_all.length;n++){
+          head_view.push(head_all_concat[n*5])
+          head_add.push(head_all_concat[n*5+1])
+          head_edit.push(head_all_concat[n*5+2])
+          head_delete.push(head_all_concat[n*5+3])
+          head_print.push(head_all_concat[n*5+4])
+        }
+    
+    
+        }else{
+    
+          var head_view=[]
+          var head_add=[]
+          var head_edit=[]
+          var head_delete=[]
+          var head_print=[]
+          
+          var head_all_concat=head_all[0]
+          head_view.push(head_all[0][0])
+          head_add.push(head_all[0][1])
+          head_edit.push(head_all[0][2])
+          head_delete.push(head_all[0][3])
+          head_print.push(head_all[0][4])
+        }
 
     
-    var head_all_concat=head_all
-
-    if(head_all.length>1){
-      var head_all_concat=[]
-
-    for(let m=0;m<head_all.length;m++){
-      head_all_concat.push(...head_all[m])
-      
-    }
-
-    var head_view=[]
-    var head_add=[]
-    var head_edit=[]
-    var head_delete=[]
-    var head_print=[]
-
-
-    for(let n=0;n<head_all.length;n++){
-      head_view.push(head_all_concat[n*5])
-      head_add.push(head_all_concat[n*5+1])
-      head_edit.push(head_all_concat[n*5+2])
-      head_delete.push(head_all_concat[n*5+3])
-      head_print.push(head_all_concat[n*5+4])
-    }
-
-
-    }else{
-
-      var head_view=[]
-      var head_add=[]
-      var head_edit=[]
-      var head_delete=[]
-      var head_print=[]
-      
-      var head_all_concat=head_all[0]
-      head_view.push(head_all[0][0])
-      head_add.push(head_all[0][1])
-      head_edit.push(head_all[0][2])
-      head_delete.push(head_all[0][3])
-      head_print.push(head_all[0][4])
-    }
-
-
-
-
-    if(val.item[0].submodule_name!==null){
-      var subdata_ch_arr=[]
-      val.item.map((ck_sub,index)=>{
-      subdata_ch_arr.push(ck_sub)        
-      })
-
-      var sub_data_arr=[]
-      var inside_sub=[]
-
-      for(let x=0;x<subdata_ch_arr.length;x++){
-        sub_data_arr.push(...subdata_ch_arr[x].item)
-      }
-      console.log(sub_data_arr,"sub_data_arr")
-      var head_all_concat=[]
-      for(let y=0;y<sub_data_arr.length;y++){
-      if(sub_data_arr[y].screen_name){
-        head_all_concat.push(sub_data_arr[y].allow_view==="Y",sub_data_arr[y].allow_add==="Y",sub_data_arr[y].allow_edit==="Y",sub_data_arr[y].allow_delete==="Y",sub_data_arr[y].allow_print==="Y")
-      }else if(sub_data_arr[y].item){
-        console.log(sub_data_arr[y].item,"sub_data_arr[y].submodule_name")
-        for(let z=0;z<sub_data_arr[y].item.length;z++){
-          sub_data_arr[y].item[z]&& inside_sub.push(sub_data_arr[y].item[z])
+    
+    
+        if(val.item[0].submodule_name!==null){
+          var subdata_ch_arr=[]
+          val.item.map((ck_sub,index)=>{
+          subdata_ch_arr.push(ck_sub)        
+          })
+    
+          var sub_data_arr=[]
+          var inside_sub=[]
+    
+          for(let x=0;x<subdata_ch_arr.length;x++){
+            sub_data_arr.push(...subdata_ch_arr[x].item)
+          }
+          console.log(sub_data_arr,"sub_data_arr")
+          var head_all_concat=[]
+          for(let y=0;y<sub_data_arr.length;y++){
+          if(sub_data_arr[y].screen_name){
+            head_all_concat.push(sub_data_arr[y].allow_view==="Y",sub_data_arr[y].allow_add==="Y",sub_data_arr[y].allow_edit==="Y",sub_data_arr[y].allow_delete==="Y",sub_data_arr[y].allow_print==="Y")
+          }else if(sub_data_arr[y].item){
+            console.log(sub_data_arr[y].item,"sub_data_arr[y].submodule_name")
+            for(let z=0;z<sub_data_arr[y].item.length;z++){
+              sub_data_arr[y].item[z]&& inside_sub.push(sub_data_arr[y].item[z])
+            }
+    
+            for(let a=0;a<inside_sub.length;a++){
+              head_all_concat.push(inside_sub[a].allow_view==="Y",inside_sub[a].allow_add==="Y",inside_sub[a].allow_edit==="Y",inside_sub[a].allow_delete==="Y",inside_sub[a].allow_print==="Y")
+    
+            }
+    
+            
+    
+          }
         }
-
-        for(let a=0;a<inside_sub.length;a++){
-          head_all_concat.push(inside_sub[a].allow_view==="Y",inside_sub[a].allow_add==="Y",inside_sub[a].allow_edit==="Y",inside_sub[a].allow_delete==="Y",inside_sub[a].allow_print==="Y")
-
+        console.log(inside_sub,"inside_sub")
+    
+        console.log(head_all_concat,"head_all_concat")
+    
+    
+          var head_view=[]
+          var head_add=[]
+          var head_edit=[]
+          var head_delete=[]
+          var head_print=[]
+      
+      
+          for(let z=0;z<(head_all_concat.length/5);z++){
+            head_view.push(head_all_concat[z*5])
+            head_add.push(head_all_concat[z*5+1])
+            head_edit.push(head_all_concat[z*5+2])
+            head_delete.push(head_all_concat[z*5+3])
+            head_print.push(head_all_concat[z*5+4])
+          }
+    
+          console.log(head_all_concat,"head_all")
+          console.log(head_view,"head_view")
+          console.log(head_add,"head_add")
+          console.log(head_edit,"head_edit")
+          console.log(head_delete,"head_delete")
+          console.log(head_print,"head_print")
+            
+    
         }
-
-
-
-      }
-    }
-    console.log(inside_sub,"inside_sub")
-
-    console.log(head_all_concat,"head_all_concat")
-
-
-      var head_view=[]
-      var head_add=[]
-      var head_edit=[]
-      var head_delete=[]
-      var head_print=[]
-  
-  
-      for(let z=0;z<(head_all_concat.length/5);z++){
-        head_view.push(head_all_concat[z*5])
-        head_add.push(head_all_concat[z*5+1])
-        head_edit.push(head_all_concat[z*5+2])
-        head_delete.push(head_all_concat[z*5+3])
-        head_print.push(head_all_concat[z*5+4])
-      }
-
-      console.log(head_all_concat,"head_all")
-      console.log(head_view,"head_view")
-      console.log(head_add,"head_add")
-      console.log(head_edit,"head_edit")
-      console.log(head_delete,"head_delete")
-      console.log(head_print,"head_print")
+    
+        // console.log(head_all_concat,"head_all_concat")
         
-
-    }
-
-    // console.log(head_all_concat,"head_all_concat")
-
-
-
-          return this.setobject(<div>
-            <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-              <Panel header={<div className="grp_expanse_firstdata">
-              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
-                val.module_name}</div>   
-                <div>{<Green_checkBox checked={head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox("head_a",false)} value={this.state.head_a} />
-                    }</div>          
+    
+              return setobject(<div>
+               
+                <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                  <Panel header={<div className="grp_expanse_firstdata">
+                  <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                    val.module_name}</div>   
+                    <div>{<Green_checkBox checked={val.item && head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox("head_a",false)} value={this.state.head_a} />
+                        }</div>          
+                      <div>{
+                        <Green_checkBox checked={val.item && head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} />
+                        }
+                      </div>         
+                      <div>{
+                        <Green_checkBox checked={val.item && head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={val.item && head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={val.item && head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
+                      <div>{
+                        <Green_checkBox checked={val.item && head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
+                  
+                  </div>} key="1">
+                    {val.item.map((first_item)=>{
+            console.log(first_item,"first_item")
+              if(first_item.submodule_name===null){
+    
+                return(first_item.item.map((first_item_insidedata,index)=>{
+                  console.log(first_item_insidedata.allow_add,"allow_add")
+                      var alltrue_enable_row=[first_item_insidedata.allow_view==="Y",first_item_insidedata.allow_add==="Y",first_item_insidedata.allow_edit==="Y",first_item_insidedata.allow_delete==="Y",first_item_insidedata.allow_print==="Y"]
+    
+                      console.log(alltrue_enable_row.every((val)=>{return(val===true)}),"alltrue_enable_row")
+    
+                      return(
+                        <p>
+                  <div className="grp_expanse_data">
+                  <div className="firstname_grpaccs sub_module_name_top">{first_item_insidedata.screen_name}</div>
                   <div>{
-                    <Green_checkBox checked={head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} />
-                    }
-                  </div>         
-                  <div>{
-                    <Green_checkBox checked={head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-                  <div>{
-                    <Green_checkBox checked={head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-              
-              </div>} key="1">
-                {val.item.map((first_item)=>{
-        console.log(first_item,"first_item")
-          if(first_item.submodule_name===null){
-
-            return(first_item.item.map((first_item_insidedata,index)=>{
-              console.log(first_item_insidedata.allow_add,"allow_add")
-                  var alltrue_enable_row=[first_item_insidedata.allow_view==="Y",first_item_insidedata.allow_add==="Y",first_item_insidedata.allow_edit==="Y",first_item_insidedata.allow_delete==="Y",first_item_insidedata.allow_print==="Y"]
-
-                  console.log(alltrue_enable_row.every((val)=>{return(val===true)}),"alltrue_enable_row")
-
-                  return(
-                    <p>
-              <div className="grp_expanse_data">
-              <div className="firstname_grpaccs sub_module_name_top">{first_item_insidedata.screen_name}</div>
-              <div>{
-                    <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>   
-                  <div>{
-                    <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>      
-                  <div>{
-                    <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
+                        <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>   
+                      <div>{
+                        <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>      
+                      <div>{
+                        <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div> 
+                      <div>{
+                        <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div> 
                   </div> 
+                  </p>
+                      )
+                }
+                )
+                )
+                }else if(first_item.submodule_name){
+    
+                  console.log(first_item.item,"submodule_first")
+    
+                  return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                  <Panel header={<div className="grp_expanse_firstdata">
+                  <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                    first_item.submodule_name}</div>   
+                    {/* <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>          
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>         
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>   */}
+                  
+                  </div>} key="1">
+    
+                  {first_item.item.map((second_item)=>{
+              if(second_item.screen_name){
+                var second_module_row=[second_item.allow_view==="Y",second_item.allow_add==="Y",second_item.allow_edit==="Y",second_item.allow_delete==="Y",second_item.allow_print==="Y"].every((val)=>{return(val===true)})
+    
+    
+                      return(
+                        <p>
+                  <div className="grp_expanse_data">
+                  <div className="firstname_grpaccs sub_module_name_top">{second_item.screen_name}</div>
                   <div>{
-                    <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
+                        <Green_checkBox checked={second_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>   
+                      <div>{
+                        <Green_checkBox checked={second_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>         
+                      <div>{
+                        <Green_checkBox checked={second_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={second_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={second_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
+                      <div>{
+                        <Green_checkBox checked={second_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
                   </div> 
-              </div> 
-              </p>
-                  )
-            }
-            )
-            )
-            }else if(first_item.submodule_name){
-
-              console.log(first_item.item,"submodule_first")
-
-              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-              <Panel header={<div className="grp_expanse_firstdata">
-              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
-                first_item.submodule_name}</div>   
-                {/* <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>          
+                  </p>
+                      )
+                
+                }
+              else if(second_item.submodule_name){
+                  return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+                  <Panel header={<div className="grp_expanse_firstdata">
+                  <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+                    second_item.submodule_name}</div>   
+                    {/* <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>          
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>         
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>  
+                      <div>{
+                        <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>   */}
+                  
+                  </div>} key="1">
+    
+                  {second_item.item.map((third_item)=>{
+            console.log(third_item,"third_item")
+              if(third_item.screen_name){
+    
+                var third_module_row=[third_item.allow_view==="Y",third_item.allow_add==="Y",third_item.allow_edit==="Y",third_item.allow_delete==="Y",third_item.allow_print==="Y"].every((val)=>{return(val===true)})
+    
+            console.log(third_module_row,"third_module_row")
+                
+    
+    
+                      return(
+                        <p>
+                  <div className="grp_expanse_data">
+                  <div className="firstname_grpaccs sub_module_name_top">{third_item.screen_name}</div>
                   <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>         
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>   */}
-              
-              </div>} key="1">
-
-              {first_item.item.map((second_item)=>{
-          if(second_item.screen_name){
-            var second_module_row=[second_item.allow_view==="Y",second_item.allow_add==="Y",second_item.allow_edit==="Y",second_item.allow_delete==="Y",second_item.allow_print==="Y"].every((val)=>{return(val===true)})
-
-
-                  return(
-                    <p>
-              <div className="grp_expanse_data">
-              <div className="firstname_grpaccs sub_module_name_top">{second_item.screen_name}</div>
-              <div>{
-                    <Green_checkBox checked={second_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>   
-                  <div>{
-                    <Green_checkBox checked={second_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>         
-                  <div>{
-                    <Green_checkBox checked={second_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={second_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={second_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-                  <div>{
-                    <Green_checkBox checked={second_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-              </div> 
-              </p>
-                  )
-            
-            }
-          else if(second_item.submodule_name){
-              return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-              <Panel header={<div className="grp_expanse_firstdata">
-              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
-                second_item.submodule_name}</div>   
-                {/* <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>          
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>         
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>  
-                  <div>{
-                    <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>   */}
-              
-              </div>} key="1">
-
-              {second_item.item.map((third_item)=>{
-        console.log(third_item,"third_item")
-          if(third_item.screen_name){
-
-            var third_module_row=[third_item.allow_view==="Y",third_item.allow_add==="Y",third_item.allow_edit==="Y",third_item.allow_delete==="Y",third_item.allow_print==="Y"].every((val)=>{return(val===true)})
-
-        console.log(third_module_row,"third_module_row")
-            
-
-
-                  return(
-                    <p>
-              <div className="grp_expanse_data">
-              <div className="firstname_grpaccs sub_module_name_top">{third_item.screen_name}</div>
-              <div>{
-                    <Green_checkBox checked={third_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>   
-                  <div>{
-                    <Green_checkBox checked={third_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>      
-                  <div>{
-                    <Green_checkBox checked={third_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>           
-                  <div>{
-                    <Green_checkBox checked={third_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div>        
-                  <div>{
-                    <Green_checkBox checked={third_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
+                        <Green_checkBox checked={third_module_row} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>   
+                      <div>{
+                        <Green_checkBox checked={third_item.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>      
+                      <div>{
+                        <Green_checkBox checked={third_item.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>           
+                      <div>{
+                        <Green_checkBox checked={third_item.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div>        
+                      <div>{
+                        <Green_checkBox checked={third_item.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div> 
+                      <div>{
+                        <Green_checkBox checked={third_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        }
+                      </div> 
                   </div> 
-                  <div>{
-                    <Green_checkBox checked={third_item.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
-                    }
-                  </div> 
-              </div> 
-              </p>
-                  )
-            
-            }
-          // else if(third_item.submodule_name){
-          //     return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
-          //     <Panel header={<div className="grp_expanse_firstdata">
-          //     <div className="grp_firstdata_clr firstname_grpaccs">{
-          //       third_item.submodule_name}</div>   
-          //       <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>          
-          //         <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>         
-          //         <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>           
-          //         <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>        
-          //         <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>  
-          //         <div>{
-          //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
-          //           }
-          //         </div>  
-              
-          //     </div>} key="1">
-
-
-          //       </Panel>
-          //       </Collapse>
-          //     )
-
-          //   }
-            })}
-
-
-                </Panel>
-                </Collapse>
-              )
-
-            }
-
+                  </p>
+                      )
+                
+                }
+              // else if(third_item.submodule_name){
+              //     return(<Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+              //     <Panel header={<div className="grp_expanse_firstdata">
+              //     <div className="grp_firstdata_clr firstname_grpaccs">{
+              //       third_item.submodule_name}</div>   
+              //       <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>          
+              //         <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>         
+              //         <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>           
+              //         <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>        
+              //         <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>  
+              //         <div>{
+              //           <Green_checkBox checked={""} change_checkbox={()=>this.change_checkbox()} value={""}/>
+              //           }
+              //         </div>  
+                  
+              //     </div>} key="1">
+    
+    
+              //       </Panel>
+              //       </Collapse>
+              //     )
+    
+              //   }
                 })}
-
-
-                </Panel>
-                </Collapse>
+    
+    
+                    </Panel>
+                    </Collapse>
+                  )
+    
+                }
+    
+                    })}
+    
+    
+                    </Panel>
+                    </Collapse>
+                  )
+    
+                }
+    
+                    })}
+                  </Panel>
+                  </Collapse>
+              </div>
               )
+      }else{
+        return setobject(<div>
+               
+          <Collapse expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}>
+             <Panel header={<div className="grp_expanse_firstdata">
+             <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
+               val.module_name}</div> 
+                
+             
+             </div>} key="1">
+               </Panel>
+               {/* <div>{"NO DATA"}</div>    */}
 
-            }
+               </Collapse>
+               </div>)
+      }
 
-                })}
-              </Panel>
-              </Collapse>
-          </div>
-          )
+    
+    })
+    
+    console.log(stroe_table_arr,"stroe_table_arr")
+    
+    this.setState({
+    rows:stroe_table_arr
+    })
 
-})
-
-console.log(stroe_table_arr,"stroe_table_arr")
-
-this.setState({
-rows:stroe_table_arr
-})
-
+    
+}).catch(function (error) {
+  console.log(error,"error_get");
+});
 }
 
 change_checkbox=(name,val)=>{
-  // alert(name)
-  // alert(val)
-  // var enable_val="y"
-  // if(this.state[name]===true){
-  //   enable_val="n"
-  // }
-
-  // alert(enable_val)
-
-
-//  this.setState({
-//    [name]:enable_val,
-//    once_open:true
-//  })
- 
-}
-
-setobject=(name)=>{
-  return name
-}
-  
-check_recall=()=>{
 
  
 }
+
+
 
 
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
     const { classes } = this.props;
-console.log(rows[0],"rows")
-//  if(this.state.once_open){
-//   this.check_recall()
-//   this.setState({
-//     once_open:false
-//   })
-//  }
+    console.log(rows[0],"rows")
 
 
 
@@ -1171,65 +1251,6 @@ console.log(rows[0],"rows")
                       >
                         <TableCell padding={'none'} colSpan={12} className="grp_dropdown_datahead">
                         <div>{row}</div> 
-                          {/* {this.state.stroe_table_arr} */}
-                        {/* <Collapse 
-                        expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
-                        
-                        >
-                            <Panel header={<div className="grp_expanse_firstdata"><div className="grp_firstdata_clr firstname_grpaccs">
-                                {row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>
-                        </div>} key="1">
-
-                        <Collapse 
-                        expandIcon={({ isActive }) => <Icon type="caret-right" className="nested_iconclr" rotate={isActive ? 90 : 0} />}
-                        
-                        > 
-                        <Panel header={
-                          <div className="grp_expanse_nested">
-                          <div className="firstname_grpaccs">{row.name}</div>   
-                          <div>{row.all}</div>          
-                          <div>{row.view}</div>         
-                          <div>{row.add}</div>           
-                          <div>{row.edit}</div>        
-                          <div>{row.delete_chk}</div>
-                          <div>{row.print}</div>       
-                          </div>
-
-                        } key="1">
-
-                            <p >
-                        
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>      
-                        </div>
-
-                        <div className="grp_expanse_data">
-                        <div className="firstname_grpaccs">{row.name}</div>   
-                        <div>{row.all}</div>          
-                        <div>{row.view}</div>         
-                        <div>{row.add}</div>           
-                        <div>{row.edit}</div>        
-                        <div>{row.delete_chk}</div>
-                        <div>{row.print}</div>     
-                        </div>
-                        </p>
-                        </Panel>
-                      </Collapse>
-                            </Panel>
-                        </Collapse> */}
                         </TableCell>
                       </TableRow>
                     );

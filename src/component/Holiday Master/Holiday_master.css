@@ -30,3 +30,8 @@
 .cus_wid_commission_head tr th:nth-child(3){
     width: 35%;
 }
+
+.titleBtnFlex{
+        justify-content: space-between;
+        width: 90%;
+}

@@ -149,7 +149,7 @@ width:59% !important;
 .grp_expanse_firstdata div div label span svg{
     font-size: 20px !important;
     height: 20px;
-    color:#5377ee;
+    color:#82AE3F;
 
 }
 
@@ -171,7 +171,7 @@ width:59% !important;
 .grp_expanse_data div div label span svg{
     font-size: 20px !important;
     height: 20px;
-    color:#5377ee;
+    color:#82AE3F;
 }
 
 
@@ -257,4 +257,8 @@ width:59% !important;
 
 .sub_module_name_top{
     top: 10px !important;
+}
+
+.excessModuleHeight{
+    height:40px
 }

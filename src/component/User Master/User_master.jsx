@@ -128,13 +128,18 @@ recall=(type,msgdyn)=>{
         })
         .then(function (response) {
         var arrval=[]
+        var get_pass=[]
+
         response.data.data.map((value)=>{
             arrval.push({user_name:value.user_name,mobileno:value.mobileno,email:value.email,user_type:value.user_type,groupname:value.groupname,status:(value.active_flag===1?<Chip label="Active" className="status_usermaster_active" variant="outlined"/>:<Chip label="In-Active" className="status_usermaster_inactive" variant="outlined"/>),id:value.id})
-    })
+            get_pass.push({password:value.password,id:value.id})
+          })
         self.setState({
             currentdata:arrval,
             loading:false,
-            props_loading:false
+            props_loading:false,
+            pass_arr:get_pass
+
         })
 
         notification[type]({
@@ -293,6 +298,8 @@ modelopen=(data,id)=>{
     let edit_pass=this.state.pass_arr.filter((val)=>{
       return val.id===id
     })
+
+    console.log(edit_pass,"editpass")
     this.setState({
 
       username:editdata[0].user_name,

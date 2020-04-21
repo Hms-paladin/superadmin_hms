@@ -26,14 +26,17 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Dropdownantd from "../../formcomponent/dropdownantd";
-import Green_checkBox from "../../formcomponent/Green_checkBox" 
+import Green_checkBox from "../../formcomponent/Green_checkBox";
+import { Spin,notification } from 'antd';
 import {apiurl} from "../../../src/App.js";
 
 import "./groupaccess.css"
 
 const { Panel } = Collapse;
 const axios = require('axios');
-
+var dateFormat = require('dateformat');
+var now = new Date();
+var current_da_n_ti=dateFormat(now, "yyyy-mm-dd hh:MM:ss ")
 
 // function createData(
 //     vendor,
@@ -275,8 +278,10 @@ class Groupaccess extends Component {
       title:"",
       rotateicon:true,
       conditionalrendering:false,
-      // head_a:true,
+      // head_all:true,
       once_open:false,
+      loading:false,
+      insideLoading:false
     };
   }
 
@@ -376,13 +381,24 @@ class Groupaccess extends Component {
       })
   }
   changeDynamic=(data,setname)=>{
-    this.setState({
-        [setname]:data
+
+    var getRowData=this.state.group_arr.filter((val)=>{
+      return(val.id===data)
     })
+    this.setState({
+      [setname]:data
+  })
+
+  console.log(getRowData,"getRowData")
+
+    this.recall_permission(getRowData[0].id)
 
 }
 
 componentDidMount(){
+  this.setState({
+    loading:true
+  })
 
   var self=this
 axios({
@@ -397,7 +413,6 @@ axios({
   self.setState({
     group:arrval[0].dropdown_val,
       group_arr:arrval,
-      loading:false
   })
 })
 .catch(function (error) {
@@ -508,7 +523,7 @@ var data4=[
               "item": [
                   {
                       "id": 0,
-                      "screen_name": " img_Upload",
+                      "screen_name": "img_Upload",
                       "allow_add": "Y",
                       "allow_edit": "Y",
                       "allow_delete": "Y",
@@ -727,7 +742,7 @@ var data2= [
 
 }
 
-recall_permission=()=>{
+recall_permission=(showNotification)=>{
 
   function setobject(name){
     return name
@@ -738,7 +753,7 @@ recall_permission=()=>{
     method: 'post',
     url: `${apiurl}get_mas_group_permission`,
     data:{
-      "group_id":"74"
+      "group_id":85
     }
 }).then( response=> {
     console.log(response.data.data,"response_get")
@@ -778,7 +793,6 @@ recall_permission=()=>{
           head_print.push(head_all_concat[n*5+4])
         }
     
-    
         }else{
     
           var head_view=[]
@@ -795,9 +809,6 @@ recall_permission=()=>{
           head_print.push(head_all[0][4])
         }
 
-    
-    
-    
         if(val.item[0].submodule_name!==null){
           var subdata_ch_arr=[]
           val.item.map((ck_sub,index)=>{
@@ -825,8 +836,6 @@ recall_permission=()=>{
               head_all_concat.push(inside_sub[a].allow_view==="Y",inside_sub[a].allow_add==="Y",inside_sub[a].allow_edit==="Y",inside_sub[a].allow_delete==="Y",inside_sub[a].allow_print==="Y")
     
             }
-    
-            
     
           }
         }
@@ -860,7 +869,6 @@ recall_permission=()=>{
     
         }
     
-        // console.log(head_all_concat,"head_all_concat")
         
     
               return setobject(<div>
@@ -869,26 +877,26 @@ recall_permission=()=>{
                   <Panel header={<div className="grp_expanse_firstdata">
                   <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
                     val.module_name}</div>   
-                    <div>{<Green_checkBox checked={val.item && head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox("head_a",false)} value={this.state.head_a} />
+                    <div>{<Green_checkBox checked={val.item && head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_all_concat.every((val)=>{return(val===true)}),"head_all",val.item[0].item)}/>
                         }</div>          
                       <div>{
-                        <Green_checkBox checked={val.item && head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} />
+                        <Green_checkBox checked={val.item && head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_view.every((val)=>{return(val===true)}),"head_view",val.item[0].item)} />
                         }
                       </div>         
                       <div>{
-                        <Green_checkBox checked={val.item && head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={val.item && head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_add.every((val)=>{return(val===true)}),"head_add",val.item[0].item)} />
                         }
                       </div>           
                       <div>{
-                        <Green_checkBox checked={val.item && head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={val.item && head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_edit.every((val)=>{return(val===true)}),"head_edit",val.item[0].item)}/>
                         }
                       </div>        
                       <div>{
-                        <Green_checkBox checked={val.item && head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={val.item && head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_delete.every((val)=>{return(val===true)}),"head_delete",val.item[0].item)}/>
                         }
                       </div>  
                       <div>{
-                        <Green_checkBox checked={val.item && head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={val.item && head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_print.every((val)=>{return(val===true)}),"head_print",val.item[0].item)}/>
                         }
                       </div>  
                   
@@ -898,37 +906,36 @@ recall_permission=()=>{
               if(first_item.submodule_name===null){
     
                 return(first_item.item.map((first_item_insidedata,index)=>{
-                  console.log(first_item_insidedata.allow_add,"allow_add")
                       var alltrue_enable_row=[first_item_insidedata.allow_view==="Y",first_item_insidedata.allow_add==="Y",first_item_insidedata.allow_edit==="Y",first_item_insidedata.allow_delete==="Y",first_item_insidedata.allow_print==="Y"]
-    
-                      console.log(alltrue_enable_row.every((val)=>{return(val===true)}),"alltrue_enable_row")
+                      
     
                       return(
                         <p>
+                          {/* tests */}
                   <div className="grp_expanse_data">
                   <div className="firstname_grpaccs sub_module_name_top">{first_item_insidedata.screen_name}</div>
                   <div>{
-                        <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,alltrue_enable_row.every((val)=>{return(val===true)}),"allow_row_all"+index,first_item_insidedata,index)} />
                         }
                       </div>   
                       <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_view==="Y" ?"N":"Y","allow_view"+index,first_item_insidedata,index)} />
                         }
                       </div>      
                       <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_add==="Y" ?"N":"Y","allow_add"+index,first_item_insidedata,index)} />
                         }
                       </div>           
                       <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_edit==="Y" ?"N":"Y","allow_edit"+index,first_item_insidedata,index)} />
                         }
                       </div>        
                       <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_delete==="Y" ?"N":"Y","allow_delete"+index,first_item_insidedata,index)} />
                         }
                       </div> 
                       <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox()} value={""}/>
+                        <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_print==="Y" ?"N":"Y","allow_print"+index,first_item_insidedata,index)} />
                         }
                       </div> 
                   </div> 
@@ -1125,20 +1132,15 @@ recall_permission=()=>{
               //   }
                 })}
     
-    
                     </Panel>
                     </Collapse>
                   )
     
                 }
-    
                     })}
-    
-    
                     </Panel>
                     </Collapse>
                   )
-    
                 }
     
                     })}
@@ -1153,12 +1155,13 @@ recall_permission=()=>{
              <Panel header={<div className="grp_expanse_firstdata">
              <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
                val.module_name}</div> 
-                
-             
              </div>} key="1">
+             <p>
+                  <div className="grp_expanse_data  excessModuleHeight">
+                  <div className="firstname_grpaccs sub_module_name_top">{"NO DATA"}</div>
+                  </div>
+              </p>
                </Panel>
-               {/* <div>{"NO DATA"}</div>    */}
-
                </Collapse>
                </div>)
       }
@@ -1169,18 +1172,211 @@ recall_permission=()=>{
     console.log(stroe_table_arr,"stroe_table_arr")
     
     this.setState({
-    rows:stroe_table_arr
+    rows:stroe_table_arr,
+    loading:false,
+    insideLoading:false
     })
+    if(showNotification){
+      notification.success({
+        className:"show_frt",
+        message: "Record" +" "+"update"+" "+"sucessfully",
+      })
+    }
 
     
 }).catch(function (error) {
   console.log(error,"error_get");
 });
+
+
 }
 
-change_checkbox=(name,val)=>{
+change_checkbox=(id,val,name,allvalue,index)=>{
+  this.setState({
+    insideLoading:true
+  })
 
- 
+  console.log(id,"onclickval")
+  console.log(val,"onclickval")
+  console.log(name,"onclickval")
+  console.log(allvalue,"onclickval")
+
+  if(name==="allow_row_all"+index){
+    if(val){
+      var allow_view="N"
+      var allow_add="N"
+      var allow_edit="N"
+      var allow_delete="N"
+      var allow_print="N"
+    }else{
+      var allow_view="Y"
+      var allow_add="Y"
+      var allow_edit="Y"
+      var allow_delete="Y"
+      var allow_print="Y"
+    }
+    var sendData=[{
+      "group_id": "85",
+      "screen_master_id": id,
+      "allow_view": allow_view,
+      "allow_add":allow_add,
+      "allow_edit":allow_edit ,
+      "allow_delete": allow_delete,
+      "allow_print": allow_print,
+      "active_flag": "1",
+      "created_by": "1",
+      "created_on": current_da_n_ti,
+      "modified_by": "1",
+      "modified_on": current_da_n_ti
+  }]
+
+  }
+
+  else if(name==="head_all"){
+    var sendData=[]
+    if(val){
+      allvalue.map((data)=>{
+
+        sendData.push({"group_id": "85",
+        "screen_master_id": data.id,
+        "allow_view": "N",
+        "allow_add":"N",
+        "allow_edit":"N" ,
+        "allow_delete": "N",
+        "allow_print": "N",
+        "active_flag": "1",
+        "created_by": "1",
+        "created_on": current_da_n_ti,
+        "modified_by": "1",
+        "modified_on": current_da_n_ti})
+
+})
+    }else{
+      allvalue.map((data)=>{
+
+        sendData.push({"group_id": "85",
+        "screen_master_id": data.id,
+        "allow_view": "Y",
+        "allow_add":"Y",
+        "allow_edit":"Y" ,
+        "allow_delete": "Y",
+        "allow_print": "Y",
+        "active_flag": "1",
+        "created_by": "1",
+        "created_on": current_da_n_ti,
+        "modified_by": "1",
+        "modified_on": current_da_n_ti})
+
+})
+    }
+
+  }else if(name==="head_view" || name==="head_add" || name==="head_edit" || name==="head_delete"|| name==="head_print"){
+    var sendData=[]
+    if(val){
+      allvalue.map((data)=>{
+
+        sendData.push({"group_id": "85",
+        "screen_master_id": data.id,
+        "allow_view": name==="head_view"?"N":data.allow_view,
+        "allow_add":name==="head_add"?"N":data.allow_add,
+        "allow_edit":name==="head_edit"?"N":data.allow_edit ,
+        "allow_delete": name==="head_delete"?"N":data.allow_delete,
+        "allow_print": name==="head_print"?"N":data.allow_print,
+        "active_flag": "1",
+        "created_by": "1",
+        "created_on": current_da_n_ti,
+        "modified_by": "1",
+        "modified_on": current_da_n_ti})
+
+})
+    }else{
+      allvalue.map((data)=>{
+
+        sendData.push({"group_id": "85",
+        "screen_master_id": data.id,
+        "allow_view": name==="head_view"?"Y":data.allow_view,
+        "allow_add":name==="head_add"?"Y":data.allow_add,
+        "allow_edit":name==="head_edit"?"Y":data.allow_edit ,
+        "allow_delete": name==="head_delete"?"Y":data.allow_delete,
+        "allow_print": name==="head_print"?"Y":data.allow_print,
+        "active_flag": "1",
+        "created_by": "1",
+        "created_on": current_da_n_ti,
+        "modified_by": "1",
+        "modified_on": current_da_n_ti})
+
+})
+  }
+}
+  
+  
+  else{
+  var allow_view=allvalue.allow_view
+  var allow_add=allvalue.allow_add
+  var allow_edit=allvalue.allow_edit
+  var allow_delete=allvalue.allow_delete
+  var allow_print=allvalue.allow_print
+  
+  switch (name) {
+    case "allow_view"+index:
+      allow_view = val;
+      break;
+    case "allow_add"+index:
+      allow_add = val;
+      break;
+    case "allow_edit"+index:
+      allow_edit = val;
+      break;
+    case "allow_delete"+index:
+      allow_delete = val;
+      break;
+    case "allow_print"+index:
+      allow_print = val;
+      break;  
+  }
+
+  var sendData=[{
+    "group_id": "85",
+    "screen_master_id": id,
+    "allow_view": allow_view,
+    "allow_add":allow_add,
+    "allow_edit":allow_edit ,
+    "allow_delete": allow_delete,
+    "allow_print": allow_print,
+    "active_flag": "1",
+    "created_by": "1",
+    "created_on": current_da_n_ti,
+    "modified_by": "1",
+    "modified_on": current_da_n_ti
+}]
+}
+
+console.log(sendData,"head_allhead_all")
+
+  // alert("tests")
+            var self=this
+            axios({
+                method: 'put',
+                url: `${apiurl}edit_mas_group_permission`,
+                data:
+                    {
+                      "submit":sendData
+                        
+                    }
+
+                })
+                .then(function (response) {
+                    self.recall_permission(true)
+                    console.log(response,"successs")
+                    self.setState({
+                    })
+                })
+                .catch(function (error) {
+                    console.log(error,"error");
+                });
+                this.setState({
+                    insertmodalopen:false
+                })
 }
 
 
@@ -1196,20 +1392,24 @@ change_checkbox=(name,val)=>{
 
 
     return (
+      <div>
+                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
+      <Spin className="spinner_align" spinning={this.state.insideLoading}>
       <div className="VendorDetailsDiv grp_dropdown_tble">
          <div className="group_accessrights_header">
           <div className="group_accessrights_titleuser"><h3>GROUP ACCESS RIGHTS</h3></div>
 
           <div className="group_accessrights_dropdown">
           <h4>Group</h4>
-          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={this.state.group_arr} changeData={(data)=>this.changeDynamic(data,"Group")} 
+          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={this.state.group_arr} changeData={(data)=>this.changeDynamic(data,"group")} 
           value={this.state.group} />
           </div>
           
           
           <div className="btn_group_acceess_flex">
-          <Button className="accessrights_button_cancel">Cancel</Button>
-          <Button className="accessrights_button_save">Save</Button></div>
+          {/* <Button className="accessrights_button_cancel">Cancel</Button>
+          <Button className="accessrights_button_save">Save</Button> */}
+          </div>
           </div>
         <Paper className="paper">
           <div className="tableWrapper">
@@ -1273,6 +1473,9 @@ change_checkbox=(name,val)=>{
                   ActionsComponent={TablePaginationActionsWrapped}
                 />
         </Paper>
+      </div>
+      </Spin>
+      }
       </div>
     );
   }

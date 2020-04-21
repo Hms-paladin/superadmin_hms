@@ -31,3 +31,53 @@
 .approval_cus_iconadd table>tbody >tr >td:last-child{
         padding-left:0px !important;
     }
+
+.approvalInputdnone{
+    display: none;
+}    
+
+.ViewfontApproval{
+    font-size: 18px;
+    justify-content: space-between;
+    white-space: nowrap;
+    /* width: 350px; */
+    /* width:50%; */
+}
+
+.valueMarginApproval div{
+    margin-bottom: 1.633rem!important;
+    position: relative;
+    right: 40px;
+    font-size: 17px;
+}
+
+.jusBetweenApproval div{
+    justify-content: space-between;
+}
+
+.jusBetweenApproval{
+    width: 50%;
+}
+
+.customwidth_dialogApproval .MuiDialog-paperWidthXs {
+    max-width: 536px;
+}
+
+.imgWidthApproval{
+    width: 60%;
+    height: 60%;
+}
+
+.clrimgApproval{
+    color:#82AE3F;
+    text-align: center;
+    font-size: 18px;
+}
+
+.customwidth_dialogApproval .MuiDialogContent-dividers{
+    padding: 36px 65px;
+}
+
+.borderredApproval{
+    border-color: red !important;
+}

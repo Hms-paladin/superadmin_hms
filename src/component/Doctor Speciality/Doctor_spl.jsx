@@ -87,7 +87,6 @@ recall=(type,msgdyn)=>{
 add_data=()=>{
     this.setState({props_loading:true})
 
-
     var self=this
     axios({
     method: 'post',

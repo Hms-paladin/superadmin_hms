@@ -100,7 +100,7 @@ body {
 /* notification css */
 
 .ant-notification{
-    z-index:1202 !important;
+    z-index:1300 !important;
     width:330px !important;
 }
 

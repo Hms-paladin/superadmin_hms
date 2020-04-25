@@ -25,7 +25,8 @@ export default class Training_cat extends React.Component{
         deleteopen:false,
         loading:true,
         props_loading:false,
-
+        errmsg: null,
+        category:"",
     }
 
 
@@ -81,6 +82,11 @@ export default class Training_cat extends React.Component{
         }
 
         add_data=()=>{
+            if (this.state.category === "") {
+                this.setState({
+                    errmsg: "Field is Required"
+                })
+            } else {
             this.setState({props_loading:true})
 
             var self=this
@@ -88,7 +94,7 @@ export default class Training_cat extends React.Component{
             method: 'post',
             url: `${apiurl}insertTrainingCategory`,
             data:{
-                "trainingCatName":this.state.create_group,
+                "trainingCatName":this.state.category,
                 "createdBy":"1"
             },
             })
@@ -102,12 +108,18 @@ export default class Training_cat extends React.Component{
 
             this.setState({
                 insertmodalopen:false,
-                create_group:""
+                category:""
             })
+        }
         }
 
 
         update_data=()=>{
+            if (this.state.idname === "") {
+                this.setState({
+                    errmsg: "Field is Required"
+                })
+            } else{
             this.setState({props_loading:true})
 
             var self=this
@@ -129,6 +141,7 @@ export default class Training_cat extends React.Component{
                 this.setState({
                     insertmodalopen:false
                 })
+            }
         }
 
 
@@ -140,7 +153,7 @@ export default class Training_cat extends React.Component{
                 var iddata=this.state.currentdata.filter((value)=>
                 value.id===id 
             )
-                this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id})
+                this.setState({insertmodalopen:true,modeltype:data,idname:iddata[0].trainingCatName,cur_id:id,errmsg:null})
             }
 
         }
@@ -168,11 +181,13 @@ export default class Training_cat extends React.Component{
         changeDynamic=(data)=>{
             if(this.state.modeltype==="view"){
                 this.setState({
-                    create_group:data
+                    category:data,
+                    errmsg:null
                 })
             }else{
                 this.setState({
-                    idname:data
+                    idname:data,
+                    errmsg:null
                 })
             }
             
@@ -238,7 +253,10 @@ export default class Training_cat extends React.Component{
             <div className="create_category">
             <Inputantd label="Category" className="category_option" placeholder="" 
             changeData={(data)=>this.changeDynamic(data)} 
-            value={this.state.modeltype==="view"?this.state.create_group:this.state.idname}
+            value={this.state.modeltype==="view"?this.state.category:this.state.idname}
+            autoFocus={true} 
+            errmsg={this.state.errmsg}
+            onPressEnter={this.state.modeltype === "edit" ?this.update_data:this.add_data}
             />
             <div className="category_button">
             <Button className="category_button_cancel" onClick={this.closemodal}>Cancel</Button>

@@ -69,8 +69,11 @@ import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import { Icon, message, Popconfirm } from "antd";
 import { Collapse } from 'antd';
+import createHistory from 'history/createBrowserHistory';
+import { Redirect } from 'react-router-dom';
 
 const { Panel } = Collapse;
+const history = createHistory()
 
 
 const GreenRadio = withStyles({
@@ -157,7 +160,7 @@ class Homepage extends React.Component {
     iconopen: true,
     activeKeyTrainer: "1",
     iconopenTrainer: true,
-    activeKeyUser:"1",
+    activeKeyUser: "1",
     iconopenUser: true,
 
   };
@@ -210,20 +213,20 @@ class Homepage extends React.Component {
     else if (name === "userMaster") {
       this.setState({
         userMaster: true,
-        userType:false,
-        userGroup:false
+        userType: false,
+        userGroup: false
       })
-    }else if (name === "userType") {
+    } else if (name === "userType") {
       this.setState({
         userMaster: false,
-        userType:true,
-        userGroup:false
+        userType: true,
+        userGroup: false
       })
-    }else if (name === "userGroup") {
+    } else if (name === "userGroup") {
       this.setState({
         userMaster: false,
-        userType:false,
-        userGroup:true
+        userType: false,
+        userGroup: true
       })
     }
     else {
@@ -253,7 +256,7 @@ class Homepage extends React.Component {
       })
     }
   }
-  
+
 
 
   iconClick = () => {
@@ -276,7 +279,7 @@ class Homepage extends React.Component {
     }
   }
 
-                /* useraccess,usermaster,usertype,usergroup */
+  /* useraccess,usermaster,usertype,usergroup */
 
   iconClickUser = () => {
 
@@ -339,6 +342,10 @@ class Homepage extends React.Component {
     console.log(this.state.current_location, "current_location")
     console.log(this.state, "state")
 
+    if (window.location.pathname === "/") {
+      return <Redirect to="/doctorspecial" />
+    }
+
 
     return (
       <div className="drawerpage_container">
@@ -362,7 +369,9 @@ class Homepage extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <div className={`${this.state.open ? "dropdown-container" : "dropdown-container_close"}`}>
+
+
+              {/* <div className={`${this.state.open ? "dropdown-container" : "dropdown-container_close"}`}>
                 <Dropdown >
 
                   <Badge color="secondary" variant="dot" className={classes.margin}>
@@ -370,13 +379,13 @@ class Homepage extends React.Component {
                   </Badge>
                   <Dropdown.Toggle variant="my_style" id="dropdown-basic" onClick={this.logoutOpen}>
                     My Profile
-  </Dropdown.Toggle>
+                </Dropdown.Toggle>
 
-                  {/* <Dropdown.Menu className="dropdown-menu" >
-     <Dropdown.Item href="#/action-1">Action 1</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Action 2</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Log out</Dropdown.Item> 
-  </Dropdown.Menu>  */}
+                   <Dropdown.Menu className="dropdown-menu" >
+                          <Dropdown.Item href="#/action-1">Action 1</Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">Action 2</Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">Log out</Dropdown.Item> 
+                        </Dropdown.Menu>  
                 </Dropdown>
 
                 <div className="date-wrapper1">
@@ -385,10 +394,10 @@ class Homepage extends React.Component {
                     <large className="date">  <Moment format='DD-MM-YYYY h:mm A'>{date}</Moment> </large>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
 
-              <Avatar className="Avatar-image" alt="avatar-missing" src={avatar} onClick={this.viewmodalOpen} className={classes.avatar} />
+              {/* <Avatar className="Avatar-image" alt="avatar-missing" src={avatar} onClick={this.viewmodalOpen} className={classes.avatar} /> */}
 
             </Toolbar>
           </AppBar>
@@ -617,7 +626,7 @@ class Homepage extends React.Component {
                 </ListItemIcon>
                 <ListItemText primary="Revenue vendor payment" />
               </MenuItem>
-              
+
 
               <MenuItem component={Link} to="/groupaccess" className={current_location === "/groupaccess" && "active_text_heading"}>
                 <ListItemIcon>
@@ -637,9 +646,9 @@ class Homepage extends React.Component {
                   className="paperNone"
                   expandIconPosition={"right"}
                 >*/}
-                {/* useraccess,usermaster,usertype,usergroup */}
+              {/* useraccess,usermaster,usertype,usergroup */}
 
-              <MenuItem className={`${current_location === "/useraccess" ? "active_text_heading" : current_location === "/usermaster" ? "active_text_heading" : current_location === "/usertype" ? "active_text_heading":current_location === "/usergroup" && "active_text_heading"} IconBaseline`}>
+              <MenuItem className={`${current_location === "/useraccess" ? "active_text_heading" : current_location === "/usermaster" ? "active_text_heading" : current_location === "/usertype" ? "active_text_heading" : current_location === "/usergroup" && "active_text_heading"} IconBaseline`}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={AdminUser} /></div>
@@ -650,7 +659,7 @@ class Homepage extends React.Component {
                 <Collapse
                   bordered={false}
 
-                  activeKey={this.state.iconopenUser ? [current_location === "/usermaster" ? "1" : current_location === "/usertype"?"1":current_location === "/usergroup" && "1"] : [this.state.activeKeyUser === "1" && "1"]}
+                  activeKey={this.state.iconopenUser ? [current_location === "/usermaster" ? "1" : current_location === "/usertype" ? "1" : current_location === "/usergroup" && "1"] : [this.state.activeKeyUser === "1" && "1"]}
 
                   expandIcon={({ isActive }) => <Icon onClick={this.iconClickUser} type="caret-right" rotate={isActive ? 90 : 0} />}
                   className="paperNone"
@@ -766,15 +775,15 @@ class Homepage extends React.Component {
             <div className={classes.toolbar} />
             <div>
               {children}
-              <Route exact path={`/`} component={Dashboard} />
+              {/* <Route exact path={`/`} component={Dashboard} /> */}
+
+              <Route exact path={'/doctorspecial'} component={Doctor_spl} />
 
               <Route exact path={"/advertisemanage"} component={Advertise_manage} />
 
               <Route exact path={"/mediaupload"} component={Media_upload} />
 
               <Route exact path={'/approvalmanage'} component={Approval_manage} />
-
-              <Route exact path={'/doctorspecial'} component={Doctor_spl} />
 
               <Route exact path={'/trainer'} component={Trainer} />
 

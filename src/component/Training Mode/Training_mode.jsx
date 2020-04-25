@@ -27,6 +27,8 @@ export default class Training_mode extends React.Component{
         deleteopen:false,
         loading:true,
         props_loading:false,
+        training_mode:"",
+        errmsg: null,
     }
 
 
@@ -53,6 +55,11 @@ export default class Training_mode extends React.Component{
 }
 
     add_data=()=>{
+        if (this.state.training_mode === "") {
+            this.setState({
+                errmsg: "Field is Required"
+            })
+        } else {
         this.setState({props_loading:true})
 
         var self=this
@@ -78,8 +85,9 @@ export default class Training_mode extends React.Component{
 
         this.setState({
             insertmodalopen:false,
-            // create_group:""
+            training_mode:""
         })
+    }
     }
 
     recall=(type,msgdyn)=>{
@@ -140,17 +148,23 @@ export default class Training_mode extends React.Component{
     changeDynamic=(data)=>{
         if(this.state.modeltype==="view"){
             this.setState({
-                training_mode:data
+                training_mode:data,
+                errmsg:null
             })
         }else{
             this.setState({
-                idnamedata:data
+                idnamedata:data,errmsg:null
             })
         }
         
     }
 
     update_data=()=>{
+        if (this.state.idnamedata === "") {
+            this.setState({
+                errmsg: "Field is Required"
+            })
+        } else{
         this.setState({props_loading:true})
 
         var self=this
@@ -177,6 +191,7 @@ export default class Training_mode extends React.Component{
             this.setState({
                 insertmodalopen:false
             })
+        }
     }
 
     modelopen=(data,id)=>{
@@ -187,7 +202,7 @@ export default class Training_mode extends React.Component{
             var iddata=this.state.currentdata.filter((value)=>
             value.id===id 
         )
-            this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,idnamedata:iddata[0].training_mode})
+            this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,idnamedata:iddata[0].training_mode,errmsg:null})
         }
     }
 
@@ -238,6 +253,9 @@ export default class Training_mode extends React.Component{
             <Inputantd label="Mode" className="master_option" placeholder="" 
             changeData={(data)=>this.changeDynamic(data)} 
             value={this.state.modeltype==="view"?this.state.training_mode:this.state.idnamedata} 
+            autoFocus={true} 
+            errmsg={this.state.errmsg}
+            onPressEnter={this.state.modeltype === "edit" ?this.update_data:this.add_data}
             />
             <div className="master_button">
             <Button className="master_button_cancel" onClick={this.closemodal}>Cancel</Button>

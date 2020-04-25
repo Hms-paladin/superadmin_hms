@@ -34,6 +34,7 @@ export default class Training_center extends React.Component{
         trainining_cat_list:[],
         speciality:"",
         nochange_speciality:"",
+        errmsg: null,
     }
 
 
@@ -88,6 +89,11 @@ export default class Training_center extends React.Component{
 
 
 add_data=()=>{
+    if (this.state.training_name === "") {
+        this.setState({
+            errmsg: "Field is Required"
+        })
+    } else {
     this.setState({props_loading:true})
 
     var self=this
@@ -122,6 +128,7 @@ add_data=()=>{
             speciality:this.state.nochange_speciality,
 
         })
+    }
 }
 
 
@@ -153,6 +160,11 @@ recall=(type,msgdyn)=>{
 }
 
 update_data=()=>{
+    if (this.state.training_name === "") {
+        this.setState({
+            errmsg: "Field is Required"
+        })
+    } else {
     this.setState({props_loading:true})
 
 
@@ -188,6 +200,7 @@ update_data=()=>{
             this.setState({
                 insertmodalopen:false
             })
+        }
     }
 
     deleterow=()=>{
@@ -220,7 +233,7 @@ update_data=()=>{
                 return id===set_data.id
             })
 
-            this.setState({insertmodalopen:true,modeltype:data,cur_edit_id:id,speciality:setdata[0].training_category,training_name:setdata[0].trainingName})
+            this.setState({insertmodalopen:true,modeltype:data,cur_edit_id:id,speciality:setdata[0].training_category,training_name:setdata[0].trainingName,errmsg:null})
         }
 
         closemodal=()=>{
@@ -242,7 +255,8 @@ update_data=()=>{
         changeDynamic=(data,name)=>{
 
             this.setState({
-                        [name]:data
+                        [name]:data,
+                        errmsg:null
                     })
         }
 
@@ -301,6 +315,9 @@ update_data=()=>{
             <Inputantd label="Training" className="center_option" placeholder="" 
             changeData={(data)=>this.changeDynamic(data,"training_name")} 
             value={this.state.training_name}
+            errmsg={this.state.errmsg}
+            autoFocus={true}
+            onPressEnter={this.state.modeltype === "edit" ?this.update_data:this.add_data}
             />
             </div>
             </Grid>

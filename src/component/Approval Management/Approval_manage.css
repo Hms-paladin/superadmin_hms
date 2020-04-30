@@ -81,3 +81,10 @@
 .borderredApproval{
     border-color: red !important;
 }
+
+.viewty_emptyApproval div{
+    margin-bottom: 1.633rem!important;
+    position: relative;
+    font-size: 17px;
+    left: 28px;
+}

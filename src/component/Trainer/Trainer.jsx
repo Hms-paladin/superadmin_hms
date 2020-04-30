@@ -36,7 +36,8 @@ export default class Trainer extends React.Component{
         edit_namedata_trainner:"",
         iddate:"",
         deleteopen:false,
-        loading:true
+        loading:true,
+        errmsg: null,
     }
 
     componentDidMount(){
@@ -92,6 +93,11 @@ recall=(type,msgdyn)=>{
 }
 
 add_data=()=>{
+    if (this.state.trainner_name === "") {
+        this.setState({
+            errmsg: "Training is required"
+        })
+    } else {
     this.setState({props_loading:true})
 
     var self=this
@@ -130,11 +136,17 @@ add_data=()=>{
             trainner_cat_select:this.state.Trainer_cat[0].dropdown_val,
 
         })
+    }
 }
 
 
 
 update_data=()=>{
+    if (this.state.trainner_name === "") {
+        this.setState({
+            errmsg: "Training is required"
+        })
+    } else{
     this.setState({props_loading:true})
 
     var cat_sel_id=this.state.trainner_cat_select
@@ -174,6 +186,7 @@ update_data=()=>{
             trainner_name:"",
             trainner_cat_select:this.state.Trainer_cat[0].dropdown_val,
         })
+    }
 }
 
 
@@ -230,13 +243,13 @@ deleterow=()=>{
             value.id===id 
         )
             this.setState({insertmodalopen:true,modeltype:data,iddata:iddata[0].id,trainner_name:iddata[0].training,
-                trainner_cat_select:iddata[0].training_category})
+                trainner_cat_select:iddata[0].training_category,errmsg:null})
 
         }
     }
 
     closemodal=()=>{
-            this.setState({openview:false,editopen:false,insertmodalopen:false})
+            this.setState({openview:false,editopen:false,insertmodalopen:false,deleteopen:false})
     }
 
     insertdata=()=>{
@@ -270,7 +283,7 @@ deleterow=()=>{
 
     changeDynamic=(setname,data)=>{
             this.setState({
-                [setname]:data
+                [setname]:data,errmsg:null
             })
         
     }
@@ -283,15 +296,14 @@ deleterow=()=>{
     }
 
     render(){
-        console.log(this.state.currentdata,"currentdata")
-         
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[9]
         return(
             <div>
             {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
             <div>
                <div className="trainer_header">
                    <div className="trainer_title"><h3>TRAINER</h3></div>
-                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+                   <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
@@ -309,7 +321,8 @@ deleterow=()=>{
             props_loading={this.state.props_loading}
             VisibilityIcon="close"
             deleteopen={this.deleteopen}
-
+            editpermission={useraccess && useraccess.allow_edit}
+            deletepermission={useraccess && useraccess.allow_delete}
   />
 
         <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINNER":"EDIT DETAILS"} closemodal={(e)=>this.closemodal(e)}
@@ -329,6 +342,9 @@ deleterow=()=>{
             <Inputantd label="Training" className="trainer_option" placeholder="" 
             changeData={(data)=>this.changeDynamic("trainner_name",data)} 
             value={this.state.trainner_name}
+            autoFocus={true} 
+            errmsg={this.state.errmsg}
+            onPressEnter={this.state.modeltype === "edit" ?this.update_data:this.add_data}
             />
             </div>
             </Grid>

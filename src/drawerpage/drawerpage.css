@@ -518,3 +518,47 @@ body {
 .active_text_heading.mttrainerCat{
     margin-left: 0px !important;
 }
+
+.logoutAlign{
+    font-size: 14px;
+    display: flex;
+    width: 84%;
+    justify-content: flex-end;
+}
+
+.logoutAlign div svg{
+    font-size: 20px;
+}
+
+.logoutAlignDraweropen {
+    font-size: 14px;
+    display: flex;
+    width: 970px;
+    justify-content: flex-end;
+}
+
+.logoutAlignDraweropen div svg{
+    font-size: 20px;
+}
+
+.logindiv{
+    cursor: pointer;
+    height: 25px;
+    display: flex;
+    border-radius: 10px;
+    right: 35px;
+    top: 23px;
+    position: fixed;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logindiv:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.grouprightspos{
+    position: relative;
+    top: 18px;
+}

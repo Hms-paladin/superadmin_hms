@@ -220,14 +220,14 @@ export default class Training_mode extends React.Component{
 
 
     render(){
-         
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[12]
         return(
             <div>
                 {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
                 <div>
-               <div className="vendor_master_header">
-                   <div className="vendor_master_title"><h3>TRAINING MODE</h3></div>
-                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+               <div className="training_mode_header">
+                   <div className="training_mode_title"><h3>TRAINING MODE</h3></div>
+                   <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
@@ -239,9 +239,11 @@ export default class Training_mode extends React.Component{
                 tableicon_align={""}
                 modelopen={(e,id)=>this.modelopen(e,id)}
                 VisibilityIcon="close"
-                alignheading="cus_wid_vendor_head"
+                alignheading="cus_wid_trainingmode_head"
                 deleteopen={this.deleteopen}
                 props_loading={this.state.props_loading}
+                editpermission={useraccess && useraccess.allow_edit}
+                deletepermission={useraccess && useraccess.allow_delete}
 
   />
 
@@ -257,10 +259,10 @@ export default class Training_mode extends React.Component{
             errmsg={this.state.errmsg}
             onPressEnter={this.state.modeltype === "edit" ?this.update_data:this.add_data}
             />
-            <div className="master_button">
-            <Button className="master_button_cancel" onClick={this.closemodal}>Cancel</Button>
+            <div className="mode_button">
+            <Button className="mode_button_cancel" onClick={this.closemodal}>Cancel</Button>
             {this.state.modeltype==="view"?
-            <Button className="master_button_create" onClick={this.add_data}>Create</Button>:
+            <Button className="mode_button_create" onClick={this.add_data}>Create</Button>:
             <Button className="group_button_create" onClick={this.update_data}>Update</Button>}
             </div>
             </div>

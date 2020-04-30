@@ -342,3 +342,29 @@ body {
 .pharmacy_submit_container a:hover{
 	text-decoration: none;
 }
+
+.errmsgclr{
+	color: red;
+	font-size: 14px;
+	font-family: 'Avenir-Black' !important;
+}
+
+.errmsgMB{
+	margin-bottom: 21px;
+}
+
+.errmsg_forgotemail div::before{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_forgotemail .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid red;
+}
+
+.errmsg_forgotemail div:hover::after{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_forgotemail .MuiInput-underline:after{
+    border-bottom: 2px solid red !important;
+}

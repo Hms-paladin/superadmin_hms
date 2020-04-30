@@ -9,8 +9,6 @@ class Inputantd extends React.Component {
         super(props);
         this.textInput = null;
     }
-
-
     render() {
         return (
             <div>
@@ -41,14 +39,3 @@ class Inputantd extends React.Component {
 }
 
 export default Inputantd;
-
-
-// approval management
-
-
-{/* <div className={`${!this.props.errmsg || this.props.errmsg==="false" && "d-none"} texterrmsg`}>
-                {
-                    this.props.errmsg ? this.props.errmsg
-                    : <div className="min_h_static" />
-                }
-                </div> */}

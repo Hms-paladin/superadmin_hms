@@ -118,7 +118,7 @@
 
 .pharmacy_login_container .password_container {
 	font-family: 'Avenir-Black' !important;
-	margin-top: 10px !important;
+	margin-top: 20px !important;
 }
 
 @font-face {
@@ -210,7 +210,7 @@ body {
 }
 
 .login_button_container {
-	padding-top: 25px !important;
+	padding-top: 20px !important;
 }
 
 .pharmacy_login_container .login {
@@ -383,4 +383,46 @@ body {
 
 .cancel_container a:hover {
 	text-decoration: none;
+}
+
+.errmsg_loginemail div::before{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginemail .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginemail div:hover::after{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginemail .MuiInput-underline:after{
+    border-bottom: 2px solid red !important;
+}
+
+.errmsgclr{
+	color: red;
+	font-size: 14px;
+	font-family: 'Avenir-Black' !important;
+}
+
+.errmsgMB{
+	margin-bottom: 21px;
+}
+
+.errmsg_loginpass div::before{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginpass .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginpass div:hover::after{
+    border-bottom: 2px solid red;
+}
+
+.errmsg_loginpass .MuiInput-underline:after{
+    border-bottom: 2px solid red !important;
 }

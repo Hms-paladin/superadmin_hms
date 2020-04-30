@@ -1,60 +1,70 @@
-.trainer_header{
+.trainer_header {
     height: auto;
-    width:100%;
-    }
-    .trainer_title h3{
+    width: 100%;
+}
+
+.trainer_title h3 {
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
-    }
-    .trainer_header{
-    width:100%;
-    background-color:#F8F8F8;
-    padding: 10px;
-    box-shadow:0px 3px 6px #00000029;;
-    display:flex;
-    justify-content: space-between;
-    }
-    .plus{
-        width: 40px;
-        height: 40px;
-        margin-right: 20px;
-        cursor:pointer;
-    }
-    .trainer_button{
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
-    }
-    .trainer_button_cancel{
-        background-color: #C9C9C9 !important;
-        margin-right: 20px !important;
-        border-radius: 0px !important;
-        
-    }
-    .trainer_button_create{
-        background-color: #2680EB !important;
-        color: #FFFFFF !important;
-        border-radius: 0px !important;
-        
-    }
-    .create_trainer{
-        display: flex;
-    }
-    .trainer_option{
-        width:235px !important;
-        margin-right: 40px !important;
-    }
+}
 
-    .trainer_modal .MuiDialog-paperWidthXs {
-        max-width: 640px;
-    }
-    .cus_wid_trainer_head tr th:first-child{
-        width: 30%;
-    }
-    .cus_wid_trainer_head tr th:nth-child(2){
-        width: 35%;
-    }
-    .cus_wid_trainer_head tr th:nth-child(3){
-        width: 35%;
-    }
+.trainer_header {
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.trainer_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.trainer_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.trainer_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.create_trainer {
+    display: flex;
+}
+
+.trainer_option {
+    width: 235px !important;
+    margin-right: 40px !important;
+}
+
+.trainer_modal .MuiDialog-paperWidthXs {
+    max-width: 640px;
+}
+
+.cus_wid_trainer_head tr th:first-child {
+    width: 30%;
+}
+
+.cus_wid_trainer_head tr th:nth-child(2) {
+    width: 35%;
+}
+
+.cus_wid_trainer_head tr th:nth-child(3) {
+    width: 35%;
+}

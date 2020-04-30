@@ -89,7 +89,7 @@ export default class Doctor_spl extends React.Component {
 
         if (this.state.speciality === "") {
             this.setState({
-                errmsg: "Field is Required"
+                errmsg: "Speciality is required"
             })
         } else {
             this.setState({ props_loading: true })
@@ -106,8 +106,6 @@ export default class Doctor_spl extends React.Component {
                     "modified_by": "1",
                     "modified_on": current_da_n_ti
                 }
-
-
             })
                 .then(function (response) {
                     console.log(response, "responsed")
@@ -130,7 +128,7 @@ export default class Doctor_spl extends React.Component {
         
         if (this.state.idnamedata === "") {
             this.setState({
-                errmsg: "Field is Required"
+                errmsg: "Speciality is required"
             })
         } else{
         this.setState({ props_loading: true })
@@ -153,7 +151,6 @@ export default class Doctor_spl extends React.Component {
         })
             .then(function (response) {
                 self.recall("success", "edited")
-
             })
             .catch(function (error) {
                 console.log(error, "error");
@@ -175,10 +172,7 @@ export default class Doctor_spl extends React.Component {
             )
             this.setState({ insertmodalopen: true, modeltype: data, iddata: iddata[0].id, idnamedata: iddata[0].speciality,errmsg:null })
         }
-
     }
-
-
 
     closemodal = () => {
         this.setState({ openview: false, editopen: false, insertmodalopen: false, deleteopen: false })
@@ -193,7 +187,6 @@ export default class Doctor_spl extends React.Component {
     }
 
     changeDynamic = (data) => {
-        
         if (this.state.modeltype === "view") {
             this.setState({
                 speciality: data,
@@ -205,7 +198,6 @@ export default class Doctor_spl extends React.Component {
                 errmsg:null
             })
         }
-
     }
 
     deleteopen = (type, id) => {
@@ -240,15 +232,16 @@ export default class Doctor_spl extends React.Component {
         })
     }
 
-
     render() {
+        console.log(this.props.uservalue && this.props.uservalue[0].item[0].item[1],"props")
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[1]
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :
                     <div>
                         <div className="doctor_spl_header">
                             <div className="doctor_spl_title"><h3>DOCTOR SPECIALITY</h3></div>
-                            <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+                            <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                         </div>
                         <Tablecomponent heading={[
                             { id: "", label: "S.No" },
@@ -264,6 +257,8 @@ export default class Doctor_spl extends React.Component {
                             alignheading="cus_wid_doctorhead"
                             deleteopen={this.deleteopen}
                             props_loading={this.state.props_loading}
+                            editpermission={useraccess && useraccess.allow_edit}
+                            deletepermission={useraccess && useraccess.allow_delete}
                         />
 
 

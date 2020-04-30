@@ -84,7 +84,7 @@ export default class Training_cat extends React.Component {
     add_data = () => {
         if (this.state.trainercategory === "") {
             this.setState({
-                errmsg: "Field is Required"
+                errmsg: "Category is required"
             })
         } else {
         this.setState({ props_loading: true })
@@ -120,7 +120,7 @@ export default class Training_cat extends React.Component {
 
         if (this.state.idname === "") {
             this.setState({
-                errmsg: "Field is Required"
+                errmsg: "Category is required"
             })
         } else{
         this.setState({ props_loading: true })
@@ -222,14 +222,14 @@ export default class Training_cat extends React.Component {
 
 
     render() {
-
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[8]
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :
                     <div>
                         <div className="training_category_header">
                             <div className="training_category_title"><h3>TRAINER CATEGORY</h3></div>
-                            <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+                            <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                         </div>
                         <Tablecomponent heading={[
                             { id: "", label: "S.No" },
@@ -244,6 +244,8 @@ export default class Training_cat extends React.Component {
                             alignheading="cus_wid_trainingcategory_head"
                             deleteopen={this.deleteopen}
                             props_loading={this.state.props_loading}
+                            editpermission={useraccess && useraccess.allow_edit}
+                            deletepermission={useraccess && useraccess.allow_delete}
                         />
 
 

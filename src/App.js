@@ -8,10 +8,29 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const axios = require('axios');
+
 export const apiurl="http://52.200.251.222:8158/api/v1/"
 
 class App extends React.Component {
 
+  // constructor(props) {
+  //   super(props);
+  
+  //   this.state = {
+  //     token:""
+  //   };
+  // }
+
+   tokenid=(length)=>{
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
 
   render(){
 
@@ -26,18 +45,23 @@ class App extends React.Component {
     const params = new URLSearchParams(window.location.search)
     const token=params.get("tk")
     const mail=params.get("ma")
-
+    const tokenid=this.tokenid(10)
+    localStorage.setItem("tokenid",tokenid)
     return (
       <div>
-            {localStorage.getItem('token')?
-            <Router><Homepage /></Router>
+            {
+            localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid?
+            <Router basename="superadmin/?/">
+              {/* <Homepage /> */}
+              <Route path="/Home" component={Homepage} />
+              </Router>
             :
             window.location.pathname==="/resetpassword" && token && mail
             ?
-            <Router><Route path={"/resetpassword"} component={ResetPassword} exact /></Router>
+            <Router basename="superadmin/?/"><Route path={"/resetpassword"} component={ResetPassword} exact /></Router>
             :
-            <Router>
-            <Route exact path="/" component={Login} />
+            <Router basename="superadmin/?/">
+            <Route exact path="/" component={Login}/>
             <Route path="/forgot" component={Forgot} exact />
             <Router><Route path={"/resetpassword"} component={Login} exact /></Router>
             {patharr}

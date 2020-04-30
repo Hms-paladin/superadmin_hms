@@ -91,7 +91,7 @@ export default class Training_center extends React.Component{
 add_data=()=>{
     if (this.state.training_name === "") {
         this.setState({
-            errmsg: "Field is Required"
+            errmsg: "Training is required"
         })
     } else {
     this.setState({props_loading:true})
@@ -162,7 +162,7 @@ recall=(type,msgdyn)=>{
 update_data=()=>{
     if (this.state.training_name === "") {
         this.setState({
-            errmsg: "Field is Required"
+            errmsg: "Training is required"
         })
     } else {
     this.setState({props_loading:true})
@@ -268,16 +268,16 @@ update_data=()=>{
         }
 
     render(){
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[11]
+        console.log(useraccess,"props")
 
-        console.log(this.state.currentdata,"currentdata")
-         
         return(
             <div>
                 {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
                 <div>
                <div className="training_center_header">
                    <div className="training_center_title"><h3>TRAINING CENTER</h3></div>
-                   <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+                   <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
@@ -294,6 +294,8 @@ update_data=()=>{
                 alignheading="cus_wid_trainingcenter_head"
                 props_loading={this.state.props_loading}
                 deleteopen={this.deleteopen}
+                editpermission={useraccess && useraccess.allow_edit}
+                deletepermission={useraccess && useraccess.allow_delete}
   />
 
 

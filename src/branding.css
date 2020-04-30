@@ -1,10 +1,8 @@
 /* form component css */
 
-
-.commonlabel{
+.commonlabel {
     font-size: 16px;
 }
-
 
 /* 1.input andt */
 
@@ -19,13 +17,14 @@
     border-color: #40a9ff
 }
 
-.borderred.ant-input{
+.borderred.ant-input {
     border-color: red !important;
     box-shadow: none !important;
     height: 34px;
     background-color: #ffffff;
     border-radius: 2px !important;
 }
+
 /* 2.dropdown antd */
 
 .dropdownantd .ant-select-selection {
@@ -41,53 +40,58 @@
 
 /* 3.inputnumber antd */
 
-.inputnumber.ant-input-number{
+.inputnumber.ant-input-number {
     background-color: #ffffff;
     border-radius: 2px;
+    height: 34px;
     border-color: rgba(0, 0, 0, 0.23);
 }
 
-.inputnumber.ant-input-number:hover{
-    border-color: #40a9ff; 
+.inputnumber.ant-input-number:hover {
+    border-color: #40a9ff;
 }
 
+.borderred_num.ant-input-number {
+    border-color: red !important;
+    box-shadow: none !important;
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+}
 
 /* validation error msg */
 
-.Errorbr .ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd
-
+.Errorbr .ant-input, .Errorbr .ant-select-selection, .Errorbr.testareaantd
 /* .Errorbr.ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd, .Errorbr .ant-calendar-picker-input */
-{
+
+    {
     color: red !important;
     border-color: red !important;
     box-shadow: none !important;
 }
 
-.Errorbr .ant-input:hover,.Errorbr .ant-select-selection:hover,.Errorbr.testareaantd:hover
-{
+.Errorbr .ant-input:hover, .Errorbr .ant-select-selection:hover, .Errorbr.testareaantd:hover {
     color: red;
     border-color: red !important;
     box-shadow: none;
 }
 
-
-
-.texterrmsg{
+.texterrmsg {
     font-size: 12px;
     color: red;
     height: 1px;
 }
 
-.min_h_static{
-    height:18px;
+.min_h_static {
+    height: 18px;
 }
 
 body {
-    font-family: 'Roboto';  
+    font-family: 'Roboto';
 }
 
-
 /* button css */
+
 .MuiButton-root {
     text-transform: none !important;
     font-size: 12px !important;
@@ -95,21 +99,19 @@ body {
     min-width: 80px !important;
 }
 
-
-.drawerpage_container .MuiDrawer-paper{
+.drawerpage_container .MuiDrawer-paper {
     overflow-y: unset;
 }
 
-.drawerpage_container .MuiList-root{
+.drawerpage_container .MuiList-root {
     overflow-y: scroll;
 }
 
-
 /* notification css */
 
-.ant-notification{
-    z-index:1300 !important;
-    width:330px !important;
+.ant-notification {
+    z-index: 1300 !important;
+    width: 330px !important;
 }
 
 .show_frt .ant-notification-notice-icon {
@@ -126,15 +128,17 @@ body {
     font-size: 15px;
 }
 
-
 body *::-webkit-scrollbar {
     width: 5px;
     height: 4px;
-    transition: 0.3s ;
-  }
-  
-  body *::-webkit-scrollbar-thumb {
+    transition: 0.3s;
+}
+
+body *::-webkit-scrollbar-thumb {
     background: #ADAAA8;
     border-radius: 5px;
+}
 
-  }
+.disablebtn{
+    cursor: not-allowed !important;
+}

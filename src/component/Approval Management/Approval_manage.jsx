@@ -7,11 +7,13 @@ import Inputantd from "../../formcomponent/inputantd";
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import { Spin, notification } from 'antd';
+import createHistory from 'history/createBrowserHistory';
 import "./Approval_manage.css"
 
 const axios = require('axios');
 var moment = require('moment');
-
+const history = createHistory()
 
 export default class Approval_manage extends React.Component {
 
@@ -21,6 +23,8 @@ export default class Approval_manage extends React.Component {
         props_loading: false,
         currentdata: [],
         approvalAllValue: [],
+        loading:true,
+        onceopen:true,
     }
 
     changeDynamic = (data, id) => {
@@ -40,13 +44,10 @@ export default class Approval_manage extends React.Component {
 
     }
 
-    componentWillMount() {
-        this.recall()
-    }
-
-
     viewFun = (id, type) => {
-        this.setState({ openview: true, approvaltype: type, approvalinfo: "" })
+        alert(type)
+        alert(id)
+        this.setState({ openview: true, approvaltype: type, approvalinfo: "" ,model_loading:true})
 
         var self = this
         axios({
@@ -59,16 +60,17 @@ export default class Approval_manage extends React.Component {
         })
             .then(function (response) {
                 self.setState({
-                    //   loading:false,
-                    approvalinfo: response.data.data
+                    loading:false,
+                    approvalinfo: response.data.data,
+                    model_loading:false
                 })
                 console.log(response.data.data, "imgcheck")
             })
     }
 
-    CheckFun = (id) => {
-
+    CheckFun = (id,useraccess) => {
         if (this.state["inputbox" + id]) {
+            this.setState({props_loading:true})
             var type = this.state.currentdata.filter((val) => {
                 return val.id === id
             })
@@ -90,7 +92,7 @@ export default class Approval_manage extends React.Component {
                         loading: false,
                         [temperedvar]: ""
                     })
-                    self.recall()
+                    self.recall(null,null,"success","Approved successfully",useraccess)
                     console.log(response, "resapproval")
                 })
 
@@ -98,14 +100,15 @@ export default class Approval_manage extends React.Component {
             this.setState({
                 currentbox: id
             })
-            this.recall(id, true)
+            this.recall(id, true,null,null,useraccess)
         }
 
     }
 
-    closeFun = (id) => {
+    closeFun = (id,useraccess) => {
 
         if (this.state["inputbox" + id]) {
+            this.setState({props_loading:true})
             var type = this.state.currentdata.filter((val) => {
                 return val.id === id
             })
@@ -127,24 +130,30 @@ export default class Approval_manage extends React.Component {
                         loading: false,
                         [temperedvar]: ""
                     })
-                    self.recall()
+                    self.recall(null,null,"success","Rejected successfully",useraccess)
                     console.log(response, "resapproval")
+
                 })
 
         } else {
             this.setState({
                 currentbox: id
             })
-            this.recall(id, true)
+            this.recall(id, true,null,null,useraccess)
         }
-
-
+    }
+    expiretoken=()=>{
+        return(
+        localStorage.removeItem("token"),
+        localStorage.removeItem("email"),
+        history.push('/'),
+        window.location.reload()
+        )
     }
 
+    recall = (checkvalueid, clicktrue,type,msg,useraccess) => {
 
-    recall = (checkvalueid, clicktrue) => {
-
-        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthdmVyaTJnYW5nYUBnbWFpbC5jb20iLCJ1c2VySWQiOjQxLCJpYXQiOjE1ODc0ODUzNTQsImV4cCI6MTU4NzQ4ODk1NH0.X0RQKWrVjOuNzuxs5UphQkVi_fs0Bk8XVHQjHCc8sWk"
+        var token = localStorage.getItem("token")
 
         var self = this
         axios({
@@ -161,7 +170,7 @@ export default class Approval_manage extends React.Component {
                 var approvalAllValue = []
                 response.data.data.map((value, index) => {
                     arrval.push({
-                        date: moment(value.Date).format('YYYY-MM-DD'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+                        date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
 
                             <Inputantd
                                 className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
@@ -169,20 +178,34 @@ export default class Approval_manage extends React.Component {
                                 value={self.state["inputbox" + value.type_id]}
                             />,
 
-                        action: <div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon" onClick={() => self.viewFun(value.type_id, value.Type)} /><CheckIcon className="tableedit_icon" onClick={() => self.CheckFun(value.type_id)} /><CloseIcon className="tabledelete_icon" onClick={() => self.closeFun(value.type_id)} /></div>, id: value.type_id
+                        action: <div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon" onClick={() => self.viewFun(value.type_id, value.Type)} /><CheckIcon className={`tableedit_icon ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" ? () => self.CheckFun(value.type_id,useraccess):null} /><CloseIcon className={`tabledelete_icon ${useraccess && useraccess.allow_delete==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_delete==="Y" ? () => self.closeFun(value.type_id,useraccess) : null} /></div>, id: value.type_id
                     })
 
                     approvalAllValue.push(value)
 
                 })
+                type && notification[type]({
+                    className: "show_frt",
+                    message: msg,
+                });
                 self.setState({
                     currentdata: arrval,
                     approvalAllValue: approvalAllValue,
-                    loading: false
+                    loading: false,
+                    props_loading:false
                 })
+
             })
             .catch(function (error) {
-                console.log(error, "error");
+
+                notification.info({
+                    className: "show_frt",
+                    message: "Token expired",
+                });
+                setTimeout(() => {
+                    self.expiretoken()
+                  }
+                ,4000)
             });
     }
 
@@ -196,8 +219,14 @@ export default class Approval_manage extends React.Component {
         const { Search } = Input;
         console.log(this.state, "thisstate")
         const { approvalinfo } = this.state
-
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[15]
+        if(this.state.onceopen && useraccess){
+        this.recall(null,null,null,null,useraccess)
+        this.setState({onceopen:false})
+        }
         return (
+            <div>
+                {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :
             <div>
                 <div className="approval_manage_header">
 
@@ -230,7 +259,86 @@ export default class Approval_manage extends React.Component {
                 <Modalcomp visible={this.state.openview} title={"View details"} closemodal={(e) => this.closemodal(e)}
                     customwidth_dialog={"customwidth_dialogApproval"} xswidth={"xs"}
                 >
+                     <Spin className="spinner_align" spinning={this.state.model_loading}>
+                    <div>
                     <div className="ViewfontApproval d-flex">
+                        {this.state.approvaltype === "Vendor" &&
+
+                            <>
+                                <div className="jusBetweenApproval">
+                                    <div className="d-flex mb-4">
+                                        <div>Name</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Qualification</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Contact Email</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Contact Mobile</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>DOB</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Gender</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Nationality</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Email</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Phone</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Website</div>
+                                        <div>:</div>
+                                    </div>
+
+                                    <div className="d-flex mb-4">
+                                        <div>Address</div>
+                                        <div>:</div>
+                                    </div>
+                                </div>
+                                <div className="viewty_emptyApproval">
+                                    <div>{approvalinfo && approvalinfo[0].vendor_name===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_name }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_contact_qualification===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_contact_qualification }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_contact_email===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_contact_email }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_contact_mobile===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_contact_mobile }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_contact_dob===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_contact_dob }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_contact_gender===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_contact_gender }</div>
+                                    <div>{approvalinfo && approvalinfo[0].nationality_id===null ? <span>----</span> : approvalinfo && approvalinfo[0].nationality_id }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_email===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_email }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_phone===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_phone }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_website===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_website }</div>
+                                    <div>{approvalinfo && approvalinfo[0].vendor_address===null ? <span>----</span> : approvalinfo && approvalinfo[0].vendor_address }</div>
+
+
+                                </div>
+                            </>
+                        }
+
                         {this.state.approvaltype === "Advertisement" &&
                             <>
                                 <div className="jusBetweenApproval">
@@ -265,8 +373,8 @@ export default class Approval_manage extends React.Component {
                                     </div>
                                 </div>
                                 <div className="valueMarginApproval">
-                                    <div>{approvalinfo && approvalinfo[0].ad_start_date}</div>
-                                    <div>{approvalinfo && approvalinfo[0].ad_end_date}</div>
+                                    <div>{approvalinfo && moment(approvalinfo[0].ad_start_date).format('DD-MM-YYYY')}</div>
+                                    <div>{approvalinfo && moment(approvalinfo[0].ad_end_date).format('DD-MM-YYYY')}</div>
                                     <div>{approvalinfo && approvalinfo[0].ad_size}</div>
                                     <div>{approvalinfo && approvalinfo[0].ad_location_id}</div>
                                     <div>{approvalinfo && approvalinfo[0].ad_fee_per_day}</div>
@@ -317,8 +425,8 @@ export default class Approval_manage extends React.Component {
                                 <div className="valueMarginApproval">
                                     <div>{approvalinfo && approvalinfo[0].deal_service_type_id}</div>
                                     <div>{approvalinfo && approvalinfo[0].deal_title}</div>
-                                    <div>{approvalinfo && approvalinfo[0].deal_valid_from}</div>
-                                    <div>{approvalinfo && approvalinfo[0].deal_valid_to}</div>
+                                    <div>{approvalinfo && moment(approvalinfo[0].deal_valid_from).format('DD-MM-YYYY')}</div>
+                                    <div>{approvalinfo && moment(approvalinfo[0].deal_valid_to).format('DD-MM-YYYY')}</div>
                                     <div>{approvalinfo && approvalinfo[0].deal_active}</div>
                                     <div>{approvalinfo && approvalinfo[0].deal_amount}</div>
                                     <div>{approvalinfo && approvalinfo[0].deal_vendor_id}</div>
@@ -331,10 +439,12 @@ export default class Approval_manage extends React.Component {
                             <img className="imgWidthApproval" src={approvalinfo && approvalinfo[0].ad_filename} alt="img" />
                         </div>
                     }
-
+                    </div>
+                    </Spin>
                 </Modalcomp>
 
             </div>
+             } </div>
         )
     }
 }

@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Pharmacy from '../../images/doctorlogin.jpg'
 import CheckIcon from '@material-ui/icons/Check';
+import Homepage from "../../drawerpage/drawerpage"
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,8 +17,7 @@ import {
 } from "react-router-dom";
 import { apiurl } from "../../../src/App.js";
 import { Spin, notification } from 'antd';
-// import Modalcomp from '../../helpers/ModalComp/Modalcomp';
-import SuccessMsg from './Success';
+import "./ResetPassword.css"
 
 const axios = require('axios');
 
@@ -38,27 +38,58 @@ export default class DoctorLogin extends Component {
   resetpassword = () => {
 
 
-    if(this.state.password===""){
-      notification.info({
-        className: "show_frt",
-        message: "Please fill password",
-      });
-    }else if(this.state.confirmPassword===""){
-      notification.info({
-        className: "show_frt",
-        message: "Please fill confirmPassword",
-      });
+    if(this.state.password==="" && this.state.confirmPassword===""){
+      this.setState({
+        errmsg_newpass:"Password is required",
+        errmsg_confirmpass:"Confirmpassword is required",
+      })
+      // notification.info({
+      //   className: "show_frt",
+      //   message: "Please fill password",
+      // });
     }
-    else if(this.state.password.length<4 || this.state.confirmPassword.length<4){
-      notification.info({
-        className: "show_frt",
-        message: "Password must have atleast 4 character",
-      });
-    }    else if(this.state.password !== this.state.confirmPassword){
-      notification.info({
-        className: "show_frt",
-        message: "Password must have same",
-      });
+    else if(this.state.password===""){
+      this.setState({
+        errmsg_newpass:"Password is required",
+      })
+      // notification.info({
+      //   className: "show_frt",
+      //   message: "Please fill confirmPassword",
+      // });
+    }
+    else if(this.state.confirmPassword===""){
+      this.setState({
+        errmsg_confirmpass:"confirmPassword is required",
+      })
+    }
+    else if(this.state.password.length<4 && this.state.confirmPassword.length<4){
+      this.setState({
+        errmsg_newpass:"Password must have atleast 4 character",
+        errmsg_confirmpass:"Password must have atleast 4 character",
+      })
+      // notification.info({
+      //   className: "show_frt",
+      //   message: "Password must have atleast 4 character",
+      // });
+    } 
+    else if(this.state.password.length<4 ){
+      this.setState({
+        errmsg_newpass:"Password must have atleast 4 character",
+      })
+    }
+    else if(this.state.confirmPassword.length<4){
+      this.setState({
+        errmsg_confirmpass:"confirmPassword must have atleast 4 character",
+      })
+    }
+    else if(this.state.password !== this.state.confirmPassword){
+      this.setState({
+        errmsg_confirmpass:"Password is not match",
+      })
+      // notification.info({
+      //   className: "show_frt",
+      //   message: "Password is not match",
+      // });
     }else{
       const params = new URLSearchParams(window.location.search)
       const token=params.get("tk")
@@ -85,9 +116,7 @@ export default class DoctorLogin extends Component {
             className: "show_frt",
             message: "Password change sucessfully",
           });
-
-          
-  
+          self.setState({})
         })
         .catch(function (error) {
         });
@@ -102,18 +131,24 @@ export default class DoctorLogin extends Component {
   }
 
   passwordFun = (e) => {
-    this.setState({ password: e.target.value })
+    this.setState({ password: e.target.value,errmsg_newpass:"" })
   }
 
   confirmFun=(e)=>{
     this.setState({
-      confirmPassword:e.target.value
+      confirmPassword:e.target.value,
+      errmsg_confirmpass:""
     })
   }
 
   render() {
-
     return (
+      <div>
+      {localStorage.getItem('token') ?
+      <Router basename="superadmin/?/">
+      {/* <Homepage /> */}
+      <Route path="/Home" component={Homepage} />
+      </Router>:
       <div className="pharmacy_login_container">
         <Grid container>
           <Grid item xs={12} md={7} className="pharmacy_image_grid">
@@ -137,6 +172,13 @@ export default class DoctorLogin extends Component {
                   <div className="logo_container"><div className="logo_div"><img className="logo_image" src={Logo} /></div></div>
                   <div className="pharmacy_Welcometext-container"><p className="Welcometext">RESET PASSWORD</p></div>
                   <div className="pharmacy_email_container"><TextField type="text" type={this.state.hidden ? "password" : "text"} onChange={this.passwordFun} value={this.state.password} label="New Password"
+                  className={this.state.errmsg_newpass && "errmsg_newpass"}
+                  autoFocus={true}
+                  onKeyPress={(ev) => {
+                    if (ev.key  === 'Enter') {
+                      this.resetpassword()
+                    }
+                  }}
 
                     InputProps={{
                       endAdornment: (
@@ -147,27 +189,40 @@ export default class DoctorLogin extends Component {
                         </InputAdornment>
                       )
                     }} />
+                    {this.state.errmsg_newpass ?
+                        <span className="errmsgclr">{this.state.errmsg_newpass}</span> :
+                        <div className="errmsgMB" />}
                   </div>
 
                   <div className="confirm_container"><TextField placeholder="" className="trrainer_password" label="Confirm Password" type={this.state.confirmhidden ? "password" : "text"} onChange={this.confirmFun} value={this.state.confirmPassword}
-
+                    className={this.state.errmsg_confirmpass && "errmsg_confirmpass"}
+                    onKeyPress={(ev) => {
+                      if (ev.key  === 'Enter') {
+                        this.resetpassword()
+                      }
+                    }}
                     InputProps={{
                       endAdornment: (
                         <>
+
+                          {/* <InputAdornment>
+                            <IconButton>
+                              <CheckIcon className="confirm_password" />
+                            </IconButton>
+                          </InputAdornment> */}
+
                           <InputAdornment>
                             <IconButton>
                               <img className="logineye_icon" src={Eye} onClick={this.confirmCheck} />
                             </IconButton>
                           </InputAdornment>
-
-                          <InputAdornment>
-                            <IconButton>
-                              <CheckIcon className="confirm_password" />
-                            </IconButton>
-                          </InputAdornment>
+                          
                         </>
                       )
                     }} />
+                    {this.state.errmsg_confirmpass ?
+                        <span className="errmsgclr">{this.state.errmsg_confirmpass}</span> :
+                        <div className="errmsgMB" />}
 
                   </div>
                   <div className="login_button_container">
@@ -185,12 +240,9 @@ export default class DoctorLogin extends Component {
 
 
         </Grid>
-        {/* <Modalcomp visible={this.state.open} clrchange="text_color" title="Success" closemodal={this.handleClose} xswidth={"xs"}>
-                  <SuccessMsg/>
-                </Modalcomp> */}
       </div>
-
-
+      }
+      </div>
     )
   }
 }

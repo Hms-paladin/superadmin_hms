@@ -135,7 +135,7 @@ function EnhancedTableHead(props) {
         <div>{"Add"}</div>   
         <div>{"Edit"}</div>   
         <div>{"Delete"}</div>   
-        <div>{"Print"}</div>   
+        {/* <div>{"Print"}</div>    */}
 
         </div>
 
@@ -279,7 +279,7 @@ class Groupaccess extends Component {
       rotateicon:true,
       conditionalrendering:false,
       // head_all:true,
-      once_open:false,
+      onceopen:false,
       loading:false,
       insideLoading:false
     };
@@ -380,18 +380,12 @@ class Groupaccess extends Component {
         rotateicon:!this.state.rotateicon
       })
   }
-  changeDynamic=(data,setname)=>{
-
-    var getRowData=this.state.group_arr.filter((val)=>{
-      return(val.id===data)
-    })
+  changeDynamic=(data,setname,useraccess)=>{
     this.setState({
-      [setname]:data
+      group:data,
+      insideLoading:true
   })
-
-  console.log(getRowData,"getRowData")
-
-    this.recall_permission(getRowData[0].id)
+    this.recall_permission(null,data,useraccess)
 
 }
 
@@ -412,337 +406,18 @@ axios({
   })
   self.setState({
     group:arrval[0].dropdown_val,
-      group_arr:arrval,
+    group_arr:arrval,
+    responseid:response.data.data[0].id,
+    onceopen:true
   })
+
 })
 .catch(function (error) {
   console.log(error,"error");
 });
-
-
-this.recall_permission()
-
-
-var data1= [
-  {
-      "id": 1,
-      "module_name": "Super Admin",
-      "item": [
-          {
-              "id": null,
-              "submodule_name": null,
-              "item": [
-                  {
-                      "id": 2,
-                      "screen_name": "Media Upload",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "N",
-                      "allow_print": "N"
-                  }
-              ]
-          }
-      ]
-  }
-]
-
-
-
-var data3= [
-  {
-      "id": 6,
-      "module_name": "Doctor",
-      "item": [
-          {
-              "id": 7,
-              "submodule_name": "sub_module1",
-              "item": [
-                  {
-                      "id": 8,
-                      "screen_name": " sub1_data1",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "Y",
-                      "allow_print": "Y"
-                  },{
-                    "id": 11,
-                    "screen_name": "sub1_data2",
-                    "allow_add": "Y",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "Y",
-                    "allow_print": "Y"
-                }
-              ]
-          },
-          {
-            "id": 9,
-            "submodule_name": "sub_module2",
-            "item": [
-                {
-                    "id": 10,
-                    "screen_name": "sub2_data1",
-                    "allow_add": "N",
-                    "allow_edit": "Y",
-                    "allow_delete": "Y",
-                    "allow_view": "Y",
-                    "allow_print": "N"
-                },{
-                  "id": 11,
-                  "screen_name": "sub2_data2",
-                  "allow_add": "Y",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "Y",
-                  "allow_print": "N"
-              }
-            ]
-        } 
-      ]
-  }
-]
-
-
-
-
-var data4=[
-  {
-      "id": 6,
-      "module_name": "Doctor",
-      "item": [
-          {
-              "id": 7,
-              "submodule_name": "Doctor_Submodule_1",
-              "item": [
-		{
-
-               "id": 8,
-              "submodule_name": "Doctor1_Submodule_2",
-              "item": [
-                  {
-                      "id": 0,
-                      "screen_name": "img_Upload",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "N",
-                      "allow_print": "Y"
-                  }
-		]
-		}
-              ]
-          },
-          {
-            "id": 9,
-            "submodule_name": "Doctor2",
-            "item": [
-              {
-                "id": 7,
-                "submodule_name": "test",
-                "item": [
-                    {
-                        "id": 8,
-                        "screen_name": " img_Upload1",
-                        "allow_add": "Y",
-                        "allow_edit": "Y",
-                        "allow_delete": "Y",
-                        "allow_view": "Y",
-                        "allow_print": "N"
-                    },
-                    ,{
-                      "id": 11,
-                      "screen_name": "img_Upload2",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "Y",
-                      "allow_print": "Y"
-                  }
-                ]
-            }
-            ]
-        } ,
-
-              {
-                  "id": 4,
-                  "submodule_name": "vid_Upload",
-                  "item": [
-                      {
-                          "id": 5,
-                          "screen_name": "vid_Upload1",
-                          "allow_add": "Y",
-                          "allow_edit": "Y",
-                          "allow_delete": "N",
-                          "allow_view": "Y",
-                          "allow_print": "Y"
-                      },{
-                        "id": 11,
-                        "screen_name": "vid_Upload2",
-                        "allow_add": "Y",
-                        "allow_edit": "Y",
-                        "allow_delete": "Y",
-                        "allow_view": "Y",
-                        "allow_print": "Y"
-                    }
-                  ]
-            }
-        //   {
-        //     "id": 9,
-        //     "submodule_name": "Doctor3",
-        //     "item": [
-        //       {
-        //         "id": 4,
-        //         "submodule_name": null,
-        //         "item": [
-        //             {
-        //                 "id": 5,
-        //                 "screen_name": " img_Upload",
-        //                 "allow_add": "Y",
-        //                 "allow_edit": "Y",
-        //                 "allow_delete": "Y",
-        //                 "allow_view": "N",
-        //                 "allow_print": "N"
-        //             },{
-        //               "id": 11,
-        //               "screen_name": "vid_Upload2",
-        //               "allow_add": "Y",
-        //               "allow_edit": "Y",
-        //               "allow_delete": "Y",
-        //               "allow_view": "N",
-        //               "allow_print": "N"
-        //           }
-        //         ]
-        //     }
-        //     ]
-        // } 
-   
-      ]
-  }
-]
-
-var data2= [
-  {
-      "id": 3,
-      "module_name": "Doctor",
-      "item": [
-          {
-              "id": 4,
-              "submodule_name": null,
-              "item": [
-                  {
-                      "id": 5,
-                      "screen_name": " img_Upload",
-                      "allow_add": "Y",
-                      "allow_edit": "Y",
-                      "allow_delete": "Y",
-                      "allow_view": "Y",
-                      "allow_print": "Y"
-                  },
-                  {
-                    "id": 5,
-                    "screen_name": " img_Upload",
-                    "allow_add": "Y",
-                    "allow_edit": "N",
-                    "allow_delete": "Y",
-                    "allow_view": "Y",
-                    "allow_print": "Y"
-                },
-                {
-                  "id": 5,
-                  "screen_name": " img_Upload",
-                  "allow_add": "N",
-                  "allow_edit": "Y",
-                  "allow_delete": "Y",
-                  "allow_view": "Y",
-                  "allow_print": "N"
-              },
-              {
-                "id": 5,
-                "screen_name": " img_Upload",
-                "allow_add": "Y",
-                "allow_edit": "Y",
-                "allow_delete": "Y",
-                "allow_view": "N",
-                "allow_print": "Y"
-            }
-              ]
-          }]
-        }]
-
-
-        var api_data= [
-          {
-              "id": 1,
-              "module_name": "Super Admin",
-              "item": [
-                  {
-                      "id": null,
-                      "submodule_name": null,
-                      "item": [
-                          {
-                              "id": 1,
-                              "screen_name": "Media Upload",
-                              "allow_add": "Y",
-                              "allow_edit": "Y",
-                              "allow_delete": "Y",
-                              "allow_view": "N",
-                              "allow_print": "N"
-                          }
-                      ]
-                  }
-              ]
-          },
-          {
-              "id": 2,
-              "module_name": "Doctor"
-          },
-          {
-              "id": 3,
-              "module_name": "Lab"
-          },
-          {
-              "id": 4,
-              "module_name": "Pharmacy"
-          },
-          {
-              "id": 5,
-              "module_name": "Health Checkup"
-          },
-          {
-              "id": 6,
-              "module_name": "Nurse"
-          },
-          {
-              "id": 7,
-              "module_name": "Shopping"
-          },
-          {
-              "id": 8,
-              "module_name": "Book a Room"
-          },
-          {
-              "id": 9,
-              "module_name": "Diet"
-          },
-          {
-              "id": 10,
-              "module_name": "Trainer"
-          },
-          {
-              "id": 11,
-              "module_name": "Training Center"
-          },
-          {
-              "id": 12,
-              "module_name": "Clinic"
-          }
-      ]
-
 }
 
-recall_permission=(showNotification)=>{
+recall_permission=(showNotification,groupid,useraccess)=>{
 
   function setobject(name){
     return name
@@ -753,7 +428,7 @@ recall_permission=(showNotification)=>{
     method: 'post',
     url: `${apiurl}get_mas_group_permission`,
     data:{
-      "group_id":85
+      "group_id":groupid
     }
 }).then( response=> {
     console.log(response.data.data,"response_get")
@@ -877,28 +552,28 @@ recall_permission=(showNotification)=>{
                   <Panel header={<div className="grp_expanse_firstdata">
                   <div className="grp_firstdata_clr firstname_grpaccs module_name_top">{
                     val.module_name}</div>   
-                    <div>{<Green_checkBox checked={val.item && head_all_concat.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_all_concat.every((val)=>{return(val===true)}),"head_all",val.item[0].item)}/>
-                        }</div>          
-                      <div>{
-                        <Green_checkBox checked={val.item && head_view.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_view.every((val)=>{return(val===true)}),"head_view",val.item[0].item)} />
-                        }
-                      </div>         
-                      <div>{
-                        <Green_checkBox checked={val.item && head_add.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_add.every((val)=>{return(val===true)}),"head_add",val.item[0].item)} />
-                        }
-                      </div>           
-                      <div>{
-                        <Green_checkBox checked={val.item && head_edit.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_edit.every((val)=>{return(val===true)}),"head_edit",val.item[0].item)}/>
-                        }
-                      </div>        
-                      <div>{
-                        <Green_checkBox checked={val.item && head_delete.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_delete.every((val)=>{return(val===true)}),"head_delete",val.item[0].item)}/>
-                        }
-                      </div>  
-                      <div>{
-                        <Green_checkBox checked={val.item && head_print.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(null,val.item && head_print.every((val)=>{return(val===true)}),"head_print",val.item[0].item)}/>
-                        }
-                      </div>  
+                    <div>{<Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_all_concat.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_all_concat.every((val) => { return (val === true) }), "head_all", val.item[0].item) : null} />
+                }</div>
+                <div>{
+                  <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_view.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_view.every((val) => { return (val === true) }), "head_view", val.item[0].item) : null} />
+                }
+                </div>
+                <div>{
+                  <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_add.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_add.every((val) => { return (val === true) }), "head_add", val.item[0].item) : null} />
+                }
+                </div>
+                <div>{
+                  <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_edit.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_edit.every((val) => { return (val === true) }), "head_edit", val.item[0].item) : null} />
+                }
+                </div>
+                <div>{
+                  <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_delete.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_delete.every((val) => { return (val === true) }), "head_delete", val.item[0].item) : null} />
+                }
+                </div>
+                {/* <div>{
+                  <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={val.item && head_print.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,null, val.item && head_print.every((val) => { return (val === true) }), "head_print", val.item[0].item) : null} />
+                }
+                </div>  */}
                   
                   </div>} key="1">
                     {val.item.map((first_item)=>{
@@ -915,30 +590,30 @@ recall_permission=(showNotification)=>{
                   <div className="grp_expanse_data">
                   <div className="firstname_grpaccs sub_module_name_top">{first_item_insidedata.screen_name}</div>
                   <div>{
-                        <Green_checkBox checked={alltrue_enable_row.every((val)=>{return(val===true)})} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,alltrue_enable_row.every((val)=>{return(val===true)}),"allow_row_all"+index,first_item_insidedata,index)} />
-                        }
-                      </div>   
-                      <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_view==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_view==="Y" ?"N":"Y","allow_view"+index,first_item_insidedata,index)} />
-                        }
-                      </div>      
-                      <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_add==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_add==="Y" ?"N":"Y","allow_add"+index,first_item_insidedata,index)} />
-                        }
-                      </div>           
-                      <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_edit==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_edit==="Y" ?"N":"Y","allow_edit"+index,first_item_insidedata,index)} />
-                        }
-                      </div>        
-                      <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_delete==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_delete==="Y" ?"N":"Y","allow_delete"+index,first_item_insidedata,index)} />
-                        }
-                      </div> 
-                      <div>{
-                        <Green_checkBox checked={first_item_insidedata.allow_print==="Y" && true} change_checkbox={()=>this.change_checkbox(first_item_insidedata.id,first_item_insidedata.allow_print==="Y" ?"N":"Y","allow_print"+index,first_item_insidedata,index)} />
-                        }
-                      </div> 
-                  </div> 
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={alltrue_enable_row.every((val) => { return (val === true) })} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, alltrue_enable_row.every((val) => { return (val === true) }), "allow_row_all" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div>
+                            <div>{
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={first_item_insidedata.allow_view === "Y" && true} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, first_item_insidedata.allow_view === "Y" ? "N" : "Y", "allow_view" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div>
+                            <div>{
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={first_item_insidedata.allow_add === "Y" && true} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, first_item_insidedata.allow_add === "Y" ? "N" : "Y", "allow_add" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div>
+                            <div>{
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={first_item_insidedata.allow_edit === "Y" && true} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, first_item_insidedata.allow_edit === "Y" ? "N" : "Y", "allow_edit" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div>
+                            <div>{
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={first_item_insidedata.allow_delete === "Y" && true} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, first_item_insidedata.allow_delete === "Y" ? "N" : "Y", "allow_delete" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div>
+                            {/* <div>{
+                              <Green_checkBox className={useraccess && useraccess.allow_edit==="N" && "disablenotallow"} checked={first_item_insidedata.allow_print === "Y" && true} change_checkbox={useraccess && useraccess.allow_edit==="Y" ? () => this.change_checkbox(useraccess,groupid,first_item_insidedata.id, first_item_insidedata.allow_print === "Y" ? "N" : "Y", "allow_print" + index, first_item_insidedata, index) : null} />
+                            }
+                            </div> */}
+                          </div> 
                   </p>
                       )
                 }
@@ -1191,7 +866,7 @@ recall_permission=(showNotification)=>{
 
 }
 
-change_checkbox=(id,val,name,allvalue,index)=>{
+change_checkbox=(useraccess,groupid,id, val, name, allvalue, index)=>{
   this.setState({
     insideLoading:true
   })
@@ -1216,7 +891,7 @@ change_checkbox=(id,val,name,allvalue,index)=>{
       var allow_print="Y"
     }
     var sendData=[{
-      "group_id": "85",
+      "group_id": groupid,
       "screen_master_id": id,
       "allow_view": allow_view,
       "allow_add":allow_add,
@@ -1237,7 +912,7 @@ change_checkbox=(id,val,name,allvalue,index)=>{
     if(val){
       allvalue.map((data)=>{
 
-        sendData.push({"group_id": "85",
+        sendData.push({"group_id": groupid,
         "screen_master_id": data.id,
         "allow_view": "N",
         "allow_add":"N",
@@ -1254,7 +929,7 @@ change_checkbox=(id,val,name,allvalue,index)=>{
     }else{
       allvalue.map((data)=>{
 
-        sendData.push({"group_id": "85",
+        sendData.push({"group_id": groupid,
         "screen_master_id": data.id,
         "allow_view": "Y",
         "allow_add":"Y",
@@ -1273,11 +948,16 @@ change_checkbox=(id,val,name,allvalue,index)=>{
   }else if(name==="head_view" || name==="head_add" || name==="head_edit" || name==="head_delete"|| name==="head_print"){
     var sendData=[]
     if(val){
+
       allvalue.map((data)=>{
 
-        sendData.push({"group_id": "85",
+          var allowview=[name === "head_view" ? "N" : data.allow_view,name === "head_add" ? "N" : data.allow_add,name === "head_edit" ? "N" : data.allow_edit,name === "head_delete" ? "N" : data.allow_delete]
+  
+          var enableview=allowview.find((val)=>{return val==="Y"})
+
+        sendData.push({"group_id": groupid,
         "screen_master_id": data.id,
-        "allow_view": name==="head_view"?"N":data.allow_view,
+        "allow_view": enableview?enableview:"N",
         "allow_add":name==="head_add"?"N":data.allow_add,
         "allow_edit":name==="head_edit"?"N":data.allow_edit ,
         "allow_delete": name==="head_delete"?"N":data.allow_delete,
@@ -1292,9 +972,13 @@ change_checkbox=(id,val,name,allvalue,index)=>{
     }else{
       allvalue.map((data)=>{
 
-        sendData.push({"group_id": "85",
+        var allowview=[name === "head_view" ? "Y" : data.allow_view,name === "head_add" ? "Y" : data.allow_add,name === "head_edit" ? "Y" : data.allow_edit,name === "head_delete" ? "Y" : data.allow_delete]
+
+        var enableview=allowview.find((val)=>{return val==="Y"})
+
+        sendData.push({"group_id": groupid,
         "screen_master_id": data.id,
-        "allow_view": name==="head_view"?"Y":data.allow_view,
+        "allow_view": enableview==="N"?"N":"Y",
         "allow_add":name==="head_add"?"Y":data.allow_add,
         "allow_edit":name==="head_edit"?"Y":data.allow_edit ,
         "allow_delete": name==="head_delete"?"Y":data.allow_delete,
@@ -1335,10 +1019,13 @@ change_checkbox=(id,val,name,allvalue,index)=>{
       break;  
   }
 
+  var allowview=[allow_view,allow_add,allow_edit,allow_delete]
+  var enableview=allowview.find((val)=>{return val==="Y"})
+
   var sendData=[{
-    "group_id": "85",
+    "group_id": groupid,
     "screen_master_id": id,
-    "allow_view": allow_view,
+    "allow_view": enableview?enableview:"N",
     "allow_add":allow_add,
     "allow_edit":allow_edit ,
     "allow_delete": allow_delete,
@@ -1366,7 +1053,7 @@ console.log(sendData,"head_allhead_all")
 
                 })
                 .then(function (response) {
-                    self.recall_permission(true)
+                  self.recall_permission(true,groupid,useraccess)
                     console.log(response,"successs")
                     self.setState({
                     })
@@ -1385,11 +1072,12 @@ console.log(sendData,"head_allhead_all")
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
-    const { classes } = this.props;
-    console.log(rows[0],"rows")
 
-
-
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[4]
+    if(this.state.onceopen && useraccess){
+      this.recall_permission(null,this.state.responseid,useraccess)
+      this.setState({onceopen:false,useraccess:useraccess})
+    }
 
     return (
       <div>
@@ -1401,7 +1089,7 @@ console.log(sendData,"head_allhead_all")
 
           <div className="group_accessrights_dropdown">
           <h4>Group</h4>
-          <Dropdownantd className="accessrights-option" breakclass="drop_down_br" option={this.state.group_arr} changeData={(data)=>this.changeDynamic(data,"group")} 
+          <Dropdownantd className={`accessrights-option ${useraccess && useraccess.allow_edit==="N" && "disablenotallow"}`} breakclass="drop_down_br" option={this.state.group_arr} changeData={useraccess && useraccess.allow_edit==="Y" ? (data)=>this.changeDynamic(data,"group",useraccess):null} 
           value={this.state.group} />
           </div>
           

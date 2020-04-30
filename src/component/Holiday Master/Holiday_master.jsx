@@ -147,6 +147,14 @@ export default class Holiday_master extends React.Component {
 
 
   update = () => {
+    if (!this.state.ChildWholeState.card0) {
+      notification.warning({
+        className: "show_frt",
+        message: "Please fill holiday fields",
+      });
+    }
+    else {
+  
 
     this.setState({props_loading:true})
 
@@ -174,9 +182,9 @@ export default class Holiday_master extends React.Component {
       this.setState({
         insertmodalopen: false
       })
+    }
 
   }
-
 
 
   deleterow = () => {
@@ -279,16 +287,14 @@ export default class Holiday_master extends React.Component {
   }
 
   render() {
-    console.log(this.state, "thisstate")
-
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[18]
     return (
       <div>
-                {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
-
+        {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
       <div>
         <div className="holiday_master_header">
           <div className="holiday_master_title"><h3>HOLIDAY MASTER</h3></div>
-          <img className="plus" onClick={this.insertdata} src={PlusIcon} />
+          <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
         </div>
         <Tablecomponent heading={[
           { id: "", label: "S.No" },
@@ -304,6 +310,8 @@ export default class Holiday_master extends React.Component {
           VisibilityIcon="close"
           alignheading="cus_wid_commission_head"
           props_loading={this.state.props_loading}
+          editpermission={useraccess && useraccess.allow_edit}
+          deletepermission={useraccess && useraccess.allow_delete}
         />
 
 

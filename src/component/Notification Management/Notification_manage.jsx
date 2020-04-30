@@ -1,10 +1,5 @@
 import React from "react";
 import Tablecomponent from "../tablecomponent/tablecomp";
-import Modalcomp from "../../helper/Modalcomp";
-import PlusIcon from '../../images/plus.png';
-import Button from '@material-ui/core/Button';
-import Inputantd from "../../formcomponent/inputantd";
-// import Checkbox from '@material-ui/core/Checkbox';
 import {apiurl} from "../../../src/App.js";
 import { Checkbox } from 'antd';
 import { Spin,notification } from 'antd';
@@ -33,11 +28,12 @@ export default class Notification_manage extends React.Component{
             app1:true,
             loading:true,
             props_loading:false,
+            onceopen:true
         }
     }
 
 
-    secondcall = (value,name,nameval) => {
+    secondcall = (value,name,nameval,useraccess) => {
         this.setState({props_loading:true})
 
     console.log(value,name,nameval,"getvalue")
@@ -71,7 +67,7 @@ export default class Notification_manage extends React.Component{
             
         })
         .then(function (response) {
-            self.recall()
+            self.recall(useraccess)
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -84,7 +80,7 @@ export default class Notification_manage extends React.Component{
 
 
 
-    recall=()=>{
+    recall=(useraccess)=>{
         var self=this
           axios({
             method: 'get',
@@ -95,15 +91,19 @@ export default class Notification_manage extends React.Component{
         response.data.data.map((value)=>{
 
             arrval.push({category:value.category,notification:value.notification,
-                app_isActive:<Checkbox className="notification_check" checked={value.app_isActive} onChange={(e)=>self.secondcall(value,"app_isActive",value.app_isActive)}/>,
-                sms_isActive:<Checkbox className="notification_check" checked={value.sms_isActive} onChange={(e)=>self.secondcall(value,"sms_isActive",value.sms_isActive)}/>,
-                email_isActive:<Checkbox className="notification_check" checked={value.email_isActive} onChange={(e)=>self.secondcall(value,"email_isActive",value.email_isActive)}/>,
+                app_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.app_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>self.secondcall(value,"app_isActive",value.app_isActive,useraccess) : null}/>,
+                sms_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.sms_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>self.secondcall(value,"sms_isActive",value.sms_isActive,useraccess) : null}/>,
+                email_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.email_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>self.secondcall(value,"email_isActive",value.email_isActive,useraccess) : null}/>,
                 id:value.id})
         })
         self.setState({
             currentdata:arrval,
             props_loading:false
         })
+        notification.success({
+            className: "show_frt",
+            message: "Record update sucessfully",
+        });
           })
           .catch(function (error) {
             console.log(error,"error");
@@ -113,7 +113,7 @@ export default class Notification_manage extends React.Component{
     
 
 
-    componentDidMount(){
+    componentdidcall=(useraccess)=>{
         
         const handleChange = (value,name,nameval) => {
             this.setState({props_loading:true})
@@ -152,7 +152,7 @@ export default class Notification_manage extends React.Component{
                 
             })
             .then(function (response) {
-                self.recall()
+                self.recall(useraccess)
             })
             .catch(function (error) {
                 console.log(error,"error");
@@ -176,9 +176,9 @@ export default class Notification_manage extends React.Component{
         response.data.data.map((value)=>{
 
             arrval.push({category:value.category,notification:value.notification,
-                app_isActive:<Checkbox className="notification_check" checked={value.app_isActive} onChange={(e)=>handleChange(value,"app_isActive",value.app_isActive)}/>,
-                sms_isActive:<Checkbox className="notification_check" checked={value.sms_isActive} onChange={(e)=>handleChange(value,"sms_isActive",value.sms_isActive)}/>,
-                email_isActive:<Checkbox className="notification_check" checked={value.email_isActive} onChange={(e)=>handleChange(value,"email_isActive",value.email_isActive)}/>,
+                app_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.app_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>handleChange(value,"app_isActive",value.app_isActive) : null}/>,
+                sms_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.sms_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>handleChange(value,"sms_isActive",value.sms_isActive) : null } />,
+                email_isActive:<Checkbox className={`notification_check ${useraccess && useraccess.allow_edit==="N" && "disablebtn_notify"}`} checked={value.email_isActive} onChange={useraccess && useraccess.allow_edit==="Y" ? (e)=>handleChange(value,"email_isActive",value.email_isActive) : null} />,
                 id:value.id})
         })
         self.setState({
@@ -212,8 +212,11 @@ export default class Notification_manage extends React.Component{
 
 
     render(){
-        console.log(this.state,"state")
-         
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[6]
+        if(this.state.onceopen && useraccess){
+            this.componentdidcall(useraccess)
+            this.setState({onceopen:false})
+        }
         return(
             <div>
                 {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:

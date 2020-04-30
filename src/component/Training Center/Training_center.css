@@ -1,61 +1,69 @@
-.training_center_header{
+.training_center_header {
     height: auto;
-    width:100%;
-    }
-    .training_center_title h3{
+    width: 100%;
+}
+
+.training_center_title h3 {
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
-    }
-    .training_center_header{
-    width:100%;
-    background-color:#F8F8F8;
-    padding: 10px;
-    box-shadow:0px 3px 6px #00000029;;
-    display:flex;
-    justify-content: space-between;
-    }
-    .plus{
-        width: 40px;
-        height: 40px;
-        margin-right: 20px;
-        cursor:pointer;
-    }
-    .center_button{
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
-    }
-    .center_button_cancel{
-        background-color: #C9C9C9 !important;
-        margin-right: 20px !important;
-        border-radius: 0px !important;
-        
-    }
-    .center_button_create{
-        background-color: #2680EB !important;
-        color: #FFFFFF !important;
-        border-radius: 0px !important;
-        
-    }
-    .create_center{
-        display: flex;
-    }
-    .center_option{
-        width:235px !important;
-        margin-right: 40px !important;
-    }
+}
 
-    .training_center_modal .MuiDialog-paperWidthXs {
-        max-width: 640px;
-    }
-    /* .cus_wid_trainingcenter_head tr th:first-child{
+.training_center_header {
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.center_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.center_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.center_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.create_center {
+    display: flex;
+}
+
+.center_option {
+    width: 235px !important;
+    margin-right: 40px !important;
+}
+
+.training_center_modal .MuiDialog-paperWidthXs {
+    max-width: 640px;
+}
+
+/* .cus_wid_trainingcenter_head tr th:first-child{
         width: 40%;
     }
     .cus_wid_trainingcenter_head tr th:nth-child(2){
         width: 50%;
     } */
 
-    .cus_wid_trainingcenter_head tr th{
-        width:30%
-    }
+.cus_wid_trainingcenter_head tr th {
+    width: 30%
+}

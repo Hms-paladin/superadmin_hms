@@ -1,46 +1,52 @@
-.vendor_master_header{
+.vendor_master_header {
     height: auto;
-    width:100%;
-    }
-    .vendor_master_title h3{
+    width: 100%;
+}
+
+.vendor_master_title h3 {
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
-    }
-    .vendor_master_header{
-    width:100%;
-    background-color:#F8F8F8;
+}
+
+.vendor_master_header {
+    width: 100%;
+    background-color: #F8F8F8;
     padding: 10px;
-    box-shadow:0px 3px 6px #00000029;;
-    display:flex;
+    box-shadow: 0px 3px 6px #00000029;
+    display: flex;
     justify-content: space-between;
-    }
-    .plus{
-        width: 40px;
-        height: 40px;
-        margin-right: 20px;
-        cursor:pointer;
-    }
-    .master_button{
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
-    }
-    .master_button_cancel{
-        background-color: #C9C9C9 !important;
-        margin-right: 20px !important;
-        border-radius: 0px !important;
-        
-    }
-    .master_button_create{
-        background-color: #2680EB !important;
-        color: #FFFFFF !important;
-        border-radius: 0px !important;
-        
-    }
-    .cus_wid_vendor_head tr th:first-child{
-        width: 40%;
-    }
-    .cus_wid_vendor_head tr th:nth-child(2){
-        width: 50%;
-    }
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.master_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.master_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.master_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.cus_wid_vendor_head tr th:first-child {
+    width: 40%;
+}
+
+.cus_wid_vendor_head tr th:nth-child(2) {
+    width: 50%;
+}

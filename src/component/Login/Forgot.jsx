@@ -17,23 +17,32 @@ const axios = require('axios');
 export default class Forgot extends Component {
   constructor(props) {
     super(props);
-    this.state = { mail: "", hidden: true }
+    this.state = { email: "", hidden: true }
   }
   toggleshow = () => {
     this.setState({ hidden: !this.state.hidden })
     console.log("i am clicked", this.state.hidden)
   }
   mailFun = (e) => {
-    this.setState({ mail: e.target.value })
+    this.setState({ email: e.target.value ,errmsg_email:""})
   }
 
   sendMail=()=>{
-    var self=this
+    if(this.state.email===""){
+      this.setState({
+        errmsg_email: "Email is required"
+      })
+    }
+    else if (!new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
+      this.setState({
+        errmsg_email: "Email is invalid"
+      })
+    }else{
       axios({
         method: 'post',
         url: `${apiurl}sendresetpwdURL`,
         data:{
-          "email":this.state.mail
+          "email":this.state.email
         }
       })
       .then(function (response) {
@@ -42,7 +51,7 @@ export default class Forgot extends Component {
             message: "Mail send sucessfully",
           });
       })
-
+    }
   }
 
 
@@ -74,8 +83,15 @@ export default class Forgot extends Component {
                     Enter the current email address associated with your ONE MOMENT account, then click submit.We'll email you a link to a page where you can easily create a new password
                  </div>
 
-                  <div className="pharmacy_email_container"><TextField type="text" onChange={this.mailFun} value={this.state.mail} label="EMAIL"
-
+                  <div className="pharmacy_email_container"><TextField type="text" onChange={this.mailFun} value={this.state.email} label="EMAIL"
+                    autoFocus={true}
+                    onKeyPress={(ev) => {
+                      console.log(ev.key,"ev")
+                      if (ev.key  === 'Enter') {
+                        this.sendMail()
+                      }
+                    }}
+                    className={this.state.errmsg_email && "errmsg_forgotemail"}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment>
@@ -85,6 +101,9 @@ export default class Forgot extends Component {
                         </InputAdornment>
                       )
                     }} />
+                    {this.state.errmsg_email ?
+                        <span className="errmsgclr">{this.state.errmsg_email}</span> :
+                        <div className="errmsgMB" />}
                   </div>
 
                   <div className="pharmacy_submit_container">

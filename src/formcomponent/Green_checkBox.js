@@ -26,6 +26,7 @@ class Green_checkBox extends React.Component{
                     onChange={this.props.change_checkbox}
                     value={this.props.value}
                     onClick={event => event.stopPropagation()}
+                    className={this.props.className && this.props.className}
                     />
                 }
                 />

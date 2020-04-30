@@ -1,94 +1,103 @@
-.user_master_header{
+.user_master_header {
     height: auto;
-    width:100%;
-    }
-    .user_master_title h3{
+    width: 100%;
+}
+
+.user_master_title h3 {
     color: #82AE3F;
     margin-left: 12px;
     margin-top: 5px !important;
-    }
-    .user_master_header{
-    width:100%;
-    background-color:#F8F8F8;
+}
+
+.user_master_header {
+    width: 100%;
+    background-color: #F8F8F8;
     padding: 10px;
-    box-shadow:0px 3px 6px #00000029;;
-    display:flex;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
     justify-content: space-between;
-    }
-    .plus{
-        width: 40px;
-        height: 40px;
-        margin-right: 20px;
-        cursor:pointer;
-    }
-  
-    .user_master_modal .MuiDialog-paperScrollPaper  {
-   width: 60%;
-        max-height: none;
-    }
-    .usermaster_drop{
-        width: 100%;
-    }
-    .usermaster_button_cancel{
-        background-color: #C9C9C9 !important;
-        margin-right: 20px !important;
-        border-radius: 0px !important;
-    }
-    .usermaster_button_create{
-        background-color: #2680EB !important;
-        color: #FFFFFF !important;
-        border-radius: 0px !important;
-    }
-    .usermasrter_grid_three{
-        display: flex;
-        justify-content: space-between;
-    }
-    .usermaster_switch{
-        display: flex;
-        width: 85px;
-        justify-content: space-around;
-    }
-    .usermaster_switch p{
-        font-size: 13px;
-    }
-    .switch_grid.ant-switch-checked {
-       background-color:#82AE3F !important ;
-   } 
-   .status_usermaster_active{
-       font-size: 1.5rem !important;
-       border-radius: 3px !important;
-       height: 25px !important;
-       background-color: #E6EFD8 !important;
-       color: #82AE3F  !important;
-       width: 88px;
-       border-color:#82AE3F !important;
-    }
+}
 
-    .status_usermaster_inactive{
-        font-size: 1.5rem !important;
-        border-radius: 3px !important;
-        height: 25px !important;
-        width: 88px;
-        color: #ee534f !important;
-        border-color: #ee534f !important;
-        background-color: #f9bebe !important;
-     }
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
 
+.user_master_modal .MuiDialog-paperScrollPaper {
+    width: 60%;
+    max-height: none;
+}
 
-   
-   .status_usermaster{
+.usermaster_drop {
+    width: 100%;
+}
+
+.usermaster_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.usermaster_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.usermasrter_grid_three {
+    display: flex;
+    justify-content: space-between;
+}
+
+.usermaster_switch {
+    display: flex;
+    width: 85px;
+    justify-content: space-around;
+}
+
+.usermaster_switch p {
+    font-size: 13px;
+}
+
+.switch_grid.ant-switch-checked {
+    background-color: #82AE3F !important;
+}
+
+.status_usermaster_active {
+    font-size: 1.5rem !important;
+    border-radius: 3px !important;
+    height: 25px !important;
+    background-color: #E6EFD8 !important;
+    color: #82AE3F !important;
+    width: 88px;
+    border-color: #82AE3F !important;
+}
+
+.status_usermaster_inactive {
+    font-size: 1.5rem !important;
+    border-radius: 3px !important;
+    height: 25px !important;
+    width: 88px;
+    color: #ee534f !important;
+    border-color: #ee534f !important;
+    background-color: #f9bebe !important;
+}
+
+.status_usermaster {
     font-size: 1.5rem !important;
     border-radius: 8px !important;
     height: 25px !important;
     background-color: #FFDADA !important;
-    color: #FF4747  !important;
+    color: #FF4747 !important;
     width: 88px;
-    border-color:#FF4747 !important;
+    border-color: #FF4747 !important;
 }
 
-.cus_wid_usermaster_head~tbody tr td:nth-child(7){
+.cus_wid_usermaster_head~tbody tr td:nth-child(7) {
     /* padding-left: 0px; */
     position: relative;
     left: -17px;
 }
-

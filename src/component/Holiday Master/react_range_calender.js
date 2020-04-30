@@ -226,10 +226,6 @@ class Range_Calendar extends React.Component {
       }
     })
       .then(function (response) {
-        console.log(response.data, "resholidayGet")
-        // self.setState({
-        //   regionEditData:response.data
-        // })
         self.getRegion_Recall()
       })
       .catch(function (error) {
@@ -404,16 +400,3 @@ class Range_Calendar extends React.Component {
 }
 export default Range_Calendar;
 
-
-// {selection:{
-//   startDate: new Date('2020-05-10'),
-//   endDate: new Date('2020-05-10'),
-//   key: 'selection',
-// }}
-
-
-// ranges={[{
-//   startDate: new Date('2020-05-10'),
-//   endDate: new Date('2020-05-10'),
-//   key: 'selection',
-// }]}

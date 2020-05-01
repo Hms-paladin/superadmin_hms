@@ -296,7 +296,7 @@ deleterow=()=>{
     }
 
     render(){
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[9]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[8]
         return(
             <div>
             {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:

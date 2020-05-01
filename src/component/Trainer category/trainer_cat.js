@@ -222,7 +222,7 @@ export default class Training_cat extends React.Component {
 
 
     render() {
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[8]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[7]
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :

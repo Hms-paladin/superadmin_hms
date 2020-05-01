@@ -453,7 +453,7 @@ export default class User_master extends React.Component {
   }
 
   render() {
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[5]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[4]
 
     return (
       <div>

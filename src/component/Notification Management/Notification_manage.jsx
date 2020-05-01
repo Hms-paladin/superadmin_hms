@@ -212,7 +212,7 @@ export default class Notification_manage extends React.Component{
 
 
     render(){
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[6]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[5]
         if(this.state.onceopen && useraccess){
             this.componentdidcall(useraccess)
             this.setState({onceopen:false})

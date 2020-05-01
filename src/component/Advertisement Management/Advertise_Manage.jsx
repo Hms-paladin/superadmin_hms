@@ -573,7 +573,7 @@ export default class Advertise_manage extends Component {
 
 
   render() {
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[14]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[12]
     console.log(useraccess,"useraccess")
     if(this.state.onceopen && this.props.uservalue){
     this.didmount_recall(null,null,useraccess)

@@ -43,27 +43,27 @@ export default class Login extends Component {
   }
 
   loginCheck = () => {
-    if(this.state.email === ""){
-      this.setState({
-        errmsg_email: "Email is required"
-      })
-    }
-    else if (!new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
-      this.setState({
-        errmsg_email: "Email is invalid"
-      })
-    }
-    if (this.state.password === "") {
-      this.setState({
-        errmsg_password: "Password is required",
-      })
-    } else if (this.state.password.length < 4) {
-      this.setState({
-        errmsg_password: "Password must have 4 characters",
-      })
-    }
+    // if(this.state.email === ""){
+    //   this.setState({
+    //     errmsg_email: "Email is required"
+    //   })
+    // }
+    // else if (!new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
+    //   this.setState({
+    //     errmsg_email: "Email is invalid"
+    //   })
+    // }
+    // if (this.state.password === "") {
+    //   this.setState({
+    //     errmsg_password: "Password is required",
+    //   })
+    // } else if (this.state.password.length < 4) {
+    //   this.setState({
+    //     errmsg_password: "Password must have 4 characters",
+    //   })
+    // }
 
-    else if (new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
+    // else if (new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
       var self = this
       axios({
           method: 'post',
@@ -91,7 +91,7 @@ export default class Login extends Component {
           });
             console.log(error, "loginerror");
         });
-    }
+    // }
   }
 oncecallfun=()=>{
   return <Redirect to="home/doctorspecial" />
@@ -102,7 +102,7 @@ oncecallfun=()=>{
       localStorage.getItem('token') === this.state.token ?
         <Router basename="superadmin/?/">
           {/* <Homepage /> */}
-          <Route path="/Home" component={Homepage} />
+          <Route path="/home" component={Homepage} />
           {this.oncecallfun()}
         </Router> :
         <div className="pharmacy_login_container">

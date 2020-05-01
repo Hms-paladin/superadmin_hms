@@ -53,7 +53,7 @@ class App extends React.Component {
             localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid?
             <Router basename="superadmin/?/">
               {/* <Homepage /> */}
-              <Route path="/Home" component={Homepage} />
+              <Route path="/home" component={Homepage} />
               </Router>
             :
             window.location.pathname==="/resetpassword" && token && mail

@@ -13,7 +13,7 @@ import Homepage from "../../drawerpage/drawerpage"
 import {
   BrowserRouter as Router,
   Switch,
-  Route, NavLink, Link
+  Route, NavLink, Link,Redirect
 } from "react-router-dom";
 import { apiurl } from "../../../src/App.js";
 import { Spin, notification } from 'antd';
@@ -141,14 +141,18 @@ export default class DoctorLogin extends Component {
     })
   }
 
+  oncecallfun=()=>{
+    return <Redirect to="home/doctorspecial" />
+  }
+
   render() {
     return (
       <div>
       {localStorage.getItem('token') ?
       <Router basename="superadmin/?/">
-      {/* <Homepage /> */}
-      <Route path="/Home" component={Homepage} />
-      </Router>:
+      <Route path="/home" component={Homepage} />
+      {this.oncecallfun()}
+    </Router>:
       <div className="pharmacy_login_container">
         <Grid container>
           <Grid item xs={12} md={7} className="pharmacy_image_grid">

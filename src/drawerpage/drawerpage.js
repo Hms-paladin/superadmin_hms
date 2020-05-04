@@ -369,7 +369,7 @@ class Homepage extends React.Component {
   logout = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("email")
-    history.push('/')
+    history.push('/superadmin/?/')
     window.location.reload()
   }
 

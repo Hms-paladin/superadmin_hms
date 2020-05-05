@@ -379,18 +379,18 @@ class Homepage extends React.Component {
     const { current_location } = this.state
     let date = new Date();
 
-    console.log(this.state.current_location, "current_location")
+    console.log(window.location.href, "current_location")
     console.log(this.state.useraccessdata && this.state.useraccessdata[0].item[0].item, "useraccessstate")
 
     const useraccess = this.state.useraccessdata && this.state.useraccessdata[0].item[0].item
     console.log(useraccess, "useraccessuseraccessuseraccess")
 
-    // if (window.location.pathname === "/") {
-    //   return <Redirect to="/doctorspecial" />
+    // if (window.location.href === "/") {
+    //   return <Redirect to="/superadmin/?/home/doctorspecial" />
     // }
 
     if (window.location.pathname.includes("resetpassword")) {
-      return <Redirect to="/doctorspecial" />
+      return <Redirect to="/superadmin/?/home/doctorspecial" />
     }
 
     return (

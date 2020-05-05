@@ -14,14 +14,6 @@ export const apiurl="http://52.200.251.222:8158/api/v1/"
 
 class App extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  
-  //   this.state = {
-  //     token:""
-  //   };
-  // }
-
    tokenid=(length)=>{
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -47,6 +39,8 @@ class App extends React.Component {
     const mail=params.get("ma")
     const tokenid=this.tokenid(10)
     localStorage.setItem("tokenid",tokenid)
+    // if(localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid && )
+    // console.log(window.location.pathname,"href")
     return (
       <div>
             {

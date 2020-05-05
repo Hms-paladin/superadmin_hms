@@ -88,3 +88,46 @@
     font-size: 17px;
     left: 28px;
 }
+
+.filterboxwidthdrop{
+    width:100%;
+}
+
+.filterboxwidthdrop div{
+    border-color: #615f5f !important;
+}
+
+
+.filterboxwidth{
+    width:14.28%;
+    border-color: #615f5f !important;
+}    
+
+  .filterbtn{
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 1px !important;
+    height: 34px;
+    margin-top: 27px !important;
+    width: 100px !important;
+  }
+
+  .withoutdatebox{
+      justify-content: center;
+  }
+
+  .withoutdatebox div{
+      margin-right: 15px;
+  }
+
+  .filtercalendarbox{
+    display: flex !important;
+    align-items: flex-end;
+  }
+
+  .filtercalendarbox div input{
+    border-color: #615f5f !important;
+    height: 35px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+  }

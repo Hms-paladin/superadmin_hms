@@ -362,7 +362,7 @@ class Range_Calendar extends React.Component {
                 showPreview={true}
                 // maxDate={new Date('2020-05-10')}
                 minDate={today}
-              /> : <Calendar onChange={(item) => this.singleselect_Cal(item)}
+              /> : <Calendar className="setheightsinglecal" onChange={(item) => this.singleselect_Cal(item)}
                 date={this.state.date} />
 
               }
@@ -374,11 +374,13 @@ class Range_Calendar extends React.Component {
           <Grid item xs={12} md={7} className="calran_grid_nonetop">
             <div className={"app_reg_flex"}>
               <div className="app_reg_tx_size">Application Region</div>
-              <div><Inputantd className="cus_wid_app_calreg"
+              <div className="d-flex"><Inputantd className="cus_wid_app_calreg"
                 changeData={(data) => this.changeDynamic(data)}
                 value={this.state.region}
-              /></div>
-              <div><AddBoxIcon className="app_reg_icon_size" onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} /></div>
+              />
+              <AddBoxIcon className="app_reg_icon_size" onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} />
+              </div>
+              {/* <div><AddBoxIcon className="app_reg_icon_size" onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} /></div> */}
             </div>
           </Grid>
 

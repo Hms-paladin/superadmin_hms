@@ -4,13 +4,15 @@ import Modalcomp from "../../helper/Modalcomp";
 import { apiurl } from "../../../src/App.js";
 import { Input } from 'antd';
 import Inputantd from "../../formcomponent/inputantd";
+import Dropdownantd from "../../formcomponent/dropdownantd";
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Spin, notification } from 'antd';
 import createHistory from 'history/createBrowserHistory';
+import Button from '@material-ui/core/Button';
+import { DatePicker } from 'antd';
 import "./Approval_manage.css"
-
 const axios = require('axios');
 var moment = require('moment');
 const history = createHistory()
@@ -25,6 +27,10 @@ export default class Approval_manage extends React.Component {
         approvalAllValue: [],
         loading:true,
         onceopen:true,
+        status:"Pending",
+        vendordata:[],
+        type:"",
+        search:null
     }
 
     changeDynamic = (data, id) => {
@@ -45,8 +51,6 @@ export default class Approval_manage extends React.Component {
     }
 
     viewFun = (id, type) => {
-        alert(type)
-        alert(id)
         this.setState({ openview: true, approvaltype: type, approvalinfo: "" ,model_loading:true})
 
         var self = this
@@ -68,7 +72,52 @@ export default class Approval_manage extends React.Component {
             })
     }
 
-    CheckFun = (id,useraccess) => {
+    filterrecall=(checkvalueid,clicktrue,useraccess,type,msg,filterdata)=>{
+        alert(checkvalueid)
+        var self = this
+        axios({
+            method: 'post',
+            url: `${apiurl}get_vw_approval_mgnt `,
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            },
+            data:filterdata
+
+        })
+            .then(function (response) {
+                var filterarr=[]
+                response.data.data.map((value, index) => {
+                filterarr.push({
+                    date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+
+                            <Inputantd
+                                className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
+                                changeData={(data) => self.changeDynamic(data, value.type_id)}
+                                value={self.state["inputbox" + value.type_id]}
+                            />,
+
+                        action: <div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon" onClick={() => self.viewFun(value.type_id, value.Type)} /><CheckIcon className={`tableedit_icon ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" ? () => self.CheckFun(value.type_id,useraccess,true,filterdata):null} /><CloseIcon className={`tabledelete_icon ${useraccess && useraccess.allow_delete==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_delete==="Y" ? () => self.closeFun(value.type_id,useraccess,true,filterdata) : null} /></div>, id: value.type_id
+                })
+            })
+                self.setState({
+                    currentdata:filterarr,
+                    loading: false,
+                    props_loading:false
+                })
+                console.log(filterarr,"filter")
+                type && notification[type]({
+                    className: "show_frt",
+                    message: msg,
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error, "error");
+            });
+    }
+
+    CheckFun = (id,useraccess,callfilterfun,filterapidata) => {
+        alert("test")
         if (this.state["inputbox" + id]) {
             this.setState({props_loading:true})
             var type = this.state.currentdata.filter((val) => {
@@ -92,7 +141,11 @@ export default class Approval_manage extends React.Component {
                         loading: false,
                         [temperedvar]: ""
                     })
+                    if(callfilterfun){
+                    self.filterrecall(null,null,useraccess,"success","Approved successfully",filterapidata)
+                    }else{
                     self.recall(null,null,"success","Approved successfully",useraccess)
+                    }
                     console.log(response, "resapproval")
                 })
 
@@ -100,12 +153,16 @@ export default class Approval_manage extends React.Component {
             this.setState({
                 currentbox: id
             })
+            if(callfilterfun){
+            this.filterrecall(id,true,useraccess,null,null,filterapidata)
+            }else{
             this.recall(id, true,null,null,useraccess)
+            }
         }
 
     }
 
-    closeFun = (id,useraccess) => {
+    closeFun = (id,useraccess,callfilterfun,filterapidata) => {
 
         if (this.state["inputbox" + id]) {
             this.setState({props_loading:true})
@@ -130,16 +187,22 @@ export default class Approval_manage extends React.Component {
                         loading: false,
                         [temperedvar]: ""
                     })
-                    self.recall(null,null,"success","Rejected successfully",useraccess)
-                    console.log(response, "resapproval")
-
+                    if(callfilterfun){
+                        self.filterrecall(null,null,useraccess,"success","Rejected successfully",filterapidata)
+                        }else{
+                        self.recall(null,null,"success","Rejected successfully",useraccess)
+                        }
                 })
 
         } else {
             this.setState({
                 currentbox: id
             })
-            this.recall(id, true,null,null,useraccess)
+            if(callfilterfun){
+                this.filterrecall(id,true,useraccess,null,null,filterapidata)
+                }else{
+                this.recall(id, true,null,null,useraccess)
+                }
         }
     }
     expiretoken=()=>{
@@ -205,13 +268,136 @@ export default class Approval_manage extends React.Component {
                 setTimeout(() => {
                     self.expiretoken()
                   }
-                ,4000)
+                ,3000)
             });
     }
 
 
     closemodal = () => {
         this.setState({ openview: false, editopen: false })
+    }
+
+    componentDidMount(){
+        var self=this
+        axios({
+          method: 'get',
+          url: `${apiurl}get_mas_vendor_master`,
+          
+        })
+        .then(function (response) {
+          var arrval=[]
+          response.data.data.map((value)=>{
+            arrval.push({dropdown_val:value.vendor,id:value.id})
+        })
+          self.setState({
+            vendordata:arrval,
+            // vendor:arrval[0].dropdown_val
+          })
+        })
+    }
+
+    filter=(name,data)=>{
+        this.setState({
+            [name]:data
+        })
+    }
+
+    searchfun=(e)=>{
+        this.setState({
+            search:e.target.value
+        })
+    }
+
+    filterfun=(checkvalueid,clicktrue,useraccess=this.state.useraccessstate)=>{
+
+        switch(this.state.status){
+            case "1":
+            var status="PENDING"
+            break;
+
+            case "2":
+            var status="APPROVE"
+            break;
+
+            case "3":
+            var status="REJECT"
+            break;
+
+            case "Pending":
+            var status="PENDING"
+            break;  
+        }
+
+        switch(this.state.type){
+            case "1":
+            var type="Vendor"
+            break;
+
+            case "2":
+            var type="Deal"
+            break;
+
+            case "3":
+            var type="Advertisement"
+            break;
+
+            case "4":
+            var type="Media"
+            break;  
+        }
+
+        var filterapidata= {
+            "status":status,
+            "vendorId":this.state.vendor?this.state.vendor:"",
+            "fromDate":this.state.fromdate?moment(this.state.fromdate).format('YYYY-MM-DD'):"",
+            "toDate":this.state.todate?moment(this.state.todate).format('YYYY-MM-DD'):"",
+            "vendorName":this.state.vendor_name?this.state.vendor_name:"",
+            "type":type?type:""
+        }
+
+        var self = this
+        axios({
+            method: 'post',
+            url: `${apiurl}get_vw_approval_mgnt `,
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            },
+            data:
+            {
+                "status":status,
+                "vendorId":this.state.vendor?this.state.vendor:"",
+                "fromDate":this.state.fromdate?moment(this.state.fromdate).format('YYYY-MM-DD'):"",
+                "toDate":this.state.todate?moment(this.state.todate).format('YYYY-MM-DD'):"",
+                "vendorName":this.state.vendor_name?this.state.vendor_name:"",
+                "type":type?type:""
+            }
+
+        })
+            .then(function (response) {
+                // self.recall("success", "edited")
+                var filterarr=[]
+                response.data.data.map((value, index) => {
+                filterarr.push({
+                    date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+
+                            <Inputantd
+                                className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
+                                changeData={(data) => self.changeDynamic(data, value.type_id)}
+                                value={self.state["inputbox" + value.type_id]}
+                            />,
+
+                        action: <div className="approval_cus_iconalign"><VisibilityIcon className="tableeye_icon" onClick={() => self.viewFun(value.type_id, value.Type)} /><CheckIcon className={`tableedit_icon ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" ? () => self.CheckFun(value.type_id,useraccess,true,filterapidata):null} /><CloseIcon className={`tabledelete_icon ${useraccess && useraccess.allow_delete==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_delete==="Y" ? () => self.closeFun(value.type_id,useraccess,true,filterapidata) : null} /></div>, id: value.type_id
+                })
+            })
+                self.setState({
+                    currentdata:filterarr
+                })
+                console.log(filterarr,"filter")
+
+            })
+            .catch(function (error) {
+                console.log(error, "error");
+            });
     }
 
 
@@ -222,8 +408,17 @@ export default class Approval_manage extends React.Component {
         var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[13]
         if(this.state.onceopen && useraccess){
         this.recall(null,null,null,null,useraccess)
-        this.setState({onceopen:false})
+        this.setState({onceopen:false,useraccessstate:useraccess})
         }
+
+        const searchdata=this.state.currentdata.filter((data)=>{
+            if(this.state.search === null)
+                return data
+            else if(data.vendorname.toLowerCase().includes(this.state.search.toLowerCase()) || data.type.toLowerCase().includes(this.state.search.toLowerCase()) || data.details !== null && data.details.toLowerCase().includes(this.state.search.toLowerCase()) || data.date.toLowerCase().includes(this.state.search.toLowerCase()) ){
+                return data
+            }
+          })
+
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :
@@ -235,9 +430,51 @@ export default class Approval_manage extends React.Component {
                     </div>
                     <Search className="search"
                         placeholder=" search "
-                        onSearch={value => console.log(value)}
+                        onChange={this.searchfun}
                         style={{ width: 150 }} />
                 </div>
+                <div className={`d-flex mt-3 mb-3 ${this.state.type==="1" ? "withoutdatebox" : "justify-content-between"}`}>
+                <Dropdownantd label="Status" className="filterboxwidthdrop mr-2" divclass={"filterboxwidth"}
+            option={[{ dropdown_val: "Pending", id: "1" }, { dropdown_val: "Approved", id: "2" }, { dropdown_val: "Rejected", id: "3" }]} 
+            changeData={(data)=>this.filter("status",data)} 
+            value={this.state.status} 
+             />
+             <Dropdownantd label="Vendor" className="filterboxwidthdrop" divclass={"filterboxwidth"}
+            option={this.state.vendordata && this.state.vendordata} 
+            changeData={(data)=>this.filter("vendor",data)} 
+            value={this.state.vendor} 
+             />
+             <Inputantd label="Vendor name" className="filterboxwidth" 
+            changeData={(data)=>this.filter("vendor_name",data)} 
+            value={this.state.vendor_name}
+            />
+             <Dropdownantd label="Type" className="filterboxwidthdrop" divclass={"filterboxwidth"}
+            option={[{ dropdown_val: "Vendor", id: "1" }, { dropdown_val: "Deal", id: "2" }, { dropdown_val: "Advertisement", id: "3" },{ dropdown_val: "Media", id: "4" }]} 
+            changeData={(data)=>this.filter("type",data)} 
+            value={this.state.type} 
+             />
+             {/* <Inputantd label="From Date" className="filterboxwidth" 
+            changeData={(data)=>this.filter("fromdate",data)} 
+            value={this.state.fromdate}
+            />
+            <Inputantd label="To Date" className="filterboxwidth"  
+            changeData={(data)=>this.filter("todate",data)} 
+            value={this.state.todate}
+            /> */}
+            {this.state.type!=="1" &&
+            <>
+            <div>
+            <label className="commonlabel">From Date</label>
+            <DatePicker className="filtercalendarbox" onChange={(data)=>this.filter("fromdate",data)} format={"DD-MM-YYYY"} value={this.state.fromdate}/>
+            </div>
+            <div>
+            <label className="commonlabel">To Date</label>
+            <DatePicker className="filtercalendarbox" onChange={(data)=>this.filter("todate",data)} format={"DD-MM-YYYY"} value={this.state.todate}/>
+            </div>
+            </>
+            }
+            <Button className="filterbtn" onClick={this.filterfun}>Filter</Button>
+              </div>
 
                 <Tablecomponent heading={[
                     { id: "", label: "S.No" },
@@ -249,7 +486,7 @@ export default class Approval_manage extends React.Component {
                     { id: "action", label: "Action" },
                 ]}
 
-                    rowdata={this.state.currentdata && this.state.currentdata}
+                    rowdata={searchdata && searchdata}
                     tablemasterclass="approval_cus_iconadd"
                     props_loading={this.state.props_loading}
                     actionclose="close"

@@ -562,3 +562,7 @@ body {
     position: relative;
     top: 18px;
 }
+
+.ant-notification{
+    z-index: 1400 !important;
+}

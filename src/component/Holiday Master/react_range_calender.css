@@ -86,7 +86,7 @@
     width: 100%;
     display: flex;
     /* margin: auto;  */
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .wid_40_calrange_first {
@@ -212,6 +212,8 @@
     padding-left: 0px !important;
     padding-right: 0px !important;
     margin-left: -36px !important;
+    display: flex;
+    justify-content: space-around;
 }
 
 .set_order_range {
@@ -237,7 +239,7 @@
     height: 37px !important;
     margin-top: 11px;
     color: #82AF3F;
-    margin-left: 67px;
+    margin-left: 5px;
 }
 
 .app_reg_flex {
@@ -246,7 +248,7 @@
 }
 
 .cus_wid_app_calreg {
-    width: 168%;
+    /* width: 168%; */
 }
 
 .val_app_reg_grid {
@@ -294,7 +296,7 @@
 }
 
 .rdrDayToday .rdrDayNumber span:after {
-    bottom: 9px;
+    /* bottom: 9px; */
     background: #3d91ff !important;
 }
 
@@ -313,4 +315,16 @@
     height: 31px;
     top: 13px;
     color: #82AF3F !important;
+}
+
+.setheightsinglecal .rdrDays button{
+    height: 69px;
+}
+
+ .rdrDays button:nth-child(6) .rdrDayNumber span{
+    color:red !important;
+}
+
+ .rdrDays button:nth-child(7n+6) .rdrDayNumber span{
+    color:red !important;
 }

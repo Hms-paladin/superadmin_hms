@@ -71,7 +71,7 @@ export default class Commission extends React.Component {
                 })
                 type && notification[type]({
                     className: "show_frt",
-                    message: "Record update sucessfully",
+                    message: "Record update successfully",
                 });
             })
     }

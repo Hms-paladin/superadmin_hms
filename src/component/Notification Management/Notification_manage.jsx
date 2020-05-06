@@ -102,7 +102,7 @@ export default class Notification_manage extends React.Component{
         })
         notification.success({
             className: "show_frt",
-            message: "Record update sucessfully",
+            message: "Record update successfully",
         });
           })
           .catch(function (error) {

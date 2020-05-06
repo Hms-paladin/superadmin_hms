@@ -698,7 +698,7 @@ class Useraccess_rights extends Component {
       if (showNotification) {
         notification.success({
           className: "show_frt",
-          message: "Record" + " " + "update" + " " + "sucessfully",
+          message: "Record" + " " + "update" + " " + "successfully",
         })
       }
 

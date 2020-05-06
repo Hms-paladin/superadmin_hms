@@ -12,6 +12,8 @@ import { apiurl } from "../../../src/App.js";
 import Homepage from "../../drawerpage/drawerpage"
 import { BrowserRouter as Router, Link, NavLink, Redirect,Route } from "react-router-dom";
 import { Spin, notification } from 'antd';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const axios = require('axios');
 
@@ -100,7 +102,7 @@ oncecallfun=()=>{
     return (<div>
       {
       localStorage.getItem('token') === this.state.token ?
-        <Router basename="superadmin/?/">
+        <Router basename="superadmin/">
           {/* <Homepage /> */}
           <Route path="/home" component={Homepage} />
           {this.oncecallfun()}
@@ -163,8 +165,10 @@ oncecallfun=()=>{
                         endAdornment: (
                           <InputAdornment>
                             <IconButton>
-                              <img className="logineye_icon" src={Eye} onClick={this.toggleshow} />
-
+                              {this.state.hidden?
+                              <VisibilityIcon className="logineye_icon" onClick={this.toggleshow} />:
+                              <VisibilityOffIcon className="logineye_icon" onClick={this.toggleshow}/>
+                              }
                             </IconButton>
                           </InputAdornment>
                         )

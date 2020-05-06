@@ -93,11 +93,10 @@ export default class Advertise_manage extends Component {
   }
 
   changeDynamic = (data, setname) => {
-    this.setState({
-      [setname]: data,
-      errmsg:null
-    })
-
+      this.setState({
+        [setname]: data,
+        errmsg:null
+      })
   }
 
 
@@ -344,7 +343,7 @@ export default class Advertise_manage extends Component {
 
         msgdyn && notification[type]({
           className: "show_frt",
-          message: "Record" + " " + msgdyn + " " + "sucessfully",
+          message: "Record" + " " + msgdyn + " " + "successfully",
         });
       }));
 

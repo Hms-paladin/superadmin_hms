@@ -72,7 +72,7 @@ export default class Training_cat extends React.Component {
                 })
                 notification[type]({
                     className: "show_frt",
-                    message: "Record" + " " + msgdyn + " " + "sucessfully",
+                    message: "Record" + " " + msgdyn + " " + "successfully",
                 });
                 console.log(response, "train_cat")
             })

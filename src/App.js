@@ -3,12 +3,10 @@ import Homepage from './drawerpage/drawerpage.js';
 import Login from "./component/Login/Login.jsx";
 import Forgot from './component/Login/Forgot';
 import ResetPassword from "./component/Login/ResetPassword";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Redirect } from "react-router-dom";
 
 import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const axios = require('axios');
 
 export const apiurl="http://52.200.251.222:8158/api/v1/"
 
@@ -39,22 +37,30 @@ class App extends React.Component {
     const mail=params.get("ma")
     const tokenid=this.tokenid(10)
     localStorage.setItem("tokenid",tokenid)
-    // if(localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid && )
-    // console.log(window.location.pathname,"href")
+
+    console.log(window.location.pathname,"href")
+    if(localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid && window.location.pathname==="/superadmin/"){
+      return (
+      <Router basename="superadmin/">
+        <Redirect to="/home/doctorspecial" />
+        {this.setState({})}
+      </Router>
+        )
+    }
     return (
       <div>
             {
             localStorage.getItem('token') && localStorage.getItem('tokenid')===tokenid?
-            <Router basename="superadmin/?/">
+            <Router basename="superadmin/">
               {/* <Homepage /> */}
               <Route path="/home" component={Homepage} />
               </Router>
             :
             window.location.pathname==="/resetpassword" && token && mail
             ?
-            <Router basename="superadmin/?/"><Route path={"/resetpassword"} component={ResetPassword} exact /></Router>
+            <Router basename="superadmin/"><Route path={"/resetpassword"} component={ResetPassword} exact /></Router>
             :
-            <Router basename="superadmin/?/">
+            <Router basename="superadmin/">
             <Route exact path="/" component={Login}/>
             <Route path="/forgot" component={Forgot} exact />
             <Router><Route path={"/resetpassword"} component={Login} exact /></Router>

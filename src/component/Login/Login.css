@@ -373,8 +373,8 @@ body {
 }
 
 .logineye_icon {
-	width: 30px;
-	height: 30px;
+	width: 28px !important;
+	height: 28px !important;
 }
 
 .password_container .MuiIconButton-root {

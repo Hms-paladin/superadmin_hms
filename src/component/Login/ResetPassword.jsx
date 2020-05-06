@@ -17,6 +17,8 @@ import {
 } from "react-router-dom";
 import { apiurl } from "../../../src/App.js";
 import { Spin, notification } from 'antd';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import "./ResetPassword.css"
 
 const axios = require('axios');
@@ -149,7 +151,7 @@ export default class DoctorLogin extends Component {
     return (
       <div>
       {localStorage.getItem('token') ?
-      <Router basename="superadmin/?/">
+      <Router basename="superadmin/">
       <Route path="/home" component={Homepage} />
       {this.oncecallfun()}
     </Router>:
@@ -188,7 +190,11 @@ export default class DoctorLogin extends Component {
                       endAdornment: (
                         <InputAdornment>
                           <IconButton>
-                            <img className="logineye_icon" src={Eye} onClick={this.toggleshow} />
+                            {/* <img className="logineye_icon" src={Eye} onClick={this.toggleshow} /> */}
+                            {this.state.hidden?
+                              <VisibilityIcon className="logineye_icon" onClick={this.toggleshow} />:
+                              <VisibilityOffIcon className="logineye_icon" onClick={this.toggleshow}/>
+                              }
                           </IconButton>
                         </InputAdornment>
                       )
@@ -217,7 +223,11 @@ export default class DoctorLogin extends Component {
 
                           <InputAdornment>
                             <IconButton>
-                              <img className="logineye_icon" src={Eye} onClick={this.confirmCheck} />
+                              {/* <img className="logineye_icon" src={Eye} onClick={this.confirmCheck} /> */}
+                              {this.state.confirmhidden?
+                              <VisibilityIcon className="logineye_icon" onClick={this.confirmCheck} />:
+                              <VisibilityOffIcon className="logineye_icon" onClick={this.confirmCheck}/>
+                              }
                             </IconButton>
                           </InputAdornment>
                           

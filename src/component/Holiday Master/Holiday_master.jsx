@@ -136,7 +136,7 @@ export default class Holiday_master extends React.Component {
 
         notification[type]({
           className:"show_frt",
-          message: "Record" +" "+msgdyn+" "+"sucessfully",
+          message: "Record" +" "+msgdyn+" "+"successfully",
         });
 
       })
@@ -319,7 +319,7 @@ export default class Holiday_master extends React.Component {
           <div>{this.state.editopen ? "EDIT HOLIDAY MASTER" : "CREATE HOLIDAY MASTER"}</div>
           <div className="d-flex">
 
-            <Button className="accessrights_button_cancel">Cancel</Button>
+            <Button className="accessrights_button_cancel" onClick={this.closemodal}>Cancel</Button>
             {this.state.editopen ? <Button className="accessrights_button_save" onClick={this.update}>Update</Button> : <Button className="accessrights_button_save" onClick={this.addData}>Create</Button>}
 
           </div>

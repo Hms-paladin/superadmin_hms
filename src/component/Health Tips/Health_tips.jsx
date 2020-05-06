@@ -124,7 +124,7 @@ export default class Health_tips extends React.Component {
                 })
                 notification[type]({
                     className: "show_frt",
-                    message: "Record" + " " + msgdyn + " " + "sucessfully",
+                    message: "Record" + " " + msgdyn + " " + "successfully",
                 });
             })
             .catch(function (error) {

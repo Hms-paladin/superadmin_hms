@@ -74,7 +74,7 @@ export default class Doctor_spl extends React.Component {
                 })
                 notification[type]({
                     className: "show_frt",
-                    message: "Record" + " " + msgdyn + " " + "sucessfully",
+                    message: "Record" + " " + msgdyn + " " + "successfully",
                 });
                 console.log(arrval, "recall")
 
@@ -175,7 +175,7 @@ export default class Doctor_spl extends React.Component {
     }
 
     closemodal = () => {
-        this.setState({ openview: false, editopen: false, insertmodalopen: false, deleteopen: false })
+        this.setState({ openview: false, editopen: false, insertmodalopen: false, deleteopen: false,speciality:"" })
     }
 
     insertdata = () => {
@@ -233,6 +233,7 @@ export default class Doctor_spl extends React.Component {
     }
 
     render() {
+        console.log(window.location.pathname,"doctorhref")
         console.log(this.props.uservalue && this.props.uservalue[0].item[0].item[1],"props")
         var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[1]
         return (

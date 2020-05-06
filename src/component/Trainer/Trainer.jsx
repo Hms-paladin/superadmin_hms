@@ -84,7 +84,7 @@ recall=(type,msgdyn)=>{
         })
         notification[type]({
             className:"show_frt",
-            message: "Record" +" "+msgdyn+" "+"sucessfully",
+            message: "Record" +" "+msgdyn+" "+"successfully",
           });
       })
       .catch(function (error) {

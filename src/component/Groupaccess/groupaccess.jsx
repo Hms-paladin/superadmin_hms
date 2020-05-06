@@ -854,7 +854,7 @@ recall_permission=(showNotification,groupid,useraccess)=>{
     if(showNotification){
       notification.success({
         className:"show_frt",
-        message: "Record" +" "+"update"+" "+"sucessfully",
+        message: "Record" +" "+"update"+" "+"successfully",
       })
     }
 

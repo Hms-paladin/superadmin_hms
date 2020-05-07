@@ -383,7 +383,7 @@ export default class Advertise_manage extends Component {
     })
       .then(function (response) {
 
-        self.recall("success", "edited",useraccessparameter)
+        self.recall("success", "updated",useraccessparameter)
       })
       .catch(function (error) {
         console.log(error, "error");
@@ -509,7 +509,7 @@ export default class Advertise_manage extends Component {
       }
     })
       .then(function (response) {
-        self.didmount_recall("success", "edited",userparameter)
+        self.didmount_recall("success", "updated",userparameter)
         self.setState({
           btn_change: true,
           btntype:"add",
@@ -562,7 +562,7 @@ export default class Advertise_manage extends Component {
       .then(function (response) {
         // self.setState({
         // })
-        self.didmount_recall("success", "edited",useraccessparameter)
+        self.didmount_recall("success", "updated",useraccessparameter)
 
       })
       .catch(function (error) {

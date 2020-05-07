@@ -98,9 +98,13 @@ body {
     font-size: 1.5rem !important;
 }
 
-.dropdown-container {
-    width: 100%;
-    height: auto;
+.dropdown_container {
+    position: fixed;
+    right: 35px;
+}
+
+.dropdown_container div button{
+    border-left: 0px !important;
 }
 
 .dropdown-container .dropdown {
@@ -157,8 +161,9 @@ body {
 .dropdown-container_close #dropdown-basic {
     font-size: 1.75rem;
     box-sizing: border-box;
-    border-left: 1.5px solid #b1b1b1;
-    padding-left: 10px;
+    /* border-left: 1.5px solid #b1b1b1; */
+    border-left: 0px !important;
+    padding-left: 0px;
 }
 
 .dropdown-container_close .date-wrapper1 {
@@ -187,7 +192,16 @@ body {
 }
 
 .drawerpage_container button:focus {
-    outline: 0px !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.drawerpage_container .btn:active:focus, .btn:focus  {
+    outline: none;
+}
+
+.drawerpage_container button:active{
+    background-color: #e2e0e0 !important;
 }
 
 .appbar_sideicons .MuiListItem-button:hover {
@@ -565,4 +579,48 @@ body {
 
 .ant-notification{
     z-index: 1400 !important;
+}
+
+.cardprofiledrawer{
+    position: fixed;
+    right: 23px;
+    top: 64px;
+    width: 20%;
+    height: 175px;
+}
+
+.cardprofiledrawer .card{
+    height:100%;
+}
+
+.cardbodylogout{
+    font-size: 14px;
+    text-align: center;
+}
+
+.cardbodylogout div div:nth-child(1){
+    font-weight: 800;
+}
+
+.profiledetail{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.profiledetail div{
+    margin-bottom: 5px;
+}
+
+.profiledetail ~ hr{
+    margin-bottom: 15px;
+}
+
+.logoutbtn{
+    height: 27px;
+    padding: 2px 15px !important;
+}
+
+.usermastterrelative{
+    position: relative;
+    top:15px;
 }

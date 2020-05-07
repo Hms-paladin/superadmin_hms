@@ -39,6 +39,7 @@ export default class User_master extends React.Component {
     deleteopen: false,
     loading: true,
     errmsg:null,
+    activeflag:[],  
   }
 
   componentDidMount() {
@@ -50,15 +51,18 @@ export default class User_master extends React.Component {
       .then(function (response) {
         var arrval = []
         var get_pass = []
+        var activeflag=[]
         response.data.data.map((value) => {
+          console.log(value,"valuevalue")
           arrval.push({ user_name: value.user_name, mobileno: value.mobileno, email: value.email, user_type: value.user_type, groupname: value.groupname, status: (value.active_flag === 1 ? <Chip label="Active" className="status_usermaster_active" variant="outlined" /> : <Chip label="In-Active" className="status_usermaster_inactive" variant="outlined" />), id: value.id })
           get_pass.push({ password: value.password, id: value.id })
+          activeflag.push({activeflag:value.active_flag,id: value.id})
         })
         console.log(response.data.data, "response")
         self.setState({
           currentdata: arrval,
-          pass_arr: get_pass
-
+          pass_arr: get_pass,
+          activeflag:activeflag
         })
       })
       .catch(function (error) {
@@ -120,16 +124,20 @@ export default class User_master extends React.Component {
       .then(function (response) {
         var arrval = []
         var get_pass = []
+        var activeflag=[]
 
         response.data.data.map((value) => {
           arrval.push({ user_name: value.user_name, mobileno: value.mobileno, email: value.email, user_type: value.user_type, groupname: value.groupname, status: (value.active_flag === 1 ? <Chip label="Active" className="status_usermaster_active" variant="outlined" /> : <Chip label="In-Active" className="status_usermaster_inactive" variant="outlined" />), id: value.id })
           get_pass.push({ password: value.password, id: value.id })
+          activeflag.push({activeflag:value.active_flag,id: value.id})
+
         })
         self.setState({
           currentdata: arrval,
           loading: false,
           props_loading: false,
-          pass_arr: get_pass
+          pass_arr: get_pass,
+          activeflag:activeflag
         })
 
         notification[type]({
@@ -388,7 +396,11 @@ export default class User_master extends React.Component {
       return val.id === id
     })
 
-    console.log(edit_pass, "editpass")
+    let activeflagvalue=this.state.activeflag.filter((flag)=>{
+      return flag.id === id
+    })
+
+    console.log(activeflagvalue[0].activeflag, "editdata")
     this.setState({
 
       username: editdata[0].user_name,
@@ -397,6 +409,7 @@ export default class User_master extends React.Component {
       email: editdata[0].email,
       usertype_sel: editdata[0].user_type,
       usergroup_sel: editdata[0].groupname,
+      status:activeflagvalue[0].activeflag === 1?true:false,
       modeltype: "edit",
       insertmodalopen: true,
       current_edit_id: id,
@@ -486,7 +499,7 @@ export default class User_master extends React.Component {
             />
 
             <Modalcomp customwidth_dialog="user_master_modal" visible={this.state.insertmodalopen}
-              title={this.state.modeltype === "view" ? "ADD USER" : "Edit DETAILS"}
+              title={this.state.modeltype === "view" ? "ADD USER" : "EDIT DETAILS"}
               closemodal={(e) => this.closemodal(e)}>
               <div className="usermaster_modal">
                 <div className="master_content_one">
@@ -500,24 +513,36 @@ export default class User_master extends React.Component {
                         errmsg={this.state.errmsg_name} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}
                       />
                     </Grid>
+                    {this.state.modeltype === "view" &&
                     <Grid item xs={12} md={4}>
                       <Inputantd label="Password" className="usermaster_option" placeholder="" changeData={(data) => this.changeDynamic(data, "password")}
                         value={this.state.password} errmsg={this.state.errmsg_pass} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}
                       />
                     </Grid>
+                    }
                     <Grid item xs={12} md={4}>
                       <Inputantd label="Mobile Number" className="usermaster_option" placeholder="" changeData={(data) => this.changeDynamic(data, "mobile")}
                         value={this.state.mobile} errmsg={this.state.errmsg_mobile} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}
                       />
                     </Grid>
+
+                    {this.state.modeltype === "edit" &&
+                    <Grid item xs={12} md={4}>
+                    <Inputantd label="E-mail Id" className="usermaster_option" placeholder=""
+                      changeData={(data) => this.changeDynamic(data, "email")}
+                      value={this.state.email} errmsg={this.state.errmsg_email} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}/>
+                  </Grid>
+                  }
+
                   </Grid>
 
                   <Grid container spacing={3} className="content_master_two">
+                  {this.state.modeltype === "view" ? 
                     <Grid item xs={12} md={4}>
                       <Inputantd label="E-mail Id" className="usermaster_option" placeholder=""
                         changeData={(data) => this.changeDynamic(data, "email")}
                         value={this.state.email} errmsg={this.state.errmsg_email} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}/>
-                    </Grid>
+                    </Grid>:null}
                     <Grid item xs={12} md={4}>
                       <Dropdownantd label="User Type" className="usermaster_drop" option={this.state.usertype}
                         changeData={(data) => this.changeDynamic(data, "usertype_sel")}

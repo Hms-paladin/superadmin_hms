@@ -18,7 +18,7 @@ import avatar from '../images/avatar.jpg'
 import Badge from '@material-ui/core/Badge';
 import bell from '../images/bell.png'
 import Logo from '../images/Logo.png'
-
+import Button from '@material-ui/core/Button';
 import AdminUser from '../images/AdminUser.svg';
 import Advertise from '../images/Advertise.svg';
 import Approval from '../images/Approval.svg';
@@ -33,7 +33,7 @@ import Revenue from '../images/Revenue.svg';
 import TrainerSVG from '../images/TrainerSVG.svg';
 import TrainingCenter from '../images/TrainingCenter.svg';
 import Vendor from '../images/Vendor.svg';
-
+import { Dropdown } from 'react-bootstrap'
 import { Menulist, MenuItem, ListItemText, ListItemIcon, MenuList, } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ReactSVG from 'react-svg'
@@ -68,6 +68,7 @@ import { Collapse } from 'antd';
 import createHistory from 'history/createBrowserHistory';
 import { Redirect } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Card from 'react-bootstrap/Card';
 import { apiurl } from "../App.js";
 
 import "./drawerpage.css"
@@ -164,15 +165,16 @@ class Homepage extends React.Component {
     iconopenTrainer: true,
     activeKeyUser: "1",
     iconopenUser: true,
+    userdata:[],
 
   };
 
   handleDrawerOpen = () => {
-    this.setState({ open: true });
+    this.setState({ open: true,logout:false });
   };
 
   handleDrawerClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false,logout:false });
   };
   viewmodalOpen = () => {
     this.setState({ viewmodal: true })
@@ -181,11 +183,8 @@ class Homepage extends React.Component {
     this.setState({ viewmodal: false })
   }
   logoutOpen = () => {
-    this.setState({ logout: true })
+    this.setState({ logout: !this.state.logout })
 
-  }
-  logoutClose = () => {
-    this.setState({ logout: false })
   }
 
   componentDidMount() {
@@ -199,12 +198,17 @@ class Homepage extends React.Component {
       url: `${apiurl}getuser`
     })
       .then(function (response) {
+        var userdata=[]
         var userid = response.data.data.filter((val) => {
           if (val.email === localStorage.getItem("email")) {
+            userdata.push({name:val.user_name,email:val.email})
             return val.id
           }
+          
         })
+        
         self.useraccess(userid[0].id)
+        self.setState({userdata:userdata})
       })
       .catch(function (error) {
         console.log(error, "error");
@@ -232,11 +236,14 @@ class Homepage extends React.Component {
 
   active_box = () => {
     this.setState({
-      current_location: window.location.href
+      current_location: window.location.href,logout:false
     })
   }
 
   routeChange = (name) => {
+    this.setState({
+      logout:false
+    })
     if (name === "mode") {
       this.setState({
         mode: true,
@@ -379,11 +386,9 @@ class Homepage extends React.Component {
     const { current_location } = this.state
     let date = new Date();
 
-    console.log(window.location.href, "current_location")
     console.log(this.state.useraccessdata && this.state.useraccessdata[0].item[0].item, "useraccessstate")
 
     const useraccess = this.state.useraccessdata && this.state.useraccessdata[0].item[0].item
-    console.log(useraccess, "useraccessuseraccessuseraccess")
 
     // if (window.location.href === "/") {
     //   return <Redirect to="/superadmin/?/home/doctorspecial" />
@@ -392,6 +397,17 @@ class Homepage extends React.Component {
     if (window.location.pathname.includes("resetpassword")) {
       return <Redirect to="/superadmin/?/home/doctorspecial" />
     }
+
+    // console.log(this.state.userdata && this.state.userdata.filter((data)=>{
+    //   console.log(data.user_name,"userdata")
+    //   // console.log(localStorage.getItem("email"),"userdata")
+    //   if(data.email===localStorage.getItem("email")){
+    //     alert("test")
+    //     return data.user_name
+    //   }
+    // }),"userdata")
+
+    var username=this.state.userdata[0] && this.state.userdata[0].name
 
     return (
       <div className="drawerpage_container">
@@ -415,29 +431,18 @@ class Homepage extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <div className={this.state.open ? "logoutAlignDraweropen" : "logoutAlign"}>
+              {/* <div className={this.state.open ? "logoutAlignDraweropen" : "logoutAlign"}>
                 <div onClick={this.logout} className="logindiv">
                   <ExitToAppIcon />
                   <span>LOGOUT</span>
                 </div>
-              </div>
+              </div> */}
 
-
-              {/* <div className={`${this.state.open ? "dropdown-container" : "dropdown-container_close"}`}>
+              <div className="dropdown_container">
                 <Dropdown >
-
-                  <Badge color="secondary" variant="dot" className={classes.margin}>
-                    <div className="notification-icon"> <img className="notification" src={bell} /></div>
-                  </Badge>
-                  <Dropdown.Toggle variant="my_style" id="dropdown-basic" onClick={this.logoutOpen}>
-                    My Profile
-                </Dropdown.Toggle>
-
-                   <Dropdown.Menu className="dropdown-menu" >
-                          <Dropdown.Item href="#/action-1">Action 1</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Action 2</Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">Log out</Dropdown.Item> 
-                        </Dropdown.Menu>  
+                  <Dropdown.Toggle variant="" id="dropdown-basic" onClick={this.logoutOpen}>
+                  {username}
+                  </Dropdown.Toggle>
                 </Dropdown>
 
                 <div className="date-wrapper1">
@@ -446,10 +451,23 @@ class Homepage extends React.Component {
                     <large className="date">  <Moment format='DD-MM-YYYY h:mm A'>{date}</Moment> </large>
                   </div>
                 </div>
-              </div> */}
+                
+              </div>
+              {this.state.logout &&
+              <div className="cardprofiledrawer">
+              <Card>
+                    <Card.Body className="cardbodylogout">
+                    <div className="profiledetail">
+                      <div>{this.state.userdata && this.state.userdata[0].name}</div>
+                      <div>{this.state.userdata && this.state.userdata[0].email}</div>
+                    </div>
+                    <Divider />
+                        <Button variant="outlined" onClick={this.logout} className="logoutbtn">Logout</Button>
 
-
-              {/* <Avatar className="Avatar-image" alt="avatar-missing" src={avatar} onClick={this.viewmodalOpen} className={classes.avatar} /> */}
+                    </Card.Body>
+                </Card>
+              </div>
+              }
 
             </Toolbar>
           </AppBar>
@@ -705,6 +723,25 @@ class Homepage extends React.Component {
                   >
                     <Panel header={<span onClick={this.avoidFristClickChangeUser} >< NavLink className={`${current_location.includes("/useraccess") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/useraccess`}>User Access Rights</NavLink></span>} key="1" >
 
+
+                    <div className="d-flex usermastterrelative" >
+                        <NavLink to={`${this.props.match.path}/usergroup`} className="d-flex">
+                          <GreenRadio
+                            checked={this.state.userGroup && current_location.includes("/usergroup") || current_location.includes("/usergroup")}
+                            className="greenCheckWidmode greenCheckWid"
+                            onClick={() => this.routeChange("userGroup")}
+                          />
+                        </NavLink>
+
+                        <MenuItem onClick={() => this.routeChange("userGroup")} component={Link} to={`${this.props.match.path}/usergroup`} className={`${current_location.includes("/usergroup") && "active_text_heading"} mttrainingmod `}>
+                          <ListItemIcon>
+                            <div className="icon-container">
+                              <ReactSVG src={""} /></div>
+                          </ListItemIcon>
+                          <ListItemText primary="User Group" />
+                        </MenuItem>
+                      </div>
+
                       <div className="d-flex">
                         <NavLink to={`${this.props.match.path}/usermaster`} className="d-flex">
                           <GreenRadio
@@ -743,25 +780,6 @@ class Homepage extends React.Component {
                     </div> */}
 
 
-                      <div className="d-flex" >
-                        <NavLink to={`${this.props.match.path}/usergroup`} className="d-flex">
-                          <GreenRadio
-                            checked={this.state.userGroup && current_location.includes("/usergroup") || current_location.includes("/usergroup")}
-                            className="greenCheckWidmode greenCheckWid"
-                            onClick={() => this.routeChange("userGroup")}
-                          />
-                        </NavLink>
-
-                        <MenuItem onClick={() => this.routeChange("userGroup")} component={Link} to={`${this.props.match.path}/usergroup`} className={`${current_location.includes("/usergroup") && "active_text_heading"} mttrainingmod`}>
-                          <ListItemIcon>
-                            <div className="icon-container">
-                              <ReactSVG src={""} /></div>
-                          </ListItemIcon>
-                          <ListItemText primary="User Group" />
-                        </MenuItem>
-                      </div>
-
-
                     </Panel>
                   </Collapse>
                 </MenuItem> : useraccess && useraccess[4].allow_view === "N" && useraccess[2].allow_view === "N" ? (
@@ -775,19 +793,19 @@ class Homepage extends React.Component {
                 )
                   : useraccess && useraccess[17].allow_view === "N" ? (
                     <>
-                      <MenuItem component={Link} to={`${this.props.match.path}/usermaster`} className={current_location.includes("/usermaster") && "active_text_heading"}>
-                        <ListItemIcon>
-                          <div className="icon-container">
-                            <ReactSVG src={AdminUser} /></div>
-                        </ListItemIcon>
-                        <ListItemText primary="User Master" />
-                      </MenuItem>
                       <MenuItem component={Link} to={`${this.props.match.path}/usergroup`} className={current_location.includes("/usergroup") && "active_text_heading"}>
                         <ListItemIcon>
                           <div className="icon-container">
                             <ReactSVG src={AdminUser} /></div>
                         </ListItemIcon>
                         <ListItemText primary="User Group" />
+                      </MenuItem>
+                      <MenuItem component={Link} to={`${this.props.match.path}/usermaster`} className={current_location.includes("/usermaster") && "active_text_heading"}>
+                        <ListItemIcon>
+                          <div className="icon-container">
+                            <ReactSVG src={AdminUser} /></div>
+                        </ListItemIcon>
+                        <ListItemText primary="User Master" />
                       </MenuItem>
                     </>)
 

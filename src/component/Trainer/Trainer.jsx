@@ -325,7 +325,7 @@ deleterow=()=>{
             deletepermission={useraccess && useraccess.allow_delete}
   />
 
-        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINNER":"EDIT DETAILS"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINER":"EDIT DETAILS"} closemodal={(e)=>this.closemodal(e)}
          xswidth={"xs"}>
              <Grid container spacing={2}>
                  <Grid item xs={12} md={6}>

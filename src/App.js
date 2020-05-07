@@ -56,15 +56,15 @@ class App extends React.Component {
               <Route path="/home" component={Homepage} />
               </Router>
             :
-            window.location.pathname==="/resetpassword" && token && mail
+            window.location.pathname==="/superadmin/resetpassword" && token && mail
             ?
             <Router basename="superadmin/"><Route path={"/resetpassword"} component={ResetPassword} exact /></Router>
             :
             <Router basename="superadmin/">
             <Route exact path="/" component={Login}/>
             <Route path="/forgot" component={Forgot} exact />
-            <Router><Route path={"/resetpassword"} component={Login} exact /></Router>
-            {patharr}
+            {/* <Router><Route path={"/resetpassword"} component={Login} exact /></Router> */}
+            {/* {patharr} */}
           </Router>
         }
 

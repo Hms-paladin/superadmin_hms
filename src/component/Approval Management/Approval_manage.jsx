@@ -212,7 +212,7 @@ export default class Approval_manage extends React.Component {
         return (
             localStorage.removeItem("token"),
             localStorage.removeItem("email"),
-            history.push('/'),
+            history.push('/superadmin/'),
             window.location.reload()
         )
     }
@@ -270,7 +270,7 @@ export default class Approval_manage extends React.Component {
                 });
                 setTimeout(() => {
                     self.expiretoken()
-                }, 3000)
+                }, 2000)
             });
     }
 

@@ -234,8 +234,8 @@ export default class Doctor_spl extends React.Component {
 
     render() {
         console.log(window.location.pathname,"doctorhref")
-        console.log(this.props.uservalue && this.props.uservalue[0].item[0].item[1],"props")
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[1]
+        console.log(this.props.uservalue && this.props.uservalue[0].item[0].item[0],"props")
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[0]
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :

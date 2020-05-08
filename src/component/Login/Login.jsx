@@ -105,8 +105,8 @@ oncecallfun=()=>{
     return (<div>
       {
       localStorage.getItem('token') === this.state.token ?
-        <Router basename="superadmin/">
-          {/* <Homepage /> */}
+        <Router basename="superadmin/?/">
+          {/* <Homepage /> /hms/superadmin*/}
           <Route path="/home" component={Homepage} />
           {this.oncecallfun()}
         </Router> :

@@ -376,7 +376,7 @@ class Homepage extends React.Component {
   logout = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("email")
-    history.push('/superadmin/')
+    history.push('?/')
     window.location.reload()
   }
 
@@ -394,9 +394,9 @@ class Homepage extends React.Component {
     //   return <Redirect to="/superadmin/?/home/doctorspecial" />
     // }
 
-    if (window.location.pathname.includes("resetpassword")) {
-      return <Redirect to="/superadmin/?/home/doctorspecial" />
-    }
+    // if (window.location.pathname.includes("resetpassword")) {
+    //   return <Redirect to="/superadmin/?/home/doctorspecial" />
+    // }
 
     // console.log(this.state.userdata && this.state.userdata.filter((data)=>{
     //   console.log(data.user_name,"userdata")
@@ -494,7 +494,7 @@ class Homepage extends React.Component {
 
             <MenuList className="appbar_sideicons" onClick={this.active_box}>
 
-              {useraccess && useraccess[1].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/doctorspecial`} className={`${current_location.includes("doctorspecial") && "active_text_heading"} iconColorGrey`}>
+              {useraccess && useraccess[0].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/doctorspecial`} className={`${current_location.includes("doctorspecial") && "active_text_heading"} iconColorGrey`}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={Doctor} /></div>
@@ -502,7 +502,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Doctor Speciality" />
               </MenuItem>}
 
-              {useraccess && useraccess[9].allow_view === "Y" && useraccess[10].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
+              {useraccess && useraccess[1].allow_view === "Y" && useraccess[2].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={TrainingCenter} /></div>
@@ -557,14 +557,14 @@ class Homepage extends React.Component {
                     </div> */}
                   </Panel>
                 </Collapse>
-              </MenuItem> : useraccess && useraccess[10].allow_view === "Y" ?
+              </MenuItem> : useraccess && useraccess[2].allow_view === "Y" ?
                   <MenuItem component={Link} to={`${this.props.match.path}/trainingcenter`} className={current_location.includes("/trainingcenter") && "active_text_heading"}>
                     <ListItemIcon>
                       <div className="icon-container">
                         <ReactSVG src={TrainingCenter} /></div>
                     </ListItemIcon>
                     <ListItemText primary="Training Center" />
-                  </MenuItem> : useraccess && useraccess[9].allow_view === "Y" &&
+                  </MenuItem> : useraccess && useraccess[1].allow_view === "Y" &&
                   <MenuItem component={Link} to={`${this.props.match.path}/trainingcategory`} className={current_location.includes("/trainingcategory") && "active_text_heading"}>
                     <ListItemIcon>
                       <div className="icon-container">
@@ -575,7 +575,7 @@ class Homepage extends React.Component {
 
               }
 
-              {useraccess && useraccess[7].allow_view === "Y" && useraccess[8].allow_view === "Y" ?
+              {useraccess && useraccess[3].allow_view === "Y" && useraccess[4].allow_view === "Y" ?
                 <MenuItem className={`${current_location.includes("/trainercategory") ? "active_text_heading" : current_location.endsWith("/trainer") && "active_text_heading"} IconBaseline`}>
                   <ListItemIcon>
                     <div className="icon-container">
@@ -614,14 +614,14 @@ class Homepage extends React.Component {
                   </Collapse>
 
 
-                </MenuItem> : useraccess && useraccess[7].allow_view === "Y" ?
+                </MenuItem> : useraccess && useraccess[3].allow_view === "Y" ?
                   <MenuItem component={Link} to={`${this.props.match.path}/trainercategory`} className={current_location.includes("/trainercategory") && "active_text_heading"}>
                     <ListItemIcon>
                       <div className="icon-container">
                         <ReactSVG src={TrainerSVG} /></div>
                     </ListItemIcon>
                     <ListItemText primary="Trainer Category" />
-                  </MenuItem> : useraccess && useraccess[8].allow_view === "Y" &&
+                  </MenuItem> : useraccess && useraccess[4].allow_view === "Y" &&
                   <MenuItem component={Link} to={`${this.props.match.path}/trainer`} className={current_location.endsWith("/trainer") && "active_text_heading"}>
                     <ListItemIcon>
                       <div className="icon-container">
@@ -632,7 +632,7 @@ class Homepage extends React.Component {
 
               }
 
-              {useraccess && useraccess[16].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/holidaymaster`} className={current_location.includes("/holidaymaster") && "active_text_heading"}>
+              {useraccess && useraccess[5].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/holidaymaster`} className={current_location.includes("/holidaymaster") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={HolidayMaster} /></div>
@@ -640,7 +640,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Holiday Master" />
               </MenuItem>}
 
-              {useraccess && useraccess[12].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/advertisemanage`} className={current_location.includes("/advertisemanage") && "active_text_heading"}>
+              {useraccess && useraccess[6].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/advertisemanage`} className={current_location.includes("/advertisemanage") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={Advertise} /></div>
@@ -648,7 +648,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Advertise Management" />
               </MenuItem>}
 
-              {useraccess && useraccess[0].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/mediaupload`} className={current_location.includes("/mediaupload") && "active_text_heading"}>
+              {useraccess && useraccess[7].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/mediaupload`} className={current_location.includes("/mediaupload") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={MediaUpload} /></div>
@@ -656,7 +656,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Media Upload" />
               </MenuItem>}
 
-              {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/approvalmanage`} className={current_location.includes("/approvalmanage") && "active_text_heading"}>
+              {useraccess && useraccess[8].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/approvalmanage`} className={current_location.includes("/approvalmanage") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={Approval} /></div>
@@ -664,7 +664,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Approval Management" />
               </MenuItem>}
 
-              {useraccess && useraccess[14].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/commission`} className={current_location.includes("/commission") && "active_text_heading"}>
+              {useraccess && useraccess[9].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/commission`} className={current_location.includes("/commission") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={CommissionSVG} /></div>
@@ -672,7 +672,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Commission Management" />
               </MenuItem>}
 
-              {useraccess && useraccess[15].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/healthtips`} className={current_location.includes("/healthtips") && "active_text_heading"}>
+              {useraccess && useraccess[10].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/healthtips`} className={current_location.includes("/healthtips") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={HealthTips} /></div>
@@ -680,7 +680,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Health Tips" />
               </MenuItem>}
 
-              {useraccess && useraccess[5].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/notification`} className={current_location.includes("/notification") && "active_text_heading"}>
+              {useraccess && useraccess[11].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/notification`} className={current_location.includes("/notification") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={Notification} /></div>
@@ -688,7 +688,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Notification Management" />
               </MenuItem>}
 
-              {useraccess && useraccess[6].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/revenuepayment`} className={current_location.includes("/revenuepayment") && "active_text_heading"}>
+              {useraccess && useraccess[12].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/revenuepayment`} className={current_location.includes("/revenuepayment") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={Revenue} /></div>
@@ -697,7 +697,7 @@ class Homepage extends React.Component {
               </MenuItem>}
 
 
-              {useraccess && useraccess[3].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
+              {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
                 <ListItemIcon>
                   <div className="icon-container">
                     <ReactSVG src={GroupAccess} /></div>
@@ -705,7 +705,7 @@ class Homepage extends React.Component {
                 <ListItemText primary="Group Access Rights" />
               </MenuItem>}
 
-              {useraccess && useraccess[17].allow_view === "Y" && useraccess[4].allow_view === "Y" && useraccess[2].allow_view === "Y" ?
+              {useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y" && useraccess[16].allow_view === "Y" ?
                 <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                   <ListItemIcon>
                     <div className="icon-container">
@@ -782,7 +782,7 @@ class Homepage extends React.Component {
 
                     </Panel>
                   </Collapse>
-                </MenuItem> : useraccess && useraccess[4].allow_view === "N" && useraccess[2].allow_view === "N" ? (
+                </MenuItem> : useraccess && useraccess[15].allow_view === "N" && useraccess[16].allow_view === "N" ? (
                   <MenuItem component={Link} to={`${this.props.match.path}/useraccess`} className={current_location.includes("/useraccess") && "active_text_heading"}>
                     <ListItemIcon>
                       <div className="icon-container">
@@ -791,7 +791,7 @@ class Homepage extends React.Component {
                     <ListItemText primary="User Access Rights" />
                   </MenuItem>
                 )
-                  : useraccess && useraccess[17].allow_view === "N" ? (
+                  : useraccess && useraccess[14].allow_view === "N" ? (
                     <>
                       <MenuItem component={Link} to={`${this.props.match.path}/usergroup`} className={current_location.includes("/usergroup") && "active_text_heading"}>
                         <ListItemIcon>
@@ -816,7 +816,7 @@ class Homepage extends React.Component {
                     //   </ListItemIcon>
                     //   <ListItemText primary="User Access Rights" />
                     // </MenuItem>
-                    : useraccess && useraccess[4].allow_view === "N" ? (
+                    : useraccess && useraccess[15].allow_view === "N" ? (
                       <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                         <ListItemIcon>
                           <div className="icon-container">
@@ -856,7 +856,7 @@ class Homepage extends React.Component {
                       </MenuItem>
 
                     )
-                      : useraccess && useraccess[2].allow_view === "N" && (
+                      : useraccess && useraccess[16].allow_view === "N" && (
                         <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                           <ListItemIcon>
                             <div className="icon-container">
@@ -905,45 +905,43 @@ class Homepage extends React.Component {
             <div>
               {children}
 
-              {useraccess && useraccess[1].allow_view === "Y" && <Route exact path={`${this.props && this.props.match.path}/doctorspecial`} render={() => <Doctor_spl uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[0].allow_view === "Y" && <Route exact path={`${this.props && this.props.match.path}/doctorspecial`} render={() => <Doctor_spl uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              
+              {useraccess && useraccess[1].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcategory`} render={() => <Training_cat uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[12].allow_view === "Y" && <Route exact path={`${this.props.match.path}/advertisemanage`} render={() => <Advertise_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[2].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcenter`} render={() => <Training_center uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                            
+              {useraccess && useraccess[3].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainercategory`} render={() => <Trainer_category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[0].allow_view === "Y" && <Route exact path={`${this.props.match.path}/mediaupload`} render={() => <Media_upload uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[4].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainer`} render={() => <Trainer uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              
+              {useraccess && useraccess[5].allow_view === "Y" && <Route exact path={`${this.props.match.path}/holidaymaster`} render={() => <Holiday_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[13].allow_view === "Y" && <Route exact path={`${this.props.match.path}/approvalmanage`} render={() => <Approval_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[6].allow_view === "Y" && <Route exact path={`${this.props.match.path}/advertisemanage`} render={() => <Advertise_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[8].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainer`} render={() => <Trainer uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[7].allow_view === "Y" && <Route exact path={`${this.props.match.path}/mediaupload`} render={() => <Media_upload uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[9].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcategory`} render={() => <Training_cat uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[8].allow_view === "Y" && <Route exact path={`${this.props.match.path}/approvalmanage`} render={() => <Approval_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[10].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcenter`} render={() => <Training_center uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[9].allow_view === "Y" && <Route exact path={`${this.props.match.path}/commission`} render={() => <Commission uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {/* <Route exact path={'/trainingmode'}  render={() => <Training_mode uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
+              {useraccess && useraccess[10].allow_view === "Y" && <Route exact path={`${this.props.match.path}/healthtips`} render={() => <Health_tips uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {/* <Route exact path={'/vendormaster'} component={Vendor_master} /> */}
+              {useraccess && useraccess[11].allow_view === "Y" && <Route exact path={`${this.props.match.path}/notification`} render={() => <Notification_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              
+              {useraccess && useraccess[12].allow_view === "Y" && <Route exact path={`${this.props.match.path}/revenuepayment`} render={() => <Revenue_payment uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[14].allow_view === "Y" && <Route exact path={`${this.props.match.path}/commission`} render={() => <Commission uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[13].allow_view === "Y" && <Route exact path={`${this.props.match.path}/groupaccess`} render={() => <Groupaccess uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[15].allow_view === "Y" && <Route exact path={`${this.props.match.path}/healthtips`} render={() => <Health_tips uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[14].allow_view === "Y" && <Route exact path={`${this.props.match.path}/useraccess`} render={() => <Useraccess_rights uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[2].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usergroup`} render={() => <User_group uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {useraccess && useraccess[15].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usergroup`} render={() => <User_group uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
+              {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              
               {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
 
-              {useraccess && useraccess[4].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/holidaymaster`} render={() => <Holiday_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[6].allow_view === "Y" && <Route exact path={`${this.props.match.path}/revenuepayment`} render={() => <Revenue_payment uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[3].allow_view === "Y" && <Route exact path={`${this.props.match.path}/groupaccess`} render={() => <Groupaccess uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[5].allow_view === "Y" && <Route exact path={`${this.props.match.path}/notification`} render={() => <Notification_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[7].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainercategory`} render={() => <Trainer_category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-
-              {useraccess && useraccess[17].allow_view === "Y" && <Route exact path={`${this.props.match.path}/useraccess`} render={() => <Useraccess_rights uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+              {/* <Route exact path={'/trainingmode'}  render={() => <Training_mode uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
 
             </div>
           </main>

@@ -1073,7 +1073,7 @@ console.log(sendData,"head_allhead_all")
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
 
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[3]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[13]
     if(this.state.onceopen && useraccess){
       this.recall_permission(null,this.state.responseid,useraccess)
       this.setState({onceopen:false,useraccess:useraccess})

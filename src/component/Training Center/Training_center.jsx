@@ -268,7 +268,7 @@ update_data=()=>{
         }
 
     render(){
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[10]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[2]
         console.log(useraccess,"props")
 
         return(

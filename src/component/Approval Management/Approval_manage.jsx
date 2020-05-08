@@ -212,7 +212,7 @@ export default class Approval_manage extends React.Component {
         return (
             localStorage.removeItem("token"),
             localStorage.removeItem("email"),
-            history.push('/superadmin/'),
+            history.push('?/'),
             window.location.reload()
         )
     }
@@ -441,7 +441,7 @@ export default class Approval_manage extends React.Component {
         const { Search } = Input;
         console.log(this.state, "thisstate")
         const { approvalinfo } = this.state
-        var useraccess = this.props.uservalue && this.props.uservalue[0].item[0].item[13]
+        var useraccess = this.props.uservalue && this.props.uservalue[0].item[0].item[8]
         if (this.state.onceopen && useraccess) {
             this.recall(null, null, null, null, useraccess)
             this.setState({ onceopen: false, useraccessstate: useraccess })

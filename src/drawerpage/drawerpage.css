@@ -135,10 +135,11 @@ body {
 .date-wrapper1 {
     width: 100%;
     height: auto;
+    white-space: nowrap;
 }
 
 .date-wrapper2 {
-    width: 96%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
 }

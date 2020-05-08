@@ -222,7 +222,7 @@ export default class User_group extends React.Component {
     }
 
     render() {
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[2]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[15]
 
         return (
             <div>

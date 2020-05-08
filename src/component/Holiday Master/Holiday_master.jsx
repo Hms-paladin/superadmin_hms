@@ -287,7 +287,7 @@ export default class Holiday_master extends React.Component {
   }
 
   render() {
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[16]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[5]
     return (
       <div>
         {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:

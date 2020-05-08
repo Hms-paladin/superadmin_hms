@@ -166,7 +166,7 @@ export default class Health_tips extends React.Component {
 
     render() {
         const { TextArea } = Input
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[15]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[10]
         return (
             <div>
                 {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :

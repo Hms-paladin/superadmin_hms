@@ -196,7 +196,7 @@ export default class Media_upload extends Component {
   }
 
   render() {
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[0]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[7]
     return (
       <div>
         {this.state.loading ? <Spin className="spinner_align" spinning={this.state.loading}></Spin> :

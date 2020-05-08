@@ -164,7 +164,7 @@ export default class Commission extends React.Component {
     
 
     render() {
-        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[14]
+        var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[9]
 
         return (
             <div>

@@ -932,7 +932,7 @@ class Useraccess_rights extends Component {
   render() {
     const isSelected = name => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
-    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[17]
+    var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[14]
     if(this.state.onceopen && useraccess){
       this.recall_permission(null,this.state.responseid,useraccess)
       this.setState({onceopen:false,useraccess:useraccess})

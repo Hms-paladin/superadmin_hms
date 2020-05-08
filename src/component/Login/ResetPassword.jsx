@@ -151,7 +151,7 @@ export default class DoctorLogin extends Component {
     return (
       <div>
       {localStorage.getItem('token') ?
-      <Router basename="superadmin/">
+      <Router basename="superadmin/?/">
       <Route path="/home" component={Homepage} />
       {this.oncecallfun()}
     </Router>:

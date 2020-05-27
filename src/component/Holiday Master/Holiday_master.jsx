@@ -57,6 +57,8 @@ export default class Holiday_master extends React.Component {
 
   addData = () => {
 
+
+
     var holiday_namebol
     if (this.state.holiday_arr) {
       holiday_namebol = this.state.holiday_arr.filter((val) => {
@@ -64,7 +66,7 @@ export default class Holiday_master extends React.Component {
       })
     }
 
-    console.log(holiday_namebol, "holiday_namebol")
+    console.log(this.state.applicable_region, "applicable_region")
 
     if (this.state.ChildWholeState && this.state.ChildWholeState.rangevalue && holiday_namebol.length === 0 && this.state.applicable_region && this.state.applicable_region.length>0) {
       var self = this
@@ -214,7 +216,7 @@ export default class Holiday_master extends React.Component {
 
 
   closemodal = () => {
-    this.setState({ openview: false, editopen: false, insertmodalopen: false, deleteopen: false })
+    this.setState({ openview: false, editopen: false, insertmodalopen: false, deleteopen: false,holiday_arr:[],applicable_region:'' })
   }
 
   insertdata = () => {
@@ -288,6 +290,7 @@ export default class Holiday_master extends React.Component {
 
   render() {
     var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[5]
+    console.log(this.state,"state")
     return (
       <div>
         {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:

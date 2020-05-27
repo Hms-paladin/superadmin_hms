@@ -505,6 +505,13 @@ body {
     text-decoration: none !important;
 }
 
+.texteclipsetrainingcenter{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    width: 150px;
+}
+
 .panelTextDrawer:hover{
     color:#86B149;
     text-decoration: none;
@@ -624,4 +631,14 @@ body {
 .usermastterrelative{
     position: relative;
     top:15px;
+}
+
+.mttrainerCat .MuiListItemText-root{
+    position: relative;
+    top: 1px;
+}
+
+.paneltextmargin{
+    position: relative;
+    top: 3px;
 }

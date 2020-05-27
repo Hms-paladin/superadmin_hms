@@ -116,7 +116,7 @@ export default class DoctorLogin extends Component {
   
           notification.success({
             className: "show_frt",
-            message: "Password change sucessfully",
+            message: "Password changed sucessfully",
           });
           self.setState({})
         })
@@ -243,7 +243,7 @@ export default class DoctorLogin extends Component {
                     <button className="login" onClick={this.resetpassword}>Submit</button>
                   </div>
                   <div className="cancel_container">
-                    <a href="/">
+                    <a href="/superadmin/?/">
                       <p className="cancelbutton">Cancel</p>
                     </a>
                   </div>
@@ -251,7 +251,6 @@ export default class DoctorLogin extends Component {
               </div>
             </div>
           </Grid>
-
 
         </Grid>
       </div>

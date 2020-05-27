@@ -117,7 +117,15 @@ add_data=()=>{
             }
         })
         .then(function (response) {
-            self.recall("success","added")
+            if(response.data.msg==="Duplication record"){
+                self.recall()
+                notification.info({
+                    className: "show_frt",
+                    message: "This record already existed",
+                });
+            }else{
+                self.recall("success", "added")
+            }
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -276,7 +284,7 @@ update_data=()=>{
                 {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
                 <div>
                <div className="training_center_header">
-                   <div className="training_center_title"><h3>TRAINING CENTER</h3></div>
+                   <div className="training_center_title"><h3>TRAINING CENTER PROGRAM</h3></div>
                    <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
@@ -300,7 +308,7 @@ update_data=()=>{
 
 
         <Modalcomp customwidth_dialog="training_center_modal" visible={this.state.insertmodalopen} 
-        title={this.state.modeltype==="view"?"CREATE TRAINING CENTER":"EDIT TRAINING CENTER"}
+        title={this.state.modeltype==="view"?"CREATE TRAINING CENTER PROGRAM":"EDIT TRAINING CENTER PROGRAM"}
          closemodal={(e)=>this.closemodal(e)}
          xswidth={"xs"}>
              <Grid container spacing={2}>

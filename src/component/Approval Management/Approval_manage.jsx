@@ -12,7 +12,7 @@ import { Spin, notification } from 'antd';
 import createHistory from 'history/createBrowserHistory';
 import Button from '@material-ui/core/Button';
 import { DatePicker } from 'antd';
-import noimg from "../../images/noimg.jpg" 
+import noimg from "../../images/noimg.jpg";
 import "./Approval_manage.css"
 const axios = require('axios');
 var moment = require('moment');
@@ -92,8 +92,8 @@ export default class Approval_manage extends React.Component {
                 var filterarr = []
                 response.data.data.map((value, index) => {
                     filterarr.push({
-                        date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
-
+                        date: moment(value.Date).format('DD-MM-YYYY')==="Invalid date"?"":moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+                        
                             <Inputantd
                                 className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
                                 changeData={(data) => self.changeDynamic(data, value.type_id)}
@@ -236,7 +236,7 @@ export default class Approval_manage extends React.Component {
                 var approvalAllValue = []
                 response.data.data.map((value, index) => {
                     arrval.push({
-                        date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+                        date: moment(value.Date).format('DD-MM-YYYY')==="Invalid date"?"":moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
 
                             <Inputantd
                                 className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
@@ -411,7 +411,7 @@ export default class Approval_manage extends React.Component {
                 response.data.data.map((value, index) => {
                     status === "PENDING" ?
                         filterarr.push({
-                            date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
+                            date: moment(value.Date).format('DD-MM-YYYY')==="Invalid date"?"":moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input:
 
                                 <Inputantd
                                     className={`${!clicktrue ? null : self.state["inputbox" + value.type_id] ? null : value.type_id === checkvalueid ? "borderredApproval" : null} w-75`} breakclass={"approvalInputdnone"}
@@ -423,7 +423,7 @@ export default class Approval_manage extends React.Component {
                         })
                         :
                         filterarr.push({
-                            date: moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input: value.remarks,
+                            date: moment(value.Date).format('DD-MM-YYYY')==="Invalid date"?"":moment(value.Date).format('DD-MM-YYYY'), vendorname: value.VendorName, type: value.Type, details: value.Details, input: value.remarks,
                             action: <div><VisibilityIcon className="tablefiltereye_icon" onClick={() => self.viewFun(value.type_id, value.Type)} /></div>, id: value.type_id
                         })
                 })
@@ -435,6 +435,17 @@ export default class Approval_manage extends React.Component {
                 console.log(error, "error");
             });
     }
+
+    nodata=()=>{
+        if(this.state.currentdata.length>0){
+        const key = 'updatable';
+            notification.warning({
+              key,
+              className: "show_frt",
+              message: "No Data Found",
+          });
+    }
+}
 
 
     render() {
@@ -455,6 +466,7 @@ export default class Approval_manage extends React.Component {
             }
         })
 
+        {searchdata.length===0 && this.nodata()}
 
         return (
             <div>
@@ -515,7 +527,7 @@ export default class Approval_manage extends React.Component {
         { id: "action", label: "Action" },
     ]}
 
-        rowdata={searchdata && searchdata}
+        rowdata={ searchdata.length ===  0 ? []: searchdata }
         tablemasterclass="approval_cus_iconadd"
         props_loading={this.state.props_loading}
         actionclose="close"

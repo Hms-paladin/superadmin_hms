@@ -17,7 +17,7 @@ const axios = require('axios');
 export default class Forgot extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", hidden: true }
+    this.state = { email: "", hidden: true,disablebtn:false }
   }
   toggleshow = () => {
     this.setState({ hidden: !this.state.hidden })
@@ -28,6 +28,8 @@ export default class Forgot extends Component {
   }
 
   sendMail=()=>{
+    const key = 'updatable';
+
     if(this.state.email===""){
       this.setState({
         errmsg_email: "Email is required"
@@ -37,7 +39,18 @@ export default class Forgot extends Component {
       this.setState({
         errmsg_email: "Email is invalid"
       })
-    }else{
+    }
+    else if (this.state.disablebtn){
+      notification.success({
+        key,
+        className:"show_frt",
+        message: "Mail already sent",
+      });
+    }
+    else{
+
+      var self = this
+
       axios({
         method: 'post',
         url: `${apiurl}sendresetpwdURL`,
@@ -48,9 +61,18 @@ export default class Forgot extends Component {
       .then(function (response) {
         notification.success({
             className:"show_frt",
-            message: "Mail send sucessfully",
+            message: "Mail Sent Successfully",
           });
+          self.setState({
+            disablebtn:true
+          })
       })
+      .catch(function (error) {
+        notification.info({
+          className:"show_frt",
+          message: "Invalid Mail ID",
+        });
+    });
     }
   }
 

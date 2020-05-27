@@ -383,9 +383,6 @@ export default class Tablecomponent extends Component {
                           <EditIcon className={`tableedit_icon ${this.props.editpermission==="N" && "disablebtn"}`} onClick={this.props.editpermission==="Y" ? ()=>this.props.modelopen("edit",row.id) : null}/>}
                           {this.props.DeleteIcon==="close"?null:
                           <DeleteIcon className={`tabledelete_icon ${this.props.deletepermission==="N" && "disablebtn"}`} onClick={this.props.deletepermission==="Y" ? () => this.props.deleteopen("delete",row.id):null}/>}
-
-                          
-                          
                         </TableCell>}
                       </TableRow>
                     );

@@ -82,6 +82,7 @@ export default class Advertise_manage extends Component {
     this.setState({
       selectedValue: data
     })
+    this.recall(null,null,data)
   }
 
   changeData = (e) => {
@@ -378,26 +379,27 @@ export default class Advertise_manage extends Component {
         "resolution": resolution_up,
         // "selectedValue":this.state.selectedValue,
         "active_flag": "1",
-        "size_id": "1",
+        "size_id": this.state.selectedValue,
       }
     })
       .then(function (response) {
-
-        self.recall("success", "updated",useraccessparameter)
+        self.recall("success", "updated",self.state.selectedValue)
       })
       .catch(function (error) {
-        console.log(error, "error");
+        console.log(error, "edit_mas_ad_settings");
       });
 
   }
 
 
-  recall = (type, msgdyn) => {
+  recall = (type, msgdyn,size_id) => {
     var self = this
     axios({
       method: 'post',
       url: `${apiurl}get_mas_ad_settings`,
-      data: { "size_id": this.state.selectedValue }
+      data: { "size_id": size_id
+    
+      }
     })
       .then(function (response) {
 
@@ -588,7 +590,7 @@ export default class Advertise_manage extends Component {
                 <div className="advertise_manage_titleuser"><h3>ADVERTISING MANAGEMENT</h3></div>
                 <div className="advertise_manage_container">
                   {/* <Button className="advertise_button_cancel">Cancel</Button>
-<Button className="advertise_button_create">Create</Button> */}
+                      <Button className="advertise_button_create">Create</Button> */}
                 </div>
               </div>
               <div className="advertise_image">

@@ -50,7 +50,7 @@ export default class Commission extends React.Component {
                 console.log(response, "response_comm")
                 var arrval = []
                 response.data.data.map((value) => {
-                    arrval.push({ vendor: value.vendor, commission: value.commission, id: value.id })
+                    arrval.push({ vendor: value.vendor, commission: value.commission==="null"?0:value.commission, id: value.id })
                 })
                 self.setState({
                     currentdata: arrval,
@@ -71,7 +71,7 @@ export default class Commission extends React.Component {
                 })
                 type && notification[type]({
                     className: "show_frt",
-                    message: "Record update successfully",
+                    message: "Record updated successfully",
                 });
             })
     }
@@ -165,6 +165,7 @@ export default class Commission extends React.Component {
 
     render() {
         var useraccess=this.props.uservalue && this.props.uservalue[0].item[0].item[9]
+        console.log(this.state.doctor==="null","doctor")
 
         return (
             <div>
@@ -204,18 +205,18 @@ export default class Commission extends React.Component {
 
                             <div className="head_one">
                                 <h4>Doctor</h4>
-                                <Inputnumber className="box_one" changeData={(data) => this.changeDynamic(data, "doctor")} value={this.state.doctor}
+                                <Inputnumber className="box_one" changeData={(data) => this.changeDynamic(data, "doctor")} value={this.state.doctor==="null"?0:this.state.doctor}
                                 placeholder="" max={100} />
                             </div>
 
                             <div className="head_one">
                                 <h4>Lab</h4>
-                                <Inputnumber className="box_two" changeData={(data) => this.changeDynamic(data, "lab")} value={this.state.lab} placeholder="" max={100} />
+                                <Inputnumber className="box_two" changeData={(data) => this.changeDynamic(data, "lab")} value={this.state.lab==="null"?0:this.state.lab} placeholder="" max={100} />
                             </div>
 
                             <div className="head_one">
                                 <h4>Clinic</h4>
-                                <Inputnumber className="box_three" changeData={(data) => this.changeDynamic(data, "clinic")} value={this.state.clinic} placeholder="" max={100} />
+                                <Inputnumber className="box_three" changeData={(data) => this.changeDynamic(data, "clinic")} value={this.state.clinic==="null"?0:this.state.clinic} placeholder="" max={100} />
                             </div>
 
                         </div>
@@ -232,17 +233,17 @@ export default class Commission extends React.Component {
 
                             <div className="head_one">
                                 <h4>Health Checkup</h4>
-                                <Inputnumber className="box_four" changeData={(data) => this.changeDynamic(data, "health")} value={this.state.health} placeholder="" max={100} />
+                                <Inputnumber className="box_four" changeData={(data) => this.changeDynamic(data, "health")} value={this.state.health==="null"?0:this.state.health} placeholder="" max={100} />
                             </div>
 
                             <div className="head_one">
                                 <h4>Nurse</h4>
-                                <Inputnumber className="box_five" changeData={(data) => this.changeDynamic(data, "nurse")} value={this.state.nurse} placeholder="" max={100} />
+                                <Inputnumber className="box_five" changeData={(data) => this.changeDynamic(data, "nurse")} value={this.state.nurse==="null"?0:this.state.nurse} placeholder="" max={100} />
                             </div>
 
                             <div className="head_one">
                                 <h4>Trainer</h4>
-                                <Inputnumber className="box_six" changeData={(data) => this.changeDynamic(data, "trainer")} value={this.state.trainer} placeholder="" max={100} />
+                                <Inputnumber className="box_six" changeData={(data) => this.changeDynamic(data, "trainer")} value={this.state.trainer==="null"?0:this.state.trainer} placeholder="" max={100} />
                             </div>
 
                         </div>

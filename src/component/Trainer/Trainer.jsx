@@ -125,7 +125,15 @@ add_data=()=>{
         })
         .then(function (response) {
 
-            self.recall("success","added")
+            if(response.data.msg==="Duplication record"){
+                self.recall()
+                notification.info({
+                    className: "show_frt",
+                    message: "This record already existed",
+                });
+            }else{
+                self.recall("success", "added")
+            }
         })
         .catch(function (error) {
             console.log(error,"error");
@@ -302,7 +310,7 @@ deleterow=()=>{
             {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:
             <div>
                <div className="trainer_header">
-                   <div className="trainer_title"><h3>TRAINER</h3></div>
+                   <div className="trainer_title"><h3>TRAINER PROGRAM</h3></div>
                    <img className={`plus ${useraccess && useraccess.allow_add==="N" && "disablebtn"}`} onClick={useraccess && useraccess.allow_add==="Y" && this.insertdata} src={PlusIcon} />
                </div>
                 <Tablecomponent heading={[
@@ -325,7 +333,7 @@ deleterow=()=>{
             deletepermission={useraccess && useraccess.allow_delete}
   />
 
-        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINER":"EDIT DETAILS"} closemodal={(e)=>this.closemodal(e)}
+        <Modalcomp customwidth_dialog="trainer_modal" visible={this.state.insertmodalopen} title={this.state.modeltype==="view"?"CREATE TRAINER PROGRAM":"EDIT DETAILS PROGRAM"} closemodal={(e)=>this.closemodal(e)}
          xswidth={"xs"}>
              <Grid container spacing={2}>
                  <Grid item xs={12} md={6}>

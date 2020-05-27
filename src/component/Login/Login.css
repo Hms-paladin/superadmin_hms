@@ -126,10 +126,10 @@
 	src: url('../../helper/font/Avenir-Black.ttf')format('truetype');
 }
 
-body {
+/* body {
 	font-family: 'Avenir-Black';
 	margin: 0;
-}
+} */
 
 .pharmacy_login_container .main_containerdiv {
 	height: 100% !important;
@@ -312,6 +312,7 @@ body {
 	height: 3rem !important;
 	padding: 6px 0 4px !important;
 	color:#5f5d5d;
+	margin-top: 8px;
 }
 
 .pharmacy_login_container .MuiInputLabel-formControl {

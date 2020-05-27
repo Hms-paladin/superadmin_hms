@@ -10,7 +10,7 @@ class Inputnumber extends React.Component{
                 <InputNumber 
                 className={`${this.props.errmsg?"borderred_num":"inputnumber"}  ${this.props.className && this.props.className}`}
                 min={0} 
-                max={3000} 
+                max={this.props.max?this.props.max:99999} 
                 defaultValue={this.props.defaultValue && this.props.defaultValue} 
                 step={this.props.step && this.props.step}
                 onChange={this.props.changeData && this.props.changeData }

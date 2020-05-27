@@ -100,7 +100,15 @@ export default class Training_cat extends React.Component{
             })
             .then(function (response) {
                 console.log(response,"responsed");
-                self.recall("success","added")
+                if(response.data.msg==="Duplication record"){
+                    self.recall()
+                    notification.info({
+                        className: "show_frt",
+                        message: "This record already existed",
+                    });
+                }else{
+                    self.recall("success", "added")
+                }
             })
             .catch(function (error) {
             console.log(error,"error");

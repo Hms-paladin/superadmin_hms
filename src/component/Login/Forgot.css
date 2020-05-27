@@ -49,17 +49,6 @@
 	height: 90px;
 }
 
-/* .pharmacy_forget_container .logo_container
-{
-	position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    right: 0;
-
-} */
-
 .pharmacy_forget_container .label+.MuiInput-formControl {
 	margin-top: 22px !important;
 	border-bottom: 1.5px solid #707070;
@@ -120,10 +109,10 @@
 	src: url('../../helper/font/Avenir-Black.ttf')format('truetype');
 }
 
-body {
+/* body {
 	font-family: 'Avenir-Black';
 	margin: 0;
-}
+} */
 
 .pharmacy_forget_container .main_containerdiv {
 	height: 100% !important;
@@ -157,18 +146,6 @@ body {
 	font-size: 20px;
 }
 
-/* .pharmacy_text
-{
-   position: absolute;
-    top: 500px;
-	left:45px;
-	right:100px;
-    align-items: center;
-    font-size:4rem;
-    color: white;
-     font-family: 'Avenir-Black' !important;	
-    transform: rotate(-90deg);
-} */
 
 .pharmacy_submit_container {
 	padding-top: 20px;
@@ -294,7 +271,9 @@ body {
 
 .pas_msg {
 	text-align: center;
-	color: rgb(138, 138, 138) !important;
+	color: #8a8a8a !important;
+	margin-bottom: 40px;
+	font-size: 14px;
 }
 
 @media(max-width:1058px) {

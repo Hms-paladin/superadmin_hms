@@ -41,8 +41,8 @@ class Range_Calendar extends React.Component {
     singleSelCalender: !this.props.singleSelCalender,
     regionEditData: this.props.regionEditData,
     changeRangeval: true,
-    card0: this.props.geteditdata && this.props.geteditdata[0].holiday
-
+    card0: this.props.geteditdata && this.props.geteditdata[0].holiday,
+    errmsg:null,
   }
 
 
@@ -82,7 +82,7 @@ class Range_Calendar extends React.Component {
 
         console.log(i + "-" + st_month + "-" + st_year)
 
-        block_arr.push({ day: moment((st_year + "-" + st_month + "-" + i), "YYYY-MM-DD").format("ddd"), month: st_month, year: st_year }
+        block_arr.push({ day: moment((st_year + "-" + st_month + "-" + i), "YYYY-MM-DD").format("DD"), month: st_month, year: st_year }
         )
         correctDateFormat.push({ holiday: st_year + "-" + st_month + "-" + i })
 
@@ -154,6 +154,11 @@ class Range_Calendar extends React.Component {
   // Add Region Function
 
   add_region = () => {
+    if (this.state.region === "") {
+      this.setState({
+          errmsg: "Region is required"
+      })
+  }else{
     var arrval = []
     arrval.push(...this.state.region_arr === undefined ? "" : this.state.region_arr,
 
@@ -162,6 +167,7 @@ class Range_Calendar extends React.Component {
           <CancelOutlinedIcon onClick={() => this.deleteRegionAdd(arrval.length)} className="crs_region_align" /></div>
       </div>
     )
+  }
 
     var regionText = []
 
@@ -201,7 +207,8 @@ class Range_Calendar extends React.Component {
 
   changeDynamic = (data) => {
     this.setState({
-      region: data
+      region: data,
+      errmsg:null
     })
   }
 
@@ -215,6 +222,12 @@ class Range_Calendar extends React.Component {
 
 
   addApiRegion = () => {
+
+    if (this.state.region === "") {
+      this.setState({
+          errmsg: "Region is required"
+      })
+  }else{
 
     var self = this
     axios({
@@ -231,8 +244,9 @@ class Range_Calendar extends React.Component {
       .catch(function (error) {
         console.log(error, "error");
       });
-
+    }
   }
+
 
 
   getRegion_Recall = () => {
@@ -275,7 +289,7 @@ class Range_Calendar extends React.Component {
   singleselect_Cal = (item) => {
     console.log(item, "itemitem")
     var edit_block_arr = []
-    edit_block_arr.push({ day: moment(item).format('ddd'), month: moment(item).format('MM'), year: moment(item).format('YYYY') })
+    edit_block_arr.push({ day: moment(item).format('DD'), month: moment(item).format('MM'), year: moment(item).format('YYYY') })
     this.setState({
       date: item,
       onceOpen: true,
@@ -286,7 +300,7 @@ class Range_Calendar extends React.Component {
 
 
   render() {
-    console.log(this.state, "state")
+    console.log(this.state, "staterange")
 
     if (this.state.onceOpen) {
       this.props.setvalue_range(this.state, true)
@@ -377,8 +391,13 @@ class Range_Calendar extends React.Component {
               <div className="d-flex"><Inputantd className="cus_wid_app_calreg"
                 changeData={(data) => this.changeDynamic(data)}
                 value={this.state.region}
+                errmsg={this.state.errmsg}
               />
-              <AddBoxIcon className="app_reg_icon_size" onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} />
+              <AddBoxIcon className="app_reg_icon_size" 
+              onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} 
+              onPressEnter={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion}
+              />
+              
               </div>
               {/* <div><AddBoxIcon className="app_reg_icon_size" onClick={this.props.singleSelCalender === false ? this.add_region : this.addApiRegion} /></div> */}
             </div>

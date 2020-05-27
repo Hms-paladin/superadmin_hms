@@ -14,7 +14,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import './drawerpage.css'
 import Avatar from '@material-ui/core/Avatar'
-import avatar from '../images/avatar.jpg'
 import Badge from '@material-ui/core/Badge';
 import bell from '../images/bell.png'
 import Logo from '../images/Logo.png'
@@ -518,7 +517,7 @@ class Homepage extends React.Component {
                   className="paperNone"
                   expandIconPosition={"right"}
                 >
-                  <Panel header={<span onClick={this.avoidFristClickChange} >< NavLink className={`${current_location.includes("/trainingcenter") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainingcenter`}>Training Center</NavLink></span>} key="1" >
+                  <Panel header={<span onClick={this.avoidFristClickChange} >< NavLink title={"Training Center Program"} className={`texteclipsetrainingcenter ${current_location.includes("/trainingcenter") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainingcenter`}>Training Center Program</NavLink></span>} key="1">
                     <div className="d-flex">
                       <NavLink to={`${this.props.match.path}/trainingcategory`} className="d-flex">
                         <GreenRadio
@@ -589,25 +588,25 @@ class Homepage extends React.Component {
 
                     expandIcon={({ isActive }) => <Icon onClick={this.
                       iconClickTrainer} type="caret-right" rotate={isActive ? 90 : 0} />}
-                    className="paperNone"
+                    className="paperNone paneltextmargin"
                     expandIconPosition={"right"}
                   >
-                    <Panel header={<span onClick={this.avoidFristClickChangeTrainer} >< NavLink className={`${current_location.includes("/trainercategory") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainercategory`}>Trainer Category</NavLink></span>} key="1" >
+                    <Panel header={<span onClick={this.avoidFristClickChangeTrainer} >< NavLink className={`${current_location.includes("/trainer") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainer`}>Trainer Program</NavLink></span>} key="1" >
                       <div className="d-flex">
-                        <NavLink to={`${this.props.match.path}/trainer`} className="d-flex">
+                        <NavLink to={`${this.props.match.path}/trainercategory`} className="d-flex">
                           <GreenRadio
-                            checked={this.state.categoryTrainer && current_location.endsWith("/trainer") || current_location.endsWith("/trainer")}
+                            checked={this.state.categoryTrainer && current_location.endsWith("/trainercategory") || current_location.endsWith("/trainercategory")}
                             className="greenCheckWid"
-                            onClick={() => this.routeChange("trainer")}
+                            onClick={() => this.routeChange("trainercategory")}
                           />
                         </NavLink>
 
-                        <MenuItem onClick={() => this.routeChange("trainer")} component={Link} to={`${this.props.match.path}/trainer`} className={`${current_location.endsWith("/trainer") && "active_text_heading"} mttrainerCat`} >
+                        <MenuItem onClick={() => this.routeChange("trainercategory")} component={Link} to={`${this.props.match.path}/trainercategory`} className={`${current_location.endsWith("/trainercategory") && "active_text_heading"} mttrainerCat`} >
                           <ListItemIcon>
                             <div className="icon-container">
                               <ReactSVG src={""} /></div>
                           </ListItemIcon>
-                          <ListItemText primary="Trainer" />
+                          <ListItemText primary="Trainer Category" />
                         </MenuItem>
                       </div>
                     </Panel>
@@ -782,16 +781,9 @@ class Homepage extends React.Component {
 
                     </Panel>
                   </Collapse>
-                </MenuItem> : useraccess && useraccess[15].allow_view === "N" && useraccess[16].allow_view === "N" ? (
-                  <MenuItem component={Link} to={`${this.props.match.path}/useraccess`} className={current_location.includes("/useraccess") && "active_text_heading"}>
-                    <ListItemIcon>
-                      <div className="icon-container">
-                        <ReactSVG src={AdminUser} /></div>
-                    </ListItemIcon>
-                    <ListItemText primary="User Access Rights" />
-                  </MenuItem>
-                )
-                  : useraccess && useraccess[14].allow_view === "N" ? (
+                </MenuItem> 
+
+                  : useraccess && useraccess[15].allow_view === "Y" && useraccess[16].allow_view === "Y" ? (
                     <>
                       <MenuItem component={Link} to={`${this.props.match.path}/usergroup`} className={current_location.includes("/usergroup") && "active_text_heading"}>
                         <ListItemIcon>
@@ -816,7 +808,7 @@ class Homepage extends React.Component {
                     //   </ListItemIcon>
                     //   <ListItemText primary="User Access Rights" />
                     // </MenuItem>
-                    : useraccess && useraccess[15].allow_view === "N" ? (
+                    : useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y"  ? (
                       <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                         <ListItemIcon>
                           <div className="icon-container">
@@ -856,7 +848,7 @@ class Homepage extends React.Component {
                       </MenuItem>
 
                     )
-                      : useraccess && useraccess[16].allow_view === "N" && (
+                      : useraccess && useraccess[14].allow_view === "Y" && useraccess[16].allow_view === "Y"  ? (
                         <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                           <ListItemIcon>
                             <div className="icon-container">
@@ -894,7 +886,15 @@ class Homepage extends React.Component {
 
                             </Panel>
                           </Collapse>
-                        </MenuItem>)
+                        </MenuItem>): useraccess && useraccess[14].allow_view === "Y" && (
+                          <MenuItem component={Link} to={`${this.props.match.path}/useraccess`} className={current_location.includes("/useraccess") && "active_text_heading"}>
+                            <ListItemIcon>
+                              <div className="icon-container">
+                                <ReactSVG src={AdminUser} /></div>
+                            </ListItemIcon>
+                            <ListItemText primary="User Access Rights" />
+                          </MenuItem>
+                        )
               }
 
             </MenuList>

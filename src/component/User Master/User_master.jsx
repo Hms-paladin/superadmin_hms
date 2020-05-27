@@ -180,7 +180,7 @@ export default class User_master extends React.Component {
       })
     }
 
-    else if(this.state.mobile.length<10){
+    else if(this.state.mobile.length<10 || this.state.mobile.length>15){
       this.setState({
         errmsg_mobile: "Mobile no. is invalid"
       })
@@ -198,7 +198,8 @@ export default class User_master extends React.Component {
         })
       }
 
-      var callapi=[this.state.username !== "",this.state.password !== "",this.state.password.length >= 4,this.state.mobile !== "",!isNaN(this.state.mobile),this.state.mobile.length>=10,this.state.email !== "",new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)]
+
+      var callapi=[this.state.username !== "",this.state.password !== "",this.state.password.length >= 4,this.state.mobile !== "",!isNaN(this.state.mobile),this.state.mobile.length>=10,this.state.mobile.length <= 15,this.state.email !== "",new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)]
 
       
     if(callapi.every((parameter)=>parameter===true)) {
@@ -238,7 +239,15 @@ export default class User_master extends React.Component {
       .then(function (response) {
         console.log(response, "add_res");
 
-        self.recall("success", "added")
+        if(response.data.msg==="Invalid Email_id/Phone_no"){
+          self.recall()
+          notification.info({
+              className: "show_frt",
+              message: "This record already existed",
+          });
+      }else{
+          self.recall("success", "added")
+      }
 
       })
       .catch(function (error) {
@@ -253,7 +262,6 @@ export default class User_master extends React.Component {
       "email": "",
       "usertype_sel": this.state.nochan_type,
       "usergroup_sel": this.state.nochan_grp,
-
     })
   }
   }
@@ -544,8 +552,8 @@ export default class User_master extends React.Component {
                         value={this.state.email} errmsg={this.state.errmsg_email} onPressEnter={this.state.modeltype === "view" ?this.add_data:this.update_data}/>
                     </Grid>:null}
                     <Grid item xs={12} md={4}>
-                      <Dropdownantd label="User Type" className="usermaster_drop" option={this.state.usertype}
-                        changeData={(data) => this.changeDynamic(data, "usertype_sel")}
+                      <Inputantd label="User Type" className="usermaster_drop"
+                        // changeData={(data) => this.changeDynamic(data, "usertype_sel")}
                         value={this.state.usertype_sel} />
                     </Grid>
                     <Grid item xs={12} md={4}>

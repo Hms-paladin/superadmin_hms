@@ -50,6 +50,10 @@
     height: 260px;
 } */
 
+.range_calender div {
+    margin-bottom: 0px;
+}
+
 .range_calender button:focus {
     outline: none;
 }
@@ -256,7 +260,7 @@
 }
 
 .region_tx_style {
-    width: 15%;
+    /* width: 15%; */
     font-size: 16px;
     margin-top: 15px;
     background-color: #bfd2a1;

@@ -37,6 +37,9 @@ class App extends React.Component {
     const mail=params.get("ma")
     const tokenid=this.tokenid(10)
     localStorage.setItem("tokenid",tokenid)
+    console.log(token,"token")
+    console.log(mail,"token")
+
 
 
     console.log(window.location.href.includes("/resetpassword"),"href")

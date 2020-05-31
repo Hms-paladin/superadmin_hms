@@ -135,7 +135,17 @@
     /* height: 411px; */
     padding: 15px;
     border-radius: 3px;
-    height: 50.12em;
+    height: 51.5em;
+    width: 87%;
+    overflow-y: scroll;
+}
+
+.dotted_line_cal_single {
+    border: 1px dashed gray;
+    /* height: 411px; */
+    padding: 15px;
+    border-radius: 3px;
+    height: 51.12em;
     width: 87%;
     overflow-y: scroll;
 }

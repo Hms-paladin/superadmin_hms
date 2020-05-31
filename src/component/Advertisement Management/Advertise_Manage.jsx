@@ -422,7 +422,7 @@ export default class Advertise_manage extends Component {
         })
         notification[type]({
           className: "show_frt",
-          message: "Record" + " " + msgdyn + " " + "sucessfully",
+          message: "Record" + " " + msgdyn + " " + "successfully",
         });
       })
       .catch(function (error) {
@@ -587,7 +587,7 @@ export default class Advertise_manage extends Component {
 
             <div className="advertise_manage">
               <div className="advertise_manage_header">
-                <div className="advertise_manage_titleuser"><h3>ADVERTISING MANAGEMENT</h3></div>
+                <div className="advertise_manage_titleuser"><h3>ADVERTISE MANAGEMENT</h3></div>
                 <div className="advertise_manage_container">
                   {/* <Button className="advertise_button_cancel">Cancel</Button>
                       <Button className="advertise_button_create">Create</Button> */}

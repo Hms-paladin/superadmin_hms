@@ -107,7 +107,7 @@ export default class Holiday_master extends React.Component {
     else if(this.state.applicable_region && this.state.applicable_region.length===0){
       notification.warning({
         className: "show_frt",
-        message: "Please select the region",
+        message: "Please add the region",
       });
     }
      else {

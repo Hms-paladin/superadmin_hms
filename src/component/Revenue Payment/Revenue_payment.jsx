@@ -259,7 +259,7 @@ class Revenue_payment extends Component {
       DeleteView:false,
       EditView:false,
       rows: [
-        createData("Dr.rahuman","50000","1000","2000","1000","1277","1400","280","15","10"),
+        createData("Dr.Rahuman","50000","1000","2000","1000","1277","1400","280","15","10"),
         createData("VIP Consulting","400000","4000","10000","1000","1277","1400","280","15","10"),
         createData("Tooth Polishing","15000","1500","30000","1000","1277","1400","280","15","10"),
         createData("Normal Consulting","35000","2000","2000","1000","1277","1400","280","15","10"),

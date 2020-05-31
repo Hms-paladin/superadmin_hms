@@ -167,20 +167,21 @@ class Range_Calendar extends React.Component {
           <CancelOutlinedIcon onClick={() => this.deleteRegionAdd(arrval.length)} className="crs_region_align" /></div>
       </div>
     )
+      this.setState({region_arr: arrval})
+      var regionText = []
+
+      regionText.push(...this.state.regionText === undefined ? "" : this.state.regionText, this.state.region)
+  
+  
+      this.setState({
+        regionText: regionText,
+        region: "",
+        onceOpen: true
+      })
+      console.log(arrval, "arrval")
   }
 
-    var regionText = []
 
-    regionText.push(...this.state.regionText === undefined ? "" : this.state.regionText, this.state.region)
-
-
-    this.setState({
-      region_arr: arrval,
-      regionText: regionText,
-      region: "",
-      onceOpen: true
-    })
-    console.log(arrval, "arrval")
   }
 
   // Delete Region Function
@@ -355,7 +356,7 @@ class Range_Calendar extends React.Component {
                 <div>Date</div>
                 <div>Holiday</div>
               </div>
-              <div className="dotted_line_cal">
+              <div className={`${this.state.singleSelCalender?"dotted_line_cal":"dotted_line_cal_single"}`}>
                 {datearr}
 
               </div>

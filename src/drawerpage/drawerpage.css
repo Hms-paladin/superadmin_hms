@@ -595,6 +595,8 @@ body {
     top: 64px;
     width: 20%;
     height: 175px;
+    z-index: 1202;
+    color: gray;
 }
 
 .cardprofiledrawer .card{

@@ -164,16 +164,16 @@ class Homepage extends React.Component {
     iconopenTrainer: true,
     activeKeyUser: "1",
     iconopenUser: true,
-    userdata:[],
+    userdata: [],
 
   };
 
   handleDrawerOpen = () => {
-    this.setState({ open: true,logout:false });
+    this.setState({ open: true, logout: false });
   };
 
   handleDrawerClose = () => {
-    this.setState({ open: false,logout:false });
+    this.setState({ open: false, logout: false });
   };
   viewmodalOpen = () => {
     this.setState({ viewmodal: true })
@@ -197,17 +197,17 @@ class Homepage extends React.Component {
       url: `${apiurl}getuser`
     })
       .then(function (response) {
-        var userdata=[]
+        var userdata = []
         var userid = response.data.data.filter((val) => {
           if (val.email === localStorage.getItem("email")) {
-            userdata.push({name:val.user_name,email:val.email})
+            userdata.push({ name: val.user_name, email: val.email })
             return val.id
           }
-          
+
         })
-        
+
         self.useraccess(userid[0].id)
-        self.setState({userdata:userdata})
+        self.setState({ userdata: userdata })
       })
       .catch(function (error) {
         console.log(error, "error");
@@ -235,13 +235,13 @@ class Homepage extends React.Component {
 
   active_box = () => {
     this.setState({
-      current_location: window.location.href,logout:false
+      current_location: window.location.href, logout: false
     })
   }
 
   routeChange = (name) => {
     this.setState({
-      logout:false
+      logout: false
     })
     if (name === "mode") {
       this.setState({
@@ -342,7 +342,7 @@ class Homepage extends React.Component {
   }
 
   avoidFristClickChangeTrainer = () => {
-    if (this.state.current_location.endsWith("/trainer")) {
+    if (this.state.current_location.endsWith("/trainercategory")) {
       this.setState({
         activeKeyTrainer: "1",
         iconopenTrainer: false
@@ -379,6 +379,10 @@ class Homepage extends React.Component {
     window.location.reload()
   }
 
+  closeLogoutmodel = (insidemodel) => {
+    this.setState({logout:false})
+  }
+
 
   render() {
     const { classes, theme, children } = this.props;
@@ -388,156 +392,147 @@ class Homepage extends React.Component {
     console.log(this.state.useraccessdata && this.state.useraccessdata[0].item[0].item, "useraccessstate")
 
     const useraccess = this.state.useraccessdata && this.state.useraccessdata[0].item[0].item
-
-    // if (window.location.href === "/") {
-    //   return <Redirect to="/superadmin/?/home/doctorspecial" />
-    // }
-
-    // if (window.location.pathname.includes("resetpassword")) {
-    //   return <Redirect to="/superadmin/?/home/doctorspecial" />
-    // }
-
-    // console.log(this.state.userdata && this.state.userdata.filter((data)=>{
-    //   console.log(data.user_name,"userdata")
-    //   // console.log(localStorage.getItem("email"),"userdata")
-    //   if(data.email===localStorage.getItem("email")){
-    //     alert("test")
-    //     return data.user_name
-    //   }
-    // }),"userdata")
-
-    var username=this.state.userdata[0] && this.state.userdata[0].name
+    var username = this.state.userdata[0] && this.state.userdata[0].name
 
     return (
-      <div className="drawerpage_container">
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar
-            position="fixed"
-            className={classNames(classes.appBar, {
-              [classes.appBarShift]: this.state.open,
-            })}
-          >
-            <Toolbar disableGutters={!this.state.open}>
-              <div className="drawer-logo-container"><img className="logo" src={Logo} alt="logo" /></div>
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
-                  [classes.hide]: this.state.open,
-                })}
-              >
-                <MenuIcon />
-              </IconButton>
-              {/* <div className={this.state.open ? "logoutAlignDraweropen" : "logoutAlign"}>
-                <div onClick={this.logout} className="logindiv">
-                  <ExitToAppIcon />
-                  <span>LOGOUT</span>
+      <div>
+        {this.state.logout &&
+          <div className="cardprofiledrawer">
+            <Card>
+              <Card.Body className="cardbodylogout">
+                <div className="profiledetail">
+                  <div>{this.state.userdata && this.state.userdata[0].name}</div>
+                  <div>{this.state.userdata && this.state.userdata[0].email}</div>
                 </div>
-              </div> */}
+                <Divider />
+                <Button variant="outlined" onClick={this.logout} className="logoutbtn">Logout</Button>
 
-              <div className="dropdown_container">
-                <Dropdown >
-                  <Dropdown.Toggle variant="" id="dropdown-basic" onClick={this.logoutOpen}>
-                  {username}
-                  </Dropdown.Toggle>
-                </Dropdown>
+              </Card.Body>
+            </Card>
+          </div>
+        }
+        <div className="drawerpage_container" onClick={this.state.logout && this.closeLogoutmodel} >
+          <div className={classes.root}>
+            <CssBaseline />
+            <AppBar
+              position="fixed"
+              className={classNames(classes.appBar, {
+                [classes.appBarShift]: this.state.open,
+              })}
+            >
+              <Toolbar disableGutters={!this.state.open}>
+                <div className="drawer-logo-container"><img className="logo" src={Logo} alt="logo" /></div>
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={this.handleDrawerOpen}
+                  className={classNames(classes.menuButton, {
+                    [classes.hide]: this.state.open,
+                  })}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <div className="dropdown_container">
+                  <Dropdown >
+                    <Dropdown.Toggle variant="" id="dropdown-basic" onClick={this.logoutOpen}>
+                      {username}
+                    </Dropdown.Toggle>
+                  </Dropdown>
 
-                <div className="date-wrapper1">
-                  <div className="date-wrapper2">
+                  <div className="date-wrapper1">
+                    <div className="date-wrapper2">
 
-                    <large className="date">  <Moment format='DD-MM-YYYY h:mm A'>{date}</Moment> </large>
-                  </div>
-                </div>
-                
-              </div>
-              {this.state.logout &&
-              <div className="cardprofiledrawer">
-              <Card>
-                    <Card.Body className="cardbodylogout">
-                    <div className="profiledetail">
-                      <div>{this.state.userdata && this.state.userdata[0].name}</div>
-                      <div>{this.state.userdata && this.state.userdata[0].email}</div>
+                      <large className="date">  <Moment format='DD-MM-YYYY h:mm A'>{date}</Moment> </large>
                     </div>
-                    <Divider />
+                  </div>
+
+                </div>
+                {/* {this.state.logout &&
+                  <div className="cardprofiledrawer">
+                    <Card>
+                      <Card.Body className="cardbodylogout">
+                        <div className="profiledetail">
+                          <div>{this.state.userdata && this.state.userdata[0].name}</div>
+                          <div>{this.state.userdata && this.state.userdata[0].email}</div>
+                        </div>
+                        <Divider />
                         <Button variant="outlined" onClick={this.logout} className="logoutbtn">Logout</Button>
 
-                    </Card.Body>
-                </Card>
-              </div>
-              }
+                      </Card.Body>
+                    </Card>
+                  </div>
+                } */}
 
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            variant="permanent"
-            className={classNames(classes.drawer, {
-              [classes.drawerOpen]: this.state.open,
-              [classes.drawerClose]: !this.state.open,
-            })}
-            classes={{
-              paper: classNames({
+              </Toolbar>
+            </AppBar>
+            <Drawer
+              variant="permanent"
+              className={classNames(classes.drawer, {
                 [classes.drawerOpen]: this.state.open,
                 [classes.drawerClose]: !this.state.open,
-              }),
-            }}
-            open={this.state.open}
-          >
-            <div className={classes.toolbar}>
-              <IconButton onClick={this.handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </div>
-            <Divider />
+              })}
+              classes={{
+                paper: classNames({
+                  [classes.drawerOpen]: this.state.open,
+                  [classes.drawerClose]: !this.state.open,
+                }),
+              }}
+              open={this.state.open}
+            >
+              <div className={classes.toolbar}>
+                <IconButton onClick={this.handleDrawerClose}>
+                  {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                </IconButton>
+              </div>
+              <Divider />
 
-            <MenuList className="appbar_sideicons" onClick={this.active_box}>
+              <MenuList className="appbar_sideicons" onClick={this.active_box}>
 
-              {useraccess && useraccess[0].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/doctorspecial`} className={`${current_location.includes("doctorspecial") && "active_text_heading"} iconColorGrey`}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={Doctor} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Doctor Speciality" />
-              </MenuItem>}
+                {useraccess && useraccess[0].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/doctorspecial`} className={`${current_location.includes("doctorspecial") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Doctor Speciality" />
+                </MenuItem>}
 
-              {useraccess && useraccess[1].allow_view === "Y" && useraccess[2].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={TrainingCenter} /></div>
-                </ListItemIcon>
-
-
-                <Collapse
-                  bordered={false}
-
-                  activeKey={this.state.iconopen ? [current_location.includes("/trainingcategory") ? "1" : current_location.includes("/trainingmode") && "1"] : [this.state.activeKey === "1" && "1"]}
-
-                  expandIcon={({ isActive }) => <Icon onClick={this.iconClick} type="caret-right" rotate={isActive ? 90 : 0} />}
-                  className="paperNone"
-                  expandIconPosition={"right"}
-                >
-                  <Panel header={<span onClick={this.avoidFristClickChange} >< NavLink title={"Training Center Program"} className={`texteclipsetrainingcenter ${current_location.includes("/trainingcenter") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainingcenter`}>Training Center Program</NavLink></span>} key="1">
-                    <div className="d-flex">
-                      <NavLink to={`${this.props.match.path}/trainingcategory`} className="d-flex">
-                        <GreenRadio
-                          checked={this.state.category && current_location.includes("/trainingcategory") || current_location.includes("/trainingcategory")}
-                          className="greenCheckWid"
-                          onClick={() => this.routeChange("category")}
-                        />
-                      </NavLink>
-
-                      <MenuItem onClick={() => this.routeChange("category")} component={Link} to={`${this.props.match.path}/trainingcategory`} className={`${current_location.includes("/trainingcategory") && "active_text_heading"} mttrainingCat`} >
-                        <ListItemIcon>
-                          <div className="icon-container">
-                            <ReactSVG src={""} /></div>
-                        </ListItemIcon>
-                        <ListItemText primary="Training Category" />
-                      </MenuItem>
-                    </div>
+                {useraccess && useraccess[1].allow_view === "Y" && useraccess[2].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={TrainingCenter} /></div>
+                  </ListItemIcon>
 
 
-                    {/* <div className="d-flex" >
+                  <Collapse
+                    bordered={false}
+
+                    activeKey={this.state.iconopen ? [current_location.includes("/trainingcategory") ? "1" : current_location.includes("/trainingmode") && "1"] : [this.state.activeKey === "1" && "1"]}
+
+                    expandIcon={({ isActive }) => <Icon onClick={this.iconClick} type="caret-right" rotate={isActive ? 90 : 0} />}
+                    className="paperNone"
+                    expandIconPosition={"right"}
+                  >
+                    <Panel header={<span onClick={this.avoidFristClickChange} >< NavLink title={"Training Center Program"} className={`texteclipsetrainingcenter ${current_location.includes("/trainingcenter") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainingcenter`}>Training Center Program</NavLink></span>} key="1">
+                      <div className="d-flex">
+                        <NavLink to={`${this.props.match.path}/trainingcategory`} className="d-flex">
+                          <GreenRadio
+                            checked={this.state.category && current_location.includes("/trainingcategory") || current_location.includes("/trainingcategory")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("category")}
+                          />
+                        </NavLink>
+
+                        <MenuItem onClick={() => this.routeChange("category")} component={Link} to={`${this.props.match.path}/trainingcategory`} className={`${current_location.includes("/trainingcategory") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemIcon>
+                            <div className="icon-container">
+                              <ReactSVG src={""} /></div>
+                          </ListItemIcon>
+                          <ListItemText primary="Training Category" />
+                        </MenuItem>
+                      </div>
+
+
+                      {/* <div className="d-flex" >
                       <NavLink to="/trainingmode" className="d-flex">
                         <GreenRadio
                           checked={this.state.mode && current_location === "/trainingmode" || current_location === "/trainingmode"}
@@ -554,213 +549,213 @@ class Homepage extends React.Component {
                         <ListItemText primary="Training Mode" />
                       </MenuItem>
                     </div> */}
-                  </Panel>
-                </Collapse>
-              </MenuItem> : useraccess && useraccess[2].allow_view === "Y" ?
-                  <MenuItem component={Link} to={`${this.props.match.path}/trainingcenter`} className={current_location.includes("/trainingcenter") && "active_text_heading"}>
-                    <ListItemIcon>
-                      <div className="icon-container">
-                        <ReactSVG src={TrainingCenter} /></div>
-                    </ListItemIcon>
-                    <ListItemText primary="Training Center" />
-                  </MenuItem> : useraccess && useraccess[1].allow_view === "Y" &&
-                  <MenuItem component={Link} to={`${this.props.match.path}/trainingcategory`} className={current_location.includes("/trainingcategory") && "active_text_heading"}>
-                    <ListItemIcon>
-                      <div className="icon-container">
-                        <ReactSVG src={TrainingCenter} /></div>
-                    </ListItemIcon>
-                    <ListItemText primary="Training Category" />
-                  </MenuItem>
-
-              }
-
-              {useraccess && useraccess[3].allow_view === "Y" && useraccess[4].allow_view === "Y" ?
-                <MenuItem className={`${current_location.includes("/trainercategory") ? "active_text_heading" : current_location.endsWith("/trainer") && "active_text_heading"} IconBaseline`}>
-                  <ListItemIcon>
-                    <div className="icon-container">
-                      <ReactSVG src={TrainerSVG} /></div>
-                  </ListItemIcon>
-
-                  <Collapse
-                    bordered={false}
-
-                    activeKey={this.state.iconopenTrainer ? [current_location.endsWith("/trainer") && "1"] : [this.state.activeKeyTrainer === "1" && "1"]}
-
-                    expandIcon={({ isActive }) => <Icon onClick={this.
-                      iconClickTrainer} type="caret-right" rotate={isActive ? 90 : 0} />}
-                    className="paperNone paneltextmargin"
-                    expandIconPosition={"right"}
-                  >
-                    <Panel header={<span onClick={this.avoidFristClickChangeTrainer} >< NavLink className={`${current_location.includes("/trainer") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainer`}>Trainer Program</NavLink></span>} key="1" >
-                      <div className="d-flex">
-                        <NavLink to={`${this.props.match.path}/trainercategory`} className="d-flex">
-                          <GreenRadio
-                            checked={this.state.categoryTrainer && current_location.endsWith("/trainercategory") || current_location.endsWith("/trainercategory")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("trainercategory")}
-                          />
-                        </NavLink>
-
-                        <MenuItem onClick={() => this.routeChange("trainercategory")} component={Link} to={`${this.props.match.path}/trainercategory`} className={`${current_location.endsWith("/trainercategory") && "active_text_heading"} mttrainerCat`} >
-                          <ListItemIcon>
-                            <div className="icon-container">
-                              <ReactSVG src={""} /></div>
-                          </ListItemIcon>
-                          <ListItemText primary="Trainer Category" />
-                        </MenuItem>
-                      </div>
                     </Panel>
                   </Collapse>
+                </MenuItem> : useraccess && useraccess[2].allow_view === "Y" ?
+                    <MenuItem component={Link} to={`${this.props.match.path}/trainingcenter`} className={current_location.includes("/trainingcenter") && "active_text_heading"}>
+                      <ListItemIcon>
+                        <div className="icon-container">
+                          <ReactSVG src={TrainingCenter} /></div>
+                      </ListItemIcon>
+                      <ListItemText primary="Training Center" />
+                    </MenuItem> : useraccess && useraccess[1].allow_view === "Y" &&
+                    <MenuItem component={Link} to={`${this.props.match.path}/trainingcategory`} className={current_location.includes("/trainingcategory") && "active_text_heading"}>
+                      <ListItemIcon>
+                        <div className="icon-container">
+                          <ReactSVG src={TrainingCenter} /></div>
+                      </ListItemIcon>
+                      <ListItemText primary="Training Category" />
+                    </MenuItem>
 
+                }
 
-                </MenuItem> : useraccess && useraccess[3].allow_view === "Y" ?
-                  <MenuItem component={Link} to={`${this.props.match.path}/trainercategory`} className={current_location.includes("/trainercategory") && "active_text_heading"}>
+                {useraccess && useraccess[3].allow_view === "Y" && useraccess[4].allow_view === "Y" ?
+                  <MenuItem className={`${current_location.includes("/trainercategory") ? "active_text_heading" : current_location.endsWith("/trainer") && "active_text_heading"} IconBaseline`}>
                     <ListItemIcon>
                       <div className="icon-container">
                         <ReactSVG src={TrainerSVG} /></div>
                     </ListItemIcon>
-                    <ListItemText primary="Trainer Category" />
-                  </MenuItem> : useraccess && useraccess[4].allow_view === "Y" &&
-                  <MenuItem component={Link} to={`${this.props.match.path}/trainer`} className={current_location.endsWith("/trainer") && "active_text_heading"}>
-                    <ListItemIcon>
-                      <div className="icon-container">
-                        <ReactSVG src={TrainerSVG} /></div>
-                    </ListItemIcon>
-                    <ListItemText primary="Trainer" />
-                  </MenuItem>
 
-              }
+                    <Collapse
+                      bordered={false}
 
-              {useraccess && useraccess[5].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/holidaymaster`} className={current_location.includes("/holidaymaster") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={HolidayMaster} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Holiday Master" />
-              </MenuItem>}
+                      activeKey={this.state.iconopenTrainer ? [current_location.endsWith("/trainercategory") && "1"] : [this.state.activeKeyTrainer === "1" && "1"]}
 
-              {useraccess && useraccess[6].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/advertisemanage`} className={current_location.includes("/advertisemanage") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={Advertise} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Advertise Management" />
-              </MenuItem>}
+                      expandIcon={({ isActive }) => <Icon onClick={this.
+                        iconClickTrainer} type="caret-right" rotate={isActive ? 90 : 0} />}
+                      className="paperNone paneltextmargin"
+                      expandIconPosition={"right"}
+                    >
+                      <Panel header={<span onClick={this.avoidFristClickChangeTrainer} >< NavLink className={`${current_location.endsWith("/trainer") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/trainer`}>Trainer Program</NavLink></span>} key="1" >
+                        <div className="d-flex">
+                          <NavLink to={`${this.props.match.path}/trainercategory`} className="d-flex">
+                            <GreenRadio
+                              checked={this.state.categoryTrainer && current_location.endsWith("/trainercategory") || current_location.endsWith("/trainercategory")}
+                              className="greenCheckWid"
+                              onClick={() => this.routeChange("trainercategory")}
+                            />
+                          </NavLink>
 
-              {useraccess && useraccess[7].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/mediaupload`} className={current_location.includes("/mediaupload") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={MediaUpload} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Media Upload" />
-              </MenuItem>}
-
-              {useraccess && useraccess[8].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/approvalmanage`} className={current_location.includes("/approvalmanage") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={Approval} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Approval Management" />
-              </MenuItem>}
-
-              {useraccess && useraccess[9].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/commission`} className={current_location.includes("/commission") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={CommissionSVG} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Commission Management" />
-              </MenuItem>}
-
-              {useraccess && useraccess[10].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/healthtips`} className={current_location.includes("/healthtips") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={HealthTips} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Health Tips" />
-              </MenuItem>}
-
-              {useraccess && useraccess[11].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/notification`} className={current_location.includes("/notification") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={Notification} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Notification Management" />
-              </MenuItem>}
-
-              {useraccess && useraccess[12].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/revenuepayment`} className={current_location.includes("/revenuepayment") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={Revenue} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Revenue vendor payment" />
-              </MenuItem>}
+                          <MenuItem onClick={() => this.routeChange("trainercategory")} component={Link} to={`${this.props.match.path}/trainercategory`} className={`${current_location.endsWith("/trainercategory") && "active_text_heading"} mttrainerCat`} >
+                            <ListItemIcon>
+                              <div className="icon-container">
+                                <ReactSVG src={""} /></div>
+                            </ListItemIcon>
+                            <ListItemText primary="Trainer Category" />
+                          </MenuItem>
+                        </div>
+                      </Panel>
+                    </Collapse>
 
 
-              {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
-                <ListItemIcon>
-                  <div className="icon-container">
-                    <ReactSVG src={GroupAccess} /></div>
-                </ListItemIcon>
-                <ListItemText primary="Group Access Rights" />
-              </MenuItem>}
+                  </MenuItem> : useraccess && useraccess[3].allow_view === "Y" ?
+                    <MenuItem component={Link} to={`${this.props.match.path}/trainercategory`} className={current_location.includes("/trainercategory") && "active_text_heading"}>
+                      <ListItemIcon>
+                        <div className="icon-container">
+                          <ReactSVG src={TrainerSVG} /></div>
+                      </ListItemIcon>
+                      <ListItemText primary="Trainer Category" />
+                    </MenuItem> : useraccess && useraccess[4].allow_view === "Y" &&
+                    <MenuItem component={Link} to={`${this.props.match.path}/trainer`} className={current_location.endsWith("/trainer") && "active_text_heading"}>
+                      <ListItemIcon>
+                        <div className="icon-container">
+                          <ReactSVG src={TrainerSVG} /></div>
+                      </ListItemIcon>
+                      <ListItemText primary="Trainer" />
+                    </MenuItem>
 
-              {useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y" && useraccess[16].allow_view === "Y" ?
-                <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
+                }
+
+                {useraccess && useraccess[5].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/holidaymaster`} className={current_location.includes("/holidaymaster") && "active_text_heading"}>
                   <ListItemIcon>
                     <div className="icon-container">
-                      <ReactSVG src={AdminUser} /></div>
+                      <ReactSVG src={HolidayMaster} /></div>
                   </ListItemIcon>
+                  <ListItemText primary="Holiday Master" />
+                </MenuItem>}
 
-                  <Collapse
-                    bordered={false}
+                {useraccess && useraccess[6].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/advertisemanage`} className={current_location.includes("/advertisemanage") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Advertise} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Advertise Management" />
+                </MenuItem>}
 
-                    activeKey={this.state.iconopenUser ? [current_location.includes("/usermaster") ? "1" : current_location.includes("/usertype") ? "1" : current_location.includes("/usergroup") && "1"] : [this.state.activeKeyUser === "1" && "1"]}
+                {useraccess && useraccess[7].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/mediaupload`} className={current_location.includes("/mediaupload") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={MediaUpload} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Media Upload" />
+                </MenuItem>}
 
-                    expandIcon={({ isActive }) => <Icon onClick={this.iconClickUser} type="caret-right" rotate={isActive ? 90 : 0} />}
-                    className="paperNone"
-                    expandIconPosition={"right"}
-                  >
-                    <Panel header={<span onClick={this.avoidFristClickChangeUser} >< NavLink className={`${current_location.includes("/useraccess") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/useraccess`}>User Access Rights</NavLink></span>} key="1" >
+                {useraccess && useraccess[8].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/approvalmanage`} className={current_location.includes("/approvalmanage") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Approval} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Approval Management" />
+                </MenuItem>}
+
+                {useraccess && useraccess[9].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/commission`} className={current_location.includes("/commission") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={CommissionSVG} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Commission Management" />
+                </MenuItem>}
+
+                {useraccess && useraccess[10].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/healthtips`} className={current_location.includes("/healthtips") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={HealthTips} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Health Tips" />
+                </MenuItem>}
+
+                {useraccess && useraccess[11].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/notification`} className={current_location.includes("/notification") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Notification} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Notification Management" />
+                </MenuItem>}
+
+                {useraccess && useraccess[12].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/revenuepayment`} className={current_location.includes("/revenuepayment") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Revenue} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Revenue Vendor Payment" />
+                </MenuItem>}
 
 
-                    <div className="d-flex usermastterrelative" >
-                        <NavLink to={`${this.props.match.path}/usergroup`} className="d-flex">
-                          <GreenRadio
-                            checked={this.state.userGroup && current_location.includes("/usergroup") || current_location.includes("/usergroup")}
-                            className="greenCheckWidmode greenCheckWid"
-                            onClick={() => this.routeChange("userGroup")}
-                          />
-                        </NavLink>
+                {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={GroupAccess} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Group Access Rights" />
+                </MenuItem>}
 
-                        <MenuItem onClick={() => this.routeChange("userGroup")} component={Link} to={`${this.props.match.path}/usergroup`} className={`${current_location.includes("/usergroup") && "active_text_heading"} mttrainingmod `}>
-                          <ListItemIcon>
-                            <div className="icon-container">
-                              <ReactSVG src={""} /></div>
-                          </ListItemIcon>
-                          <ListItemText primary="User Group" />
-                        </MenuItem>
-                      </div>
+                {useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y" && useraccess[16].allow_view === "Y" ?
+                  <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
+                    <ListItemIcon>
+                      <div className="icon-container">
+                        <ReactSVG src={AdminUser} /></div>
+                    </ListItemIcon>
 
-                      <div className="d-flex">
-                        <NavLink to={`${this.props.match.path}/usermaster`} className="d-flex">
-                          <GreenRadio
-                            checked={this.state.userMaster && current_location.includes("/usermaster") || current_location.includes("/usermaster")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("userMaster")}
-                          />
-                        </NavLink>
+                    <Collapse
+                      bordered={false}
 
-                        <MenuItem onClick={() => this.routeChange("userMaster")} component={Link} to={`${this.props.match.path}/usermaster`} className={`${current_location.includes("/usermaster") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemIcon>
-                            <div className="icon-container">
-                              <ReactSVG src={""} /></div>
-                          </ListItemIcon>
-                          <ListItemText primary="User Master" />
-                        </MenuItem>
-                      </div>
+                      activeKey={this.state.iconopenUser ? [current_location.includes("/usermaster") ? "1" : current_location.includes("/usertype") ? "1" : current_location.includes("/usergroup") && "1"] : [this.state.activeKeyUser === "1" && "1"]}
+
+                      expandIcon={({ isActive }) => <Icon onClick={this.iconClickUser} type="caret-right" rotate={isActive ? 90 : 0} />}
+                      className="paperNone"
+                      expandIconPosition={"right"}
+                    >
+                      <Panel header={<span onClick={this.avoidFristClickChangeUser} >< NavLink className={`${current_location.includes("/useraccess") && "panelTextDrawerclr"} panelTextDrawer`} to={`${this.props.match.path}/useraccess`}>User Access Rights</NavLink></span>} key="1" >
 
 
-                      {/* <div className="d-flex" >
+                        <div className="d-flex usermastterrelative" >
+                          <NavLink to={`${this.props.match.path}/usergroup`} className="d-flex">
+                            <GreenRadio
+                              checked={this.state.userGroup && current_location.includes("/usergroup") || current_location.includes("/usergroup")}
+                              className="greenCheckWidmode greenCheckWid"
+                              onClick={() => this.routeChange("userGroup")}
+                            />
+                          </NavLink>
+
+                          <MenuItem onClick={() => this.routeChange("userGroup")} component={Link} to={`${this.props.match.path}/usergroup`} className={`${current_location.includes("/usergroup") && "active_text_heading"} mttrainingmod `}>
+                            <ListItemIcon>
+                              <div className="icon-container">
+                                <ReactSVG src={""} /></div>
+                            </ListItemIcon>
+                            <ListItemText primary="User Group" />
+                          </MenuItem>
+                        </div>
+
+                        <div className="d-flex">
+                          <NavLink to={`${this.props.match.path}/usermaster`} className="d-flex">
+                            <GreenRadio
+                              checked={this.state.userMaster && current_location.includes("/usermaster") || current_location.includes("/usermaster")}
+                              className="greenCheckWid"
+                              onClick={() => this.routeChange("userMaster")}
+                            />
+                          </NavLink>
+
+                          <MenuItem onClick={() => this.routeChange("userMaster")} component={Link} to={`${this.props.match.path}/usermaster`} className={`${current_location.includes("/usermaster") && "active_text_heading"} mttrainingCat`} >
+                            <ListItemIcon>
+                              <div className="icon-container">
+                                <ReactSVG src={""} /></div>
+                            </ListItemIcon>
+                            <ListItemText primary="User Master" />
+                          </MenuItem>
+                        </div>
+
+
+                        {/* <div className="d-flex" >
                       <NavLink to="/usertype" className="d-flex">
                         <GreenRadio
                           checked={this.state.userType && current_location === "/usertype" || current_location === "/usertype"}
@@ -779,9 +774,9 @@ class Homepage extends React.Component {
                     </div> */}
 
 
-                    </Panel>
-                  </Collapse>
-                </MenuItem> 
+                      </Panel>
+                    </Collapse>
+                  </MenuItem>
 
                   : useraccess && useraccess[15].allow_view === "Y" && useraccess[16].allow_view === "Y" ? (
                     <>
@@ -808,7 +803,7 @@ class Homepage extends React.Component {
                     //   </ListItemIcon>
                     //   <ListItemText primary="User Access Rights" />
                     // </MenuItem>
-                    : useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y"  ? (
+                    : useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y" ? (
                       <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                         <ListItemIcon>
                           <div className="icon-container">
@@ -848,7 +843,7 @@ class Homepage extends React.Component {
                       </MenuItem>
 
                     )
-                      : useraccess && useraccess[14].allow_view === "Y" && useraccess[16].allow_view === "Y"  ? (
+                      : useraccess && useraccess[14].allow_view === "Y" && useraccess[16].allow_view === "Y" ? (
                         <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                           <ListItemIcon>
                             <div className="icon-container">
@@ -886,7 +881,7 @@ class Homepage extends React.Component {
 
                             </Panel>
                           </Collapse>
-                        </MenuItem>): useraccess && useraccess[14].allow_view === "Y" && (
+                        </MenuItem>) : useraccess && useraccess[14].allow_view === "Y" && (
                           <MenuItem component={Link} to={`${this.props.match.path}/useraccess`} className={current_location.includes("/useraccess") && "active_text_heading"}>
                             <ListItemIcon>
                               <div className="icon-container">
@@ -895,56 +890,57 @@ class Homepage extends React.Component {
                             <ListItemText primary="User Access Rights" />
                           </MenuItem>
                         )
-              }
+                }
 
-            </MenuList>
+              </MenuList>
 
-          </Drawer>
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <div>
-              {children}
+            </Drawer>
+            <main className={classes.content}>
+              <div className={classes.toolbar} />
+              <div>
+                {children}
 
-              {useraccess && useraccess[0].allow_view === "Y" && <Route exact path={`${this.props && this.props.match.path}/doctorspecial`} render={() => <Doctor_spl uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-              
-              {useraccess && useraccess[1].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcategory`} render={() => <Training_cat uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[0].allow_view === "Y" && <Route exact path={`${this.props && this.props.match.path}/doctorspecial`} render={() => <Doctor_spl uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[2].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcenter`} render={() => <Training_center uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-                            
-              {useraccess && useraccess[3].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainercategory`} render={() => <Trainer_category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[1].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcategory`} render={() => <Training_cat uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[4].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainer`} render={() => <Trainer uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-              
-              {useraccess && useraccess[5].allow_view === "Y" && <Route exact path={`${this.props.match.path}/holidaymaster`} render={() => <Holiday_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[2].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainingcenter`} render={() => <Training_center uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[6].allow_view === "Y" && <Route exact path={`${this.props.match.path}/advertisemanage`} render={() => <Advertise_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[3].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainercategory`} render={() => <Trainer_category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[7].allow_view === "Y" && <Route exact path={`${this.props.match.path}/mediaupload`} render={() => <Media_upload uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[4].allow_view === "Y" && <Route exact path={`${this.props.match.path}/trainer`} render={() => <Trainer uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[8].allow_view === "Y" && <Route exact path={`${this.props.match.path}/approvalmanage`} render={() => <Approval_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[5].allow_view === "Y" && <Route exact path={`${this.props.match.path}/holidaymaster`} render={() => <Holiday_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[9].allow_view === "Y" && <Route exact path={`${this.props.match.path}/commission`} render={() => <Commission uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[6].allow_view === "Y" && <Route exact path={`${this.props.match.path}/advertisemanage`} render={() => <Advertise_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[10].allow_view === "Y" && <Route exact path={`${this.props.match.path}/healthtips`} render={() => <Health_tips uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[7].allow_view === "Y" && <Route exact path={`${this.props.match.path}/mediaupload`} render={() => <Media_upload uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[11].allow_view === "Y" && <Route exact path={`${this.props.match.path}/notification`} render={() => <Notification_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-              
-              {useraccess && useraccess[12].allow_view === "Y" && <Route exact path={`${this.props.match.path}/revenuepayment`} render={() => <Revenue_payment uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[8].allow_view === "Y" && <Route exact path={`${this.props.match.path}/approvalmanage`} render={() => <Approval_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[13].allow_view === "Y" && <Route exact path={`${this.props.match.path}/groupaccess`} render={() => <Groupaccess uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[9].allow_view === "Y" && <Route exact path={`${this.props.match.path}/commission`} render={() => <Commission uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[14].allow_view === "Y" && <Route exact path={`${this.props.match.path}/useraccess`} render={() => <Useraccess_rights uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[10].allow_view === "Y" && <Route exact path={`${this.props.match.path}/healthtips`} render={() => <Health_tips uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[15].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usergroup`} render={() => <User_group uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+                {useraccess && useraccess[11].allow_view === "Y" && <Route exact path={`${this.props.match.path}/notification`} render={() => <Notification_manage uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
-              
-              {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
+                {useraccess && useraccess[12].allow_view === "Y" && <Route exact path={`${this.props.match.path}/revenuepayment`} render={() => <Revenue_payment uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-              {/* <Route exact path={'/trainingmode'}  render={() => <Training_mode uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
+                {useraccess && useraccess[13].allow_view === "Y" && <Route exact path={`${this.props.match.path}/groupaccess`} render={() => <Groupaccess uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
-            </div>
-          </main>
+                {useraccess && useraccess[14].allow_view === "Y" && <Route exact path={`${this.props.match.path}/useraccess`} render={() => <Useraccess_rights uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+
+                {useraccess && useraccess[15].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usergroup`} render={() => <User_group uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+
+                {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+
+                {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
+
+                {/* <Route exact path={'/trainingmode'}  render={() => <Training_mode uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
+
+              </div>
+            </main>
+          </div>
         </div>
       </div>
     );

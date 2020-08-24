@@ -115,8 +115,17 @@
     border-radius: 1px !important;
     height: 34px;
     margin-top: 27px !important;
-    width: 100px !important;
+    min-width: 65px !important;
 }
+
+.filterbtnreset {
+    background-color: #C9C9C9 !important;
+    border-radius: 1px !important;
+    height: 34px;
+    margin-top: 27px !important;
+    min-width: 65px !important;
+}
+
 
 .withoutdatebox {
     justify-content: start;

@@ -207,7 +207,6 @@ export default class Vendor_master extends React.Component{
 
 
     render(){
-         
         return(
             <div>
                 {this.state.loading?<Spin className="spinner_align" spinning={this.state.loading}></Spin>:

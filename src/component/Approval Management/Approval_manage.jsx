@@ -341,6 +341,16 @@ export default class Approval_manage extends React.Component {
         })
     }
 
+    reset=()=>{
+        this.state.vendor = ""
+        this.state.vendor_name = ""
+        this.state.type = ""
+        this.state.fromdate = ""
+        this.state.todate = ""
+        this.setState({})
+
+    }
+
     filterfun = (checkvalueid, clicktrue, useraccess = this.state.useraccessstate) => {
 
         switch (this.state.status) {
@@ -514,7 +524,9 @@ export default class Approval_manage extends React.Component {
                 </div>
             </>
         }
-        <Button className="filterbtn" onClick={this.filterfun}>Filter</Button>
+        <Button className="filterbtn mr-2" onClick={this.filterfun}>Filter</Button>
+        <Button className="filterbtnreset" onClick={this.reset}>Reset</Button>
+
     </div>
 
     <Tablecomponent heading={[

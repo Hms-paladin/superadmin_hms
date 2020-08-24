@@ -378,7 +378,7 @@ export default class Tablecomponent extends Component {
                         {this.props.actionclose==="close"?null:
                         <TableCell className={`${this.props.tableicon_align}`}>
                           {this.props.VisibilityIcon==="close"?null:
-                          <VisibilityIcon className="tableeye_icon"  onClick={()=>this.props.modelopen("view")}/>}
+                          <VisibilityIcon className="tableeye_icon"  onClick={()=>this.props.modelopen("view",row.id)}/>}
                           {this.props.EditIcon==="close"?null:
                           <EditIcon className={`tableedit_icon ${this.props.editpermission==="N" && "disablebtn"}`} onClick={this.props.editpermission==="Y" ? ()=>this.props.modelopen("edit",row.id) : null}/>}
                           {this.props.DeleteIcon==="close"?null:

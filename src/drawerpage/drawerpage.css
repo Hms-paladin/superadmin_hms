@@ -185,7 +185,8 @@ body {
 }
 
 .MuiListItem-gutters {
-    padding-bottom: 16px !important
+    padding-bottom: 16px !important;
+    height: 55px;
 }
 
 .dropdown-menu {
@@ -456,8 +457,10 @@ body {
 }
 
 .mttrainingCat{
-    margin-top: 18px !important;
+    /* margin-top: 18px !important; */
     background-color: transparent !important;
+    position: relative !important;
+    top: 1px;
 }
 
 
@@ -467,8 +470,9 @@ body {
 
 .greenCheckWid span{
     width: 0px;
-    height: 13px;
+    position: relative;
     display: block;
+    bottom: 4px;
 }
 
 .greenCheckWid:hover{
@@ -476,9 +480,14 @@ body {
 }
 
 .greenCheckWid span div svg{
-    width: 22px;
-    height: 22px;
+    width: 21px;
+    height: 21px;
 }
+
+/* .greenCheckWid span div svg:first-child{
+    position: relative;
+    bottom: 8px;
+} */
 
 .greenCheckWidmode{
     height: 33px;
@@ -517,9 +526,9 @@ body {
     text-decoration: none;
 }
 
-.active_text_heading.mttrainingCat{
+/* .active_text_heading.mttrainingCat{
     padding-left: 0px;
-}
+} */
 
 .active_text_heading.mttrainingmod{
     padding-left: 0px;
@@ -644,3 +653,111 @@ body {
     position: relative;
     top: 3px;
 }
+
+.collapseclrNone,.collapseclrNone.ant-collapse > .ant-collapse-item{
+    border: none !important;
+}
+
+.collapseclrNone .ant-collapse-content > .ant-collapse-content-box{
+ padding: 0px;
+}
+
+.collapseclrNone .ant-collapse-header{
+    padding-left: 70px !important;
+    background-color: #fff !important;
+    border: none;
+    color: grey !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapseclrNone .ant-collapse-content{
+    border: none;
+    /* padding-left: 70px !important; */
+}
+
+.collapseclrNone .ant-collapse-item{
+    overflow: hidden;
+}
+
+.appbar_sideicons .ant-collapse-header:hover,.appbar_sideicons .ant-collapse-header:hover svg g path,.appbar_sideicons .ant-collapse-header:hover svg g rect{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #86B149 !important;
+    fill: #86b149;
+}
+
+.submodulealign{
+    padding-left: 66px;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submodulealignactive{
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.submodulealign:hover{
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #86B149 !important;
+}
+
+/* .collapseclrNone .ant-collapse-extra{
+    border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    width: 23px;
+    padding-bottom: 23px;
+}
+
+.collapseclrNone .ant-collapse-extra:hover{
+    background-color: #d0d0d0;
+} */
+
+.collapseclrNone .ant-collapse-extra svg{
+    font-size: 21px;
+}
+
+.collapseclrNone .active{
+    margin-right: 0px;
+    text-decoration: none;
+    color: #86B149 !important;
+}
+
+.collapseclrNone a:hover{
+    text-decoration: none;
+    color: #86B149 !important;
+}
+
+.collapseclrNone a{
+    color: grey;
+}
+
+
+/* .collapseclrNone div div{
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+.collapseclrNone div div i{
+    left: 146px !important;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+}
+
+.collapseclrNone div div i svg{
+    position: relative;
+    top: 6px;
+}
+
+.collapseclrNone .MuiListItemIcon-root{
+    min-width:0px !important;
+}
+
+.collapseclrNone{
+    background-color: transparent !important;
+}
+ */

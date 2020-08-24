@@ -47,7 +47,7 @@ import Training_cat from '../component/Training Category/Training_cat';
 import Training_center from '../component/Training Center/Training_center';
 import Training_mode from '../component/Training Mode/Training_mode';
 import Groupaccess from '../component/Groupaccess/groupaccess';
-// import Vendor_master from '../component/Vendor Master/Vendor_master';
+import VendorProfile from '../component/VendorProfile/VendorProfile';
 import Commission from '../component/Commission Management/Commission';
 import Health_tips from '../component/Health Tips/Health_tips'
 import User_group from '../component/User Group/User_group';
@@ -64,6 +64,8 @@ import { green } from '@material-ui/core/colors';
 import Radio from '@material-ui/core/Radio';
 import { Icon, message, Popconfirm } from "antd";
 import { Collapse } from 'antd';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import createHistory from 'history/createBrowserHistory';
 import { Redirect } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -165,7 +167,9 @@ class Homepage extends React.Component {
     activeKeyUser: "1",
     iconopenUser: true,
     userdata: [],
-
+    training_rotate:window.location.href.includes("/trainingcategory") || window.location.href.includes("/trainingcenter"),
+    trainer_rotate:window.location.href.includes("/trainercategory") || window.location.href.includes("/trainer"),
+    user_rotate:window.location.href.includes("/usermaster") || window.location.href.includes("/usergroup") || window.location.href.includes("/useraccess")
   };
 
   handleDrawerOpen = () => {
@@ -380,9 +384,23 @@ class Homepage extends React.Component {
   }
 
   closeLogoutmodel = (insidemodel) => {
-    this.setState({logout:false})
+    this.setState({ logout: false })
   }
 
+  arrowrotate=(data)=>{
+    if(data === "training"){
+      this.setState({training_rotate:!this.state.training_rotate})
+    }else if(data === "trainer"){
+      this.setState({trainer_rotate:!this.state.trainer_rotate})
+    }else if(data === "user"){
+      this.setState({user_rotate:!this.state.user_rotate})
+    }
+  }
+
+  // wholeclick=(endpoint)=>{
+  //   alert(`${this.props.match.path}/${endpoint}`)
+  //   return <NavLink push to={`${this.props.match.path}/${endpoint}`} />
+  // }
 
   render() {
     const { classes, theme, children } = this.props;
@@ -393,6 +411,10 @@ class Homepage extends React.Component {
 
     const useraccess = this.state.useraccessdata && this.state.useraccessdata[0].item[0].item
     var username = this.state.userdata[0] && this.state.userdata[0].name
+
+    var defaultActiveKey = current_location.includes("/trainingcategory") || current_location.includes("/trainingcenter") ? ["1"] : null
+
+    console.log(defaultActiveKey,"includestest")
 
     return (
       <div>
@@ -495,8 +517,53 @@ class Homepage extends React.Component {
                   </ListItemIcon>
                   <ListItemText primary="Doctor Speciality" />
                 </MenuItem>}
+              
+              {useraccess && useraccess[1].allow_view === "Y" || useraccess && useraccess[2].allow_view === "Y" ? 
+                <Collapse
+                  defaultActiveKey={current_location.includes("/trainingcategory") || current_location.includes("/trainingcenter") ? ["1"] : null}
+                  onChange={()=>this.arrowrotate("training")}
+                  className="collapseclrNone"
+                  expandIcon={({ isActive }) =>
+                  <ReactSVG src={TrainingCenter} />}
+                >
+                  <Panel header="Training Center" key="1" extra={this.state.training_rotate?<ArrowDropDownIcon />:<ArrowRightIcon />}>
+                    {useraccess && useraccess[1].allow_view === "Y" &&
+                <NavLink to={`${this.props.match.path}/trainingcategory`} className="d-flex">
+                  <div className={`${current_location.includes("/trainingcategory") &&"submodulealignactive"} submodulealign`}>
+                        {/* <NavLink to={`${this.props.match.path}/trainingcategory`} className="d-flex"> */}
+                          <GreenRadio
+                            checked={this.state.category && current_location.includes("/trainingcategory") || current_location.includes("/trainingcategory")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("category")}
+                          />
+                        {/* </NavLink> */}
 
-                {useraccess && useraccess[1].allow_view === "Y" && useraccess[2].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
+                        <MenuItem onClick={() => this.routeChange("category")} component={Link} to={`${this.props.match.path}/trainingcategory`} className={`${current_location.includes("/trainingcategory") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Training Category" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>}
+                      {useraccess && useraccess[2].allow_view === "Y" &&
+                      <NavLink to={`${this.props.match.path}/trainingcenter`} className="d-flex">
+                      <div className={`${current_location.includes("/trainingcenter") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.includes("/trainingcenter") || current_location.includes("/trainingcenter")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("trainingcenter")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("trainingcenter")} component={Link} to={`${this.props.match.path}/trainingcenter`} className={`${current_location.includes("/trainingcenter") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Training" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                    }
+                  </Panel>
+                </Collapse>:null
+                }
+  
+
+                {/* {useraccess && useraccess[1].allow_view === "Y" && useraccess[2].allow_view === "Y" ? <MenuItem className={`${current_location.includes("/trainingcenter") ? "active_text_heading" : current_location.includes("/trainingcategory") ? "active_text_heading" : current_location.includes("/trainingmode") && "active_text_heading"} IconBaseline`} >
                   <ListItemIcon>
                     <div className="icon-container">
                       <ReactSVG src={TrainingCenter} /></div>
@@ -531,24 +598,6 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
 
-
-                      {/* <div className="d-flex" >
-                      <NavLink to="/trainingmode" className="d-flex">
-                        <GreenRadio
-                          checked={this.state.mode && current_location === "/trainingmode" || current_location === "/trainingmode"}
-                          className="greenCheckWidmode greenCheckWid"
-                          onClick={() => this.routeChange("mode")}
-                        />
-                      </NavLink>
-
-                      <MenuItem onClick={() => this.routeChange("mode")} component={Link} to="/trainingmode" className={`${current_location === "/trainingmode" && "active_text_heading"} mttrainingmod`}>
-                        <ListItemIcon>
-                          <div className="icon-container">
-                            <ReactSVG src={""} /></div>
-                        </ListItemIcon>
-                        <ListItemText primary="Training Mode" />
-                      </MenuItem>
-                    </div> */}
                     </Panel>
                   </Collapse>
                 </MenuItem> : useraccess && useraccess[2].allow_view === "Y" ?
@@ -567,9 +616,53 @@ class Homepage extends React.Component {
                       <ListItemText primary="Training Category" />
                     </MenuItem>
 
-                }
+                } */}
 
-                {useraccess && useraccess[3].allow_view === "Y" && useraccess[4].allow_view === "Y" ?
+              {useraccess && useraccess[3].allow_view === "Y" || useraccess && useraccess[4].allow_view === "Y"  ?
+                <Collapse
+                  defaultActiveKey={current_location.includes("/trainercategory") || current_location.includes("/trainer") ? ["1"] : null}
+                  onChange={()=>this.arrowrotate("trainer")}
+                  className="collapseclrNone"
+                  expandIcon={({ isActive }) =>
+                  <ReactSVG src={TrainerSVG} />}
+                >
+                  <Panel header="Trainer" key="1" extra={this.state.trainer_rotate?<ArrowDropDownIcon />:<ArrowRightIcon />}>
+                    {useraccess && useraccess[3].allow_view === "Y" &&
+                  <NavLink to={`${this.props.match.path}/trainercategory`} className="d-flex">
+                  <div className={`${current_location.includes("/trainercategory") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.includes("/trainercategory") || current_location.includes("/trainercategory")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("trainercategory")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("trainercategory")} component={Link} to={`${this.props.match.path}/trainercategory`} className={`${current_location.includes("/trainercategory") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Training Category" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                      }
+                      {useraccess && useraccess[4].allow_view === "Y" &&
+
+                      <NavLink to={`${this.props.match.path}/trainer`} className="d-flex">
+                      <div className={`${current_location.endsWith("/trainer") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.endsWith("/trainer") || current_location.endsWith("/trainer")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("trainer")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("trainer")} component={Link} to={`${this.props.match.path}/trainer`} className={`${current_location.endsWith("/trainer") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Training" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                      }
+                  </Panel>
+                </Collapse>:null
+  }
+
+                {/* {useraccess && useraccess[3].allow_view === "Y" && useraccess[4].allow_view === "Y" ?
                   <MenuItem className={`${current_location.includes("/trainercategory") ? "active_text_heading" : current_location.endsWith("/trainer") && "active_text_heading"} IconBaseline`}>
                     <ListItemIcon>
                       <div className="icon-container">
@@ -624,7 +717,7 @@ class Homepage extends React.Component {
                       <ListItemText primary="Trainer" />
                     </MenuItem>
 
-                }
+                } */}
 
                 {useraccess && useraccess[5].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/holidaymaster`} className={current_location.includes("/holidaymaster") && "active_text_heading"}>
                   <ListItemIcon>
@@ -691,7 +784,65 @@ class Homepage extends React.Component {
                 </MenuItem>}
 
 
-                {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
+                {useraccess && useraccess[14].allow_view === "Y" || useraccess && useraccess[15].allow_view === "Y" || useraccess && useraccess[16].allow_view === "Y" ?
+                <Collapse
+                  defaultActiveKey={current_location.includes("/usermaster") || current_location.includes("/usergroup") || current_location.includes("/useraccess") ? ["1"] : null}
+                  onChange={()=>this.arrowrotate("user")}
+                  className="collapseclrNone"
+                  expandIcon={({ isActive }) =>
+                  <ReactSVG src={TrainerSVG} />}
+                >
+                  <Panel header="User" key="1" extra={this.state.user_rotate?<ArrowDropDownIcon />:<ArrowRightIcon />}>
+                    { useraccess && useraccess[16].allow_view === "Y" &&
+                  <NavLink to={`${this.props.match.path}/usermaster`} className="d-flex">
+                  <div className={`${current_location.includes("/usermaster") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.includes("/usermaster") || current_location.includes("/usermaster")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("userMaster")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("userMaster")} component={Link} to={`${this.props.match.path}/usermaster`} className={`${current_location.includes("/usermaster") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="User Master" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                    }
+                      { useraccess && useraccess[15].allow_view === "Y" &&
+                      <NavLink to={`${this.props.match.path}/usergroup`} className="d-flex">
+                      <div className={`${current_location.endsWith("/usergroup") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.endsWith("/usergroup") || current_location.endsWith("/usergroup")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("userGroup")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("userGroup")} component={Link} to={`${this.props.match.path}/usergroup`} className={`${current_location.endsWith("/usergroup") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="User Group" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                        }
+                        { useraccess && useraccess[14].allow_view === "Y" &&
+                      <NavLink to={`${this.props.match.path}/useraccess`} className="d-flex">
+                      <div className={`${current_location.endsWith("/useraccess") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={this.state.category && current_location.endsWith("/useraccess") || current_location.endsWith("/useraccess")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("userAccess")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("useraccess")} component={Link} to={`${this.props.match.path}/useraccess`} className={`${current_location.endsWith("/useraccess") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="User Access Rights" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                        }
+                  </Panel>
+                </Collapse>:null
+                }
+
+                {/* {useraccess && useraccess[13].allow_view === "Y" && <MenuItem component={Link} to={`${this.props.match.path}/groupaccess`} className={current_location.includes("/groupaccess") && "active_text_heading"}>
                   <ListItemIcon>
                     <div className="icon-container">
                       <ReactSVG src={GroupAccess} /></div>
@@ -753,27 +904,6 @@ class Homepage extends React.Component {
                             <ListItemText primary="User Master" />
                           </MenuItem>
                         </div>
-
-
-                        {/* <div className="d-flex" >
-                      <NavLink to="/usertype" className="d-flex">
-                        <GreenRadio
-                          checked={this.state.userType && current_location === "/usertype" || current_location === "/usertype"}
-                          className="greenCheckWidmode greenCheckWid"
-                          onClick={() => this.routeChange("userType")}
-                        />
-                      </NavLink>
-
-                      <MenuItem onClick={() => this.routeChange("userType")} component={Link} to="/usertype" className={`${current_location === "/usertype" && "active_text_heading"} mttrainingmod`}>
-                        <ListItemIcon>
-                          <div className="icon-container">
-                            <ReactSVG src={""} /></div>
-                        </ListItemIcon>
-                        <ListItemText primary="User Type" />
-                      </MenuItem>
-                    </div> */}
-
-
                       </Panel>
                     </Collapse>
                   </MenuItem>
@@ -795,14 +925,6 @@ class Homepage extends React.Component {
                         <ListItemText primary="User Master" />
                       </MenuItem>
                     </>)
-
-                    //   <MenuItem component={Link} to="/useraccess" className={current_location === "/useraccess" && "active_text_heading"}>
-                    //   <ListItemIcon>
-                    //     <div className="icon-container">
-                    //       <ReactSVG src={AdminUser} /></div>
-                    //   </ListItemIcon>
-                    //   <ListItemText primary="User Access Rights" />
-                    // </MenuItem>
                     : useraccess && useraccess[14].allow_view === "Y" && useraccess[15].allow_view === "Y" ? (
                       <MenuItem className={`${current_location.includes("/useraccess") ? "active_text_heading" : current_location.includes("/usermaster") ? "active_text_heading" : current_location.includes("/usertype") ? "active_text_heading" : current_location.includes("/usergroup") && "active_text_heading"} IconBaseline`}>
                         <ListItemIcon>
@@ -890,7 +1012,15 @@ class Homepage extends React.Component {
                             <ListItemText primary="User Access Rights" />
                           </MenuItem>
                         )
-                }
+                } */}
+
+                {<MenuItem component={Link} to={`${this.props.match.path}/vendormaster`} className={`${current_location.includes("vendormaster") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Vendor Master" />
+                </MenuItem>}
 
               </MenuList>
 
@@ -933,6 +1063,8 @@ class Homepage extends React.Component {
                 {useraccess && useraccess[15].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usergroup`} render={() => <User_group uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
                 {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
+
+                <Route exact path={`${this.props.match.path}/vendormaster`} render={() => <VendorProfile uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
 
                 {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
 

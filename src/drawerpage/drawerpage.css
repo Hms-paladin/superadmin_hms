@@ -206,6 +206,10 @@ body {
     background-color: #e2e0e0 !important;
 }
 
+.appbar_sideicons{
+    overflow: scroll;
+}
+
 .appbar_sideicons .MuiListItem-button:hover {
     color: #86B149;
 }

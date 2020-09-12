@@ -73,6 +73,7 @@ import Card from 'react-bootstrap/Card';
 import { apiurl } from "../App.js";
 
 import "./drawerpage.css"
+import ShoppingAbout from '../component/Shoppinng/shoppingabout';
 
 
 const { Panel } = Collapse;
@@ -157,7 +158,7 @@ class Homepage extends React.Component {
   state = {
     open: false,
     logout: false,
-    current_location: "",
+    current_location: window.location.href,
     mode: false,
     category: false,
     activeKey: "1",
@@ -169,7 +170,8 @@ class Homepage extends React.Component {
     userdata: [],
     training_rotate:window.location.href.includes("/trainingcategory") || window.location.href.includes("/trainingcenter"),
     trainer_rotate:window.location.href.includes("/trainercategory") || window.location.href.includes("/trainer"),
-    user_rotate:window.location.href.includes("/usermaster") || window.location.href.includes("/usergroup") || window.location.href.includes("/useraccess")
+    user_rotate:window.location.href.includes("/usermaster") || window.location.href.includes("/usergroup") || window.location.href.includes("/useraccess"),
+    shopping_rotate:window.location.href.includes("/shoppingabout") 
   };
 
   handleDrawerOpen = () => {
@@ -394,6 +396,8 @@ class Homepage extends React.Component {
       this.setState({trainer_rotate:!this.state.trainer_rotate})
     }else if(data === "user"){
       this.setState({user_rotate:!this.state.user_rotate})
+    }else if(data === "shopping"){
+      this.setState({shopping_rotate:!this.state.shopping_rotate})
     }
   }
 
@@ -1022,6 +1026,33 @@ class Homepage extends React.Component {
                   <ListItemText primary="Vendor Master" />
                 </MenuItem>}
 
+                <Collapse
+                  defaultActiveKey={current_location.includes("/shoppingabout") && current_location.includes("/shoppingabout") ? ["1"] : null}
+                  onChange={()=>this.arrowrotate("shopping")}
+                  className="collapseclrNone"
+                  expandIcon={({ isActive }) =>
+                  <ReactSVG src={TrainerSVG} />}
+                >
+                  {console.log(current_location.includes("/shoppingabout"),"shoppingabout")}
+                  <Panel header="Shopping" key="1" extra={this.state.shopping_rotate?<ArrowDropDownIcon />:<ArrowRightIcon />}>
+                    
+                  <NavLink to={`${this.props.match.path}/shoppingabout`} className="d-flex">
+                  <div className={`${current_location.includes("/shoppingabout") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={current_location.includes("/shoppingabout")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("shoppingabout")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("shoppingabout")} component={Link} to={`${this.props.match.path}/shoppingabout`} className={`${current_location.includes("/shoppingabout") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Shopping About" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+
+                  </Panel>
+                </Collapse>
+
               </MenuList>
 
             </Drawer>
@@ -1065,6 +1096,8 @@ class Homepage extends React.Component {
                 {useraccess && useraccess[16].allow_view === "Y" && <Route exact path={`${this.props.match.path}/usermaster`} render={() => <User_master uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />}
 
                 <Route exact path={`${this.props.match.path}/vendormaster`} render={() => <VendorProfile uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+
+                <Route exact path={`${this.props.match.path}/shoppingabout`} render={() => <ShoppingAbout uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
 
                 {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}
 

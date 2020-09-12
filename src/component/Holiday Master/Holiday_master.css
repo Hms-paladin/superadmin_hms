@@ -1,0 +1,37 @@
+.holiday_master_header{
+    height: auto;
+    width:100%;
+    }
+    .holiday_master_title h3{
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+    }
+    .holiday_master_header{
+    width:100%;
+    background-color:#F8F8F8;
+    padding: 10px;
+    box-shadow:0px 3px 6px #00000029;;
+    display:flex;
+    justify-content: space-between;
+    }
+    .plus{
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        cursor:pointer;
+    }
+.cus_wid_commission_head tr th:first-child{
+    width: 30%;
+}
+.cus_wid_commission_head tr th:nth-child(2){
+    width: 35%;
+}
+.cus_wid_commission_head tr th:nth-child(3){
+    width: 35%;
+}
+
+.titleBtnFlex{
+        justify-content: space-between;
+        width: 90%;
+}

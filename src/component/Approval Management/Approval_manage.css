@@ -1,0 +1,175 @@
+.approval_manage_header {
+    height: auto;
+    width: 100%;
+}
+
+.approval_manage_title h3 {
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+}
+
+.approval_manage_header {
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    border-radius: 1px !important;
+    width: 200px !important;
+    margin-right: 20px !important;
+    height: 34px !important;
+}
+
+.approval_cus_iconalign {
+    display: flex;
+}
+
+.approval_cus_iconadd table>tbody>tr>td:last-child {
+    padding-left: 0px !important;
+}
+
+.approvalInputdnone {
+    display: none;
+}
+
+.ViewfontApproval {
+    font-size: 18px;
+    justify-content: space-between;
+    white-space: nowrap;
+    /* width: 350px; */
+    /* width:50%; */
+}
+
+.valueMarginApproval div {
+    margin-bottom: 1.633rem!important;
+    position: relative;
+    right: 40px;
+    font-size: 17px;
+}
+
+.jusBetweenApproval div {
+    justify-content: space-between;
+}
+
+.jusBetweenApproval {
+    width: 50%;
+}
+
+.customwidth_dialogApproval .MuiDialog-paperWidthXs {
+    max-width: 536px;
+}
+
+.imgWidthApproval {
+    width: 60%;
+    height: 60%;
+}
+
+.clrimgApproval {
+    color: #82AE3F;
+    text-align: center;
+    font-size: 18px;
+}
+
+.customwidth_dialogApproval .MuiDialogContent-dividers {
+    padding: 36px 65px;
+}
+
+.borderredApproval {
+    border-color: red !important;
+}
+
+.viewty_emptyApproval div {
+    margin-bottom: 1.633rem!important;
+    position: relative;
+    font-size: 17px;
+    left: 28px;
+}
+
+.filterboxwidthdrop {
+    width: 90%;
+}
+
+.filterboxwidthdrop div {
+    border-color: #615f5f !important;
+}
+
+.filterboxwidth {
+    width: 14.28%;
+    border-color: #615f5f !important;
+}
+
+.filterinputbox{
+    width: 90% !important;
+    border-color: #615f5f !important;
+}
+
+.filterbtn {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 1px !important;
+    height: 34px;
+    margin-top: 27px !important;
+    min-width: 65px !important;
+}
+
+.filterbtnreset {
+    background-color: #C9C9C9 !important;
+    border-radius: 1px !important;
+    height: 34px;
+    margin-top: 27px !important;
+    min-width: 65px !important;
+}
+
+
+.withoutdatebox {
+    justify-content: start;
+}
+
+.filtercalendarbox {
+    display: flex !important;
+    align-items: flex-end;
+    width: 90%;
+}
+
+.filtercalendarbox div input {
+    border-color: #615f5f !important;
+    height: 35px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+}
+
+.tablefiltereye_icon{
+    margin-left: 20px;
+    color: #5377ee;
+    font-size: 20px !important;
+    cursor: pointer;
+}
+
+.valueApprovalmedia div{
+    margin-bottom: 1.633rem!important;
+    position: relative;
+    /* right: 40px; */
+    font-size: 17px;
+}
+
+.valueApprovalmedia{
+width: 45%;
+}
+
+.imgnullApproval{
+    width:50%;
+}
+
+.spinner_alignmodel {
+    padding: 100px 0px 100px 200px !important;
+}
+
+.spinner_alignmodel span i {
+    background-color: #82AE3F;
+}

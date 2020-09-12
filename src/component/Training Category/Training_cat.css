@@ -1,0 +1,53 @@
+.training_category_header {
+    height: auto;
+    width: 100%;
+}
+
+.training_category_title h3 {
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+}
+
+.training_category_header {
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.category_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.category_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.category_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.cus_wid_trainingcategory_head tr th:first-child {
+    width: 40%;
+}
+
+.cus_wid_trainingcategory_head tr th:nth-child(2) {
+    width: 50%;
+}

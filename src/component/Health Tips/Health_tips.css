@@ -1,0 +1,106 @@
+.health_tips_header {
+    height: auto;
+    width: 100%;
+}
+
+.health_tips_title h3 {
+    color: #82AE3F;
+    margin-left: 12px;
+    margin-top: 5px !important;
+}
+
+.health_tips_header {
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.tips_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.tips_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.tips_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.cus_wid_healthtips_head tr th:first-child {
+    width: 40%;
+}
+
+.cus_wid_healthtips_head tr th:nth-child(2) {
+    width: 50%;
+}
+
+.health_tips_option {
+    height: 90px !important;
+}
+
+.health_tips_button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.healthtips_button_cancel {
+    background-color: #C9C9C9 !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+    margin-right: 25px !important;
+}
+
+.healthtips_button_create {
+    background-color: #2680EB !important;
+    color: #FFFFFF !important;
+    border-radius: 0px !important;
+}
+
+.health_tips_modal .MuiDialog-paperScrollPaper {
+    max-height: none !important;
+}
+
+.resizenone_tips {
+    resize: none;
+    height: 100px !important;
+    border-radius: 2px;
+}
+
+.body_cur_name_tips {
+    font-size: 1.75rem;
+    position: relative;
+    bottom: 21px;
+    color: #82AE3F;
+}
+
+.borderred_textarea{
+    border-color: red;
+    box-shadow: none;
+    resize: none;
+    height: 100px !important;
+    border-radius: 2px;
+}
+
+.borderred_textarea:hover{
+    border-color: red;
+    box-shadow: none;
+}

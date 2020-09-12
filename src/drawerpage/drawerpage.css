@@ -1,418 +1,767 @@
-body{
-    background-color: #fafafa ;
-}.MuiAppBar-colorPrimary {
-    Background-color:white !important
+body {
+    background-color: #fafafa;
+}
+
+.MuiAppBar-colorPrimary {
+    Background-color: white !important
 }
 
 /* .MuiSvgIcon-root {
     fill: grey !important;
     font-size: 1.75rem !important;
 } */
-.MiniDrawer-menuButton-4  {
+
+.MiniDrawer-menuButton-4 {
     margin-left: 100px !important;
-     
     margin-right: 0px !important;
 }
-.drawer-logo-container{
+
+.drawer-logo-container {
     position: fixed;
     top: 0;
     left: 5px;
-width:70px;
-height:auto;
+    width: 70px;
+    height: auto;
 }
-.logo{
+
+.logo {
     width: 100%;
-    height:auto;
+    height: auto;
 }
 
 .icon-container {
-        width: 100%;
-        height:auto;
-    }
-.icon{
-        width:33px;
-        height:auto;
-        
-    }
-    
-    .notification-icon{
-        width:35px;
-        height: auto;
-        
-    }
-    .notification{
-        padding-top: 5px;
-        width:80%;
-        height:auto;
-    }
-    .MuiBadge-colorSecondary {
-        
-        background-color: rgb(131 175 64) !important;
-    }
-    .MuiBadge-anchorOriginTopRightRectangle {
-        top: 6px !important;
-        right: 20px !important;
-    }
-    .MuiBadge-dot {
-        height: 8px !important;
-        padding: 0;
-        min-width: 8px !important;
-    }    
-
-    .list-icons .MuiTypography-body1 {
-       
-         font-size: 1.5rem !important;
-    }
-.btn-my_style:focus{
-    box-shadow:none !important;
+    width: 100%;
+    height: auto;
 }
-.MuiTablePagination-input{
+
+.icon {
+    width: 33px;
+    height: auto;
+}
+
+.notification-icon {
+    width: 35px;
+    height: auto;
+}
+
+.notification {
+    padding-top: 5px;
+    width: 80%;
+    height: auto;
+}
+
+.MuiBadge-colorSecondary {
+    background-color: rgb(131 175 64) !important;
+}
+
+.MuiBadge-anchorOriginTopRightRectangle {
+    top: 6px !important;
+    right: 20px !important;
+}
+
+.MuiBadge-dot {
+    height: 8px !important;
+    padding: 0;
+    min-width: 8px !important;
+}
+
+.list-icons .MuiTypography-body1 {
     font-size: 1.5rem !important;
-  
-
-
 }
+
+.btn-my_style:focus {
+    box-shadow: none !important;
+}
+
+.MuiTablePagination-input {
+    font-size: 1.5rem !important;
+}
+
 .MuiTablePagination-selectIcon {
     top: 1px;
     font-size: 2.5rem !important;
 }
+
 .MuiList-padding {
     padding-bottom: 2px !important;
 }
+
 .MuiListItem-gutters {
     font-size: 1.25rem !important;
-  
 }
-.btn-my_style:active{
-    outline:none !important;
+
+.btn-my_style:active {
+    outline: none !important;
 }
 
 .MuiTypography-body1 {
     font-size: 1.5rem !important;
-  
-
 }
-    .dropdown-container{
-     width: 100%;
-     height: auto;
-     
-    }
 
-    .dropdown-container .dropdown{
-        width:97%;
-        display: flex !important;
+.dropdown_container {
+    position: fixed;
+    right: 35px;
+}
+
+.dropdown_container div button{
+    border-left: 0px !important;
+}
+
+.dropdown-container .dropdown {
+    width: 97%;
+    display: flex !important;
     justify-content: flex-end;
 }
-    #dropdown-basic{
-    font-size:1.75rem;
+
+#dropdown-basic {
+    font-size: 1.75rem;
     box-sizing: border-box;
     border-left: 1.5px solid #b1b1b1;
-    padding-left:10px;
-
+    padding-left: 10px;
 }
-#dropdown-basic:hover{
+
+#dropdown-basic:hover {
     background-color: #fafafa
 }
-.dropdown-menu{
-font-size: 1.75rem;
+
+.dropdown-menu {
+    font-size: 1.75rem;
 }
 
-
-.MuiPaper-root{
+.MuiPaper-root {
     color: grey !important;
 }
-.date-wrapper1{
-    width:100%;
-    height:auto;
-   
+
+.date-wrapper1 {
+    width: 100%;
+    height: auto;
+    white-space: nowrap;
 }
-.date-wrapper2{
-    width:96%;
+
+.date-wrapper2 {
+    width: 90%;
     display: flex;
     justify-content: flex-end;
-
 }
-    .date {
-        font-size: 1rem;
-    }
-    .dropdown-container_close{
 
-     width: 100%;
+.date {
+    font-size: 1rem;
+}
+
+.dropdown-container_close {
+    width: 100%;
     height: auto;
-    }
-    .dropdown-container_close .dropdown{
-        width:96%;
-        display: flex !important;
+}
+
+.dropdown-container_close .dropdown {
+    width: 96%;
+    display: flex !important;
     justify-content: flex-end;
 }
-    .dropdown-container_close #dropdown-basic{
-        font-size:1.75rem;
-        box-sizing: border-box;
-        border-left: 1.5px solid #b1b1b1;
-        padding-left:10px;
-    
-    }
-    .dropdown-container_close .date-wrapper1{
-        width:100%;
-        height:auto;
-       
-    }
-    .dropdown-container_close .date-wrapper2{
-        width:95%;
-        display: flex;
-        justify-content: flex-end;
-    
-    }
 
-   .drawerpage_container .MuiAvatar-root {
+.dropdown-container_close #dropdown-basic {
+    font-size: 1.75rem;
+    box-sizing: border-box;
+    /* border-left: 1.5px solid #b1b1b1; */
+    border-left: 0px !important;
+    padding-left: 0px;
+}
+
+.dropdown-container_close .date-wrapper1 {
+    width: 100%;
+    height: auto;
+}
+
+.dropdown-container_close .date-wrapper2 {
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.drawerpage_container .MuiAvatar-root {
     position: absolute !important;
     right: 10px;
     box-shadow: 0px 0px 5px #333333a6;
-    }
-    .MuiListItem-gutters {
-        padding-bottom: 16px !important
-    }
-    .dropdown-menu{
-        font-size: 1.50rem;
+}
 
-    }
-    .drawerpage_container button:focus{
-        outline: 0px !important;
-    }
-    
-    .appbar_sideicons .MuiListItem-button:hover{
-        color: #86B149;
-     }
-     .appbar_sideicons .MuiListItem-button:focus{
-      text-decoration: none;
-      color: #86B149;     
-      outline: none !important;   
-     }
-     .appbar_sideicons .MuiMenuItem-root:hover path  {
-        fill: #86b149 ;
-     }
-    
-     .appbar_sideicons .MuiMenuItem-root:focus path  {
-        fill: #86b149 ;
-     }
-     .appbar_sideicons .MuiMenuItem-root:hover rect  {
-        fill: #86b149 ;
-     }
-     .appbar_sideicons .MuiMenuItem-root:focus rect  {
-        fill: #86b149 ;
-     }
-     
-     
+.MuiListItem-gutters {
+    padding-bottom: 16px !important;
+    height: 55px;
+}
 
-     
+.dropdown-menu {
+    font-size: 1.50rem;
+}
 
-.drawerpage_container .MuiDrawer-paper{
-     box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),
-                 0px 4px 5px 0px rgba(0,0,0,0.14),
-                 0px 1px 10px 0px rgba(0,0,0,0.12) !important;
-    }
-    .MiniDrawer-appBar-2 
-    {
-        z-index: 3000 !important;
-    }
-    
-    
-    
-    
+.drawerpage_container button:focus {
+    outline: none;
+    box-shadow: none;
+}
 
-    @media only screen and (max-width: 1165px){
-        .img{
-            width:85%;
+.drawerpage_container .btn:active:focus, .btn:focus  {
+    outline: none;
+}
+
+.drawerpage_container button:active{
+    background-color: #e2e0e0 !important;
+}
+
+.appbar_sideicons{
+    overflow: scroll;
+}
+
+.appbar_sideicons .MuiListItem-button:hover {
+    color: #86B149;
+}
+
+
+/* .appbar_sideicons .MuiListItem-button:focus{
+        text-decoration: none;
+        color: #86B149;     
+        outline: none !important;   
+        } */
+
+.appbar_sideicons .MuiMenuItem-root:hover path {
+    fill: #86b149;
+}
+
+/* .appbar_sideicons .MuiMenuItem-root:focus path  {
+            fill: #86b149 ;
+        } */
+
+.appbar_sideicons .MuiMenuItem-root:hover rect {
+    fill: #86b149;
+}
+
+/* .appbar_sideicons .MuiMenuItem-root:focus rect  {
+            fill: #86b149 ;
         }
-       
-           .dropdown-container_close .dropdown{
-               width:94%;
-               display: flex !important;
-           justify-content: flex-end;
-       }
-      
-           .dropdown-container_close .date-wrapper2{
-               width:93%;
-               display: flex;
-               justify-content: flex-end;
-              
-           
-           }
+      */
+
+.drawerpage_container .MuiDrawer-paper {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+.MiniDrawer-appBar-2 {
+    z-index: 3000 !important;
+}
+
+@media only screen and (max-width: 1165px) {
+    .img {
+        width: 85%;
     }
-    @media only screen and (max-width: 959px){
-        .img{
-            width:85%;
-        }
-       
-           .dropdown-container_close .dropdown{
-               width:93%;
-               display: flex !important;
-           justify-content: flex-end;
-       }
-      
-           .dropdown-container_close .date-wrapper2{
-               width:92%;
-               display: flex;
-               justify-content: flex-end;
-          
-           
-           
-           }
-    }
-    @media only screen and (max-width: 875px){
-        .dropdown-container .dropdown{
-         width:95%;
-        }
-        .date-wrapper2{
-            width:94%;
-        }
-        .dropdown-container_close .dropdown{
-            width:91%;
-            display: flex !important;
+    .dropdown-container_close .dropdown {
+        width: 94%;
+        display: flex !important;
         justify-content: flex-end;
     }
-   
-        .dropdown-container_close .date-wrapper2{
-            width:90%;
-            display: flex;
-            justify-content: flex-end;
-           
-        
-        }
-        
-    }
-    @media only screen and (max-width: 720px){
-        .dropdown-container .dropdown{
-            width:94%;
-           }
-       
-         .date-wrapper2{
-            width:92%;
-        }
-    }
-  
-    @media only screen and (max-width: 632px){
-        .dropdown-container .dropdown{
-            width:93%;
-           }
-       
-         .date-wrapper2{
-            width:91%;
-        }
-        .dropdown-container_close .dropdown{
-            width:90%;
-            display: flex !important;
+    .dropdown-container_close .date-wrapper2 {
+        width: 93%;
+        display: flex;
         justify-content: flex-end;
     }
-   
-        .dropdown-container_close .date-wrapper2{
-            width:89%;
-            display: flex;
-            justify-content: flex-end;
-         
-        
-        
-        }
+}
+
+@media only screen and (max-width: 959px) {
+    .img {
+        width: 85%;
     }
-   
-    @media only screen and (max-width: 608px){
-        .dropdown-container .dropdown{
-          width:91%;
-        }
-        .date-wrapper2{
-            width:89%;
-        }
-        .dropdown-container_close .dropdown{
-            width:88%;
-            display: flex !important;
+    .dropdown-container_close .dropdown {
+        width: 93%;
+        display: flex !important;
         justify-content: flex-end;
     }
-   
-        .dropdown-container_close .date-wrapper2{
-            width:86%;
-            display: flex;
-            justify-content: flex-end;
-           
-        
-        }
-    }
-    @media only screen and (max-width: 550px){
-        .dropdown-container .dropdown{
-          width:89%;
-        }
-        .date-wrapper2{
-            width:86%;
-        }
-    }
-    @media only screen and (max-width: 518px){
-        .dropdown-container .dropdown{
-          width:88%;
-        }
-        .date-wrapper2{
-            width:85%;
-        }
-        .dropdown-container_close .dropdown{
-            width:86%;
-            display: flex !important;
+    .dropdown-container_close .date-wrapper2 {
+        width: 92%;
+        display: flex;
         justify-content: flex-end;
     }
-   
-        .dropdown-container_close .date-wrapper2{
-            width:84%;
-            display: flex;
-            justify-content: flex-end;
-        
-        
-        }
+}
+
+@media only screen and (max-width: 875px) {
+    .dropdown-container .dropdown {
+        width: 95%;
     }
-  
-  
-  
+    .date-wrapper2 {
+        width: 94%;
+    }
+    .dropdown-container_close .dropdown {
+        width: 91%;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+    .dropdown-container_close .date-wrapper2 {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .dropdown-container .dropdown {
+        width: 94%;
+    }
+    .date-wrapper2 {
+        width: 92%;
+    }
+}
+
+@media only screen and (max-width: 632px) {
+    .dropdown-container .dropdown {
+        width: 93%;
+    }
+    .date-wrapper2 {
+        width: 91%;
+    }
+    .dropdown-container_close .dropdown {
+        width: 90%;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+    .dropdown-container_close .date-wrapper2 {
+        width: 89%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 608px) {
+    .dropdown-container .dropdown {
+        width: 91%;
+    }
+    .date-wrapper2 {
+        width: 89%;
+    }
+    .dropdown-container_close .dropdown {
+        width: 88%;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+    .dropdown-container_close .date-wrapper2 {
+        width: 86%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .dropdown-container .dropdown {
+        width: 89%;
+    }
+    .date-wrapper2 {
+        width: 86%;
+    }
+}
+
+@media only screen and (max-width: 518px) {
+    .dropdown-container .dropdown {
+        width: 88%;
+    }
+    .date-wrapper2 {
+        width: 85%;
+    }
+    .dropdown-container_close .dropdown {
+        width: 86%;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+    .dropdown-container_close .date-wrapper2 {
+        width: 84%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 455px) {
+    .makeStyles-menuButton-4 {
+        margin-left: 50px !important;
+        margin-right: 0px !important;
+    }
+    .dropdown-container .dropdown {
+        width: 90%;
+    }
+    .date-wrapper2 {
+        width: 88%;
+    }
+    .dropdown-container_close .dropdown {
+        width: 84%;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+    .dropdown-container_close .date-wrapper2 {
+        width: 82%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 372px) {
+    .dropdown-container .dropdown {
+        width: 86%;
+    }
+    .date-wrapper2 {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 315px) {
+    .makeStyles-menuButton-4 {
+        margin-left: 40px !important;
+        margin-right: 0px !important;
+    }
+}
+
+.active_text_heading, .active_text_heading.MuiMenuItem-root path, .active_text_heading.MuiMenuItem-root rect {
+    color: #86B149 !important;
+    text-decoration: none !important;
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    fill: #86b149;
+}
+
+.active_text_heading.MuiButtonBase-root{
+    outline: none;
+}
+
+.IconBaseline{
+    align-items: baseline !important;
+}
+
+.paperNone div div{
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+.paperNone div div i{
+    left: 146px !important;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+}
+
+.paperNone div div i:hover{
+    background-color: lightgray;
+}
+
+.paperNone div div i svg{
+    position: relative;
+    top: 6px;
+}
+
+.paperNone .MuiListItemIcon-root{
+    min-width:0px !important;
+}
+
+.paperNone{
+    background-color: transparent !important;
+}
+
+.paperNone div{
+    border:none !important;
+}
+
+.mttrainingCat{
+    /* margin-top: 18px !important; */
+    background-color: transparent !important;
+    position: relative !important;
+    top: 1px;
+}
 
 
-    @media only screen and (max-width: 455px){
-        .makeStyles-menuButton-4 {
-            margin-left: 50px !important;
-            margin-right: 0px !important;
-        }
-        .dropdown-container .dropdown{
-            width:90%;
-        }
-        .date-wrapper2{
-            width:88%;
-        }
-        .dropdown-container_close .dropdown{
-            width:84%;
-            display: flex !important;
-        justify-content: flex-end;
-    }
-   
-        .dropdown-container_close .date-wrapper2{
-            width:82%;
-            display: flex;
-            justify-content: flex-end;
-          
-        
-        
-        }
-        
-    }
-   
-    
-    @media only screen and (max-width: 372px){
-         .dropdown-container .dropdown{
-            width:86%;
-        }
-        .date-wrapper2{
-            width:85%;
-        }
-        
-    }
-    
-    @media only screen and (max-width: 315px){
-        .makeStyles-menuButton-4 {
-            margin-left: 40px !important;
-            margin-right: 0px !important;
-        }
-        
-    }
+.mttrainingmod,.mttrainingCat:hover,.mttrainingmod:hover,.mttrainingCat .MuiTouchRipple-root span,.mttrainingmod .MuiTouchRipple-root span{
+    background-color: transparent !important;
+}
+
+.greenCheckWid span{
+    width: 0px;
+    position: relative;
+    display: block;
+    bottom: 4px;
+}
+
+.greenCheckWid:hover{
+    background-color: transparent !important;
+}
+
+.greenCheckWid span div svg{
+    width: 21px;
+    height: 21px;
+}
+
+/* .greenCheckWid span div svg:first-child{
+    position: relative;
+    bottom: 8px;
+} */
+
+.greenCheckWidmode{
+    height: 33px;
+}
+
+.greenCheckWid{
+    padding:0px 10px 0px 0px !important;
+}
+
+.greenCheckWid span input {
+    display: none;
+}
+
+.iconColorGrey path{
+    fill: #b1b1b1;
+}
+
+.panelTextDrawer{
+    color:#808080;
+    font-size: 15px;
+}
+.panelTextDrawerclr{
+    color:#86B149 !important;
+    text-decoration: none !important;
+}
+
+.texteclipsetrainingcenter{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    width: 150px;
+}
+
+.panelTextDrawer:hover{
+    color:#86B149;
+    text-decoration: none;
+}
+
+/* .active_text_heading.mttrainingCat{
+    padding-left: 0px;
+} */
+
+.active_text_heading.mttrainingmod{
+    padding-left: 0px;
+}
+
+.mttrainerCat{
+        margin-top: 18px !important;
+        background-color: transparent !important;
+        padding-left: 0px !important;
+         margin-left: 16px !important;
+
+}
+
+.mttrainerCat:hover,.mttrainerCat .MuiTouchRipple-root span{
+    background-color: transparent !important;
+}
+
+.active_text_heading.mttrainerCat{
+    margin-left: 0px !important;
+}
+
+.logoutAlign{
+    font-size: 14px;
+    display: flex;
+    width: 84%;
+    justify-content: flex-end;
+}
+
+.logoutAlign div svg{
+    font-size: 20px;
+}
+
+.logoutAlignDraweropen {
+    font-size: 14px;
+    display: flex;
+    width: 970px;
+    justify-content: flex-end;
+}
+
+.logoutAlignDraweropen div svg{
+    font-size: 20px;
+}
+
+.logindiv{
+    cursor: pointer;
+    height: 25px;
+    display: flex;
+    border-radius: 10px;
+    right: 35px;
+    top: 23px;
+    position: fixed;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logindiv:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.grouprightspos{
+    position: relative;
+    top: 18px;
+}
+
+.ant-notification{
+    z-index: 1400 !important;
+}
+
+.cardprofiledrawer{
+    position: fixed;
+    right: 23px;
+    top: 64px;
+    width: 20%;
+    height: 175px;
+    z-index: 1202;
+    color: gray;
+}
+
+.cardprofiledrawer .card{
+    height:100%;
+}
+
+.cardbodylogout{
+    font-size: 14px;
+    text-align: center;
+}
+
+.cardbodylogout div div:nth-child(1){
+    font-weight: 800;
+}
+
+.profiledetail{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.profiledetail div{
+    margin-bottom: 5px;
+}
+
+.profiledetail ~ hr{
+    margin-bottom: 15px;
+}
+
+.logoutbtn{
+    height: 27px;
+    padding: 2px 15px !important;
+}
+
+.usermastterrelative{
+    position: relative;
+    top:15px;
+}
+
+.mttrainerCat .MuiListItemText-root{
+    position: relative;
+    top: 1px;
+}
+
+.paneltextmargin{
+    position: relative;
+    top: 3px;
+}
+
+.collapseclrNone,.collapseclrNone.ant-collapse > .ant-collapse-item{
+    border: none !important;
+}
+
+.collapseclrNone .ant-collapse-content > .ant-collapse-content-box{
+ padding: 0px;
+}
+
+.collapseclrNone .ant-collapse-header{
+    padding-left: 70px !important;
+    background-color: #fff !important;
+    border: none;
+    color: grey !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapseclrNone .ant-collapse-content{
+    border: none;
+    /* padding-left: 70px !important; */
+}
+
+.collapseclrNone .ant-collapse-item{
+    overflow: hidden;
+}
+
+.appbar_sideicons .ant-collapse-header:hover,.appbar_sideicons .ant-collapse-header:hover svg g path,.appbar_sideicons .ant-collapse-header:hover svg g rect{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #86B149 !important;
+    fill: #86b149;
+}
+
+.submodulealign{
+    padding-left: 66px;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submodulealignactive{
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.submodulealign:hover{
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #86B149 !important;
+}
+
+/* .collapseclrNone .ant-collapse-extra{
+    border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    width: 23px;
+    padding-bottom: 23px;
+}
+
+.collapseclrNone .ant-collapse-extra:hover{
+    background-color: #d0d0d0;
+} */
+
+.collapseclrNone .ant-collapse-extra svg{
+    font-size: 21px;
+}
+
+.collapseclrNone .active{
+    margin-right: 0px;
+    text-decoration: none;
+    color: #86B149 !important;
+}
+
+.collapseclrNone a:hover{
+    text-decoration: none;
+    color: #86B149 !important;
+}
+
+.collapseclrNone a{
+    color: grey;
+}
+
+
+/* .collapseclrNone div div{
+    padding-left: 0px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+.collapseclrNone div div i{
+    left: 146px !important;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+}
+
+.collapseclrNone div div i svg{
+    position: relative;
+    top: 6px;
+}
+
+.collapseclrNone .MuiListItemIcon-root{
+    min-width:0px !important;
+}
+
+.collapseclrNone{
+    background-color: transparent !important;
+}
+ */

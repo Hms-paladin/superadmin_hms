@@ -1,0 +1,344 @@
+.range_calender .rdrCalendarWrapper {
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+}
+
+.range_calender .rdrDays button {
+    border: 1px solid #dddddd;
+    /* height: 8vh; */
+    height: 58px;
+}
+.range_calender .rdrDayStartPreview,
+.range_calender .rdrDayInPreview,
+.range_calender .rdrDayEndPreview {
+    color: #82AF3F !important;
+    height: 35px;
+    top: 11px;
+}
+
+.range_calender .rdrStartEdge,
+.range_calender .rdrInRange,
+.range_calender .rdrEndEdge {
+    color: #c8e2a2 !important;
+    height: 35px;
+    top: 11px;
+
+}
+
+
+/* .range_calender .rdrStartEdge .rdrDayNumber span{
+    color:black !important;
+    
+} */
+
+.rdrDay:not(.rdrDayPassive) .rdrInRange~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge~.rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrSelected~.rdrDayNumber span {
+    color: black !important;
+}
+
+
+/* .rdrDayHovered{
+    color:red !important;
+} */
+
+
+
+
+/* .range_calender .rdrMonthsVertical {
+    height: 260px;
+} */
+
+.range_calender div {
+    margin-bottom: 0px;
+}
+
+.range_calender button:focus {
+    outline: none;
+}
+
+.range_calender .rdrDateDisplayWrapper {
+    display: none;
+}
+
+.range_calender .rdrMonthAndYearWrapper {
+    background-color: #82AF3F;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.range_calender .rdrMonthAndYearWrapper {
+    height: 46px;
+    padding-top: 0px;
+}
+
+.holiday_align_cal {
+    font-size: 12px;
+    position: relative;
+    bottom: 16px;
+    left: 39px;
+}
+
+.dot_icon_cal {
+    color: red;
+    position: relative;
+    bottom: 2px;
+}
+
+.wid_100_calrange {
+    width: 100%;
+    display: flex;
+    /* margin: auto;  */
+    justify-content: space-around;
+}
+
+.wid_40_calrange_first {
+    /* width: 400px; */
+}
+
+.rdrCalendarWrapper {
+    font-size: 18px;
+    /* font-size: 1.2vw; */
+}
+
+
+.wid_60_calrange_sec{
+    margin-top: 7px; 
+}
+
+.range_calender .rdrMonth {
+    width: 32.9999em;
+    /* width: 50vw; */
+    padding: 0px 40px 27px 40px;
+}
+
+.date_tx_align_cal {
+    display: flex;
+    font-size: 19px;
+    font-weight: 900;
+    color: #82AF3F;
+    /* justify-content: space-evenly; */
+    margin-bottom: 10px;
+}
+
+.date_tx_align_cal:first-child {
+    margin-left: 11%
+}
+
+.date_tx_align_cal div~div {
+    margin-left: 28%
+}
+
+.dotted_line_cal {
+    border: 1px dashed gray;
+    /* height: 411px; */
+    padding: 15px;
+    border-radius: 3px;
+    height: 51.5em;
+    width: 87%;
+    overflow-y: scroll;
+}
+
+.dotted_line_cal_single {
+    border: 1px dashed gray;
+    /* height: 411px; */
+    padding: 15px;
+    border-radius: 3px;
+    height: 51.12em;
+    width: 87%;
+    overflow-y: scroll;
+}
+
+.dotted_line_cal .ant-card-body {
+    padding: 0px;
+}
+
+.add_input_calran {
+    display: flex;
+    height: 55px;
+}
+
+.cus_wid_input_calran_start {
+    width: 30%;
+    background-color: #82AF3F;
+    font-size: 15px;
+    color: white;
+    padding-inline-start: 14px;
+    font-weight: bold;
+}
+
+.cus_wid_input_calran_start div:first-child {
+    margin-top: 7px;
+}
+
+.cus_wid_input_calran_end {
+    width: 70%;
+}
+
+.input_cus_align_calran {
+    height: 55px;
+    border-radius: 0px;
+    font-size: 17px;
+}
+
+.holiday_master_modal .MuiDialogContent-dividers {
+    padding-left: 30px;
+    padding-top: 10px;
+
+}
+
+.cus_wid_input_calran_end input {
+    border: none;
+}
+
+@media (max-width: 959px) {
+    .set_order_range {
+        order: 2;
+    }
+    .calran_grid_nonetop {
+        order: 2;
+    }
+    .rdrCalendarWrapper {
+        font-size: 1.6vw;
+    }
+    .set_order_range~div {
+        padding-bottom: 0px !important;
+        padding-left: 40px !important;
+    }
+    .holiday_master_modal .MuiDialog-paperWidthLg {
+        width: 66% !important;
+    }
+    .range_calender .rdrMonth {
+        width: 62.7vw;
+    }
+    .range_calender .rdrMonth {
+        padding: 0px 20px 27px 20px;
+    }
+    .val_app_reg_grid {
+        order: 2;
+        margin-bottom: 20px !important;
+    }
+}
+
+.calran_grid_nonebtm {
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: -36px !important;
+    display: flex;
+    justify-content: space-around;
+}
+
+.set_order_range {
+    padding-bottom: 0px !important;
+    margin-left: 20px !important;
+}
+
+.calran_grid_nonetop {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.app_reg_tx_size {
+    font-size: 15px;
+    margin-top: 16px;
+    margin-right: 15px;
+    margin-left: 19px;
+    white-space: nowrap;
+}
+
+.app_reg_icon_size {
+    width: 37px !important;
+    height: 37px !important;
+    margin-top: 11px;
+    color: #82AF3F;
+    margin-left: 5px;
+}
+
+.app_reg_flex {
+    display: flex;
+    width: 69.8% !important;
+}
+
+.cus_wid_app_calreg {
+    /* width: 168%; */
+}
+
+.val_app_reg_grid {
+    padding-top: 0px !important;
+}
+
+.region_tx_style {
+    /* width: 15%; */
+    font-size: 16px;
+    margin-top: 15px;
+    background-color: #bfd2a1;
+    color: black;
+    padding-left: 7px;
+    height: 30px;
+    padding-top: 4px;
+    border-radius: 2px;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.crs_region_align {
+    position: relative;
+    bottom: 15px;
+    left: 7px;
+    color: #ca7979;
+    cursor: pointer;
+}
+
+.region_tx_style div svg {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.overflow_y_app_reg {
+    overflow-y: scroll;
+    width: 95%;
+    padding-bottom: 15px !important;
+    margin-right: 37px !important;
+    margin-left: 16px !important;
+}
+
+.holiday_master_modal .MuiDialog-paper {
+    width: 80%;
+    height: 88%;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+    /* bottom: 9px; */
+    background: #3d91ff !important;
+}
+
+
+
+/* Single select calender */
+
+.rdrSelected {
+    height: 35px;
+    top: 11px;
+    background-color: #c8e2a2;
+}
+
+
+.rdrDayNumber{
+    height: 31px;
+    top: 13px;
+    color: #82AF3F !important;
+}
+
+.setheightsinglecal .rdrDays button{
+    height: 69px;
+}
+
+ .rdrDays button:nth-child(6) .rdrDayNumber span{
+    color:red !important;
+}
+
+ .rdrDays button:nth-child(7n+6) .rdrDayNumber span{
+    color:red !important;
+}

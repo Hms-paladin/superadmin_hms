@@ -1,14 +1,12 @@
 /* form component css */
 
-
-.commonlabel{
+.commonlabel {
     font-size: 16px;
 }
 
-
 /* 1.input andt */
 
-.inputantdstyle .ant-input {
+.inputantdstyle.ant-input {
     height: 34px;
     background-color: #ffffff;
     border-radius: 2px !important;
@@ -17,6 +15,14 @@
 
 .inputantdstyle .ant-input:hover {
     border-color: #40a9ff
+}
+
+.borderred.ant-input {
+    border-color: red !important;
+    box-shadow: none !important;
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
 }
 
 /* 2.dropdown antd */
@@ -32,32 +38,109 @@
     border-color: #40a9ff
 }
 
+/* 3.inputnumber antd */
+
+.inputnumber.ant-input-number {
+    background-color: #ffffff;
+    border-radius: 2px;
+    height: 34px;
+    border-color: rgba(0, 0, 0, 0.23);
+}
+
+.inputnumber.ant-input-number:hover {
+    border-color: #40a9ff;
+}
+
+.borderred_num.ant-input-number {
+    border-color: red !important;
+    box-shadow: none !important;
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 2px !important;
+}
 
 /* validation error msg */
 
-.Errorbr .ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd
-
+.Errorbr .ant-input, .Errorbr .ant-select-selection, .Errorbr.testareaantd
 /* .Errorbr.ant-input,.Errorbr .ant-select-selection,.Errorbr.testareaantd, .Errorbr .ant-calendar-picker-input */
-{
+
+    {
     color: red !important;
     border-color: red !important;
     box-shadow: none !important;
 }
 
-.Errorbr .ant-input:hover,.Errorbr .ant-select-selection:hover,.Errorbr.testareaantd:hover
-{
+.Errorbr .ant-input:hover, .Errorbr .ant-select-selection:hover, .Errorbr.testareaantd:hover {
     color: red;
     border-color: red !important;
     box-shadow: none;
 }
 
-
-
-.texterrmsg{
+.texterrmsg {
     font-size: 12px;
     color: red;
+    height: 1px;
 }
 
-.min_h_static{
-    height:18px;
+.min_h_static {
+    height: 18px;
 }
+
+body {
+    font-family: 'Roboto';
+}
+
+/* button css */
+
+.MuiButton-root {
+    text-transform: none !important;
+    font-size: 12px !important;
+    border-radius: 2px !important;
+    min-width: 80px !important;
+}
+
+.drawerpage_container .MuiDrawer-paper {
+    overflow-y: unset;
+}
+
+.drawerpage_container .MuiList-root {
+    overflow-y: scroll;
+}
+
+/* notification css */
+
+.ant-notification {
+    z-index: 1300 !important;
+    width: 330px !important;
+}
+
+.show_frt .ant-notification-notice-icon {
+    position: absolute;
+    margin-left: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: -2px;
+}
+
+.show_frt .ant-notification-notice-with-icon .ant-notification-notice-message {
+    margin-bottom: 0px;
+    margin-left: 48px;
+    font-size: 15px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+body *::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    transition: 0.3s;
+}
+
+body *::-webkit-scrollbar-thumb {
+    background: #ADAAA8;
+    border-radius: 5px;
+}
+
+.disablebtn{
+    cursor: not-allowed !important;
+}
+

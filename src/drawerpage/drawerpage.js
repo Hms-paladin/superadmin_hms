@@ -192,7 +192,7 @@ class Homepage extends React.Component {
     // shopping_rotate:window.location.href.includes("/dashboard") || window.location.href.includes("/totalorders")  || window.location.href.includes("/cancelorders")
     //  || window.location.href.includes("/revenue") || window.location.href.includes("/managecategory") || window.location.href.includes("/managesubcategory") 
     //  || window.location.href.includes("/productupload") || window.location.href.includes("/deliverytracking") || window.location.href.includes("/mediauploadshopping") 
-    //  || window.location.href.includes("/stock") || window.location.href.includes("/preorder") || window.location.href.includes("/profile")
+    //  || window.location.href.includes("/stock") || window.location.href.includes("/preorder") || window.location.href.includes("/profile") || window.location.href.includes("/report")
   };
 
   handleDrawerOpen = () => {

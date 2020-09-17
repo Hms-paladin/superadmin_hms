@@ -34,7 +34,7 @@ import Button from "@material-ui/core/Button";
 import "./ViewMedia.css";
 import uploadimage from "../../images/upload-button.png";
 import View from "../../images/1.jpg";
-import Stepper from "../AdvertisementBooking/Stepper";
+import Stepper from "../../StepperStatus/Status";
 
 export default class ViewMedia extends Component {
   render() {

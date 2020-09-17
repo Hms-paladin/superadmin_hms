@@ -72,12 +72,10 @@ import Card from 'react-bootstrap/Card';
 import { apiurl } from "../App.js";
 
 import "./drawerpage.css"
-import ShoppingAbout from '../component/Shoppinng/shoppingabout';
+// import ShoppingAbout from '../component/Shoppinng/shoppingabout';
 import DashboardMaster from '../component/Dashboard/DashboardMaster'
 import Total_orders from '../component/Total Orders/Total_orders'
 import CancelledOrdersMaster from '../component/Cancelorder/CancelledOrdersMaster'
-import AdvertisementMaster from '../component/AdvertisementBooking/AdvertisementMaster'
-import DealsMaster from '../component/Deals/DealsMaster'
 import RevenueMaster from '../component/Revenue/RevenueMaster'
 import ManageCatagoryMaster from '../component/Manage_Catagory/ManageCatagoryMaster'
 import ManageSubCatagoryMaster from '../component/ManageSubcatagory/ManageCatagoryMaster'
@@ -191,7 +189,10 @@ class Homepage extends React.Component {
     training_rotate:window.location.href.includes("/trainingcategory") || window.location.href.includes("/trainingcenter"),
     trainer_rotate:window.location.href.includes("/trainercategory") || window.location.href.includes("/trainer"),
     user_rotate:window.location.href.includes("/usermaster") || window.location.href.includes("/usergroup") || window.location.href.includes("/useraccess"),
-    shopping_rotate:window.location.href.includes("/shoppingabout") 
+    // shopping_rotate:window.location.href.includes("/dashboard") || window.location.href.includes("/totalorders")  || window.location.href.includes("/cancelorders")
+    //  || window.location.href.includes("/revenue") || window.location.href.includes("/managecategory") || window.location.href.includes("/managesubcategory") 
+    //  || window.location.href.includes("/productupload") || window.location.href.includes("/deliverytracking") || window.location.href.includes("/mediauploadshopping") 
+    //  || window.location.href.includes("/stock") || window.location.href.includes("/preorder") || window.location.href.includes("/profile")
   };
 
   handleDrawerOpen = () => {
@@ -1047,16 +1048,16 @@ class Homepage extends React.Component {
                 </MenuItem>}
 
                 <Collapse
-                  defaultActiveKey={current_location.includes("/shoppingabout") && current_location.includes("/shoppingabout") ? ["1"] : null}
+                  defaultActiveKey={current_location.includes("/dasboard") && current_location.includes("/dasboard") ? ["1"] : null}
                   onChange={()=>this.arrowrotate("shopping")}
                   className="collapseclrNone"
                   expandIcon={({ isActive }) =>
                   <ReactSVG src={TrainerSVG} />}
                 >
-                  {console.log(current_location.includes("/shoppingabout"),"shoppingabout")}
+                  {/* {console.log(current_location.includes("/shoppingabout"),"shoppingabout")} */}
                   <Panel header="Shopping" key="1" extra={this.state.shopping_rotate?<ArrowDropDownIcon />:<ArrowRightIcon />}>
                     
-                  <NavLink to={`${this.props.match.path}/shoppingabout`} className="d-flex">
+                  {/* <NavLink to={`${this.props.match.path}/shoppingabout`} className="d-flex">
                   <div className={`${current_location.includes("/shoppingabout") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
                             checked={current_location.includes("/shoppingabout")}
@@ -1068,7 +1069,7 @@ class Homepage extends React.Component {
                           <ListItemText primary="Shopping About" />
                         </MenuItem>
                       </div>
-                      </NavLink>
+                      </NavLink> */}
                       <NavLink to={`${this.props.match.path}/dashboard`} className="d-flex">
                   <div className={`${current_location.includes("/dashboard") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
@@ -1108,32 +1109,7 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
                       </NavLink>
-                      <NavLink to={`${this.props.match.path}/advertise`} className="d-flex">
-                  <div className={`${current_location.includes("/advertise") &&"submodulealignactive"} submodulealign`}>
-                          <GreenRadio
-                            checked={current_location.includes("/advertise")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("advertise")}
-                          />
-
-                        <MenuItem onClick={() => this.routeChange("advertise")} component={Link} to={`${this.props.match.path}/advertise`} className={`${current_location.includes("/advertise") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Total Advertisement" />
-                        </MenuItem>
-                      </div>
-                      </NavLink>
-                      <NavLink to={`${this.props.match.path}/deals`} className="d-flex">
-                  <div className={`${current_location.includes("/deals") &&"submodulealignactive"} submodulealign`}>
-                          <GreenRadio
-                            checked={current_location.includes("/deals")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("deals")}
-                          />
-
-                        <MenuItem onClick={() => this.routeChange("deals")} component={Link} to={`${this.props.match.path}/deals`} className={`${current_location.includes("/deals") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Deals" />
-                        </MenuItem>
-                      </div>
-                      </NavLink>
+                      
                       <NavLink to={`${this.props.match.path}/revenue`} className="d-flex">
                   <div className={`${current_location.includes("/revenue") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
@@ -1315,13 +1291,11 @@ class Homepage extends React.Component {
 
                 <Route exact path={`${this.props.match.path}/vendormaster`} render={() => <VendorProfile uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
 
-                <Route exact path={`${this.props.match.path}/shoppingabout`} render={() => <ShoppingAbout uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                {/* <Route exact path={`${this.props.match.path}/shoppingabout`} render={() => <ShoppingAbout uservalue={this.state.useraccessdata && this.state.useraccessdata} />} /> */}
 
                 <Route exact path={`${this.props.match.path}/dashboard`} render={() => <DashboardMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/totalorders`} render={() => <Total_orders uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/cancelorders`} render={() => <CancelledOrdersMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/advertise`} render={() => <AdvertisementMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/deals`} render={() => <DealsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/revenue`} render={() => <RevenueMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/managecategory`} render={() => <ManageCatagoryMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/managesubcategory`} render={() => <ManageSubCatagoryMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

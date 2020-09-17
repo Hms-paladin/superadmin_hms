@@ -1,0 +1,137 @@
+
+.eyeicon{
+  color:rgb(53, 77, 153) !important;
+  font-size: 2rem !important;
+}
+.Inseyeicon{
+  color:rgb(175, 213, 130) !important;
+  font-size: 2rem !important;
+}
+
+.nurse_button_text{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  color:#fff;
+}
+.nurse_dash_sidehead{
+ 
+  font-size: 1.5rem !important;
+  margin-top: 20px;
+  margin-left: 20px; 
+}
+.divider_container{
+  display: flex;
+  justify-content: center;
+}
+.divider_1px{
+  height: 0.5px;
+  border-radius: 20%;
+  width:85%;
+  background-color:#ffffff;
+
+}
+.buttons_container
+{
+  display:flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.nurse_dash_numeric_wrap{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  color:#fff;
+}
+.nurse_dash_numeric_value{
+  font-size: 3rem;
+}
+.close_action{
+  border-radius: 50%;
+  color: #F86185;
+  font-size: 1.65rem;
+  cursor: pointer;
+  }
+  .action-eye{
+     
+      font-size: 2rem;
+      color: #3B6BED;
+      cursor: pointer;
+  }
+  .plus_icon{
+    font-size: 1.5rem !important;
+    fill: #fff !important;
+    border-radius: 3px;
+    background-color:#00bf05;
+    margin-left: 2px;
+    cursor: pointer;
+}
+.eye_view_icon{
+ font-size: 2rem !important;
+ fill:#2B97F2 !important;
+ cursor: pointer;
+}
+.Delivery_icon{
+  cursor: pointer;
+  fill: #80D183 !important;
+  font-size: 2rem !important;
+}
+
+  .today_Appointments{
+  padding: 15px 0px 0px 15px;
+  font-size: 1.75rem !important;
+  color:#333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px !important;
+  }
+  .current_date{
+   color:#333 !important;
+   font-size: 1.5rem;
+   margin-left: 20px;
+  }
+  @media only screen and (max-width: 1060px){
+      .nurse_button_common_styles{
+          height: 100px;
+          width: 190px;
+      }
+      .nurse_dash_numeric_wrap{
+          margin-top: 8px;
+      }
+
+  }
+  @media only screen and (max-width: 830px){
+      .nurse_button_common_styles{
+          height: 90px;
+          width: 135px;
+      }
+      .nurse_button_text{
+          margin-top: 7px;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 5px;
+      }
+      .nurse_dash_numeric_wrap{
+          margin-top: 5px;
+      }
+
+  }
+ /* @media only screen and (max-width: 1040px){
+ .nurse_dash_bottom3{
+           font-size: 1.25rem !important;
+  }
+  .nurse_dash_bottom1{
+    font-size: 1.25rem !important;
+}
+.nurse_dash_bottom2{
+  font-size: 1.25rem !important;
+}
+
+ }
+ @media only screen and (max-width: 900px){
+  .nurse_button_common_styles{
+      height: 90px;
+      width: 135px;
+  }
+ } */

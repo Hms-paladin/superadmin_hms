@@ -1,0 +1,228 @@
+.revenue_uploadsmasterheader {
+  height: auto;
+  width: 100%;
+  /* min-width: 1050px; */
+  /* font-family: 'Roboto-Regular'; */
+}
+.revenue_uploadsmasterheader_flex1 {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+.revenue_uploadsmasterheader .labeltxt {
+  color: rgba(0, 0, 0, 0.65) !important;
+  margin-right: 10px !important;
+  margin-bottom: 0px !important;
+  display: flex !important;
+  align-items: center;
+}
+.revenue_uploadsmasterheader {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 5px 20px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0px 0px;
+  height: 68px;
+  font-weight: 600;
+  font-size: 18px;
+  /* color: #86b149; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.doctor_revenue .revenue-header {
+  font-size: 18px;
+  color: #82ae3f;
+  display: flex;
+  align-items: center;
+}
+.revenue-header {
+  /* font-family: 'Roboto-Medium'; */
+  font-size: 20px;
+  /* color: #82AE3F; */
+  /* width:40%; */
+  margin-left: 12px;
+  /* font-family: 'Roboto-Regular'; */
+  font-weight: 600;
+}
+.doctor_revenue .MuiButton-outlinedSizeSmall {
+  padding: 5px 9px !important;
+}
+/* .doctor_revenue_dashboard .formdiv .selectbox .ant-select-selection--single{
+      border:none !important;
+    } */
+.doctor_revenue .formdiv .labeltxt {
+  padding-bottom: 0px !important;
+}
+
+.patient_head {
+  width: 22%;
+  position: relative;
+  font-size: 1.5rem;
+  color: #333;
+}
+.doctor_patienttype .formdiv {
+  width: 35%;
+}
+.doctor_patienttype {
+  display: flex;
+  align-items: center;
+}
+.doctor_revenue .formdiv .selectbox .ant-select-selection--single {
+  padding: 0px !important;
+}
+.doctor_revenue .doctor_revenueplus-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  width: 50%;
+  justify-content: space-between;
+}
+.plus-icon {
+  cursor: pointer;
+}
+
+/* .Dialogmodal h6{
+         font-family: 'Roboto-Regular' !important; 
+    
+    }
+     .formdiv{
+         font-family: 'Roboto-Regular'; 
+    }
+     */
+.clinic_details {
+  color: white !important;
+  font-size: 12px !important;
+  background-color: #0b51c5 !important;
+  border: none;
+  /* font-family: 'Roboto-Regular' !important; */
+  padding: 8px;
+  border-radius: 2px 0px 0px 2px !important;
+  width: 128px !important;
+  height: 42px !important;
+}
+.clinic_details_month {
+  color: white !important;
+  font-size: 12px !important;
+  background-color: #468df0 !important;
+  border: none;
+  border-radius: 2px 0px 0px 2px !important;
+  /* font-family: 'Roboto-Regular' !important; */
+  padding: 8px;
+  width: 128px !important;
+  height: 42px !important;
+}
+.clinic_details_year {
+  color: white !important;
+  font-size: 12px !important;
+  background-color: #468df0 !important;
+  border: none;
+  border-radius: 2px 0px 0px 2px !important;
+  /* font-family: 'Roboto-Regular' !important; */
+  padding: 8px;
+  width: 128px !important;
+  height: 42px !important;
+}
+.clinic_details:focus {
+  background-color: #303f9f !important;
+}
+/* .clinic_details
+    {
+      color:white !important;
+      font-size: 1.5rem !important;
+      
+      border:none;
+        font-family: 'Roboto-Regular';
+      padding:8px;
+      
+    } */
+
+.clinic_group_detailss .MuiButton-root {
+  text-transform: none !important;
+  border-radius: 0px !important;
+  font-size: 1.5rem !important;
+  padding: 5px 15px !important;
+  border: none !important;
+  box-shadow: 0px 2px 5px #00000033 !important;
+}
+.clinic_date_details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currentdate {
+  font-family: "Roboto-Regular" !important;
+  font-weight: 600 !important;
+  top: 115px !important;
+  left: 1084px !important;
+  width: 140px !important;
+  height: 19px !important;
+  text-align: center !important;
+  letter-spacing: 0.16px !important;
+  color: #545454 !important;
+}
+/* .doctor_revenue .formdiv{
+       display:flex !important;
+    } */
+.doctor_revenue .MuiButtonGroup-root {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.group_container {
+  display: flex;
+  align-items: center;
+  /* width: 70%; */
+  justify-content: space-around;
+}
+
+.current_left {
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+  color: #545454;
+}
+.current_right {
+  position: relative;
+  top: 3px;
+  margin-left: 5px;
+  color: #545454;
+}
+.revenue-search {
+  color: #333333;
+  /* font-family: "Roboto-Regular"; */
+}
+.revenue-search .ant-input {
+  border-radius: 0px !important;
+}
+/* 
+@media screen and (max-width: 1400px){
+  .group_container{
+    width:60%;
+  }
+}
+
+
+@media screen and (max-width: 1315px){
+  .group_container{
+    width:61%;
+  }
+}
+
+
+@media screen and (max-width: 1290px){
+  .group_container{
+    width:65%;
+  }
+}
+
+@media screen and (max-width: 1220px){
+  .group_container{
+    width:70%;
+  }
+}
+
+
+@media screen and (max-width: 1148px){
+  .group_container{
+    width:75%;
+  }
+} */

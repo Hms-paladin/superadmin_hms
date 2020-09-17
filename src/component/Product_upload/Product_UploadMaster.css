@@ -1,0 +1,144 @@
+.manage_header{
+   
+        height: 68px;
+        background-color: #F8F8F8;
+        padding: 10px 20px;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 5px 5px 0px 0px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+      
+.manage_title{
+    font-size: 20px;
+    color: #82AE3F;
+     width:40%;
+     margin-left: 12px;
+     font-family: 'Roboto-Regular';
+     font-weight: 600;
+}
+.manage_container  {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    /* width: 55%; */
+    justify-content: space-between;
+}
+.manage_plus-icon{
+ cursor: pointer; 
+margin-left: 0%; 
+}
+
+.Dialogmodal h6{
+    font-family: 'Roboto-Regular' !important;
+
+}
+.formdiv{
+    font-family: 'Roboto-Regular';
+}
+
+.clinic_details
+{
+	/* color:white !important;
+	font-size: 12px !important;
+	background-color: #3F51B5 !important;
+	border:none;
+	 font-family: 'Roboto-Regular' !important;
+    padding:8px; */
+    color:white !important;
+      font-size: 12px !important;
+      background-color:#0B51C5 !important;
+      border:none;
+       /* font-family: 'Roboto-Regular' !important; */
+      padding:8px;
+      border-radius: 2px 0px 0px 2px !important;
+      width: 128px !important;
+      height: 42px !important;
+   
+	
+}
+.clinic_details:focus{
+	background-color:#303f9f !important;
+	}
+.clinic_details
+{
+	color:white !important;
+	font-size: 1.5rem !important;
+	
+	border:none;
+    font-family: 'Roboto-Regular';
+	padding:8px;
+	
+}
+
+.clinic_group_details .MuiButton-root {
+	text-transform:none !important;
+	border-radius: none !important;
+	width: 120px;
+    height: 37px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important;
+    width: 120px;
+    height: 37px;
+} 
+.clinic_date_details
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+.currentdate{
+    font-family: "Roboto-Regular" !important;
+    font-weight: 600 !important;
+    top: 115px !important;
+    left: 1084px !important;
+    width: 140px !important;
+    height: 19px !important;
+    text-align: center!important;
+    letter-spacing: 0.16px !important;
+    color: #545454 !important;
+}
+.manage_search .ant-input{
+    margin: 0 70px 0 0;
+    color:#333333;
+    border-radius: 0px;
+    /* top: 118px;
+    left: 1236px;
+    width: 50px;
+    height: 19px;
+    text-align: left;
+    letter-spacing: 0;
+ */
+}
+.manage_content_search .ant-input-affix-wrapper {
+    margin: 0 13px 0 0;
+}
+.manage_date{
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+} 
+.manage_icon{
+    font-size: 20px !important;
+    color: #545454 !important;
+    /* font-size: 1.2rem !important;
+    top: 119px !important;
+    left: 1068px !important;
+    width: 7px !important;
+    height: 12px !important; */
+}
+/* .date_manage{
+    
+    font-size: 16px;
+    /* font-weight: 600; */
+    /* top: 115px;
+    left: 1084px;
+    width: 92px;
+    height: 19px;
+    text-align: center;
+    letter-spacing: 0.16px;
+    color: #545454;
+} */ 

@@ -1,0 +1,353 @@
+.media_service_head .formdiv .selectbox .ant-select-selection--single {
+  padding: 0px !important;
+  height: 35px !important;
+  display: flex;
+  align-items: center;
+}
+.doctorplus-container {
+  display: flex;
+}
+.totalorder_title {
+  color: #82ae3f;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Roboto";
+}
+
+.media_service_head {
+  height: 68px;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clinic_details:focus {
+  background-color: #0b51c5 !important;
+}
+/* .clinic_details
+  {
+    color:white !important;
+    font-size: 1.5rem !important;
+    border:none;
+    padding:8px; 
+  } */
+
+.clinic_date_details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currentdate {
+  /* display:contents;
+    font-size:1.25rem;
+    font-weight: 600; */
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 16px !important;
+  font-family: "Roboto" !important;
+  font-weight: 600 !important;
+  top: 115px !important;
+  left: 1084px !important;
+  width: 140px !important;
+  height: 19px !important;
+  text-align: center !important;
+  letter-spacing: 0.16px !important;
+  color: #545454 !important;
+}
+.doctor_type_head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 5px;
+}
+.right_arrowicon {
+  font-size: 2.5rem !important;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+}
+.group_buttons_div {
+  display: flex;
+  align-items: center;
+}
+
+/* .clinic_group_details{
+    margin-right: 15px;
+  } */
+
+.dashboard_master .MuiButtonGroup-root {
+  /* box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important; */
+  box-shadow: 0px 2px 5px #00000033;
+  border-radius: 2px 0px 0px 2px !important;
+  height: 40px !important;
+}
+.clinic_group_details .MuiButton-root {
+  border-radius: 0px !important;
+  font-size: 18px !important;
+  border: none !important;
+  box-shadow: 0px 2px 5px #00000033 !important;
+  text-transform: none !important;
+  border-radius: none !important;
+  padding: 5px 15px !important;
+  width: 120px;
+  height: 37px;
+}
+.clinic_group_details .MuiButton-label {
+  font-size: 1.5rem !important;
+}
+.trainer_dashboard_master .MuiButtonGroup-root {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.clinic_details {
+  /* color:white !important;
+    font-size: 14px !important;
+    background-color:#468DF0 !important;
+    border:none;
+    padding:8px;
+    width:120px !important;  
+    height:42px !important; */
+  /* font-family: "Roboto" !important; */
+  color: white !important;
+  font-size: 12px !important;
+  background-color: #0b51c5 !important;
+  border: none;
+  /* font-family: 'Roboto' !important; */
+  padding: 8px;
+  border-radius: 2px 0px 0px 2px !important;
+  width: 128px !important;
+  height: 42px !important;
+}
+.search_box_container .ant-input {
+  border: 1px solid #d8d8d8 !important;
+  color: #333333 !important;
+  /* font-family: "Roboto" !important; */
+  font-size: 16px !important;
+  font-weight: 100 !important;
+  height: 37px !important;
+}
+.search_box_container {
+  margin-left: 15px !important;
+}
+.office {
+  /* width: 15%; */
+  display: flex;
+  justify-content: space-evenly;
+}
+.excel {
+  margin-left: 10px;
+}
+.pdf {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* @media screen and (max-width: 1000px) {
+   .doctorpatient_head {
+    font-size: 10px;
+  }
+  .patientselect_div{
+    width:110px !important;
+  }
+  .shopping_dashboard_master .title_totalorders{
+    font-size: 15px !important;
+  }
+  
+ .shopping_dashboard_master .currentdate{
+  font-size: 10px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+ .shopping_dashboard_master .clinic_details{
+ width:80px !important;
+ height:40px !important;
+ font-size: 10px !important;
+}
+.shopping_dashboard_master .clinic_details .MuiButtonGroup-root {
+  height:34px !important;
+}
+.shopping_dashboard_master .MuiButton-root{
+  padding:5px 8px !important;
+  font-size: 10px !important;	
+}
+.shopping_dashboard_master .search_box_container{
+  width:100px !important;
+}
+.media_service_head .formdiv .selectbox .ant-select-selection--single{
+  font-size: 12px !important;
+}
+.shopping_dashboard_master .search_box_container .ant-input{
+   height:34px !important;
+   font-size: 12px !important;
+
+}
+  }
+  .totalorder_title{
+    font-size: 18px;
+    color: #82AE3F;
+     margin-left: 12px;
+     font-family: 'Roboto';
+     font-weight: 600;
+    }
+    @media only screen and (max-width: 938px) {
+.totalorder_title{
+    font-size: 12px;
+}
+    } */
+
+.totalorder_group_details .MuiButtonGroup-grouped {
+  border-radius: 0px !important;
+}
+.totalorderheader {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 5px 20px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  height: 68px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  /* color: #86b149; */
+  font-weight: 600;
+  /* display: flex;
+    justify-content: space-between;
+    background-color: #F8F8F8;
+    padding: 10px;
+    box-shadow: 0px 3px 6px #00000029;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Roboto-Medium'; */
+  /* min-width:950px; */
+}
+
+.totalorder_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 68%; */
+}
+
+.totalorder_date {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.totalorder_icon {
+  font-size: 2.5rem !important;
+  color: #545454 !important;
+}
+.totalorder_details {
+  font-size: 1.15rem !important;
+}
+.totalorder_week {
+  background-color: #0b51c5 !important;
+  color: white !important;
+  width: 128px !important;
+  height: 42px !important;
+  border-radius: 0px !important;
+}
+.totalorder_month {
+  background-color: #468df0 !important;
+  color: white !important;
+  width: 128px !important;
+  height: 42px !important;
+  border-radius: 0px !important;
+}
+
+.date_totalorder {
+  font-family: "Roboto";
+  font-weight: 600;
+  top: 115px;
+  left: 1084px;
+  width: 92px;
+  height: 19px;
+  text-align: center;
+  letter-spacing: 0.16px;
+  color: #545454;
+}
+.search .ant-input {
+  color: #333333;
+  font-family: "Roboto";
+  border-radius: 0px;
+}
+.content_search .ant-input-affix-wrapper {
+  margin: 0 13px 0 0;
+}
+.diet_details_day {
+  color: white !important ;
+  font-size: 12px !important ;
+  background-color: #0b51c5 !important;
+  border: none;
+  font-family: "Roboto";
+  padding: 8px;
+}
+.diet_details_month {
+  color: white !important ;
+  font-size: 12px !important ;
+  background-color: #468df0 !important;
+  border: none;
+  font-family: "Roboto";
+  padding: 8px;
+}
+
+/* .clinic_group_details .MuiButton-root {
+
+}   */
+.totalorderheader .clinic_group_details {
+  height: auto !important;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 970px) and (max-width: 1000px) {
+  .totalorder_container {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  .totalorder_container {
+    width: 65%;
+  }
+  .totalorderheader .clinic_group_details {
+    width: auto;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .totalorder_container {
+    width: 75%;
+  }
+  .totalorderheader .clinic_group_details {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .totalorder_container {
+    width: 78%;
+  }
+  /* .clinic_group_details{
+    width: 52%;
+  } */
+}
+
+@media only screen and (max-width: 1022px) {
+  .totalorder_container {
+    width: 80%;
+  }
+  /* .clinic_group_details{
+    width: 52%;
+  } */
+}
+
+@media screen and (max-width: 970px) {
+  .totalorder_container {
+    width: 83%;
+  }
+}

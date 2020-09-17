@@ -1,0 +1,216 @@
+/* .order_modal .MuiDialog-paperWidthSm{
+  width: 50% !important;
+}
+/* .order_modal{
+z-index: 99999 !important;
+} */
+/* Add product modal datepicker */
+.MuiPickersBasePicker-container p {
+  font-size: 1.25rem !important;
+}
+.stock_box_container{
+  padding: 10px;
+}
+.stock_available .formdiv .brdrcls{
+   border: none;
+}
+.stockcart_box{
+  width: 100%;
+  height: 250px;
+  padding: 10px;
+  border-radius: 2px !important;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+
+}
+.shop_colorpalatte_dropdown{
+  padding: 10px;
+}
+.MuiDialog-paperScrollPaper {
+  max-height: 100% !important;
+}
+.color_palette_box{
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+.color_palette{
+  width: 70px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: red;
+}
+.stock_add {
+  box-shadow: 0px 0px 3.5px 0px #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+.order_modal .MuiDialog-paperWidthSm {
+  width: 45% !important;
+}
+.close_addproduct {
+  position: relative;
+  right: 10px;
+  top: 15px;
+  font-size: 2.5rem !important;
+  cursor: pointer;
+}
+.stock_add_title {
+  color: #83af40;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Roboto-Regular";
+  margin: 15px;
+}
+
+.stock_content {
+  /* display: flex;
+  justify-content: space-evenly;
+  padding: 10px; */
+  display: flex;
+  justify-content: space-between;
+  padding-right: 45px;
+  padding-left: 29px;
+}
+
+.stock_content h5 {
+  margin-top: 10px;
+  color: #666666 !important;
+}
+.stock_content p {
+  padding-top: 10px;
+}
+
+.stock_second_content {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 10px; */
+}
+.content_three {
+  background-color: #fc478a;
+  padding: 5px;
+  font-weight: 600;
+}
+.content_four {
+  background-color: #f6be3e;
+  padding: 5px;
+  font-weight: 600;
+}
+.content_five {
+  background-color: #2fd1f2;
+  padding: 5px;
+  font-weight: 600;
+}
+.content_one {
+  padding: 5px;
+  color: #666666;
+  font-weight: 600;
+}
+.content_two {
+  padding: 5px;
+  color: #666666;
+  font-weight: 600;
+}
+.content_six {
+  padding: 5px;
+  color: #666666;
+  font-weight: 600;
+}
+.dummy {
+  padding: 5px;
+}
+.stock_second_content .formdiv .labeltxt {
+  padding-bottom: 0 !important;
+  font-size: 14px !important;
+  color: #666666 !important;
+  font-weight: lighter;
+}
+
+.stock_second_content .formdiv .brdrcls {
+  height: 30px !important;
+  width: 100% !important;
+}
+.stock_second_content .formdiv .selectbox .ant-select-selection--single {
+  height: 30px !important;
+  padding: 0px !important;
+}
+
+.stock_second_content .formdiv .MuiFormControl-marginNormal {
+  height: 30px !important;
+}
+
+.stock_button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  width: 97%;
+}
+
+.stock_cancel {
+  background-color: #c9c9c9 !important ;
+  margin-right: 20px !important;
+}
+
+.stock_update {
+  background-color: #2680eb !important;
+  color: #eee !important;
+}
+
+.stock_button .MuiButton-label {
+  font-size: 1.2rem !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.shop_colorpalatte_label {
+  font-size: 14px !important;
+  color: #666666 !important;
+  font-weight: lighter;
+}
+@media only screen and (min-width: 1020px) and (max-width: 1100px) {
+  .order_modal .MuiDialog-paperWidthSm {
+    width: 58% !important;
+  }
+  .stock_button {
+    width: 97%;
+  }
+}
+@media only screen and (min-width: 920px) and (max-width: 1019px) {
+  .order_modal .MuiDialog-paperWidthSm {
+    width: 65% !important;
+  }
+  .stock_button {
+    width: 96%;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 919px) {
+  .order_modal .MuiDialog-paperWidthSm {
+    width: 68% !important;
+  }
+  .stock_button {
+    width: 97%;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 799px) {
+  .order_modal .MuiDialog-paperWidthSm {
+    width: 72% !important;
+  }
+  .stock_button {
+    width: 97%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .order_modal .MuiDialog-paperWidthSm {
+    width: 82% !important;
+  }
+  .stock_button {
+    width: 98%;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .stock_content {
+    padding-left: 16px;
+  }
+}

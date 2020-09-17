@@ -1,0 +1,298 @@
+ .doctor_mediauploads .media_upload{
+     color:#333;
+     font-size: 1.5rem;
+     font-family: 'Roboto-Regular';
+ }
+ .doctor_mediauploads .clinicButton-container{
+     width:100% !important;
+     display:flex !important;
+     justify-content: space-between !important;
+     align-items: center !important;
+     border: 1px solid #ccc !important;
+     font-family: 'Roboto-Regular' !important;
+     font-size: 1.25rem !important;
+     border-radius: 2px !important;
+     box-shadow: 0 0 1.5px 0px #ccc;
+ }
+ 
+ .doctor_mediauploads .upload-field .ant-upload.ant-upload-select{
+     display:block !important;
+ }
+.doctor_mediauploads  .doctorupload_container{
+     width:100%;
+
+ }
+ .doctor_mediauploads .upload-field{
+     width:100%;
+ }
+ 
+.doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
+    font-size: 1.5rem !important;
+    padding: 8px !important;
+    font-family: 'Roboto-Regular';
+ }
+
+.doctor_mediauploads .uploadimage{
+       width:17px;
+ }
+.doctor_mediauploads .clinicmedia_upload{
+     font-size: 1.5rem;
+     margin-bottom: 10px !important;
+     font-family: 'Roboto-Regular';
+     color:#333;
+     margin-top: 10px;
+ }
+ .doctor_mediauploads .shop-submit-Upload{
+    font-family: 'Roboto-Regular' !important;
+    font-size: 12px !important;
+    border-radius: 0px !important;
+    color: white !important;
+    background-color: rgb(38, 128, 235) !important;
+    padding: 6px 16px !important;
+  
+    margin-left: 15px;
+    text-transform: none !important;
+ }
+ .doctor_Upload{
+     border-radius: 1px !important;
+ }
+ .browse_plus_subsection{
+    cursor: pointer; 
+    width:25px;
+    height: 25px;
+    /* margin-left: 10px;
+    margin-top: 30px; */
+   
+   }
+   /* .shop_plusimg{
+    margin-top: 5px;
+    margin-left: 10px; 
+   } */
+ .shop-mediabutton-container{
+     display: flex;
+     align-items: flex-end;
+     justify-content: flex-end;
+     margin-top: 35px;
+     
+ }
+ .shop-cancel-form{
+    background-color: rgb(221, 214, 214) !important;
+     color:black!important;
+     font-family:'Roboto-Regular' !important;
+     font-size: 12px !important;
+     padding:6px 16px !important;   
+     border-radius: 1px !important;
+     text-transform: none !important;
+ }
+ 
+ .doctor_active{
+     color:#333 !important;
+     font-family: 'Roboto-Regular' !important;
+     font-size: 1.5rem;
+     position: relative;
+     top: 10px;
+ }
+.media_checkbox_container{
+    margin-top: 10px !important;
+}
+.media_checkbox_container .MuiIconButton-root{
+    padding: 15px 10px 0px 0px !important;
+}
+.info_icon{
+    color:#fbd879 !important;
+    margin-left: 5px;
+}
+.doctormedia_button .MuiButton-text {
+    padding: 8px 8px !important;
+}
+.doctor_mediauploads .labeltxt{
+  color:#4A4A4A !important;
+}
+.media_title_head .brdrcls{
+
+    height: 35px !important;
+    font-size: 14px !important;
+ 
+}
+.media_title_head{
+    width: 80%;
+}
+.media_title_head .formdiv .labeltxt{
+    width: 80% !important;
+    color: #4A4A4A !important;
+}
+.media_title_head_sub .brdrcls{
+
+    height: 35px !important;
+    font-size: 14px !important;
+  
+}
+.media_title_head_sub .formdiv .labeltxt{
+    width: 80% !important;
+    /* margin-left: 45% !important; */
+    color: #4A4A4A !important;
+    white-space: nowrap ;
+}
+ .media_title_section .brdrcls{
+  
+    height: 35px !important;
+   
+ 
+ } 
+ .browser_divider{
+     border-bottom: 1px dashed #333;
+     padding: 10px;
+ }
+.media_title_section{
+    margin-top: 10px;
+    display:flex;
+}
+.shop_modal_imggrid{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+}
+/* .shop_modal_grid-1{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+} */
+.shop_modal_grid{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.shop_modal_grid-1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+ 
+.button_browse{
+    background-color: #2680EB !important;
+    color:#fff !important;
+    size: 17px !important;
+    border-radius: 0px !important;
+  
+    font-family: "Roboto-Regular" !important;
+
+}
+.product_image{
+    margin-top: 10px;
+    
+}
+.browse_files{
+    display:flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 100%;
+
+}
+.span_header_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+    
+}
+.span_section_div{
+    /* display: flex; */
+    /* align-items: flex-start;
+    justify-content: flex-start; */
+    margin-right: 10px;
+}
+.span_section_subdiv{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+ .browse_file_header{
+    
+   display: flex;
+}
+ /* .ant-upload.ant-upload-select{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 100%;
+} */
+/* .product_img_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 26%;
+} */
+.shop_mediabutton-container{
+    display: flex;
+    align-items: flex-end;
+    /* justify-content: flex-end;
+    margin-top: 40px; */
+}
+.upload_btn_plus{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+ 
+    
+}
+.img_footer_content{
+    padding: 20px;
+}
+
+.purple {
+    border: 1px solid black;
+}
+.orange {
+    border: 1px solid black;
+}
+.green{
+    border: 1px solid black;
+} 
+.violet{
+    border: 1px solid black;
+}
+.close{
+    width: 25px;
+    position: relative;
+    bottom: 17px;
+    left: 17px;
+}
+.spacing_width{
+    width: 100%;
+}
+.upload_category_container{
+display: flex;
+justify-content: space-between;
+}
+.browse_files .MuiButton-root{
+    height:32px !important;
+}
+.upload_cate{
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+/* .browse_files .ant-upload{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width:100%;
+} */
+.final_button_grid{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}

@@ -1,0 +1,160 @@
+.cancelledorder_header{
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 5px 20px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    height: 68px;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+.cancelledorder_title{
+    font-size: 20px;
+    color: #82AE3F;
+     width:40%;
+     margin-left: 12px;
+     /* font-family: 'Roboto-Regular'; */
+     font-weight: 600;
+}
+.doctor_plus-container  {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    /* width: 55%; */
+    justify-content: space-between;
+}
+.plus-icon{
+ cursor: pointer; 
+margin-left: 94%; 
+}
+
+.totalorder_container_cancel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 68%; */
+}
+
+.clinic_details
+{
+  
+	color:white !important;
+	font-size: 12px !important;
+	background-color: #3F51B5 !important;
+	border:none;
+	 /* font-family: 'Roboto-Regular' !important; */
+	padding:8px;
+   
+	
+}
+.clinic_details:focus{
+	background-color:#303f9f !important;
+	}
+.clinic_details
+{
+	color:white !important;
+	font-size: 1.5rem !important;
+	
+	border:none;
+    /* font-family: 'Roboto-Regular'; */
+	padding:8px;
+	
+}
+
+.clinic_group_details .MuiButton-root {
+	text-transform:none !important;
+	border-radius: none !important;
+	border: 0px !important;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important;
+    width: 120px;
+    height: 37px;
+} 
+.clinic_date_details
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+  .currentdate{
+    font-family: "Roboto-Regular" !important;
+    font-weight: 600 !important;
+    top: 115px !important;
+    left: 1084px !important;
+    width: 140px !important;
+    height: 19px !important;
+    text-align: center!important;
+    letter-spacing: 0.16px !important;
+    color: #545454 !important;
+  
+}
+.titleuser_cancelorder{
+	font-size: 18px;
+    color: #86b149;
+    min-width: 200px;
+}
+.cancelorders_shopping .uploadmasterheader{
+    min-width: 1000px;
+}
+@media screen and (max-width: 999px){
+    .totalorder_container_cancel{
+        width: 82%;
+    }
+}
+
+
+@media screen and (min-width: 970px) and (max-width: 1000px){
+    .totalorder_container_cancel{
+      width: 85%;
+    }
+  }
+  
+  @media only screen  and (min-width: 1001px) and (max-width: 1300px){
+    .totalorder_container_cancel{
+      width: 65%;
+    }
+    .clinic_group_details{
+      width: 42%;
+    }
+  }
+  @media  screen  and (max-width: 1250px) {
+    .totalorder_container_cancel{
+      width: 75%;
+    }
+    .clinic_group_details{
+      width: 52%;
+    }
+  }
+  
+  @media  screen  and (max-width: 1090px) {
+    .totalorder_container_cancel{
+      width: 78%;
+    }
+    /* .clinic_group_details{
+      width: 52%;
+    } */
+  }
+  
+  @media only screen  and (max-width: 1022px) {
+    .totalorder_container_cancel{
+      width: 80%;
+    }
+    /* .clinic_group_details{
+      width: 52%;
+    } */
+  }
+  
+  @media  screen  and (max-width: 970px) {
+    .totalorder_container_cancel{
+      width: 83%;
+    }
+  }
+
+  @media  screen  and (max-width: 950px) {
+    .totalorder_container_cancel{
+      width: 95%;
+    }
+}

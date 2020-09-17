@@ -1,0 +1,89 @@
+.shopping_dashboard .shopping_masterheader{
+height: auto;
+width:100%;
+}
+
+.doctorexcel_polyclinic_div .anticon{
+ color:#333 !important;
+}
+
+.shopping_dashboard .doctorplus-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.plus-icon{
+ cursor: pointer;   
+}
+/* .shopping_dashboard .shopping_masterheader{
+    width:100%;
+    background-color: #F8F8F8;
+	padding: 5px 20px;
+	box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px 5px 0px 0px;
+	display:flex;
+	height:68px;
+   font-weight: 600;
+	align-items: center;
+	font-size: 18px;
+	color: #86b149;
+
+} */
+.titleuser{
+	font-size: 18px;
+	color: #86b149;
+}
+.uploadmasterheader{
+width: 100%;
+    background-color: #F8F8F8;
+    padding: 5px 20px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px 5px 0px 0px;
+    height: 68px;
+    font-weight: 600;
+    font-size: 18px;
+	/* color: #86b149; */
+	display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shopping_dashboard .clinic_details
+{
+	color:white !important;
+	font-size: 1.5rem !important;
+	background-color: rgb(82, 118, 238) !important;
+	border:none;
+	padding:8px;
+	
+}
+.shopping_dashboard .MuiButton-outlined {
+	border: 1px solid rgba(0, 0, 0, 0.23);
+	padding:5px 15px !important;
+}
+
+.currentdate{
+    font-family: "Roboto" !important;
+    font-weight: 600 !important;
+    top: 115px !important;
+    left: 1084px !important;
+    width: 140px !important;
+    height: 19px !important;
+    text-align: center!important;
+    letter-spacing: 0.16px !important;
+    color: #545454 !important;
+}
+
+
+ @media only screen and (max-width: 1040px){
+	.shopping_dashboard .doctorplus-container 
+	{
+		width:100%;
+	}
+	
+}
+ @media only screen and (max-width: 1000px){
+	.page_button_container{
+      display: block !important;
+	} 
+ }

@@ -1,0 +1,61 @@
+.enter_tracking{
+    color:#333 !important;
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-left:15px
+}
+.delivery_packing{
+    display:flex;
+    margin: 0px 0px 20px 15px;
+}
+.pharpaper_container
+{
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.1) !important;
+    padding:15px;
+    width:33%;
+    height:165px !important;
+}
+.outfor_deliverybutt{
+    background-image: linear-gradient(to top, rgb(105, 216, 142),rgb(127, 246, 167));
+    color:#fff !important;
+    font-size: 1.5rem !important;
+    text-transform: none !important;
+}
+.delivery_date{
+  display: flex;
+  justify-content: center;
+   align-items: center; 
+}
+.deli_timediv{
+    width:40%;
+    margin-top: 15px;
+}
+.outfor_butt{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.deli_timediv:first-child{
+    margin-right: 10px;
+}
+.deli_timediv .formdiv .labeltxt{
+padding: 0px !important;
+}
+.modalbutt_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    margin-top:10px;
+}
+.cancel_buttphar{
+    font-size: 1.25rem !important;
+    background-color: #c9c9c9 !important;
+    margin-right: 20px !important;
+    text-transform: none !important;
+}
+
+/* .delivery_view .formdiv .brdrcls{
+    box-shadow: 0 0 2px 0px #ccc !important;
+    border:0.4px solid #ccc !important;
+} */

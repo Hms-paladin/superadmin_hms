@@ -12,8 +12,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: 'Avenir-Black';
-	color: rgb(138, 138, 138) !important;
 }
 
 .pharmacy_forget_container .inbox_icon_div {
@@ -106,8 +104,7 @@
 }
 
 @font-face {
-	font-family: 'Avenir-Black';
-	src: url('../../helper/font/Avenir-Black.ttf')format('truetype');
+	font-family: 'Roboto';
 }
 
 /* body {

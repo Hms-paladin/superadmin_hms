@@ -1,0 +1,471 @@
+.dialog_main_main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 7px #6666660D;
+    /* margin-top: 20px; */
+    padding: 20px;
+}
+.product_top_button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.product_title-shop{
+    color: #82AE3F;
+    font-size: 18px;
+    font-weight: 600;
+}
+.product_upload_cancel_div{
+background-color: #C9C9C9;
+border-radius: 3px;
+margin-right: 15px;
+}
+ .product_upload_cancel .MuiButton-label{
+   text-transform: none !important;
+   font-size: 12px !important;
+ } 
+ .button_browse .MuiButton-label{
+    text-transform: none !important;
+    font-size: 12px !important;
+ }
+ .add_button .MuiButton-label{
+    text-transform: none !important;
+    font-size: 12px !important;
+ }
+.product_upload_submit_div{
+    background: #2680EB;
+    border-radius: 3px;
+}
+.product_upload_submit .MuiButton-label{
+    color: white;
+   text-transform: none !important;
+   font-size: 12px !important;
+}
+
+.product_sub_section{
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center; */
+    
+}
+.upload_label{
+    font-size: 14px;
+    color: #666666 !important;
+    padding-bottom: 5px !important;
+}
+.browse_files .ant-upload {
+    height: 32px !important;
+}
+.browse_files .MuiButton-root{
+    height: 32px !important;
+}
+ .product_section_2{
+width: 20% ;
+margin-left: 15px;
+}  
+.product_section_2 .formdiv .brdrcls{
+    width: 90%;
+}
+.product_section_2 .labeltxt{
+    margin-bottom: 5px !important;
+    padding-bottom: 6px !important;
+    color: #666666 !important;
+    font-weight: 600;
+    font-size: 14px !important;
+}
+.product_section_2 .formdiv{
+    /* left: 20%; */
+    height: 27px;
+    font-size: 14px;
+}
+
+
+.product_section_3{
+    width: 20%;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+.product_section_3 .labeltxt{
+    margin-bottom: 0px !important;
+    padding-bottom: 6px !important;
+    color: #666666 !important;
+}
+.product_section_3  .selectbox .ant-select-selection--single{
+    
+    padding: 0px !important;
+}
+.product_section_3 .formdiv {
+    left: 30%;
+    
+}
+.product_section_3 .ant-select-selection{
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+    
+.product_section_4{
+    width: 20% ;
+    margin-left: 15px;
+}
+.product_section_4 .labeltxt{
+    margin-bottom: 5px !important;
+    font-size: 14px !important;
+    color: #666666 !important;
+}
+/* .product_section_4 .formdiv{
+    left: 40%;
+    
+} */
+.product_section_4  .brdrcls{
+    height: 32px !important;
+    
+    width: 55px !important;
+}
+.product_section_5{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 20px; 
+}
+.product_section_5 .MuiButton-root{
+    background-color: #2680EB!important;
+    color: white;
+    border-radius: 1px;
+    height: 32px;
+    /* margin-bottom: 3px !important; */
+}
+
+.product_colorpalatte_label {
+    font-size: 14px !important;
+    color: #666666 !important;
+    font-weight: 600;
+    padding-bottom: 5px !important;
+}        
+.span_header_shop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 150px;
+    
+}
+.product_main_grid{
+    padding: 30px;
+}
+
+.product_section_grid .labeltxt{
+    color: #666666 !important;
+}
+ .product_section_div{
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
+ }
+ .product_section_div .ant-select-selection--single{
+     width: 100px !important;
+ }
+.product_sec_subdiv {
+    margin-top: 10px; 
+    
+}
+ .product_sec_subdiv .brdrcls{
+    height: 32px !important;
+    font-size: 14px;
+ }
+ .product_sec_price{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 10px;
+ }
+ .product_sec_price .brdrcls{
+    height: 32px !important;
+    width: 100px !important;
+    font-size: 14px;
+ }
+ .product_main_section{
+     padding: 30px;
+ }
+
+ @media only screen and (max-width: 768px) {
+    /* .product_section_grid{
+        width: 80% !important;
+    } */
+    /* .productupload_dialog .MuiDialog-paperFullWidth{
+        width: 80% !important;
+    } */
+    .product_section_div .ant-select-selection--single{
+        width: 300px !important;
+    }
+    .product_sec_price .brdrcls{
+width: 300px !important;
+    }
+ } 
+ .add_subsec_div{
+     display: flex;
+ }
+ 
+ 
+ @media only screen and (min-width:770px)and (max-width: 950px) {
+    .product_section_div .ant-select-selection--single{
+        width: 300px !important;
+    }
+    .product_sec_price .brdrcls{
+        width: 300px !important;
+            }
+         
+ }
+ .product_addlist{
+    border: 1px solid black !important;
+
+    display: flex;
+ }
+ .product_addlist_div{
+    display: flex ;
+    margin-right: 15px;
+    margin-top: 10px;
+  
+ }
+ .product_addlist_lab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+ }
+ .conditional_grid{
+     width: 100%;
+     display: flex;
+    
+ }
+ 
+ .productupload_dialog{
+     width: 70% !important;
+ }
+ 
+
+ .product_main_grid .formdiv .ant-select-selection--single{
+     padding: 0px !important;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /* .doctor_mediauploads .media_upload{
+     color:#333;
+     font-size: 1.5rem;
+     font-family: 'Roboto-Regular';
+ }
+ .doctor_mediauploads .clinicButton-container{
+     width:100% !important;
+     display:flex !important;
+     justify-content: space-between !important;
+     align-items: center !important;
+     border: 1px solid #ccc !important;
+     font-family: 'Roboto-Regular' !important;
+     font-size: 1.25rem !important;
+     border-radius: 2px !important;
+     box-shadow: 0 0 1.5px 0px #ccc;
+ }
+ 
+ .doctor_mediauploads .upload-field .ant-upload.ant-upload-select{
+     display:block !important;
+ }
+.doctor_mediauploads  .doctorupload_container{
+     width:100%;
+
+ }
+ .doctor_mediauploads .upload-field{
+     width:100%;
+ }
+ 
+.doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
+    font-size: 1.5rem !important;
+    padding: 8px !important;
+    font-family: 'Roboto-Regular';
+ }
+
+.doctor_mediauploads .uploadimage{
+       width:17px;
+ }
+.doctor_mediauploads .clinicmedia_upload{
+     font-size: 1.5rem;
+     margin-bottom: 10px !important;
+     font-family: 'Roboto-Regular';
+     color:#333;
+     margin-top: 10px;
+ }
+ .doctor_mediauploads .doctor_Upload{
+    font-family: 'Roboto-Regular' !important;
+    font-size: 1.25rem !important;
+    background-color: rgb(201, 201, 201) !important;
+    color:#333 !important;
+    padding: 6px 16px !important;
+    margin-right: 20px !important;
+ }
+ .doctormediabutton-container{
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
+     width:100%;
+     margin-top: 20px;
+ }
+ .doctorcancel-form{
+     background-color: rgb(38, 128, 235) !important;
+     color:#fff !important;
+     font-family: 'Roboto-Regular' !important;
+     font-size: 1.25rem !important;
+     padding:6px 16px !important;   
+ }
+ .doctormedia_checkbox{
+     margin-top: 10px;
+ }
+ .doctor_active{
+     color:#333 !important;
+     font-family: 'Roboto-Regular' !important;
+     font-size: 1.5rem;
+     position: relative;
+     top: 10px;
+ }
+.media_checkbox_container{
+    margin-top: 10px !important;
+}
+.media_checkbox_container .MuiIconButton-root{
+    padding: 15px 10px 0px 0px !important;
+}
+.info_icon{
+    color:#fbd879 !important;
+    margin-left: 5px;
+}
+.doctormedia_button .MuiButton-text {
+    padding: 8px 8px !important;
+}
+.doctor_mediauploads .labeltxt{
+  color:#333 !important;
+}
+.media_title_head{
+    margin-top: 10px;
+} */

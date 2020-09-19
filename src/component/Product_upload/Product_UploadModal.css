@@ -377,7 +377,7 @@ width: 300px !important;
  /* .doctor_mediauploads .media_upload{
      color:#333;
      font-size: 1.5rem;
-     font-family: 'Roboto-Regular';
+     font-family: 'Roboto';
  }
  .doctor_mediauploads .clinicButton-container{
      width:100% !important;
@@ -385,7 +385,7 @@ width: 300px !important;
      justify-content: space-between !important;
      align-items: center !important;
      border: 1px solid #ccc !important;
-     font-family: 'Roboto-Regular' !important;
+     font-family: 'Roboto' !important;
      font-size: 1.25rem !important;
      border-radius: 2px !important;
      box-shadow: 0 0 1.5px 0px #ccc;
@@ -405,7 +405,7 @@ width: 300px !important;
 .doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
     font-size: 1.5rem !important;
     padding: 8px !important;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
  }
 
 .doctor_mediauploads .uploadimage{
@@ -414,12 +414,12 @@ width: 300px !important;
 .doctor_mediauploads .clinicmedia_upload{
      font-size: 1.5rem;
      margin-bottom: 10px !important;
-     font-family: 'Roboto-Regular';
+     font-family: 'Roboto';
      color:#333;
      margin-top: 10px;
  }
  .doctor_mediauploads .doctor_Upload{
-    font-family: 'Roboto-Regular' !important;
+    font-family: 'Roboto' !important;
     font-size: 1.25rem !important;
     background-color: rgb(201, 201, 201) !important;
     color:#333 !important;
@@ -436,7 +436,7 @@ width: 300px !important;
  .doctorcancel-form{
      background-color: rgb(38, 128, 235) !important;
      color:#fff !important;
-     font-family: 'Roboto-Regular' !important;
+     font-family: 'Roboto' !important;
      font-size: 1.25rem !important;
      padding:6px 16px !important;   
  }
@@ -445,7 +445,7 @@ width: 300px !important;
  }
  .doctor_active{
      color:#333 !important;
-     font-family: 'Roboto-Regular' !important;
+     font-family: 'Roboto' !important;
      font-size: 1.5rem;
      position: relative;
      top: 10px;

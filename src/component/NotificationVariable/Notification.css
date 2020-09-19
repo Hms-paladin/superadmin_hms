@@ -1,0 +1,25 @@
+.catgry_box{
+    width: 25%;
+}
+.variable_flex{
+    display: flex;
+    align-items: baseline;
+    font-size: 14px;
+}
+.actve{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.plus_btn{
+    padding-left: 20px;
+    width: 45px;
+    position: relative;
+    bottom: -7px;
+}
+
+.catgry_box .formdiv{
+    padding-top: 12px !important;
+}
+.variable_flex .formdiv .brdrcls{
+    height: 38px !important;
+}

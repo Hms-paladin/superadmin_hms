@@ -53,7 +53,7 @@ width: 80%;
   }
   .details_mode {
     color: #ccc;
-    font-family: "Roboto-Regular";
+    font-family: "Roboto";
     font-size: 2rem !important;
     margin-bottom: 0rem !important;
   }
@@ -68,7 +68,7 @@ width: 80%;
     color: #ccc;
     font-size: 15px;
     width: 50%;
-    font-family: "Roboto-Regular";
+    font-family: "Roboto";
     justify-content: space-between;
   }
   .package_cancel_details {
@@ -81,7 +81,7 @@ width: 80%;
     color: red !important;
     border: 1px solid red !important;
     font-size: 20px !important;
-    font-family: "Roboto-Regular" !important;
+    font-family: "Roboto" !important;
   
     background-color: #f5dcead1 !important;
   }
@@ -110,13 +110,13 @@ width: 80%;
     /* justify-content: flex-end; */
     align-items: center;
     color: rgba(0, 0, 0, 0.85);
-    font-family: "Roboto-Regular" !important;
+    font-family: "Roboto" !important;
     font-size:1.25rem;
   }
   .package_details_container {
     display: flex;
     width: 100%;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
     font-size: 1.25rem;
   }
   .trainee_detail {

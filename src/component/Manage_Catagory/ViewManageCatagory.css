@@ -1,7 +1,7 @@
 .media_active{
    color:#86b149;
    font-size: 1.25rem;
-   font-family: 'Roboto-Regular';
+   font-family: 'Roboto';
    margin-top: 15px;
 }
 .media_title_container .labeltxt{
@@ -15,7 +15,7 @@
 }
 .upload_ins{
     font-size: 1.5rem;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
     margin-left: 10px;
     position: relative;
     top: 3px;
@@ -32,19 +32,19 @@
 .detete_no{
    background-color: rgb(201, 201, 201) !important; 
    color:#333;
-   font-family: 'Roboto-Regular';
+   font-family: 'Roboto';
    font-size: 1.5rem !important;
 }
 .detete_yes{
     background-color: rgb(38, 128, 235) !important;
     color:#fff !important;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
     font-size: 1.5rem !important;
     margin-left: 15px !important;
 }
 .delete_para{
     font-size: 1.5rem;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
 }
 .media_title_container .MuiButton-root{
     min-width: 90px !important;

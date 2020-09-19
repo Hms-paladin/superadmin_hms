@@ -1,7 +1,7 @@
 .manage_header{
     height: auto;
     /* width:100%; */
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
     background-color: #F8F8F8;
     padding: 10px;
     box-shadow: 0px 3px 6px #00000029;
@@ -16,7 +16,7 @@
     color: #82AE3F;
      width:40%;
      margin-left: 12px;
-     font-family: 'Roboto-Regular';
+     font-family: 'Roboto';
      font-weight: 600;
 }
 .manage_container  {
@@ -32,11 +32,11 @@ margin-left: 0%;
 }
 
 .Dialogmodal h6{
-    font-family: 'Roboto-Regular' !important;
+    font-family: 'Roboto' !important;
 
 }
 .formdiv{
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
 }
 
 .clinic_details
@@ -45,7 +45,7 @@ margin-left: 0%;
 	font-size: 12px !important;
 	background-color: #3F51B5 !important;
 	border:none;
-	 font-family: 'Roboto-Regular' !important;
+	 font-family: 'Roboto' !important;
 	padding:8px;
    
 	
@@ -59,7 +59,7 @@ margin-left: 0%;
 	font-size: 1.5rem !important;
 	
 	border:none;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
 	padding:8px;
 	
 }
@@ -80,7 +80,7 @@ margin-left: 0%;
 	
 }
 .currentdate{
-    font-family: "Roboto-Regular" !important;
+    font-family: "Roboto" !important;
     font-weight: 600 !important;
     top: 115px !important;
     left: 1084px !important;

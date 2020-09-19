@@ -6,7 +6,7 @@
     .labmodaldiv_profile .Dialogmodal h6{
             color: #333;
         font-size: 20px;
-        font-family: 'Roboto-Regular' !important;
+        font-family: 'Roboto' !important;
     }
     .labmodaldiv_profile .modaldiv .cancelbtn{
         border-radius: 0;
@@ -88,13 +88,13 @@
     }
     .cancel_button{
         font-size: 1.25rem !important;
-        font-family: 'Roboto-Regular' !important;
+        font-family: 'Roboto' !important;
         margin-right: 15px !important;
     text-transform: none !important;
     }
     .update_button{
         font-size: 1.25rem !important;
-        font-family: 'Roboto-Regular' !important;
+        font-family: 'Roboto' !important;
         background-color: #257BE2 !important;
         text-transform: none !important;
     }
@@ -104,7 +104,7 @@
     {
         padding: 0px 8px 0px 8px;
         font-size:1.5rem !important;
-        font-family: 'Roboto-Regular' !important;
+        font-family: 'Roboto' !important;
         cursor: pointer;
     }
     .tab_line

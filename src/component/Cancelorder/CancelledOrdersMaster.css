@@ -15,7 +15,7 @@
     color: #82AE3F;
      width:40%;
      margin-left: 12px;
-     /* font-family: 'Roboto-Regular'; */
+     /* font-family: 'Roboto'; */
      font-weight: 600;
 }
 .doctor_plus-container  {
@@ -44,7 +44,7 @@ margin-left: 94%;
 	font-size: 12px !important;
 	background-color: #3F51B5 !important;
 	border:none;
-	 /* font-family: 'Roboto-Regular' !important; */
+	 /* font-family: 'Roboto' !important; */
 	padding:8px;
    
 	
@@ -58,7 +58,7 @@ margin-left: 94%;
 	font-size: 1.5rem !important;
 	
 	border:none;
-    /* font-family: 'Roboto-Regular'; */
+    /* font-family: 'Roboto'; */
 	padding:8px;
 	
 }
@@ -80,7 +80,7 @@ margin-left: 94%;
 }
 
   .currentdate{
-    font-family: "Roboto-Regular" !important;
+    font-family: "Roboto" !important;
     font-weight: 600 !important;
     top: 115px !important;
     left: 1084px !important;

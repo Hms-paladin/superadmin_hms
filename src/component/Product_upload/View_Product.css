@@ -56,17 +56,17 @@
   padding-bottom: 60px;
 }
 .Product_para{
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   font-size: 16px;
   color:#ADADAD;
   margin-top: 5px;
 }
 .roduct_desc{
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   font-size: 1.25rem;
 }
 .description_content{
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   font-size: 1rem;
   list-style: decimal;
 }
@@ -76,7 +76,7 @@
 .product_content{
   display: flex;
   justify-content: space-between;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
 
   
 
@@ -106,7 +106,7 @@ display: flex;
   margin-top: 5px;
 }
 .product_description{
-  /* font-family: 'Roboto-Regular'; */
+  /* font-family: 'Roboto'; */
   font-size: 16px;
   margin-top: 15px;
   color: #666666;

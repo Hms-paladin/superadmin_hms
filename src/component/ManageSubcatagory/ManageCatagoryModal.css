@@ -1,7 +1,7 @@
  .doctor_mediauploads .media_upload{
      color:#333;
      font-size: 1.5rem;
-     font-family: 'Roboto-Regular';
+     font-family: 'Roboto';
  }
  .doctor_mediauploads .clinicButton-container{
      width:100% !important;
@@ -9,7 +9,7 @@
      justify-content: space-between !important;
      align-items: center !important;
      border: 1px solid #ccc !important;
-     font-family: 'Roboto-Regular' !important;
+     font-family: 'Roboto' !important;
      font-size: 1.25rem !important;
      border-radius: 2px !important;
      box-shadow: 0 0 1.5px 0px #ccc;
@@ -29,7 +29,7 @@
 .doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
     font-size: 1.5rem !important;
     padding: 8px !important;
-    font-family: 'Roboto-Regular';
+    font-family: 'Roboto';
  }
 
 .doctor_mediauploads .uploadimage{
@@ -38,12 +38,12 @@
 .doctor_mediauploads .clinicmedia_upload{
      font-size: 1.5rem;
      margin-bottom: 10px !important;
-     font-family: 'Roboto-Regular';
+     font-family: 'Roboto';
      color:#333;
      margin-top: 10px;
  }
  .doctor_mediauploads .shop-submit-Upload{
-    font-family: 'Roboto-Regular' !important;
+    font-family: 'Roboto' !important;
     font-size: 12px !important;
     border-radius: 0px !important;
     color: white !important;
@@ -78,7 +78,7 @@
  .shop-cancel-form{
     background-color: rgb(221, 214, 214) !important;
      color:black!important;
-     font-family:'Roboto-Regular' !important;
+     font-family:'Roboto' !important;
      font-size: 12px !important;
      padding:6px 16px !important;   
      border-radius: 1px !important;
@@ -87,7 +87,7 @@
  
  .doctor_active{
      color:#333 !important;
-     font-family: 'Roboto-Regular' !important;
+     font-family: 'Roboto' !important;
      font-size: 1.5rem;
      position: relative;
      top: 10px;
@@ -181,7 +181,7 @@
     size: 17px !important;
     border-radius: 0px !important;
   
-    font-family: "Roboto-Regular" !important;
+    font-family: "Roboto" !important;
 
 }
 .product_image{

@@ -2,7 +2,7 @@
   height: auto;
   width: 100%;
   /* min-width: 1050px; */
-  /* font-family: 'Roboto-Regular'; */
+  /* font-family: 'Roboto'; */
 }
 .revenue_uploadsmasterheader_flex1 {
   display: flex;
@@ -42,7 +42,7 @@
   /* color: #82AE3F; */
   /* width:40%; */
   margin-left: 12px;
-  /* font-family: 'Roboto-Regular'; */
+  /* font-family: 'Roboto'; */
   font-weight: 600;
 }
 .doctor_revenue .MuiButton-outlinedSizeSmall {
@@ -83,11 +83,11 @@
 }
 
 /* .Dialogmodal h6{
-         font-family: 'Roboto-Regular' !important; 
+         font-family: 'Roboto' !important; 
     
     }
      .formdiv{
-         font-family: 'Roboto-Regular'; 
+         font-family: 'Roboto'; 
     }
      */
 .clinic_details {
@@ -95,7 +95,7 @@
   font-size: 12px !important;
   background-color: #0b51c5 !important;
   border: none;
-  /* font-family: 'Roboto-Regular' !important; */
+  /* font-family: 'Roboto' !important; */
   padding: 8px;
   border-radius: 2px 0px 0px 2px !important;
   width: 128px !important;
@@ -107,7 +107,7 @@
   background-color: #468df0 !important;
   border: none;
   border-radius: 2px 0px 0px 2px !important;
-  /* font-family: 'Roboto-Regular' !important; */
+  /* font-family: 'Roboto' !important; */
   padding: 8px;
   width: 128px !important;
   height: 42px !important;
@@ -118,7 +118,7 @@
   background-color: #468df0 !important;
   border: none;
   border-radius: 2px 0px 0px 2px !important;
-  /* font-family: 'Roboto-Regular' !important; */
+  /* font-family: 'Roboto' !important; */
   padding: 8px;
   width: 128px !important;
   height: 42px !important;
@@ -132,7 +132,7 @@
       font-size: 1.5rem !important;
       
       border:none;
-        font-family: 'Roboto-Regular';
+        font-family: 'Roboto';
       padding:8px;
       
     } */
@@ -151,7 +151,7 @@
   justify-content: center;
 }
 .currentdate {
-  font-family: "Roboto-Regular" !important;
+  font-family: "Roboto" !important;
   font-weight: 600 !important;
   top: 115px !important;
   left: 1084px !important;
@@ -188,7 +188,7 @@
 }
 .revenue-search {
   color: #333333;
-  /* font-family: "Roboto-Regular"; */
+  /* font-family: "Roboto"; */
 }
 .revenue-search .ant-input {
   border-radius: 0px !important;

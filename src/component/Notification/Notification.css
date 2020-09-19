@@ -1,0 +1,18 @@
+.catgry_box{
+    width: 25%;
+}
+.row1_flex{
+    display: flex;
+    align-items: baseline;
+    font-size: 14px;
+}
+.actve{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.plus_btn{
+    padding-left: 20px;
+    width: 45px;
+    position: relative;
+    bottom: -7px;
+}

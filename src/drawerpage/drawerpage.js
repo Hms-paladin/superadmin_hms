@@ -85,6 +85,11 @@ import MediaUploadsMaster from "../component/MediaUploads/MediaUploadsMaster";
 import Stocklist from "../component/Stock/Stocklist";
 import Preorderlist from "../component/Preorder/Preorderlist";
 import ProfileComp from "../component/LabProfile/ProfileComp";
+import Notification_Category from '../component/Notification/Notification'
+import Notification_Event from '../component/NotificationEvent/NotificationEvent.jsx'
+import Notification_variable from '../component/NotificationVariable/NotificationVariable.jsx'
+import Notification_New from '../component/NotificationNew/NotificationNew.jsx'
+
 
 
 
@@ -1046,6 +1051,34 @@ class Homepage extends React.Component {
                   </ListItemIcon>
                   <ListItemText primary="Vendor Master" />
                 </MenuItem>}
+                {<MenuItem component={Link} to={`${this.props.match.path}/category`} className={`${current_location.includes("category") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Notification Category" />
+                </MenuItem>}
+                {<MenuItem component={Link} to={`${this.props.match.path}/event`} className={`${current_location.includes("event") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Notification Event" />
+                </MenuItem>}
+                {<MenuItem component={Link} to={`${this.props.match.path}/variable`} className={`${current_location.includes("variable") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Notification Variable" />
+                </MenuItem>}
+                {<MenuItem component={Link} to={`${this.props.match.path}/new_notification`} className={`${current_location.includes("new_notification") && "active_text_heading"} iconColorGrey`}>
+                  <ListItemIcon>
+                    <div className="icon-container">
+                      <ReactSVG src={Doctor} /></div>
+                  </ListItemIcon>
+                  <ListItemText primary="Notification" />
+                </MenuItem>}
 
                 <Collapse
                   defaultActiveKey={current_location.includes("/dasboard") && current_location.includes("/dasboard") ? ["1"] : null}
@@ -1305,6 +1338,10 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/category`} render={() => <Notification_Category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/event`} render={() => <Notification_Event uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/variable`} render={() => <Notification_variable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/new_notification`} render={() => <Notification_New uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
 
 
                 {/* <Route exact path={'/usertype'}  render={() => <User_type uservalue={this.state.useraccessdata && this.state.useraccessdata}/> } /> */}

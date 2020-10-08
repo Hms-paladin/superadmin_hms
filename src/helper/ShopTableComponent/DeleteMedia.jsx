@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
-import Labelbox from '../../helpers/labelbox/labelbox'
+// import Labelbox from '../../helpers/labelbox/labelbox'
 import Button from '@material-ui/core/Button';
-import './ViewMedia.css'
-// import uploadimage from '../../Images/upload-button.png'
+import './DeleteMedia.css'
+// import uploadimage from '../images/upload-button.png'
+// import Profile from '../images/1.jpg' 
 export default class DeleteMedia extends Component {
     render() {
         return (

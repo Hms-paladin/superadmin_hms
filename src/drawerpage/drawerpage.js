@@ -90,6 +90,7 @@ import Notification_Event from '../component/NotificationEvent/NotificationEvent
 import Notification_variable from '../component/NotificationVariable/NotificationVariable.jsx'
 import Notification_New from '../component/NotificationNew/NotificationNew.jsx'
 
+import {notification} from 'antd';
 
 
 
@@ -198,6 +199,15 @@ class Homepage extends React.Component {
     //  || window.location.href.includes("/revenue") || window.location.href.includes("/managecategory") || window.location.href.includes("/managesubcategory") 
     //  || window.location.href.includes("/productupload") || window.location.href.includes("/deliverytracking") || window.location.href.includes("/mediauploadshopping") 
     //  || window.location.href.includes("/stock") || window.location.href.includes("/preorder") || window.location.href.includes("/profile") || window.location.href.includes("/report")
+  };
+  generateAlert = (description) => {
+    notification.success({
+      message: "Success",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
   };
 
   handleDrawerOpen = () => {
@@ -1208,15 +1218,15 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
                       </NavLink>
-                      <NavLink to={`${this.props.match.path}/mediauploadshopping`} className="d-flex">
-                  <div className={`${current_location.includes("/mediauploadshopping") &&"submodulealignactive"} submodulealign`}>
+                      <NavLink to={`${this.props.match.path}/shoppingmediaupload`} className="d-flex">
+                  <div className={`${current_location.includes("/shoppingmediaupload") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
-                            checked={current_location.includes("/mediauploadshopping")}
+                            checked={current_location.includes("/shoppingmediaupload")}
                             className="greenCheckWid"
-                            onClick={() => this.routeChange("mediauploadshopping")}
+                            onClick={() => this.routeChange("shoppingmediaupload")}
                           />
 
-                        <MenuItem onClick={() => this.routeChange("mediauploadshopping")} component={Link} to={`${this.props.match.path}/mediauploadshopping`} className={`${current_location.includes("/mediauploadshopping") && "active_text_heading"} mttrainingCat`} >
+                        <MenuItem onClick={() => this.routeChange("shoppingmediaupload")} component={Link} to={`${this.props.match.path}/shoppingmediaupload`} className={`${current_location.includes("/mediauploadshopping") && "active_text_heading"} mttrainingCat`} >
                           <ListItemText primary="Media Upload" />
                         </MenuItem>
                       </div>
@@ -1334,7 +1344,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/managesubcategory`} render={() => <ManageSubCatagoryMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/shoppingmediaupload`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} generateAlert={this.generateAlert} />} />
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

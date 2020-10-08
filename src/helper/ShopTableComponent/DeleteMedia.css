@@ -1,17 +1,15 @@
-
-.media_upload_view_modal{
+.media_active{
     color:#86b149;
     font-size: 1.25rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 15px;
  }
- 
  .media_title_container .labeltxt{
      color:#333 !important;
  }
  .media_title_container{
-    padding: 10px 10px 10px 10px;
+     padding:20px;
  }
+ 
  .green_uploadint{
      width:15px;
  }
@@ -24,6 +22,7 @@
  .green_upload_container{
      margin-bottom: 15px;
  }
+ 
  .mediadelete_container{
      display:flex;
      justify-content: center;
@@ -38,35 +37,20 @@
  .detete_yes{
      background-color: rgb(38, 128, 235) !important;
      color:#fff !important;
+   
      font-size: 1.5rem !important;
      margin-left: 15px !important;
  }
  .delete_para{
      font-size: 1.5rem;
+   
  }
  .media_title_container .MuiButton-root{
      min-width: 90px !important;
-    
  }
  .record_delete_container .MuiDialog-paperWidthSm{
     width:55% !important;
  }
-
- .view_media_img {
-     width: 100%;
-     float: right;
-     margin-top: 20px;
- }
- .mediauploads_img_edit{
- width: 50%;
- } 
-
-  
-   .img_uploader_edit{
-       width: 100%;
-       height: 50% !important;
-   }
-
-   .profile_media_div {
-       text-align: center;
-   }
+  /* .Dialogmodal h6 {
+  color:#86b149 !important;
+ } */

@@ -256,7 +256,7 @@ changeDynamic = (data, key) => {
 
 
   resetFormValue = () => {
-    alert("check")
+
     this.state.subCategory = "";
     this.state.checked="";
     this.state.filename = "";
@@ -276,18 +276,11 @@ changeDynamic = (data, key) => {
 
     console.log("safjsdhfjskhejrhsfsd",this.state.CategoryId)
 
-    // if (this.state.imageChanged === true) {
-    //   formdata.append("sh_upload_filename", this.state.imagedata);
-  
-    // }else{
-    //   !this.state.imageChanged && formdata.append('sh_upload_filename', [])
-    // }
     formdata.set("sh_active", this.state.checked === false ? 0 : 1);
     formdata.set("sh_category_id", this.state.CategoryId);
     formdata.set("sh_subcategory", this.state.subCategory);
     !this.state.edit && formdata.set("created_by", 1);
     !this.state.edit && formdata.set("created_on", dateformat(new Date(), "yyyy-mm-dd hh:MM:ss"));
-    // !this.state.imageChanged && formdata.append('imageArray', [])
     console.log("dsfjksdhfjhdsersfjsdkjfhsd",formdata)
    
 
@@ -355,7 +348,7 @@ changeDynamic = (data, key) => {
       data: details
     }).then((response) => {
       console.log("sdfsjdhfjshfeurishf",response)
-      if(response.data.status === "1") {
+      if(response.data.status == "1") {
         this.props.getTableData()
         this.getAddedPackInfo()
        
@@ -382,7 +375,7 @@ changeDynamic = (data, key) => {
     }).then((response) => {
       console.log("sendEditDetails",response)
      
-      if(response.data.status === "1") {
+      if(response.data.status =="1") {
         this.getAddedPackInfo()
         this.props.getTableData()
         this.props.generateAlert("Sub Category Added Successfully")

@@ -121,7 +121,7 @@
     width: 80% !important;
     color: #4A4A4A !important;
 }
-..media_title_head .formdiv .labeltxt{
+.media_title_head .formdiv .labeltxt{
     padding-bottom: 0px !important;
 }
 .media_title_head_sub .brdrcls{

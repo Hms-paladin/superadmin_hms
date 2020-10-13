@@ -1,114 +1,175 @@
-.uploadsmasterheader{
-    height: auto;
-    width:100%;
-    
-    }
-    .titleuser{
-    font-size: 1.75rem;
-     color: #86b149;
-    }
-    .doctor_plus-container  {
-        display: flex;
-        /* flex-direction: column; */
-        align-items: center;
-        justify-content: space-between;
-    }
-   .dashboard_header{
-    padding: 10px;
-    background: #f8f8f8 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 5px 5px 0px 0px;
-    opacity: 1;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; 
+.media_uploadsmasterheader{
+  height: 68px;
+  background-color: #F8F8F8;
+  padding: 10px 20px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0px 0px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
 
-   }
+
+  .media_service_head .formdiv .selectbox .ant-select-selection--single {
+    padding:0px !important;
+    height:35px !important;
+    display:flex;
+    align-items: center;
+  }
+    .doctorplus-container {
+      display: flex;
+  }
+  .titleuser_media_diet{
+    color: #82AE3F;
+    font-size:18px;
+    font-weight: 600;
+  }
+
+  .media_service_head{
+    height: 68px;
+    background-color: #F8F8F8;
+	  padding: 10px 20px;
+	  box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px 5px 0px 0px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+  
+  
+  .clinic_details:focus{
+    background-color:#0B51C5!important;
+    }
+  .clinic_details
+  {
+    color:white !important;
+    font-size: 1.5rem !important;
+    border:none;
+    padding:8px; 
+  }
+  
+  
+  .clinic_date_details
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .currentdate_shopping{
+    display:contents;
+    font-size:1.25rem;
+    font-weight: 600;
+  }
+  .doctor_type_head{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 5px;
+  }
+  .right_arrowicon{
+    font-size: 2.5rem !important;
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+  }
+  .group_buttons_div{
+    display:flex;
+    align-items: center;
+
+  }
+  .plus-icon-media{
+    cursor: pointer
+  }
+  /* .clinic_group_details{
+    margin-right: 15px;
+  } */
+
+  .dashboard_master .MuiButtonGroup-root {
+    /* box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important; */
+    box-shadow: 0px 2px 5px #00000033;
+    border-radius: 2px 0px 0px 2px !important;
+    height: 40px !important;
+  }
+  .clinic_group_details .MuiButton-root {
+    text-transform:none !important;
+    border-radius: 0px !important;
+    font-size: 13px !important;
+    padding:5px 15px !important;
+    border: none !important;
+    box-shadow: 0px 2px 5px #00000033 !important;
+    width: 120px;
+    height: 37px;
    
+  } 
+  .trainer_dashboard_master .MuiButtonGroup-root{
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important;
+  }
+  .clinic_details
+  {
+    color:white !important;
+    font-size: 14px !important;
+    background-color:#468DF0 !important;
+    border:none;
+    padding:8px;
+    width:120px !important;  
+    height:42px !important;
+    /* font-family: "Roboto" !important; */
     
-    .plus-icon{
-     cursor: pointer;   
-    }
-    .uploadsmasterheader{
-        width:100%;
-        padding: 10px 20px;
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .Dialogmodal h6{
-    
-    }
-    
-    .clinic_details
-    {
-        color:white !important;
-        font-size: 12px !important;
-        border:none;
-        
-        padding:8px;
-       
-        
-    }
-    .clinic_details:focus{
-        background-color:#303f9f !important;
-        }
-    .clinic_details
-    {
-        color:white !important;
-        font-size: 1.5rem !important;
-        
-        border:none;
-        padding:8px;
-        
-    }
-    
-    .clinic_group_details .MuiButton-root {
-        text-transform:none !important;
-        border-radius: none !important;
-        
-        box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20) !important;
-    
-    } 
-    .clinic_date_details
-    {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .currentdate{
-        font-size: 1.25rem;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .plus-icon{
-        margin-left: 10px;
-    }
-    .ant-input-affix-wrapper {
-     width:150px;
-    }
-    @media screen and (max-width:940px) {
-    .uploadmaster_doctor .titleuser{
-        font-size: 12px !important;
-    }
-    .ant-input-affix-wrapper{
-       width:110px;
-    }
-    .uploadmaster_doctor .currentdate{
-      font-size: 12px !important;
-    }
-    .uploadmaster_doctor .clinic_details{
-     width:100px !important;
-     height:38px !important;
-     font-size: 12px !important;
-    }
-    .uploadmaster_doctor .MuiButtonGroup-root{
-      height: 38px !important;
-    }
-    .uploadmaster_doctor .clinic_group_details .MuiButton-root {
-     font-size: 12px !important;	
-    }
-    }
+  }
+  .search_box_container .ant-input{
+    border: 1px solid #D8D8D8 !important;
+    color:#333333 !important;
+    /* font-family: "Roboto" !important; */
+    font-size: 16px !important;
+    font-weight: 100 !important;
+    height: 37px !important;
+  }
+  .search_box_container{
+    margin-left: 15px !important;
+  }
+  @media screen and (max-width: 1000px) {
+   .doctorpatient_head {
+    font-size: 10px;
+  }
+  .patientselect_div{
+    width:110px !important;
+  }
+  .shopping_dashboard_master .title_totalorders{
+    font-size: 15px !important;
+  }
+  
+ .shopping_dashboard_master .currentdate{
+  font-size: 10px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+ .shopping_dashboard_master .clinic_details{
+ width:80px !important;
+ height:40px !important;
+ font-size: 10px !important;
+}
+.shopping_dashboard_master .clinic_details .MuiButtonGroup-root {
+  height:34px !important;
+}
+.shopping_dashboard_master .MuiButton-root{
+  padding:5px 8px !important;
+  font-size: 10px !important;	
+}
+.shopping_dashboard_master .search_box_container{
+  width:100px !important;
+}
+.media_service_head .formdiv .selectbox .ant-select-selection--single{
+  font-size: 12px !important;
+}
+.shopping_dashboard_master .search_box_container .ant-input{
+   height:34px !important;
+   font-size: 12px !important;
+
+}
+  }
+
+  .media_newmedia .MuiDialog-paperWidthMd{
+    width: 50% !important;
+  }

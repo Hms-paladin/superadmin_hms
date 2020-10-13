@@ -1,57 +1,61 @@
+// import React, { Component } from 'react'
+// import Grid from '@material-ui/core/Grid'
+// import Labelbox from '../../helpers/labelbox/labelbox'
+// import Button from '@material-ui/core/Button';
+// import './ViewMedia.css'
+// import uploadimage from '../../Images/upload-button.png'
+// import View from '../../Images/1.jpg'
+// export default class ViewMedia extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 <Grid container>
+//                     <Grid item xs={12} md={6} className="media_title_container">
+//                     <Labelbox type="text" labelname="Media Title" value="Top Five Heart Tips" />
+//                     <p className="media_active">Active</p>
+//                     </Grid>
+//                     <Grid item xs={12} md={6} className="media_title_container">
+//                     <div className="media_title_container">
+//                         <div className="profile_media">
+//                     <img src={View} className="diet_profile_media" />
+//                     </div>
+//                     </div>
+//                     </Grid>
+//                 </Grid>
+//             </div>
+//         )
+//     }
+// }
+
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Labelbox from "../../helper/labelbox/labelbox";
 import Button from "@material-ui/core/Button";
 import "./ViewMedia.css";
 import uploadimage from "../../images/upload-button.png";
-// import Stepper from "../StepperStatus/Stepper";
-// import { Player } from 'video-react';
+import View from "../../images/1.jpg";
+import Stepper from "../../StepperStatus/Status";
 
 export default class ViewMedia extends Component {
-  state={
-    type:""
-  }
   render() {
-    const {viewData,viewopenModal} = this.props
-    console.log(viewData,"viewwww_datattata")
-     return (
-      <div >
-        {/* {" "} */}
-        <div style={{ textAlign: "center"}}>
-         <div style={{ fontSize: "14px" }}>{this.props.viewData.media_title}</div>
-         <p className="media_upload_view_modal">
-           {this.props.viewData.is_active == 1 ?"Active" : "InActive"}
-           </p>
+    return (
+      <div>
+        {" "}
+        <div style={{ display: "flex", flexDirection:'column',alignItems:'center' }}>
+          <div style={{ fontSize: "14px" }}>Eggs</div>
+          <div className="media_active">Active</div>
         </div>
         <Grid container>
           <Grid item xs={12} md={12} className="media_title_container">
-          
-            
-          {viewData.media_type.toLowerCase() === "video" && 
-          <div className="profile_media_div">
-           
-            <video src = {this.props.viewData.media_filename} type="video/mp4" controls className="img_uploader_edit"/>
-            
- 
-          </div>
-  }
-
-        {viewData.media_type.toLowerCase() === "image" &&
-             
-      
-           <div className="profile_media_div">
-           
-            <img src = {viewData.media_filename} className="img_uploader_edit" alt="break"/>
-
-
-          </div>
-           
-  }
+            <div className="profile_media_div">
+              {/* <div className="profile_media"> */}
+              <img src={View} className="diet_profile_media" />
+              {/* </div> */}
+            </div>
           </Grid>
           {/* <Grid item xs={12} md={6} className="media_title_container">
-             <div className="stepper__container">
+            
             <Stepper />
-            </div>
           </Grid> */}
         </Grid>
       </div>

@@ -2,18 +2,18 @@ import React from "react";
 import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Spin,notification,Input } from 'antd';
-import Moment from "react-moment";
+import AddCategory from "./AddCategory";
 import axios from 'axios';
 import { apiurl } from "../../App";
 import "./ManageCatagoryTable.css";
 import ManageCatagoryModal from "./ManageCatagoryModal";
-import plus from "../../images/plus.png";
 import DeleteMedia from "../../helper/deletemodel";
+import { Spin,notification,Input } from 'antd';
+import plus from "../../images/plus.png";
 
 var moment = require('moment');
 
-export default class ManageCatagoryTable extends React.Component {
+export default class ManageSubCatagoryTable extends React.Component {
   state = {
     openview: false,
     spinner: false,
@@ -25,7 +25,8 @@ export default class ManageCatagoryTable extends React.Component {
     deleteopen: false,
     open:true,
     edit:false,
-    editData:""
+    editData:"",
+  
   };
 
   createData = (parameter) => {
@@ -53,9 +54,9 @@ export default class ManageCatagoryTable extends React.Component {
 
 
   modelopen = (data, id) => {
-    console.log(data, "edit_data");
+    console.log(id, "edit_data");
 
-    alert(id)
+    
     console.log(this.state.totalData, "edit_id");
     if (data === "view") {
       console.log(data, "view_data");
@@ -65,16 +66,17 @@ export default class ManageCatagoryTable extends React.Component {
         viewData: this.state.totalData.find((val) => val.id === id),
       });
     } else if (data === "edit") {
+      alert(id)
       this.setState({ editopen: true });
-
       this.setState({
         edit: true,
-        editData:this.state.totalData.find((val) => val.id === id),
+        editData:this.state.totalData.find((val) => val.sh_sub_category_id === id),
       });
       console.log(this.state.editData, "dataaa_idd");
     }
     console.log(this.state.viewData, "viewwwww");
   };
+
 
   insertModalOpen = () => {
     this.setState({
@@ -95,7 +97,6 @@ export default class ManageCatagoryTable extends React.Component {
   };
 
 
-
   componentWillMount() {
     this.getTableData();
   }
@@ -106,8 +107,8 @@ export default class ManageCatagoryTable extends React.Component {
     var tableDatafull = [];
     var self = this
     axios({
-      method: 'GET', //get method 
-      url: apiurl + 'get_mas_sh_category',
+      method: 'GET', //get sh_category_id method 
+      url: apiurl + 'getShSubCategoryList',
       data: {
        
       }
@@ -118,7 +119,8 @@ export default class ManageCatagoryTable extends React.Component {
         console.log(val, "valdata")
 
         tableData.push({
-          category: val.sh_category,
+          sh_category: val.sh_category,
+          sh_subcategory:val.sh_subcategory,
           created_on: moment(val.created_on).format('DD MMM YYYY'),
           active: val.sh_active == "1" ? (
             <Checkbox
@@ -129,7 +131,7 @@ export default class ManageCatagoryTable extends React.Component {
           checked={false}
         />
         ),
-        id:val.id
+        id:val.sh_sub_category_id,
         })
 
         tableDatafull.push(val)
@@ -145,9 +147,7 @@ export default class ManageCatagoryTable extends React.Component {
       })
     })
   }
-
   deleteopen = (type, id) => {
-    alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,
@@ -156,24 +156,25 @@ export default class ManageCatagoryTable extends React.Component {
 
   
   deleterow = () => {
+    alert(this.state.iddata)
     this.setState({ props_loading: true });
     this.setState({ spinner: true });
     var self = this;
     axios({
       method: "DELETE",
-      url: apiurl + "delete_mas_sh_category",
+      url: apiurl + "deleteShSubCategory",
       data: {
-        id: this.state.iddata,
+        "sh_sub_category_id": this.state.iddata,
       },
     })
       .then((response) => {
-        console.log("sdfjsdhafjklsdhfk", response.data.status == "1");
+        console.log("sdfjsdhafjklsdhfk", response);
         if (response.data.status == "1") {
           this.getTableData();
-          this.props.generateAlert("Category Deleted Successfully");
+          this.props.generateAlert("Sub Category Deleted Successfully");
         } else {
           this.props.generateAlert(
-            "There are Products against this Subcategory. The Category cannot be deleted"
+            "Sub Category contains product and could not be deleted"
           );
         }
       })
@@ -184,8 +185,9 @@ export default class ManageCatagoryTable extends React.Component {
     this.setState({
       Deletemodalopen: false,
     });
-    this.setState({ props_loading: false });
+    this.setState({ spinner: false,props_loading:false });
   };
+
 
   closemodal = () => {
     this.setState({
@@ -197,42 +199,13 @@ export default class ManageCatagoryTable extends React.Component {
     });
   };
 
-
   render() {
-    const searchdata = []
-    const { Search } = Input;
-
     var tableData = this.state.tableData;
-    this.state.tableDatafull.filter((data,index) => {
-      console.log(data,"datadata")
-      if (this.state.search === undefined || this.state.search === null){
-        searchdata.push({
-          category:  data.category,
-          created_on: moment(data.created_on).format('DD MMM YYYY'),
-         
-          })
-      }
-      else if (
-          data.category !== null && data.category.toLowerCase().includes(this.state.search.toLowerCase()) ||  
-          data.created_on !== null && data.created_on.toLowerCase().includes(this.state.search.toLowerCase()) 
-         
-
-          
-          ){
-        searchdata.push({
-          category:  data.category,
-          created_on: moment(data.created_on).format('DD MMM YYYY'),
-           
-        })
-      }
-  })
-
+    const { Search } = Input;
     return (
-
       <div>
-
-            <div className="uploadmasterheader">
-            <div className="titleuser">MANAGE CATEGORY</div>
+          <div className="uploadmasterheader">
+            <div className="titleuser">MANAGE SUB CATEGORY</div>
 
             <div className="manage_container">
            
@@ -254,30 +227,30 @@ export default class ManageCatagoryTable extends React.Component {
                 />
             </div>
           </div>
+        <Spin className="spinner_align" spinning={this.state.spinner}>
 
-         <Spin className="spinner_align" spinning={this.state.spinner}>
-         {tableData.length > 0 && (
+           {tableData.length > 0 && (
         <Tablecomponent
           heading={[
             { id: "", label: "S.No" },
             { id: "catagory", label: "Category" },
+            { id: "subcatagory", label: "Sub Category" },
             { id: "created_date", label: "Created Date" },
             { id: "active", label: "Active" },
             { id: "", label: "Action" },
           ]}
-          // rowdata={tableData.length > 0 && tableData}
-          rowdata={searchdata.length === 0 ? [] : searchdata && tableData}
+          rowdata={tableData.length > 0 && tableData}
           deleteopen={this.deleteopen}
-          tableicon_align={"cell_eye"}
           modelopen={(e,id) => this.modelopen(e,id)}
+          tableicon_align={"cell_eye"}
           VisibilityIcon="close"
           Workflow="close"
           add="close"
         />
-         )}
+        )}
         </Spin>
 
-        <Modalcomp
+          <Modalcomp
               clrchange="text_color"
               visible={
                 this.state.insertOpen
@@ -286,8 +259,8 @@ export default class ManageCatagoryTable extends React.Component {
               }
               title={
                 this.state.insertOpen === true
-                  ? "ADD CATEGORY"
-                  : "EDIT CATEGORY"
+                  ? "ADD SUB CATEGORY"
+                  : "EDIT SUB CATEGORY"
               }
               closemodal={(e) => this.closemodal(e)}
               xswidth={"md"}
@@ -306,6 +279,7 @@ export default class ManageCatagoryTable extends React.Component {
      />
 
         </Modalcomp>
+
         <Modalcomp
               visible={this.state.deleteopen}
               title={"Delete"}
@@ -318,7 +292,6 @@ export default class ManageCatagoryTable extends React.Component {
                 closemodal={this.closemodal}
               />
             </Modalcomp>
-
       </div>
     );
   }

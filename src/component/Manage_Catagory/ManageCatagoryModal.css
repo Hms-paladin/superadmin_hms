@@ -114,15 +114,12 @@
     font-size: 14px !important;
  
 }
-/* .media_title_head{
+.media_title_head{
     width: 80%;
-} */
+}
 .media_title_head .formdiv .labeltxt{
     width: 80% !important;
     color: #4A4A4A !important;
-}
-.media_title_head .formdiv .labeltxt{
-    padding-bottom: 0px !important;
 }
 .media_title_head_sub .brdrcls{
 

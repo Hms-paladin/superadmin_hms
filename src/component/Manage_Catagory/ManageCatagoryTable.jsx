@@ -290,7 +290,7 @@ export default class ManageCatagoryTable extends React.Component {
                   : "EDIT CATEGORY"
               }
               closemodal={(e) => this.closemodal(e)}
-              xswidth={"md"}
+              xswidth={"xs"}
             >
 
 

@@ -173,8 +173,8 @@ componentWillMount(){
           }`}
         >
           <Grid container spacing={3}>
-            <Grid item xs={6} md={6} className="shop_modal_grid">
-              <div className="media_title_head">
+            <Grid item xs={6} md={9} className="shop_modal_grid">
+              <div className="category_title_head">
               <Labelbox
                 type="text"
                 labelname="Category"
@@ -188,8 +188,8 @@ componentWillMount(){
               </div>
             </Grid>
 
-            <Grid item xs={6} md={6} className="shop_modal_grid-1">
-              <div className="media_title_head" style={{ display: "flex" }}>
+            <Grid item xs={6} md={3} className="shop_modal_checkbox">
+              <div className="media_title_head" style={{ display: "flex", marginTop: "4rem" }}>
              
                 <div style={{ fontSize: "16px", marginTop: "5px" }}>Active</div>
                 <Checkbox checked={this.state.checked} onChange={this.detectChange}></Checkbox>
@@ -204,24 +204,24 @@ componentWillMount(){
               item
               xs={6}
               md={6}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px", marginLeft: "12px" }}
               // className="final_button_grid"
             >
                <div className="medibutt_container">
-              <Button variant="contained" className="cancel_medibutt" onClick={this.clear}>Cancel</Button>
-              <Button className="submit" onClick={() => this.checkValidation()}>
+              <Button variant="contained" className="shop-cancel-form" onClick={this.clear}>Cancel</Button>
+              <Button className="shop-submit-Upload" onClick={() => this.checkValidation()}>
               {!this.props.edit ?  "Submit" : "Update"}
               </Button>
             </div>
             </Grid>
           </Grid>
 
-
+{/* 
           <Grid container className="img_footer_content">
             <div className="foot">
          
             </div>
-          </Grid>
+          </Grid> */}
         </div>
         <Modalcomp
           clrchange="text_color"

@@ -66,7 +66,6 @@ export default class ManageSubCatagoryTable extends React.Component {
         viewData: this.state.totalData.find((val) => val.id === id),
       });
     } else if (data === "edit") {
-      alert(id)
       this.setState({ editopen: true });
       this.setState({
         edit: true,
@@ -156,7 +155,6 @@ export default class ManageSubCatagoryTable extends React.Component {
 
   
   deleterow = () => {
-    alert(this.state.iddata)
     this.setState({ props_loading: true });
     this.setState({ spinner: true });
     var self = this;

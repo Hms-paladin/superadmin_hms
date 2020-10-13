@@ -308,7 +308,6 @@ changeDynamic = (data, key) => {
     }else{
       !this.state.imageChanged && formdata.append('sh_upload_filename', [])
     }
-      // alert("going to edit")
       this.sendEditDetails(formdata)
     }
     
@@ -317,11 +316,6 @@ changeDynamic = (data, key) => {
   editCardPack = (details) =>{
 
    
-  
-
-
-console.log(details,"editingdatacheck")
-    alert("card")
 
     this.setState({
      
@@ -335,7 +329,7 @@ console.log(details,"editingdatacheck")
      
       let formdata = new FormData();
 
-    alert("editing")
+   
     formdata.set("sh_sub_category_id",  this.state.subcatId);
     formdata.set("modified_by", 1);
     formdata.set("modified_on", dateformat(new Date(), "yyyy-mm-dd hh:MM:ss"));
@@ -424,7 +418,6 @@ console.log(details,"editingdatacheck")
 
  
   deleteCard = (id) => {
-  //  alert(id)
     var self = this;
     Axios({
       method: "DELETE",

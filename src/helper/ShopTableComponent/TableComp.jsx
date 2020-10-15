@@ -25,6 +25,10 @@ import { Spin } from 'antd';
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import add from '../../images/add.svg'
+import ReactSVG from "react-svg";
+
+
 
 import { apiurl } from "../../../src/App.js";
 
@@ -400,6 +404,13 @@ export default class Tablecomponent extends Component {
 
                             {this.props.VisibilityIcon === "close" ? null :
                               <VisibilityIcon className="tableeye_icon" onClick={() => this.props.specialProp ? this.props.modelopen("view", row.id, row.appointment_type.key, row.appointment_date) : this.props.dashprop ? this.props.modelopen("view", row.id, row.appointment_type.key) : this.props.modelopen("view", row.id)} />}
+                              {this.props.add === "close" ? null : (
+                            <ReactSVG
+                              className="tableadd_icon"
+                              src={add}
+                              onClick={() => this.props.modelopen("view",row.id)}
+                            />
+                          )}
                             {this.props.EditIcon === "close" ? null :
                               <EditIcon className="tableedit_icon" onClick={() => this.props.modelopen("edit", row.id)} />}
                             {this.props.DeleteIcon === "close" ? null :

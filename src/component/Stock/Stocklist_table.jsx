@@ -79,8 +79,8 @@ class Stocklist_table extends React.Component {
           console.log(val, "res");
           tabledata.push({
             product_name: val.sh_product_name,
-            stocknumber: val.total_stock
-           
+            stocknumber: val.total_stock,
+           id:val.product_id
           });
 
           console.log(val,"seeking")

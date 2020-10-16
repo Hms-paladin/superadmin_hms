@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/TableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -12,6 +12,7 @@ const current_date = dateFormat(new Date(), "dd mmm yyyy");
 class Total_orders_table extends React.Component {
   state = {
     openview: false,
+    showData:[]
   };
 
   createData = (parameter) => {
@@ -26,19 +27,32 @@ class Total_orders_table extends React.Component {
     return returnobj;
   };
 
-  modelopen = (data) => {
-    if (data === "view") {
-      this.setState({ openview: true });
-    } else if (data === "edit") {
-      this.setState({ editopen: true });
+  // modelopen = (data) => {
+  //   if (data === "view") {
+  //     this.setState({ openview: true });
+  //   } else if (data === "edit") {
+  //     this.setState({ editopen: true });
+  //   }
+  // };
+  modelopen=(data,id)=>{
+    
+    if(data==="view"){
+        this.setState({openview:true})
+        console.log("sdfskdhfkjsdhfkjsdfh",this.props.viewData)
+     
+        this.setState({
+          showData:this.props.viewData.find(val => val.id === id)
+        },() => console.log("sdfkdsfkjshderjre",this.state.showData))
+     
+     
     }
-  };
-
+  }
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
   };
 
   render() {
+    console.log(this.props,"propscheck")
     return (
       <div>
         <Tablecomponent
@@ -51,58 +65,60 @@ class Total_orders_table extends React.Component {
 
             { id: "", label: "Action" },
           ]}
-          rowdata={[
-            this.createData({
-              customer: "Aamina",
-              phone_number: "+965 22000001",
-              booken_on: "11 Dec 2019",
-              price: "80",
-            }),
-            this.createData({
-              customer: "Mohammed",
-              phone_number: "+965 22000671",
-              booken_on: "11 Dec 2019",
-              price: "80",
-            }),
-            this.createData({
-              customer: "Abla",
-              phone_number: "+965 22000981",
-              booken_on: "11 Dec 2019",
-              price: "40",
-            }),
-            this.createData({
-              customer: "Zainab",
-              phone_number: "+965 22000541",
-              booken_on: "11 Dec 2019",
-              price: "40",
-            }),
-            this.createData({
-              customer: "Samrin",
-              phone_number: "+965 22230003",
-              booken_on: "11 Dec 2019",
-              price: "80",
-            }),
-            this.createData({
-              customer: "Rashid",
-              phone_number: "+965 22780009",
-              booken_on: "11 Dec 2019",
-              price: "80",
-            }),
-            this.createData({
-              customer: "Rashid",
-              phone_number: "+965 22000066",
-              booken_on: "11 Dec 2019",
-              price: "80",
-            }),
-            this.createData({
-              customer: "Rashid",
-              phone_number: "+965 22000999",
-              booken_on: "11 Dec 2019",
-              price: "380",
-            }),
-          ]}
+          // rowdata={[
+          //   this.createData({
+          //     customer: "Aamina",
+          //     phone_number: "+965 22000001",
+          //     booken_on: "11 Dec 2019",
+          //     price: "80",
+          //   }),
+          //   this.createData({
+          //     customer: "Mohammed",
+          //     phone_number: "+965 22000671",
+          //     booken_on: "11 Dec 2019",
+          //     price: "80",
+          //   }),
+          //   this.createData({
+          //     customer: "Abla",
+          //     phone_number: "+965 22000981",
+          //     booken_on: "11 Dec 2019",
+          //     price: "40",
+          //   }),
+          //   this.createData({
+          //     customer: "Zainab",
+          //     phone_number: "+965 22000541",
+          //     booken_on: "11 Dec 2019",
+          //     price: "40",
+          //   }),
+          //   this.createData({
+          //     customer: "Samrin",
+          //     phone_number: "+965 22230003",
+          //     booken_on: "11 Dec 2019",
+          //     price: "80",
+          //   }),
+          //   this.createData({
+          //     customer: "Rashid",
+          //     phone_number: "+965 22780009",
+          //     booken_on: "11 Dec 2019",
+          //     price: "80",
+          //   }),
+          //   this.createData({
+          //     customer: "Rashid",
+          //     phone_number: "+965 22000066",
+          //     booken_on: "11 Dec 2019",
+          //     price: "80",
+          //   }),
+          //   this.createData({
+          //     customer: "Rashid",
+          //     phone_number: "+965 22000999",
+          //     booken_on: "11 Dec 2019",
+          //     price: "380",
+          //   }),
+          // ]}
+          rowdata={this.props.totalorderData && this.props.totalorderData}
+
           tableicon_align={"cell_eye"}
-          modelopen={(e) => this.modelopen(e)}
+          modelopen={(e,id) => this.modelopen(e,id)}
           EditIcon="close"
           DeleteIcon="close"
           Workflow="close"
@@ -113,7 +129,13 @@ class Total_orders_table extends React.Component {
         xswidth={"xs"}
         >
         </Modalcomp> */}
-        <OrderView open={this.state.openview} onClose={this.closemodal} />
+        <OrderView
+         open={this.state.openview}
+         onClose={this.closemodal}
+        showData={this.state.showData} 
+        history={this.props.history} 
+
+         />
 
         <Modalcomp
           visible={this.state.editopen}

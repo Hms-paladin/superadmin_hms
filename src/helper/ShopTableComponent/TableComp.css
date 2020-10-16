@@ -90,6 +90,7 @@
 
 .VendorDetailsDiv .paper {
   width: "100%";
+  box-shadow: none !important;
   margin-bottom: 10px;
   background-color: "transparent";
 }

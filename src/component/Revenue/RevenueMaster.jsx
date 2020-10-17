@@ -188,6 +188,7 @@ class RevenueMaster extends Component {
                 fontSize: "14px",
                 display: "flex",
                 alignItems: "center",
+                
               }}
               // className="group_container"
             >
@@ -206,7 +207,7 @@ class RevenueMaster extends Component {
                 {current_date}
                 <FaChevronRight className="current_right" />
               </div> */}
-              <div>
+              <div style={{zIndex:'1201'}}>
                 <DateRangeSelect
                   dynalign={"dynalign"}
                   rangeDate={(item)=>this.dayReport(item)} 

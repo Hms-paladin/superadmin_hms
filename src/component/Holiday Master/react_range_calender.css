@@ -312,6 +312,7 @@
 .rdrDayToday .rdrDayNumber span:after {
     /* bottom: 9px; */
     background: #3d91ff !important;
+    bottom: 2px !important;
 }
 
 
@@ -327,7 +328,7 @@
 
 .rdrDayNumber{
     height: 31px;
-    top: 13px;
+    top: 5px;
     color: #82AF3F !important;
 }
 

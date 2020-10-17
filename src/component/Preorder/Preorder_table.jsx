@@ -25,10 +25,16 @@ import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import dateFormat from "dateformat";
 import Editorder from "./Editorder";
+import axios from "axios";
+import { apiurl } from "../../App";
 
 class Preorder_table extends React.Component {
   state = {
+    date: "rrr",
+
     openview: false,
+    tabledata: [],
+    preorderdata: [],
   };
 
   createData = (parameter) => {
@@ -50,7 +56,56 @@ class Preorder_table extends React.Component {
       this.setState({ editopen: true });
     }
   };
-
+  componentDidMount() {
+   
+    this.getTableData();
+    }
+    getTableData = (data) =>{
+      this.setState({spinner:true})
+      var self = this
+  
+      
+      axios({
+        method:"POST",
+        url:apiurl + 'getShDashboard',
+        data:{
+          "search_date":dateFormat(new Date(),"yyyy-mm-dd")
+          }
+            
+      })
+      .then((res)=>{
+       
+          var preorderdata=[];
+          
+          res.data.data[0].today_transaction.map((val,index)=>{
+            console.log(val,"valeded")
+            preorderdata.push({
+              customer:val.customer,
+              
+              cost:val.price,
+              id:val.order_id
+  
+              })
+    
+  
+    this.setState({
+      preorderdata:preorderdata,
+        tabledata:preorderdata,
+        props_loading: false,
+        spinner:false,
+       
+    },() => console.log("viewdatacheck",this.state.preorderdata))
+  
+  })
+             
+        })
+     
+    }
+    
+   
+  
+   
+  
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
   };
@@ -67,38 +122,7 @@ class Preorder_table extends React.Component {
 
             { id: "", label: "Action" },
           ]}
-          rowdata={[
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "12",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              stockout_date: "5 Dec 2019",
-              booked: "8",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              stockout_date: "5 Dec 2019",
-              booked: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "5",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "8",
-            }),
-          ]}
+          rowdata={this.state.tabledata && this.state.tabledata}
           tableicon_align={"cell_eye"}
           modelopen={(e) => this.modelopen(e)}
           Workflow="close"

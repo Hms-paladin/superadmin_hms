@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import "./DashboardTable.css";
 import dateFormat from "dateformat";
+import dateformat from "dateformat";
+
 import ProfileView from "./ProfileView";
 import axios from "axios";
 import { apiurl } from "../../App";
@@ -105,7 +107,7 @@ class DashboardTable extends React.Component {
     address:val.delivery_address,
     
     profile_image:val.profile_image,
-    bookeddate:val.booked_date,
+    bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
     cost:val.price,
     id:val.order_id
   })

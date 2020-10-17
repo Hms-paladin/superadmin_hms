@@ -92,7 +92,7 @@ class Total_orders extends Component {
               address:val.delivery_address,
               
               profile_image:val.profile_image,
-              bookeddate:val.booked_date,
+              bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
               cost:val.price,
               id:val.order_id
             })
@@ -154,7 +154,7 @@ class Total_orders extends Component {
     address:val.delivery_address,
     
     profile_image:val.profile_image,
-    bookeddate:val.booked_date,
+    bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
     cost:val.price,
     id:val.order_id
   })

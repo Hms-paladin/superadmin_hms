@@ -18,7 +18,7 @@ import "./Preorder_table.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Tablecomponent from "../../helper/TableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -66,24 +66,25 @@ class Preorder_table extends React.Component {
   
       
       axios({
-        method:"POST",
-        url:apiurl + 'getShDashboard',
+        method:"GET",
+        url:apiurl + 'getPreOrders',
         data:{
-          "search_date":dateFormat(new Date(),"yyyy-mm-dd")
           }
             
       })
       .then((res)=>{
        
           var preorderdata=[];
-          
-          res.data.data[0].today_transaction.map((val,index)=>{
+             console.log(res,"res")
+          res.data.data.map((val,index)=>{
             console.log(val,"valeded")
             preorderdata.push({
-              customer:val.customer,
+              product_name:val.sh_product_name,
               
-              cost:val.price,
-              id:val.order_id
+              expected_date:val.expected_date,
+              expected_quantity:val.expected_quantity,
+              booked:val.booked,
+              id:val.product_id
   
               })
     
@@ -117,7 +118,8 @@ class Preorder_table extends React.Component {
           heading={[
             { id: "", label: "S.No" },
             { id: "product_name", label: "Product Name" },
-            { id: "stockout_date", label: "Stock out Date" },
+            { id: "expected_date", label: "Expected Date" },
+            { id: "expected_quantity", label: "Expected Qty" },
             { id: "booked", label: "Booked" },
 
             { id: "", label: "Action" },
@@ -129,7 +131,7 @@ class Preorder_table extends React.Component {
           // EditIcon="close"
           DeleteIcon="close"
           VisibilityIcon="close"
-          add="close"
+          EditIcon="close"
         />
 
         {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

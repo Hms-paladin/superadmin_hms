@@ -1,10 +1,16 @@
 .dialog_main_main{
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 4px 7px #6666660D;
+    /* box-shadow: 0px 4px 7px #6666660D; */
     /* margin-top: 20px; */
-    padding: 20px;
+    padding: 10px;
+    position: absolute;
+    top: 5px;
+    right: 1.5%;
+}
+.pane_split{
+    border-left: 1px solid lightgrey;
 }
 .product_top_button{
     display: flex;
@@ -21,6 +27,26 @@ background-color: #C9C9C9;
 border-radius: 3px;
 margin-right: 15px;
 }
+.colorpalatte_wrap{
+    display: flex;
+    flex-direction: column;
+}
+.validation__error_custom{
+    font-size: 10px;
+    color:red;
+    margin-left: 12px;
+}
+.validation__error_desc{
+    font-size: 10px;
+    color:red;
+    margin-top: 12px;
+}
+.validation__error_color{
+    font-size: 10px;
+    color:red;
+    margin-left: 12px;
+    margin-top: 16px;
+}
  .product_upload_cancel .MuiButton-label{
    text-transform: none !important;
    font-size: 12px !important;
@@ -32,6 +58,12 @@ margin-right: 15px;
  .add_button .MuiButton-label{
     text-transform: none !important;
     font-size: 12px !important;
+ }
+ .add_button{
+    background-color: #2680EB!important;
+    color: white !important;
+    border-radius: 1px !important;
+    height: 32px !important;
  }
 .product_upload_submit_div{
     background: #2680EB;
@@ -80,7 +112,13 @@ margin-left: 15px;
     font-size: 14px;
 }
 
-
+.html__input--procodnam{
+    width: 95%;
+    height: 32px !important;
+    border: 1px #E0E0E0 solid !important;
+    font-size: 14px;
+    border-radius: 2px;
+}
 .product_section_3{
     width: 20%;
     white-space: nowrap;
@@ -125,8 +163,7 @@ margin-left: 15px;
 .product_section_5{
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    margin-top: 20px; 
+    align-items: center;
 }
 .product_section_5 .MuiButton-root{
     background-color: #2680EB!important;
@@ -140,7 +177,8 @@ margin-left: 15px;
     font-size: 14px !important;
     color: #666666 !important;
     font-weight: 600;
-    padding-bottom: 5px !important;
+    padding-bottom: 7px !important;
+    margin-top: 10px;
 }        
 .span_header_shop{
     display: flex;
@@ -150,9 +188,51 @@ margin-left: 15px;
     
 }
 .product_main_grid{
-    padding: 30px;
+    padding: 15px;
+    border-right: 1px solid lightgray;
+}
+.upload__container_advertise.shoppe{
+    width: 60%;
 }
 
+.checkbox__manproduct{
+    margin-top: -5px;
+}
+
+.checkbox__manproduct .labtxt{
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #666666 !important;
+}
+.cardproduct_display{
+    /* margin: 10px;
+    background-color: #82AF3F !important; */
+    border-radius: 1px !important;
+}
+.removeIcon{
+    position: relative;
+    left: 92%;
+    fill: red;
+    opacity: 0;
+    font-size: 21px;
+    bottom: -1.1rem;
+    /* position: absolute;
+    left: 74rem;
+    fill: red;
+    font-size: 21px;
+    bottom: 11.3rem;
+    cursor: pointer; */
+}
+
+.checkbox__manproduct .MuiCheckbox-root {
+    color: #CCCCCC;
+}
+
+.productupload_img{
+    display: flex;
+    padding: 20px;
+    width: 100%;
+}
 .product_section_grid .labeltxt{
     color: #666666 !important;
 }
@@ -160,13 +240,25 @@ margin-left: 15px;
      display: flex;
      justify-content: space-between;
      align-items: flex-start;
+     width: 100%;
  }
- .product_section_div .ant-select-selection--single{
+ /* .product_section_div .ant-select-selection--single{
      width: 100px !important;
- }
+ } */
 .product_sec_subdiv {
     margin-top: 10px; 
     
+}
+.product_image_upload{
+    font-size: 15px;
+    font-weight: 600;
+    color: #666666;
+}
+.prod_descrip{
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    color: #666666;
 }
  .product_sec_subdiv .brdrcls{
     height: 32px !important;
@@ -174,9 +266,9 @@ margin-left: 15px;
  }
  .product_sec_price{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 10px;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* margin-top: 10px; */
  }
  .product_sec_price .brdrcls{
     height: 32px !important;
@@ -184,7 +276,7 @@ margin-left: 15px;
     font-size: 14px;
  }
  .product_main_section{
-     padding: 30px;
+     padding: 15px;
  }
 
  @media only screen and (max-width: 768px) {
@@ -216,14 +308,13 @@ width: 300px !important;
          
  }
  .product_addlist{
-    border: 1px solid black !important;
-
+    border: 1px solid grey !important;
     display: flex;
  }
  .product_addlist_div{
     display: flex ;
     margin-right: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
   
  }
  .product_addlist_lab{
@@ -233,9 +324,10 @@ width: 300px !important;
     font-size: 12px;
  }
  .conditional_grid{
-     width: 100%;
-     display: flex;
-    
+     /* width: 100%;
+     display: flex; */
+     height: 250px;
+     overflow: scroll;
  }
  
  .productupload_dialog{
@@ -370,102 +462,3 @@ width: 300px !important;
  
  
  
- 
- 
- 
- 
- /* .doctor_mediauploads .media_upload{
-     color:#333;
-     font-size: 1.5rem;
-     font-family: 'Roboto';
- }
- .doctor_mediauploads .clinicButton-container{
-     width:100% !important;
-     display:flex !important;
-     justify-content: space-between !important;
-     align-items: center !important;
-     border: 1px solid #ccc !important;
-     font-family: 'Roboto' !important;
-     font-size: 1.25rem !important;
-     border-radius: 2px !important;
-     box-shadow: 0 0 1.5px 0px #ccc;
- }
- 
- .doctor_mediauploads .upload-field .ant-upload.ant-upload-select{
-     display:block !important;
- }
-.doctor_mediauploads  .doctorupload_container{
-     width:100%;
-
- }
- .doctor_mediauploads .upload-field{
-     width:100%;
- }
- 
-.doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
-    font-size: 1.5rem !important;
-    padding: 8px !important;
-    font-family: 'Roboto';
- }
-
-.doctor_mediauploads .uploadimage{
-       width:17px;
- }
-.doctor_mediauploads .clinicmedia_upload{
-     font-size: 1.5rem;
-     margin-bottom: 10px !important;
-     font-family: 'Roboto';
-     color:#333;
-     margin-top: 10px;
- }
- .doctor_mediauploads .doctor_Upload{
-    font-family: 'Roboto' !important;
-    font-size: 1.25rem !important;
-    background-color: rgb(201, 201, 201) !important;
-    color:#333 !important;
-    padding: 6px 16px !important;
-    margin-right: 20px !important;
- }
- .doctormediabutton-container{
-     display: flex;
-     align-items: center;
-     justify-content: flex-end;
-     width:100%;
-     margin-top: 20px;
- }
- .doctorcancel-form{
-     background-color: rgb(38, 128, 235) !important;
-     color:#fff !important;
-     font-family: 'Roboto' !important;
-     font-size: 1.25rem !important;
-     padding:6px 16px !important;   
- }
- .doctormedia_checkbox{
-     margin-top: 10px;
- }
- .doctor_active{
-     color:#333 !important;
-     font-family: 'Roboto' !important;
-     font-size: 1.5rem;
-     position: relative;
-     top: 10px;
- }
-.media_checkbox_container{
-    margin-top: 10px !important;
-}
-.media_checkbox_container .MuiIconButton-root{
-    padding: 15px 10px 0px 0px !important;
-}
-.info_icon{
-    color:#fbd879 !important;
-    margin-left: 5px;
-}
-.doctormedia_button .MuiButton-text {
-    padding: 8px 8px !important;
-}
-.doctor_mediauploads .labeltxt{
-  color:#333 !important;
-}
-.media_title_head{
-    margin-top: 10px;
-} */

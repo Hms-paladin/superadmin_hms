@@ -79,7 +79,7 @@ import CancelledOrdersMaster from '../component/Cancelorder/CancelledOrdersMaste
 import RevenueMaster from '../component/Revenue/RevenueMaster'
 import ManageCatagoryTable from '../component/Manage_Catagory/ManageCatagoryTable'
 import ManageSubCatagoryTable from '../component/ManageSubcatagory/ManageSubCatagoryTable'
-import Product_UploadMaster from "../component/Product_upload/Product_UploadMaster";
+import Product_UploadTable from "../component/Product_upload/Product_UploadTable";
 import TrackingMaster from "../component/DeliveryTracking/TrackingMaster";
 import MediaUploadsMaster from "../component/MediaUploads/MediaUploadsMaster";
 import Stocklist from "../component/Stock/Stocklist";
@@ -1204,7 +1204,7 @@ class Homepage extends React.Component {
                           />
 
                         <MenuItem onClick={() => this.routeChange("deliverytracking")} component={Link} to={`${this.props.match.path}/deliverytracking`} className={`${current_location.includes("/deliverytracking") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Product Upload" />
+                          <ListItemText primary="Tracking" />
                         </MenuItem>
                       </div>
                       </NavLink>
@@ -1332,7 +1332,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/revenue`} render={() => <RevenueMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/managecategory`} render={() => <ManageCatagoryTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/managesubcategory`} render={() => <ManageSubCatagoryTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

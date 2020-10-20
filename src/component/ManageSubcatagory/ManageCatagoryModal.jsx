@@ -65,6 +65,7 @@ export default class ManageCatagoryModal extends Component {
       imagedata: [],
       subCategory:"",
       subCatError:"",
+      CatError:"",
       CategoryList: null,
       CategoryId: null,
       addedPackInfo:[],
@@ -224,26 +225,30 @@ changeDynamic = (data, key) => {
   };
 
   validation = () => {
+    let CatError = "";
     let subCatError = "";
     let imageError = "";
   
-
+    if(this.state.CategoryId === null) {
+      
+      CatError = "Field Required"
+    }
     if(this.state.subCategory === "") {
       
       subCatError = "Field Required"
     }
-
-  
 
     if (this.state.imagedata.length === 0) {
       imageError = "Field Required";
     }
    
     if (
+      CatError    ||
       subCatError ||
       imageError 
     ) {
       this.setState({
+        CatError,
         subCatError ,
         imageError 
       });
@@ -439,6 +444,7 @@ changeDynamic = (data, key) => {
   render() {
     console.log("add_data", this.props)
 
+    console.log("valuechck",this.state.imagedata)
     return (
       <>
         <div
@@ -462,6 +468,7 @@ changeDynamic = (data, key) => {
                 value={this.state.CategoryId}
                 
               />
+              <div className="validation__error_desc">{this.state.CatError && this.state.CatError}</div>
 
 </div>
 
@@ -478,8 +485,9 @@ changeDynamic = (data, key) => {
                         value={this.state.subCategory}
                         onChange={(data,event) => this.handleChange(data,event, "subcategory")}
                       ></input>
+                      <div className="validation__error_desc">{this.state.subCatError && this.state.subCatError}</div>
+
                     </div>
-                    <div className="validation__error">{this.state.subCatError && this.state.subCatError}</div>
 
 
             </Grid>
@@ -537,7 +545,7 @@ changeDynamic = (data, key) => {
                       />
                     </div>
 
-                    <div className="validation__error">
+                    <div className="validation__error_desc">
                       {this.state.imageError && this.state.imageError}
                     </div>
               </div>

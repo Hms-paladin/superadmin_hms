@@ -227,7 +227,7 @@ export default class ManageSubCatagoryTable extends React.Component {
           </div>
         <Spin className="spinner_align" spinning={this.state.spinner}>
 
-           {tableData.length > 0 && (
+        {tableData.length > 0 && (
         <Tablecomponent
           heading={[
             { id: "", label: "S.No" },

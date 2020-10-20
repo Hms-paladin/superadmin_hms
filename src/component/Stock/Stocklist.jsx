@@ -69,10 +69,10 @@ class Stocklist extends Component {
                 {current_date}
                 <FaChevronRight className="current_right" />
               </div> */}
-              <DateRangeSelect
+              {/* <DateRangeSelect
                 dynalign={"dynalign"}
                 rangeDate={(item) => this.getRangeDate(item)}
-              />
+              /> */}
 
               <Search
                 placeholder=" search "

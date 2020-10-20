@@ -18,17 +18,23 @@ import "./Preorder_table.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Tablecomponent from "../../helper/TableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import dateFormat from "dateformat";
 import Editorder from "./Editorder";
+import axios from "axios";
+import { apiurl } from "../../App";
 
 class Preorder_table extends React.Component {
   state = {
+    date: "rrr",
+
     openview: false,
+    tabledata: [],
+    preorderdata: [],
   };
 
   createData = (parameter) => {
@@ -50,7 +56,57 @@ class Preorder_table extends React.Component {
       this.setState({ editopen: true });
     }
   };
-
+  componentDidMount() {
+   
+    this.getTableData();
+    }
+    getTableData = (data) =>{
+      this.setState({spinner:true})
+      var self = this
+  
+      
+      axios({
+        method:"GET",
+        url:apiurl + 'getPreOrders',
+        data:{
+          }
+            
+      })
+      .then((res)=>{
+       
+          var preorderdata=[];
+             console.log(res,"res")
+          res.data.data.map((val,index)=>{
+            console.log(val,"valeded")
+            preorderdata.push({
+              product_name:val.sh_product_name,
+              
+              expected_date:val.expected_date,
+              expected_quantity:val.expected_quantity,
+              booked:val.booked,
+              id:val.product_id
+  
+              })
+    
+  
+    this.setState({
+      preorderdata:preorderdata,
+        tabledata:preorderdata,
+        props_loading: false,
+        spinner:false,
+       
+    },() => console.log("viewdatacheck",this.state.preorderdata))
+  
+  })
+             
+        })
+     
+    }
+    
+   
+  
+   
+  
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
   };
@@ -62,50 +118,20 @@ class Preorder_table extends React.Component {
           heading={[
             { id: "", label: "S.No" },
             { id: "product_name", label: "Product Name" },
-            { id: "stockout_date", label: "Stock out Date" },
+            { id: "expected_date", label: "Expected Date" },
+            { id: "expected_quantity", label: "Expected Qty" },
             { id: "booked", label: "Booked" },
 
             { id: "", label: "Action" },
           ]}
-          rowdata={[
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "12",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              stockout_date: "5 Dec 2019",
-              booked: "8",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              stockout_date: "5 Dec 2019",
-              booked: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "5",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              stockout_date: "5 Dec 2019",
-              booked: "8",
-            }),
-          ]}
+          rowdata={this.state.tabledata && this.state.tabledata}
           tableicon_align={"cell_eye"}
           modelopen={(e) => this.modelopen(e)}
           Workflow="close"
           // EditIcon="close"
           DeleteIcon="close"
           VisibilityIcon="close"
-          add="close"
+          EditIcon="close"
         />
 
         {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}

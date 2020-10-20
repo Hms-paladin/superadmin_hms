@@ -274,21 +274,31 @@ export default class Editstock extends React.Component {
               </div>
             </div>
           </Grid>
-          <Grid md={6} sm={6}>
+          <Grid md={12} sm={12}>
             {/* <Grid md={3} sm={3}> */}
-            <div
+            <div className="stocklist_det"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                width: "80%",
+                width: "90%",
               }}
             >
+                          <Grid md={3} sm={3}>
+
               <Labelbox type="datepicker" labelname="Received Date" />
-              {/* </div>
             </Grid>
-            <Grid md={3} sm={3}>
-              <div> */}
+            <Grid md={1} sm={0}>
+              </Grid>
+            <Grid md={4} sm={6}>
+              <Labelbox type="text" labelname="Details" />
+              </Grid>
+              <Grid md={1} sm={0}>
+              </Grid>
+              <Grid md={3} sm={3}>
+
               <Labelbox type="text" labelname="Received Qty" />
+              </Grid>
+
             </div>
           </Grid>
           {/* </Grid> */}

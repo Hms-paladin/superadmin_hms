@@ -18,17 +18,23 @@ import "./Stocklist_table.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Tablecomponent from "../../helper/TableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import dateFormat from "dateformat";
 import Editstock from "./Editstock";
+import { apiurl } from "../../../src/App.js";
+import axios from 'axios';
+
+
+
 
 class Stocklist_table extends React.Component {
   state = {
     openview: false,
+    tabledata: [],
   };
 
   createData = (parameter) => {
@@ -54,59 +60,103 @@ class Stocklist_table extends React.Component {
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
   };
+  componentDidMount() {
+    // this.GetApiFunction();
+    this.getdata()
+  }
 
-  render() {
+  getdata = () => {
+    axios({
+      method: "GET",
+      url: apiurl + "getShStockList",
+     
+    })
+      .then((response) => {
+        console.log(response, "resres");
+        var tabledata = [];
+
+        response.data.data.map((val) => {
+          console.log(val, "res");
+          tabledata.push({
+            product_name: val.sh_product_name,
+            stocknumber: val.total_stock,
+           id:val.product_id
+          });
+
+          console.log(val,"seeking")
+          
+        });
+
+        this.setState({
+          tabledata: tabledata,
+         
+        });
+
+      })
+      .catch((error) => {
+        // alert(JSON.stringify(error))
+      });
+  };
+
+
+  render()
+  {
+
     return (
+
       <div>
         <Tablecomponent
+         
           heading={[
             { id: "", label: "S.No" },
             { id: "product_name", label: "Product Name" },
-            { id: "total_sale", label: "Total Sale" },
-            { id: "total_stock", label: "Total Stock" },
+
+
+            { id: "stocknumber", label: "Total Stock" },
+
 
             { id: "", label: "Action" },
           ]}
-          rowdata={[
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              total_sale: "5",
-              total_stock: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              total_sale: "8",
-              total_stock: "12",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              total_sale: "7",
-              total_stock: "8",
-            }),
-            this.createData({
-              product_name: "Woolen Boot",
-              total_sale: "5",
-              total_stock: "20",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              total_sale: "3",
-              total_stock: "5",
-            }),
-            this.createData({
-              product_name: "Rolling Giraffe Cycle",
-              total_sale: "2",
-              total_stock: "8",
-            }),
-          ]}
+          
+         rowdata={this.state.tabledata && this.state.tabledata }
+         
+
+          // rowdata={[
+          //   this.createData({
+          //     stocknumber: "20",
+          //   })
+          // }]
+          //   this.createData({
+          //     product_name: "Rolling Giraffe Cycle",
+          //     total_stock: "12",
+          //   }),
+          //   this.createData({
+          //     product_name: "Woolen Boot",
+          //     total_stock: "8",
+          //   }),
+          //   this.createData({
+          //     product_name: "Woolen Boot",
+          //     total_stock: "20",
+          //   }),
+          //   this.createData({
+          //     product_name: "Rolling Giraffe Cycle",
+          //     total_stock: "5",
+          //   }),
+          //   this.createData({
+          //     product_name: "Rolling Giraffe Cycle",
+          //     total_stock: "8",
+          //   }),
+          // ]}
           tableicon_align={"cell_eye"}
           modelopen={(e) => this.modelopen(e)}
           Workflow="close"
-          // EditIcon="close"
+          EditIcon="close"
           DeleteIcon="close"
           VisibilityIcon="close"
+          // add="close"
+          
         />
-
+        
         {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
       xswidth={"xs"}
       >
@@ -116,12 +166,13 @@ class Stocklist_table extends React.Component {
           visible={this.state.openview}
           title={"ADD DETAILS"}
           closemodal={(e) => this.closemodal(e)}
+          
         >
           <StockAdd />
         </Modalcomp>
         <Modalcomp
           visible={this.state.editopen}
-          title={"EDIT DETAILS"}
+          title={"ADD DETAILS"}
           closemodal={(e) => this.closemodal(e)}
         >
           <Editstock />

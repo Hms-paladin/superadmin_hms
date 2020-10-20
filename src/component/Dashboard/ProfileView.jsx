@@ -18,13 +18,18 @@ import { IoIosGlobe } from "react-icons/io";
 import EditIcon from "@material-ui/icons/Edit";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import user from '../../images/user.png'
+
 
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 const styles = {};
 export default class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { cancel: null };
+    this.state = { 
+      cancel: null,
+
+     };
   }
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
@@ -38,7 +43,7 @@ export default class ProfileView extends React.Component {
   render() {
     const styles = "";
     const { classes, onClose, cancel, selectedValue, ...other } = this.props;
-
+console.log(this.props,"1234")
     return (
       <div className="Shopping_dasshboard_details">
         <Dialog
@@ -49,35 +54,41 @@ export default class ProfileView extends React.Component {
           className="profile_modal"
         >
           <div className="customer_Shopping">
-            <img className="customer_shopping_avatar" src={Profile} />
-          </div>
+          {this.props.showData.profile_image && this.props.showData.profile_image !== " " && this.props.showData.profile_image !== null && (
+                <img src={this.props.showData.profile_image && this.props.showData.profile_image} className="customer_shopping_avatar" alt="patient" />
+             )}
+
+            {(this.props.showData.profile_image === " " || this.props.showData.profile_image == null) && (
+              <img src={user} alt="patient_pic" className="customer_shopping_avatar" />
+            )}      
+                </div>
           <CloseIcon className="close_ordertotal" onClick={this.handleClose} />
           <div className="Shopping_profile_view">
             <div className="order_heading">
-              <h2 className="customer_name">AAMINA</h2>
+              <h2 className="customer_name">{this.props.showData.customer}</h2>
               <h4 className="customer_order">Order Details</h4>
             </div>
 
-            <div className="shopping_details">
+            <div className="total_orderview">
               <div className="shopping_details_one">
                 <div className="shopping_details_content">
                   <label className="product_shop">Product</label>
-                  <span className="product_name">Rollin Giraffe Cycle</span>
+                  <span className="product_name">{this.props.showData.product}</span>
                 </div>
                 <div className="shopping_details_content">
                   <label className="product_shop">Delivery Address</label>
                   <span className="product_name">
-                    Hamadan, As sulamaniyah, Riyadh 12242, Saudi Arabia
+                  {this.props.showData.address}
                   </span>
                 </div>
 
                 <div className="shopping_details_content">
                   <label className="product_shop">Booked Date</label>
-                  <span className="product_name">19 Sep 2019</span>
+                  <span className="product_name">{this.props.showData.bookeddate}</span>
                 </div>
                 <div className="shopping_details_content">
                   <label className="product_shop">Total Cost</label>
-                  <span className="product_name">80 KWD</span>
+                  <span className="product_name">{this.props.showData.cost}</span>
                 </div>
               </div>
             </div>

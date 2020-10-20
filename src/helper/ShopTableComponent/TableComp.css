@@ -90,6 +90,7 @@
 
 .VendorDetailsDiv .paper {
   width: "100%";
+  box-shadow: none !important;
   margin-bottom: 10px;
   background-color: "transparent";
 }
@@ -276,15 +277,16 @@
   font-size: 14px;
   font-weight: 600;
   color: #333;
+  padding:0px 15px
 }
 
 .modeOfPaymentText {
-  border-bottom: 1px solid black;
-  width: 58%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  position: relative;
-  left: 122px;
-  margin-left: 18%;
+  border-bottom: 2px solid #333;
+    width: 17%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* left: 122px; */
+    margin-left: 17%;
 }

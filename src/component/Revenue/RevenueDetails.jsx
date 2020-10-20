@@ -1,12 +1,15 @@
 import React from "react";
-import Tablecomponent from "../../helper/TableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
+import axios from "axios";
+import { apiurl } from "../../App";
+import dateformat from 'dateformat';
 
 import "./RevenueDetails.css";
 
 export default class RevenueDetails extends React.Component {
   state = {
-    openview: false,
+        openview:false
   };
 
   createData = (parameter) => {
@@ -28,12 +31,14 @@ export default class RevenueDetails extends React.Component {
       this.setState({ editopen: true });
     }
   };
-
+    
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
   };
 
   render() {
+    console.log(this.props,"propscheck")
+
     return (
       <div>
         <Tablecomponent
@@ -43,55 +48,22 @@ export default class RevenueDetails extends React.Component {
 
             { id: "customer", label: "Customer" },
 
-            { id: "Card", label: "Card" },
+            { id: "card", label: "Card" },
             { id: "wallet", label: "Wallet" },
             { id: "totalcharge", label: "Total Charge (KWD)" },
           ]}
-          rowdata={[
-            this.createData({
-              bookeddate: "19 sep 2019",
-              customer: "AAMINA",
+          rowdata={this.props.revenuedata && this.props.revenuedata}
 
-              card: "1600",
-              wallet: "200",
-              totalcharge: "1800",
-            }),
-            this.createData({
-              bookeddate: "19 sep 2019",
-
-              customer: "MOHAMED",
-
-              card: "200",
-              wallet: "100",
-              totalcharge: "300",
-            }),
-            this.createData({
-              bookeddate: "19 sep 2019",
-
-              customer: "MOHAMED",
-
-              card: "200",
-              wallet: "100",
-              totalcharge: "300",
-            }),
-            this.createData({
-              bookeddate: "19 sep 2019",
-
-              customer: "MOHAMED",
-
-              card: "200",
-              wallet: "100",
-              totalcharge: "300",
-            }),
-          ]}
           tableicon_align={"cell_eye"}
           modelopen={(e) => this.modelopen(e)}
           VisibilityIcon="close"
           EditIcon="close"
           DeleteIcon="close"
-          grandtotal="total"
+          // grandtotal="total"
           Workflow="close"
           add="close"
+          modeprop={true}
+
         />
 
         <Modalcomp

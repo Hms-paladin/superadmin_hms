@@ -59,6 +59,18 @@
 .Mui-selected td {
   color: #000 !important;
 }
+.noFoundIconCenter {
+  text-align: center !important;
+}
+.noFoundIconCenter img {
+  width: 100px;
+  margin-top: 40px;
+  margin-right: 100px;
+}
+
+.noFoundIconCenter div {
+  margin-right: 100px;
+}
 
 .VendorDetailsDiv .addemployeetxticon {
   padding-left: 10px;

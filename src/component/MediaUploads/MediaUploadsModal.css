@@ -1,8 +1,8 @@
- .lab_mediauploads .media_upload{
+ .doctor_mediauploads .media_upload{
      color:#333;
      font-size: 1.5rem;
  }
- .lab_mediauploads .clinicButton-container{
+ .doctor_mediauploads .clinicButton-container{
      width:100% !important;
      display:flex !important;
      justify-content: space-between !important;
@@ -10,67 +10,71 @@
      border: 1px solid #ccc !important;
      font-size: 1.25rem !important;
      border-radius: 2px !important;
-     box-shadow: 0 0 1.5px 0px #ccc;
- }
- .media_title_head .formdiv{
-     padding: 0px !important;
+     height: 35px;
+    
  }
  
- .lab_mediauploads .upload-field .ant-upload.ant-upload-select{
+ .doctor_mediauploads .upload-field .ant-upload.ant-upload-select{
      display:block !important;
  }
-.lab_mediauploads  .labupload_container{
+.doctor_mediauploads  .doctorupload_container{
      width:100%;
 
  }
- .lab_mediauploads .upload-field{
+ .doctor_mediauploads .upload-field{
      width:100%;
  }
  
-.lab_mediauploads  .lab_mediauploads .formdiv .brdrcls {
+.doctor_mediauploads  .doctor_mediauploads .formdiv .brdrcls {
     font-size: 1.5rem !important;
     padding: 8px !important;
  }
 
-.lab_mediauploads .uploadimage{
-       width:17px;
+.doctor_mediauploads .uploadimage{
+       width:15px;
+       position: relative;
+       bottom: 2px;
  }
-.lab_mediauploads .clinicmedia_upload{
-     font-size: 1.5rem;
-     margin-bottom: 5px !important;
-     color:#4a4a4a;
+.doctor_mediauploads .clinicmedia_upload{
+     font-size: 14px;
+    /* padding-bottom: 10px; */
+    font-weight: 600;
+     color:#333;
      margin-top: 10px;
-     font-weight: 800;
  }
- .lab_mediauploads .lab_Upload{
+ .doctor_mediauploads .doctor_Upload{
     font-size: 1.25rem !important;
     background-color: rgb(201, 201, 201) !important;
     color:#333 !important;
     padding: 6px 16px !important;
     margin-right: 20px !important;
  }
- .labmediabutton-container{
+ .doctormediabutton-container{
      display: flex;
      align-items: center;
      justify-content: flex-end;
      width:100%;
      margin-top: 20px;
  }
- .labcancel-form{
+ .doctorcancel-form{
      background-color: rgb(38, 128, 235) !important;
      color:#fff !important;
      font-size: 1.25rem !important;
      padding:6px 16px !important;   
  }
- .labmedia_checkbox{
+ .doctormedia_checkbox{
      margin-top: 10px;
  }
- .lab_active{
+ .doctor_active{
      color:#333 !important;
      font-size: 1.5rem;
      position: relative;
      top: 10px;
  }
+ .media_checkbox_container .Mui-checked{
+     color:#82AE3F !important;
+ }
+ 
 .media_checkbox_container{
     margin-top: 10px !important;
 }
@@ -80,94 +84,21 @@
 .info_icon{
     color:#fbd879 !important;
     margin-left: 5px;
+    font-size: 12px;
 }
-.labmedia_button .MuiButton-text {
+.doctormedia_button .MuiButton-text {
     padding: 8px 8px !important;
 }
-.lab_mediauploads .labeltxt{
+/* .doctor_mediauploads .labeltxt{
   color:#333 !important;
-}
+} */
 .media_title_head{
     margin-top: 10px;
 }
-.labmedia_checkbox .formdiv{
-    padding: 0px !important;
-}
-.lab_mediauploads .formdiv .brdrcls{
-    font-size: 1.5rem !important;
-}
-.lab_mediauploads {
-    padding: 15px;
-}
+.doctor_mediauploads  .formdiv .brdrcls{
+   padding:10px !important;
 
-.html__file {
-    width: 100%;
-    padding: 7px;
-    border: 1px solid #ccc;
-    font-size: 14px;
 }
-
-#getFile {
-    display:none;
-}
-
-.uploadconatiner {
-    display: flex;
-    position: relative;
-}
-
-.uploadpic {
-    position: absolute;
-    right: 33px;
-    width: 40px;
-    padding: 9px 12px;
-    cursor: pointer;
-}
-
-
-.upload__container {
-    
-   
-    position: relative;
-    width: 100%;
-   
-    border: 1px solid #ccc;
-    padding:5px;
-    border-radius:2px !important;
-}
-
-.upload__container--err {
-    position: relative;
-    width: 100%;
-   
-    padding:3px;
-    border-radius:2px !important;
-    border: 1px solid #ccc;
-}
-
-.html__input-box {
-    border: 0;
-    width: 93%;
-    font-size: 1.5rem;
-}
-
-.html__input-box:focus {
-    outline:none;
-}
-
-.upload__container--img {
-    position: absolute;
-    right: 3px;
-    top: -7px;
-    padding: 11px;
-    cursor: pointer;
-}
-
-.upload__pic {
-    width:20px;
-    
-}
-
-.fileupload {
-    display:none !important;
+.doctor_mediauploads{
+    padding: 20px;
 }

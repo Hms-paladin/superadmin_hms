@@ -10,47 +10,161 @@ import { FiInfo } from "react-icons/fi";
 import load from "../../images/load.png";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import UploadManageCatagory from "./UploadManageCatagory";
-
-import plus from "../../images/plus.png";
-import Info from "../../images/info.svg";
-import Pink from "../../images/pink1.png";
-import Green from "../../images/pink2.png";
-import Orange from "../../images/pink3.png";
-import Violet from "../../images/pink4.png";
+import ValidationLibrary from "../../helper/validationfunction";
+import { apiurl } from "../../App";
+import axios from 'axios';
 import plus_square from "../../images/plus_square.svg";
 import ReactSVG from "react-svg";
 
-import { InputLabel } from "@material-ui/core";
+import dateformat from 'dateformat';
 
 export default class ManageCatagoryModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, pink: "", pinklist: [] };
+    this.state = {
+      editId:'', 
+      open: false, 
+      pink: "", 
+      pinklist: [],
+      checked:false,
+      manageCategory: {
+        'sh_category': {
+          'value': '',
+          validation: [{ 'name': 'required' }],
+          error: null,
+          errmsg: null
+        }
+        
+      
+      } };
   }
-  handleChange = (event) => {
-    this.setState({
-      pinklist: event.target.value,
-    });
-  };
-  submitText = () => {
-    this.setState({
-      pink: [...this.state.pinklist, this.state.pink],
-    });
-  };
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-  handleClose = () => {
-    this.setState({ open: false });
-  };
 
-  handleClickopen = () => {
-    this.setState({ open: true });
-  };
-  handleClickclose = () => {
-    this.setState({ open: false });
-  };
+  
+  detectChange = () => {
+    this.setState({
+      checked:!this.state.checked
+    })
+  }
+
+  checkValidation = () => {
+  
+    var manageCategory = this.state.manageCategory;
+    var serviceKeys = Object.keys(manageCategory);
+    for (var i in serviceKeys) {
+      var errorcheck = ValidationLibrary.checkValidation(manageCategory[serviceKeys[i]].value, manageCategory[serviceKeys[i]].validation);
+      console.log(errorcheck);
+      manageCategory[serviceKeys[i]].error = !errorcheck.state;
+      manageCategory[serviceKeys[i]].errmsg = errorcheck.msg;
+    }
+    var filtererr = serviceKeys.filter((obj) => manageCategory[obj].error == true);
+    if (filtererr.length > 0) {
+     
+      this.setState({ error: true})
+    } else {
+      this.setState({ error: false })
+      this.onSubmitData()
+    }
+    this.setState({ manageCategory })
+  }
+
+  changeDynamic = (data, key) => {
+    var manageCategory = this.state.manageCategory;
+    var errorcheck = ValidationLibrary.checkValidation(data, manageCategory[key].validation);
+    manageCategory[key].value = data;
+    manageCategory[key].error = !errorcheck.state;
+    manageCategory[key].errmsg = errorcheck.msg;
+    this.setState({ manageCategory });
+  }
+
+
+  clear = () => {
+    this.state.manageCategory.sh_category.value = "";
+   
+    this.state.checked = false;
+
+    this.setState({})
+  }
+
+  onSubmitData = () => {
+    // alert("submit_data")
+   
+    var manageCategoryApiData = {
+      sh_active: this.state.checked ? 1 : 0,
+      sh_category: this.state.manageCategory.sh_category.value,
+      created_by: 1,
+      created_on: dateformat(new Date(), "yyyy-mm-dd hh:MM:ss"),
+      modified_by: 1,
+      modified_on: dateformat(new Date(), "yyyy-mm-dd hh:MM:ss")
+
+    }
+  
+  
+    
+    if(this.props.edit){
+      this.manageCategoryUpdateApi(manageCategoryApiData)   
+    }
+    else{
+      this.manageCategoryInsertApi(manageCategoryApiData)
+      // Insert Api Call
+    }
+    this.props.closemodal()
+  }
+
+  // insert api
+  manageCategoryInsertApi = (manageCategoryApiData) => {
+    
+    console.log("submit", manageCategoryApiData)
+    axios({ 
+      method: 'POST',
+      url: apiurl + 'insert_mas_sh_category',
+      data: {
+        ...manageCategoryApiData
+      }    
+    })
+    .then((response) => {
+      this.props.generateAlert("Category Created Successfully")
+      this.props.getTableData()
+    })
+    
+    .catch((error) => {
+      // alert(JSON.stringify(error))
+    })
+  }
+
+//  edit api
+manageCategoryUpdateApi = (manageCategoryApiData) => {
+  axios({
+    method:'PUT',
+    url: apiurl+'edit_mas_sh_category',
+    data:{
+      id:this.props.editData.id,
+      ...manageCategoryApiData
+    }
+  })
+  .then((response)=>{
+    console.log("response_checkingg",response)
+    this.props.generateAlert("Category Updated Successfully")
+    this.props.getTableData()
+  }).catch((error)=>{
+    // alert(JSON.stringify(error))
+  })
+}
+
+componentWillMount(){
+  // Assigning Edit Data
+  const { editData,editOpenModal } = this.props;
+  console.log("asdfjdshfjsdhfjksdhfjds",editData)
+  if (editOpenModal === true) {
+    this.state.editId= editData.id
+    this.state.manageCategory.sh_category.value = editData.sh_category
+    this.state.checked = editData.sh_active == 1 ? true : false
+  }
+  this.setState({})
+}
+
+
   render() {
+
     return (
       <>
         <div
@@ -59,97 +173,55 @@ export default class ManageCatagoryModal extends Component {
           }`}
         >
           <Grid container spacing={3}>
-            <Grid item xs={6} md={6} className="shop_modal_grid">
-              <div className="media_title_head">
-                <Labelbox
-                  type="text"
-                  value="Kids"
-                  name="Kids"
-                  labelname="Catagory"
-                />
+            <Grid item xs={6} md={9} className="shop_modal_grid">
+              <div className="category_title_head">
+              <Labelbox
+                type="text"
+                labelname="Category"
+                valuelabel={'sh_category'}
+                changeData={(data) => this.changeDynamic(data, 'sh_category')}
+                value={this.state.manageCategory.sh_category.value}
+                error={this.state.manageCategory.sh_category.error}
+                errmsg={this.state.manageCategory.sh_category.errmsg}
+                required
+              />
               </div>
             </Grid>
 
-            <Grid item xs={6} md={6} className="shop_modal_grid-1">
-              <div className="media_title_head" style={{ display: "flex" }}>
-                {/* <Labelbox type="text"  value ="Toys"
-                            name="Toys"labelname="Sub Catagory"/> */}
+            <Grid item xs={6} md={3} className="shop_modal_checkbox">
+              <div className="media_title_head" style={{ display: "flex", marginTop: "4rem" }}>
+             
                 <div style={{ fontSize: "16px", marginTop: "5px" }}>Active</div>
-                <Checkbox />
+                <Checkbox checked={this.state.checked} onChange={this.detectChange}></Checkbox>
               </div>
             </Grid>
           </Grid>
 
           <Grid container>
-            {/* <Grid item xs={6} md={6} className="shop_modal_grid">
-              <div className="media_title_head">
-                <div className="product_img_div">
-                  <label>
-                    <h5 className="product_image">Upload Product Image</h5>
-                  </label>
-
-                  <span>
-                    <img
-                      src={Info}
-                      className="info_icon"
-                      onClick={this.handleOpen}
-                    />
-                  </span>
-                </div>
-
-                <div className="upload_btn_plus">
-                  <Upload className="browse_files">
-                    <div className="span_section_subdiv">
-                      <Button className="button_browse">Browse</Button>
-                    </div>
-                  </Upload>
-                 
-                  <div>
-                    <ReactSVG src={plus_square} className="plus_square" />
-                  </div>
-                </div>
-              </div>
-            </Grid> */}
+         
 
             <Grid
               item
               xs={6}
               md={6}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px", marginLeft: "12px" }}
               // className="final_button_grid"
             >
-              <div className="shop_mediabutton-container">
-                <Button
-                  className="shop-cancel-form"
-                  onClick={() => this.props.closemodal(false)}
-                >
-                  Cancel
-                </Button>
-                <Button className="shop-submit-Upload">Submit</Button>
-              </div>
+               <div className="medibutt_container">
+              <Button variant="contained" className="shop-cancel-form" onClick={this.clear}>Cancel</Button>
+              <Button className="shop-submit-Upload" onClick={() => this.checkValidation()}>
+              {!this.props.edit ?  "Submit" : "Update"}
+              </Button>
+            </div>
             </Grid>
           </Grid>
 
-          {/* <div className="browser_divider"></div> */}
-
+{/* 
           <Grid container className="img_footer_content">
             <div className="foot">
-              {/* <div className="purple"><img src={Pink}  />
-                        <img src={Close} className="close" /></div> */}
-
-              {/* <div  className="green">
-                        <img src={Green} />
-                        {this.state.pinklist && this.state.pinklist.map((pink) =>
-                        ( 
-                        <img src={Close} className="close">{pink}</img>
-                        ))}
-                        </div> */}
-
-              {/* <div  className="orange"><img src={Orange} /><img src={Close} className="close"/></div>
-                   
-                        <div  className="violet"><img src={Violet} /><img src={Close} className="close" /></div> */}
+         
             </div>
-          </Grid>
+          </Grid> */}
         </div>
         <Modalcomp
           clrchange="text_color"

@@ -1,46 +1,3 @@
-// import React, { Component } from "react";
-// import { Steps } from 'antd';
-// import { render } from 'react-dom';
-// import './Status.css'
-// const { Step } = Steps;
-// export default class Stepper extends React.Component{
-//   constructor(props){
-//       super(props)
-//       this.state={name:""}
-//   }  
-
-// render(){
-
-// return(
-//     <div>
-//     <div className="status_bar_container">    
-//  <div className="satus_container"><label>Order Approved</label><label>Packed</label><label>Out for Delivery</label><label>Expected Delivery</label><label>Delivered</label></div>
-//  <div>
-//   <Steps current={2}>
-    
-//     <Step />
-//     <Step />
-//     <Step />
-//     <Step />
-//     <Step />
-//   </Steps>
-//   </div>
-//   <div className="timesatus_container">
-//       <div><label>08 Dec 2020</label><p>10.00AM</p></div>
-//       <div><label>08 Dec 2020</label><p>10.00AM</p></div>
-//       <div><label>08 Dec 2020</label><p>10.00AM</p></div>
-//       <div><label>08 Dec 2020</label><p>10.00AM</p></div>
-//       <div><label>08 Dec 2020</label><p>10.00AM</p></div>
-//  </div>
-//   </div>
-//   </div>
-// )
-// }
-// }
-
-
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -56,7 +13,11 @@ import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CheckIcon from '@material-ui/icons/Check';
-import './Status.css'
+import './Status.css';
+
+import dateFormat from 'dateformat';
+
+
 const QontoConnector = withStyles({
   alternativeLabel: {
     top: 10,
@@ -66,13 +27,13 @@ const QontoConnector = withStyles({
   active: {
     '& $line': {
       borderColor: '#784af4',
-      backgroundColor:'red',
+      backgroundColor: 'red',
     },
   },
   completed: {
     '& $line': {
       borderColor: '#784af4',
-      backgroundColor:'red',
+      backgroundColor: 'red',
     },
   },
   line: {
@@ -161,20 +122,24 @@ const useColorlibStepIconStyles = makeStyles({
     alignItems: 'center',
   },
   active: {
-    backgroundImage: 'linear-gradient(180deg, #84FCAC 0%, #4FB571 100%)' ,
+    backgroundImage: 'linear-gradient(180deg, #84FCAC 0%, #4FB571 100%)',
   },
   completed: {
-    backgroundImage: 'linear-gradient(180deg, #84FCAC 0%, #4FB571 100%)' ,
+    backgroundImage: 'linear-gradient(180deg, #84FCAC 0%, #4FB571 100%)',
   },
 });
 
 function ColorlibStepIcon(props) {
+  console.log(props,"ColorlibStepIcon")
   const classes = useColorlibStepIconStyles();
   const { active, completed } = props;
 
   const icons = {
-    1: <CheckIcon  className="comp_sta_icon"/>,
-    2: <CheckIcon className="comp_sta_icon"/>,
+    1:  completed && <CheckIcon className="comp_sta_icon" />,
+    2:  completed && <CheckIcon className="comp_sta_icon" />,
+    3: completed && <CheckIcon className="comp_sta_icon" />,
+    4: completed && <CheckIcon className="comp_sta_icon" />,
+    // 5: props[7].sh_date_time !== null && <CheckIcon className="comp_sta_icon" />,
   };
 
   return (
@@ -208,18 +173,115 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function getSteps() {
-  // return [
-  // <div><label>11 Dec 2010</label><div>09.30AM</div></div>, 
-  // <div><label>11 Dec 2010</label><div>09.40AM</div></div>, 
-  // <div><label>12 Dec 2010</label><div>10.00AM</div></div>,
-  // <div><label>13 Dec 2010</label><div>12.00AM</div></div>,
-  // <div><label>14 Dec 2010</label><div>13.00AM</div></div>  ];
-  return[{dw_val:<div><label>11 Dec 2010</label><div>09.30AM</div></div>,tp_val:<div><label>Order Approved</label></div>},
-    {dw_val:<div><label>11 Dec 2010</label><div>09.30AM</div></div>,tp_val:<div><label>Packed</label></div>},
-    {dw_val:<div><label>11 Dec 2010</label><div>09.30AM</div></div>,tp_val:<div><label>Out for Delivery</label></div>},
-    {dw_val:<div><label>11 Dec 2010</label><div>09.30AM</div></div>,tp_val:<div><label>Expected Delivery</label></div>},
-    {dw_val:<div><label>11 Dec 2010</label><div>09.30AM</div></div>,tp_val:<div><label>Delivered</label></div>}]
+var activeStepIndex;
+
+function getSteps(deliveryTrackingStatus) {
+  // var self=this;
+  // alert(JSON.stringify(deliveryTrackingStatus))
+  var deliveryTrackingStatusData = []
+  if (deliveryTrackingStatus != undefined) {
+    deliveryTrackingStatusData = deliveryTrackingStatus.filter(val => val.status_id != 5)
+    console.log(deliveryTrackingStatusData, "deliveryTrackingStatusData")
+    activeStepIndex=deliveryTrackingStatusData.findIndex((val,index)=>val.sh_date_time === null) !== -1 ? deliveryTrackingStatusData.findIndex((val,index)=>val.sh_date_time === null) : deliveryTrackingStatusData.findIndex((val,index)=>val.status_id === 6)
+    console.log(activeStepIndex,"activeStepIndex")
+    if(activeStepIndex !== -1){
+      activeStepIndex=activeStepIndex;
+    }else{
+      activeStepIndex=activeStepIndex-1;
+    }
+    console.log(activeStepIndex,"activeStepIndex")
+    console.log(deliveryTrackingStatusData,"checkcheck")
+    console.log(dateFormat(deliveryTrackingStatusData[2].sh_date_time, "hh:MM TT"),deliveryTrackingStatusData[2].sh_date_time,"sdfasd")
+    console.log(deliveryTrackingStatusData.findIndex((val,index)=>{
+      return(
+        val.sh_order_id === null
+      )
+    }),"activeStepsdfsd")
+  }
+
+ 
+  if (deliveryTrackingStatusData.length > 0) {
+
+    return [
+      {
+        dw_val:
+          <div>
+            <label>
+              {deliveryTrackingStatusData[0].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[0].sh_date_time, "dd mmm yyyy") : ""}
+            </label>
+            <div>
+              {deliveryTrackingStatusData[0].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[0].sh_date_time, "hh:MM TT") : ""}
+            </div>
+          </div>,
+        tp_val:
+          <div>
+            <label>{deliveryTrackingStatusData[0].sh_status}</label>
+          </div>
+      },
+      {
+        dw_val:
+          <div>
+            <label>
+              {deliveryTrackingStatusData[1].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[1].sh_date_time, "dd mmm yyyy") : ""}
+            </label>
+            <div>
+              {deliveryTrackingStatusData[1].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[1].sh_date_time, "hh:MM TT") : ""}
+            </div>
+          </div>,
+        tp_val:
+          <div>
+            <label>{deliveryTrackingStatusData[1].sh_status}</label>
+          </div>
+      },
+      {
+        dw_val:
+          <div>
+            <label>
+              {deliveryTrackingStatusData[2].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[2].sh_date_time, "dd-mmm-yyyy") : ""}
+            </label>
+            <div>
+              {deliveryTrackingStatusData[2].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[2].sh_date_time, "hh:MM TT") : ""}
+            </div>
+          </div>,
+        tp_val:
+          <div>
+            <label>{deliveryTrackingStatusData[2].sh_status}</label>
+          </div>
+      },
+      {
+        dw_val:
+          <div>
+            <label>
+              {deliveryTrackingStatusData[3].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[3].sh_date_time, "dd-mmm-yyyy") : ""}
+            </label>
+            <div>
+              {deliveryTrackingStatusData[3].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[3].sh_date_time, "hh:MM TT") : ""}
+            </div>
+          </div>,
+        tp_val:
+          <div>
+            <label>{deliveryTrackingStatusData[3].sh_status}</label>
+          </div>
+      },
+      {
+        dw_val:
+          <div>
+            <label>
+              {deliveryTrackingStatusData[4].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[4].sh_date_time, "dd-mmm-yyyy") : ""}
+            </label>
+            <div>
+              {deliveryTrackingStatusData[4].sh_date_time != null ? dateFormat(deliveryTrackingStatusData[4].sh_date_time, "hh:MM TT") : ""}
+            </div>
+          </div>,
+        tp_val:
+          <div>
+            <label>{deliveryTrackingStatusData[4].sh_status}</label>
+          </div>
+      },
+    ]
+  } else {
+    return []
+  }
 }
 
 
@@ -236,10 +298,12 @@ function getStepContent(step) {
   }
 }
 
-export default function CustomizedSteppers() {
+export default function CustomizedSteppers(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
-  const steps = getSteps();
+  // if(props.deliveryTrackingStatus != undefined){
+  // }
+  const steps = getSteps(props.deliveryTrackingStatus);
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -255,27 +319,25 @@ export default function CustomizedSteppers() {
 
   return (
     <div className="stepper_container">
-    <div className={classes.root}>
-      <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
+      <div className={classes.root}>
+        <Stepper alternativeLabel activeStep={activeStepIndex} connector={<ColorlibConnector />}>
 
-        {steps.map(label => (
-          <Step key={label.dw_val}>
+          {steps.map(label => (
+            <Step key={label.dw_val}>
 
-            {/* {topsteps.map(toplabel=>(<p className="top_step" key={toplabel}>{toplabel}</p>))} */}
+              <p className="top_step" key={label.tp_val}>{label.tp_val}</p>
 
-            <p className="top_step" key={label.tp_val}>{label.tp_val}</p>
-            
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label.dw_val}</StepLabel>
+              <StepLabel StepIconComponent={ColorlibStepIcon} StepIconProps={props.deliveryTrackingStatus}>{label.dw_val}</StepLabel>
 
-          </Step>
+            </Step>
 
-        ))}
+          ))}
 
-      
-      </Stepper>
-     
 
-    </div>
+        </Stepper>
+
+
+      </div>
     </div>
   );
 }

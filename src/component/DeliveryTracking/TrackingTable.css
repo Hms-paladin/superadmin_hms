@@ -15,6 +15,20 @@
   margin-bottom: 8px;
   color:#fff;
 }
+.shopp_dash{
+  display: flex;
+    justify-content: end;
+    align-items: baseline;
+}
+.trackingStatus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.trackingStatus .ant-select-selection{
+  width: 165px;
+}
+            /* ant-select-selection--single */
 .nurse_dash_sidehead{
  
   font-size: 1.5rem !important;

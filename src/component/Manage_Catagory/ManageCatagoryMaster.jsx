@@ -29,6 +29,8 @@ export default class ManageCatagoryMaster extends Component {
     this.setState({ open: false });
   };
 
+
+
   render() {
     const { Search } = Input;
     console.log(dateFormat(new Date(), "dd mmm yyyy"));
@@ -45,11 +47,12 @@ export default class ManageCatagoryMaster extends Component {
                 <ChevronRightIcon className="manage_icon"/></div> */}
 
               <div className="manage_content_search">
-                <Search
-                  className="manage_search"
-                  placeholder=" Search "
+              <Search
+                  placeholder="Search"
                   onSearch={(value) => console.log(value)}
-                  style={{ width: 150 }}
+                  style={{ width: 150}}
+                  className="mr-2 ml-2 "
+                  onChange={(e) => this.setState({ searchData: e.target.value })}
                 />
               </div>
 
@@ -62,7 +65,9 @@ export default class ManageCatagoryMaster extends Component {
             </div>
           </div>
 
-          <ManageCatagoryTable />
+          <ManageCatagoryTable             
+          searchData={this.state.searchData} 
+ />
           <div className="Upload-modal-container">
             <Modalcomp
               visible={this.state.open}

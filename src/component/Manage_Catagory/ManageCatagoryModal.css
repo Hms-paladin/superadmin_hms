@@ -49,7 +49,6 @@
     color: white !important;
     background-color: rgb(38, 128, 235) !important;
     padding: 6px 16px !important;
-  
     margin-left: 15px;
     text-transform: none !important;
  }
@@ -83,8 +82,11 @@
      padding:6px 16px !important;   
      border-radius: 1px !important;
      text-transform: none !important;
+     box-shadow: none !important;
  }
- 
+ .category_title_head{
+     width: 100%;
+ }
  .doctor_active{
      color:#333 !important;
      font-family: 'Roboto' !important;
@@ -108,21 +110,18 @@
 .doctor_mediauploads .labeltxt{
   color:#4A4A4A !important;
 }
-.media_title_head .brdrcls{
+.category_title_head .brdrcls{
 
     height: 35px !important;
     font-size: 14px !important;
  
 }
-/* .media_title_head{
+.media_title_head{
     width: 80%;
-} */
+}
 .media_title_head .formdiv .labeltxt{
     width: 80% !important;
     color: #4A4A4A !important;
-}
-.media_title_head .formdiv .labeltxt{
-    padding-bottom: 0px !important;
 }
 .media_title_head_sub .brdrcls{
 

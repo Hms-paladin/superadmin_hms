@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid'
 import Labelbox from '../../helper/labelbox/labelbox'
 import Button from '@material-ui/core/Button';
 import './ViewMedia.css'
-// import uploadimage from '../../Images/upload-button.png'
-// import Profile from '../../Images/11.jpg'
+import uploadimage from '../../images/upload-button.png'
+import Profile from '../../images/1.jpg'
 import Green from '../../images/green.svg'
 export default class UploadMedia extends Component {
     constructor(props)
@@ -15,9 +15,9 @@ export default class UploadMedia extends Component {
     render() {
         return (
             <div>
-               <div className="green_upload_container"><img src={Green} alt="instruction1" className="green_uploadint"/><span className="upload_ins">Please Upload Image in JPG or PNG format</span></div>
-               <div className="green_upload_container"><img src={Green} alt="instruction2" className="green_uploadint"/><span  className="upload_ins">For Image,Image Size Should be 1080px by 566px</span></div>
-               <div className="green_upload_container"><img src={Green} alt="instruction3" className="green_uploadint"/><span  className="upload_ins">For Video, Video Size Should be less than 10 MB</span></div>
+               <div className="green_upload_container"><img src={Green} className="green_uploadint"/><span className="upload_ins">Please Upload Image in JPG or PNG format</span></div>
+               <div className="green_upload_container"><img src={Green} className="green_uploadint"/><span  className="upload_ins">For Image,Image Size Should be 1080px by 566px</span></div>
+               <div className="green_upload_container"><img src={Green} className="green_uploadint"/><span  className="upload_ins">For Video, Video Size Should be less than 10 MB</span></div>
             </div>
         )
     }

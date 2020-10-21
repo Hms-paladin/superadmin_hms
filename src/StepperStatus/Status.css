@@ -8,7 +8,7 @@
      background: transparent linear-gradient(180deg, #84FCAC 0%, #4FB571 100%) !important;
 } */
 .stepper_container .MuiStepConnector-alternativeLabel{
-    top:64px !important;
+    top:59px !important;
 }
 .stepper_container .top_step{
     text-align: center;

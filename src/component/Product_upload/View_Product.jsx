@@ -1,48 +1,91 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
-import Yellow1 from '../../images/yellow1.png'
-import Yellow2 from '../../images/yellow2.png'
-import Yellow3 from '../../images/yellow3.png'
-import Yellow4 from '../../images/yellow4.png'
-import Yellow5 from '../../images/yellow5.png'
-import Pink1 from '../../images/pink1.png'
-import Pink2 from '../../images/pink2.png'
-import Pink3 from '../../images/pink3.png'
-import Pink4 from '../../images/pink4.png'
-import Pink5 from '../../images/pink5.png'
+import reactCSS from 'reactcss';
+import { SketchPicker } from 'react-color';
 import './View_Product.css'
+import Axios from "axios";
+import { apiurl } from "../../App";
+import { Spin, notification, Input } from "antd";
+import Product_UploadModal from "./Product_UploadModal"
 
 
 export default class ViewProduct extends Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+        spinner: false,
+        productInfo:[],
+        productImages:[],
+        productColor:[],
+        productView:this.props.viewData,
+        rgbaColor:"",
+        colors:[]
+        };
+    
+      }
+
+componentWillMount (){
+    this.getproductInfo()
+    
+      
+}
+
+    getproductInfo = () => {
+        this.setState({ spinner: true });
+        var self=this;
+               Axios({
+          method:'POST',
+          url:apiurl + 'getShProductInfoById',
+          data:{
+              "product_id":this.state.productView.product_id
+            }
+        }).then((response) => {
+           console.log("proddetails",response)
+             this.setState({
+                productInfo:response.data.data,
+                productImages:response.data.data[0].product_image,
+                productColor:response.data.data[0].colors_pallete_id,
+             })
+        })
+        self.setState({
+            spinner:false,
+
+        })
+       
+        }
+       
+      
+
+
     render() {
-        return (
-        
-            <Grid container spacing={5}>
+            return (
+            <Spin className="spinner_align" spinning={this.state.spinner}>
+             
+            <Grid container spacing={2}>
+           {this.state.productImages&&this.state.productImages.length>0 && this.state.productImages.map((productImages) => {
+                return(  
                <Grid item xs={12} md={7} className="img_grid"> 
                 <div className="product_img">
                        <div className="yellow">
-                           <img src={Yellow1}  className="yellow1"/>
-                           <img src={Yellow2} className="yellow2" />
-                          <img src={Yellow3} className="yellow3" />
-                           <img src={Yellow4} className="yellow4" />
-                           <img src={Yellow5}className="yellow5"  />
-                       </div>
-  
-                      <div className="pink">
-                           <img src={Pink1} className="pink1" />
-                           <img src={Pink2} className="pink2" />
-                           <img src={Pink3} className="pink3" />
-                           <img src={Pink4} className="pink4" />
-                           <img src={Pink5} className="pink5" />
+                           <img src={productImages.sh_filename}  className="imgsizing"/>
+                        
                        </div>
                 </div> 
              </Grid>
+             )})}
 
+              {this.state.productInfo&&this.state.productInfo.length>0 && this.state.productInfo.map((productInfo) => {
+                  var desc={ __html:productInfo.sh_product_description}
+                return(
+                   
                 <Grid item xs={12} md={5}  className="content_grid" > 
-
+               
                    <Grid container className="grid_item_one" >
-
+                 
+       
                        <Grid item xs={6} md={6} >
                            <div className="product_content">
                                <h5 className="product_title">Catagory</h5></div>
@@ -54,68 +97,71 @@ export default class ViewProduct extends Component {
                                <h5 className="product_title">Product</h5></div>
                            
                            <div className="product_content">
-                               <h5 className="product_title">Price</h5></div>
+                               <h5 className="product_title">Status</h5></div>
                           
                            <div className="product_content">
-                               <h5 className="product_title">Stock</h5></div>
+                               <h5 className="product_title">MRP</h5></div>
+
+                            <div className="product_content">
+                               <h5 className="product_title">PRICE</h5></div>
                           
                           <div className="product_content">
                                <h5 className="product_title">Colors</h5></div>
                        </Grid>
                        
                      
-                      
+           
                        <Grid item item xs={6} md={6}>
                        <div className="product_content">
-                               <h5 className="Product_para">Kids</h5></div>
+                               <h5 className="Product_para">{productInfo.sh_category}</h5></div>
                            
                            <div className="product_content">
-                               <h5 className="Product_para">Toys</h5></div>
+                               <h5 className="Product_para">{productInfo.sh_subcategory}</h5></div>
                            
                            <div className="product_content">
-                               <h5 className="Product_para">Rolline Giraffe Cycle</h5></div>
-                           
-                           <div className="product_content">
-                               <h5 className="Product_para">80 KWD</h5></div>
-                          
-                           <div className="product_content">
-                               <h5 className="Product_para">12</h5></div>
-                          
-                          <div className="colorFlex">
-                               <div className="square_pink"></div>
-                               <div className="square_yellow"></div></div>
-                       </Grid>
-                   
-                     
-                  
-                 
-                   { /* <div className="Content product_content_base"> */}
+                               <h5 className="Product_para">{productInfo.sh_product_name}</h5></div>
 
-               
+                            <div className="product_content">
+                               <h5 className="Product_para">{productInfo.sh_is_active == 1? "Active" :"Inactive"}</h5></div>
+
+                            <div className="product_content">
+                               <h5 className="Product_para">{productInfo.sh_mrp}</h5></div>
+                           
+                           <div className="product_content">
+                               <h5 className="Product_para">{productInfo.sh_price}</h5></div>
+                          
+                      <div style={{display: "flex"}}>
+                        {this.state.productColor&&this.state.productColor.length>0 && this.state.productColor.map((productColor) => {
+                        console.log(productColor,"productColor")
+                        return(
+                            <div className="colorFlex">
+                                <div style={{backgroundColor:`${JSON.parse(productColor)}`,height:"20px", width:"20px"}}/>
+                             
+                            </div>
+                        )})}</div>
+                       </Grid>
                    
                    <Grid item> 
                     
                     <div><h4 className="product_description">Product Description</h4>
                        <p className="Product_para">
                            <ul className="description">
-                               <li>Good quality stylish tricycle
-                                   with looks of a sports bike Pedal drive action.</li>
-                               <li>LED  lights and music buttons for nursery rhymes
-                                   to keep your little entertained for hours</li>
-                               <li>Rugged tread wheels for easy maneuvering wide
-                                   wheel base provides stability,
-                                   comfortable and curvy seat with strong space for toys</li>
+                               <li dangerouslySetInnerHTML={desc} />
+                           
                            </ul>
                        </p>
                    </div>
                </Grid>
-                 
+              
+                   
               
                </Grid>
+            
            </Grid>
-                    
+                   )})}    
         </Grid>    
-           
+      
+        </Spin>
        )
            
   }

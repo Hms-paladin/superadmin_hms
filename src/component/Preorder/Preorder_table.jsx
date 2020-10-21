@@ -36,8 +36,9 @@ class Preorder_table extends React.Component {
     tabledata: [],
     preorderdata: [],
     edit:false,
-    editData:"",
-    editopen:false
+    insertOpen: false,
+    editopen:false,
+    editData:""
   };
 
   createData = (parameter) => {
@@ -56,12 +57,33 @@ class Preorder_table extends React.Component {
     alert(id)
     if (data === "view") {
       this.setState({ editopen: true });
-    } else if (data === "edit") {
+    } else if (data === "add") {
       this.setState({ editopen: true });
+      this.setState({
+        edit: true,
+        editData:this.state.preorderdata.find((val) => val.id === id),
+      });
+      
     }
+    console.log(this.state.editData, "dataaa_idd");
   };
 
   
+  insertModalOpen = () => {
+    this.setState({
+      insertOpen: true,
+      edit: false,
+    });
+  };
+
+  closemodal = () => {
+    this.setState({
+      insertOpen: false,
+      editopen: false,
+     
+    });
+  };
+
 
   componentDidMount() {
    
@@ -80,7 +102,7 @@ class Preorder_table extends React.Component {
             
       })
       .then((res)=>{
-       
+       var tabledata=[]
           var preorderdata=[];
              console.log(res,"resres")
           res.data.data.map((val,index)=>{
@@ -93,7 +115,7 @@ class Preorder_table extends React.Component {
               id:val.product_id
   
               })
-    
+    tabledata.push(val)
   
     this.setState({
       preorderdata:preorderdata,
@@ -137,18 +159,23 @@ class Preorder_table extends React.Component {
           EditIcon="close"
         />
 
-        {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-      xswidth={"xs"}
-      >
-      </Modalcomp> */}
-        {/* <StockView open={this.state.openview} onClose={this.closemodal} /> */}
+    
        
         <Modalcomp
-          visible={this.state.editopen}
+             visible={
+              this.state.insertOpen
+                ? this.state.insertOpen
+                : this.state.editopen
+            }
+          editData={this.state.editData}
           title={"ADD EXPECTED STOCK"}
           closemodal={(e) => this.closemodal(e)}
         >
-          <Editorder />
+          <Editorder  
+           closemodal={() => this.closemodal()}
+           getTableData={this.getTableData}
+           edit={this.state.edit}
+          editData={this.state.editData}/>
         </Modalcomp>
       </div>
     );

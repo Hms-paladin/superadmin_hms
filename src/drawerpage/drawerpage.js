@@ -1129,7 +1129,7 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
                       </NavLink>
-                      <NavLink to={`${this.props.match.path}/cancelorders`} className="d-flex">
+                      {/* <NavLink to={`${this.props.match.path}/cancelorders`} className="d-flex">
                   <div className={`${current_location.includes("/cancelorders") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
                             checked={current_location.includes("/cancelorders")}
@@ -1141,7 +1141,7 @@ class Homepage extends React.Component {
                           <ListItemText primary="Cancelled Orders" />
                         </MenuItem>
                       </div>
-                      </NavLink>
+                      </NavLink> */}
                       
                       <NavLink to={`${this.props.match.path}/revenue`} className="d-flex">
                   <div className={`${current_location.includes("/revenue") &&"submodulealignactive"} submodulealign`}>

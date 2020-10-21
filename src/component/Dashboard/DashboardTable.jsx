@@ -27,7 +27,7 @@ class DashboardTable extends React.Component {
 
     manage:'',
     total:'',
-    cancellation:'',
+    // cancellation:'',
     total_revenue:''
   };
 
@@ -78,7 +78,7 @@ class DashboardTable extends React.Component {
       
           total:CardData.total_orders,
         manage:CardData.product_count,
-        cancellation:CardData.cancel_count,
+        // cancellation:CardData.cancel_count,
         totalrevenue:CardData.total_revenue,
      
     
@@ -164,7 +164,7 @@ class DashboardTable extends React.Component {
               <p className="shopping_dash_numeric_value">{this.state.manage}</p>
             </div>
           </Card>
-          <Card
+          {/* <Card
             className="shopping_button3 shopping_button_common_styles"
             component={NavLink}
             to="/Home/cancelorders"
@@ -176,7 +176,7 @@ class DashboardTable extends React.Component {
             <div className="shopping_dash_numeric_wrap">
               <p className="shopping_dash_numeric_value">{this.state.cancellation}</p>
             </div>
-          </Card>
+          </Card> */}
           <Card
             className="shopping_button2 shopping_button_common_styles"
             component={NavLink}

@@ -51,10 +51,10 @@ export default class Editstock extends React.Component {
     this.props.onClose(this.props.selectedValue);
   };
   open = () => {
-    this.setState({ view: true });
+    this.setState({ edit: true });
   };
   onclose = () => {
-    this.setState({ view: false });
+    this.setState({ edit: false });
   };
 
   render() {

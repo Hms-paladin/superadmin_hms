@@ -499,18 +499,31 @@ loadproductInfo = () => {
   }
 
   editCardContent =(details)=>{
-  
-  
-    this.setState({
-     cardEdit:true,
-      colorList:details.sh_color,
-      filename : details.sh_filename,
-      imagedata : details.sh_filename,
-      imageProdId:details.sh_product_id,
-      imageId:details.image_id,
-      background: JSON.parse(details.sh_color_palette),
-    })
-    console.log(details,"vaaadaa")
+    console.log(details,"detailsvanthuru")
+    alert("sss")
+ 
+    // this.setState({
+    //   cardEdit:true,
+    //   colorList:details.sh_color,
+    //   filename : details.sh_filename,
+    //   imagedata : details.sh_filename,
+    //   imageProdId:details.sh_product_id,
+    //   imageId:details.image_id,
+    //   background: JSON.parse(details.sh_color_palette),
+    // })
+
+    this.state.cardEdit=true
+    this.state.colorList=details.sh_color
+    this.state.filename=details.sh_filename
+    this.state.imagedata=details.sh_filename
+    this.state.imageProdId=details.sh_product_id
+    this.state.imageId=details.image_id
+    this.state.background=details.sh_color_palette
+
+
+    this.setState({})
+   
+    console.log(this.state,"vaaadaa")
   }
 
 editingCard =()=>{
@@ -561,11 +574,7 @@ console.log(details,"detailcheckkk")
   }
 
   deleteCard = (details) => {
-    // this.setState({
-    //   imageId:details.image_id,
-    //   productId:details.sh_product_id,
-    //   colorId:details.sh_product_colors_id
-    // })
+  
     this.state.imageId=details.image_id
     this.state.productId=details.sh_product_id
     this.state.colorId=details.sh_product_colors_id
@@ -585,6 +594,10 @@ console.log(details,"detailcheckkk")
     })
       .then((response) => {
         console.log("deleteres", response);
+        if(response.data.status== "1"){
+          this.props.generateAlert("Color Based Product Deleted Successfully")
+          this.loadproductInfo()
+        }
        
         
       })

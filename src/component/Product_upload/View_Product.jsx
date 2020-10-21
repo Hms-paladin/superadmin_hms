@@ -61,8 +61,6 @@ componentWillMount (){
 
 
     render() {
-         console.log("rgbacheck",this.state.productColor)
-        //  console.log((JSON.parse(this.state.productColor)),"colorchecking")
             return (
             <Spin className="spinner_align" spinning={this.state.spinner}>
              
@@ -80,6 +78,7 @@ componentWillMount (){
              )})}
 
               {this.state.productInfo&&this.state.productInfo.length>0 && this.state.productInfo.map((productInfo) => {
+                  var desc={ __html:productInfo.sh_product_description}
                 return(
                    
                 <Grid item xs={12} md={5}  className="content_grid" > 
@@ -142,24 +141,13 @@ componentWillMount (){
                         )})}</div>
                        </Grid>
                    
-                     
-                  
-                 
-                  
-
-               
-                   
                    <Grid item> 
                     
                     <div><h4 className="product_description">Product Description</h4>
                        <p className="Product_para">
                            <ul className="description">
-                               <li>{productInfo.sh_product_description}</li>
-                               {/* <li>LED  lights and music buttons for nursery rhymes
-                                   to keep your little entertained for hours</li>
-                               <li>Rugged tread wheels for easy maneuvering wide
-                                   wheel base provides stability,
-                                   comfortable and curvy seat with strong space for toys</li> */}
+                               <li dangerouslySetInnerHTML={desc} />
+                           
                            </ul>
                        </p>
                    </div>

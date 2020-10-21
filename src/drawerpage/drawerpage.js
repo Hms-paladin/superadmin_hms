@@ -80,7 +80,7 @@ import RevenueMaster from '../component/Revenue/RevenueMaster'
 import ManageCatagoryTable from '../component/Manage_Catagory/ManageCatagoryTable'
 import ManageSubCatagoryTable from '../component/ManageSubcatagory/ManageSubCatagoryTable'
 import Product_UploadTable from "../component/Product_upload/Product_UploadTable";
-import TrackingMaster from "../component/DeliveryTracking/TrackingMaster";
+import TrackingTable from "../component/DeliveryTracking/TrackingTable";
 import MediaUploadsMaster from "../component/MediaUploads/MediaUploadsMaster";
 import Stocklist from "../component/Stock/Stocklist";
 import Preorderlist from "../component/Preorder/Preorderlist";
@@ -1333,7 +1333,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/managecategory`} render={() => <ManageCatagoryTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/managesubcategory`} render={() => <ManageSubCatagoryTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

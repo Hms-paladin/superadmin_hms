@@ -131,7 +131,7 @@ export default class Product_Upload extends React.Component {
   }
 
   getTableData = () => {
-    this.setState({ spinner: true });
+    this.setState({ spinner: true,props_loading: true });
     var tableData = [];
     var tableDatafull = [];
     var self = this;
@@ -157,6 +157,7 @@ export default class Product_Upload extends React.Component {
         });
 
         tableDatafull.push(val);
+        
       });
 
       self.setState({

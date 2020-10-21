@@ -15,6 +15,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import NotfoundIcon from "../../images/NotFound.svg"
+import Workflow from "../../images/workflow.svg";
 
 import { Icon, message, Popconfirm } from "antd";
 import { Spin } from 'antd';
@@ -401,6 +402,13 @@ export default class Tablecomponent extends Component {
 
                         {this.props.actionclose === "close" ? null :
                           <TableCell className={`${this.props.tableicon_align}`}>
+
+                          {this.props.Workflow === "close" ? null : (
+                            <img
+                              src={Workflow}
+                              onClick={() => this.props.modelopen("workflow",row.id)}
+                            />
+                          )}
 
                             {this.props.VisibilityIcon === "close" ? null :
                               <VisibilityIcon className="tableeye_icon" onClick={() => this.props.specialProp ? this.props.modelopen("view", row.id, row.appointment_type.key, row.appointment_date) : this.props.dashprop ? this.props.modelopen("view", row.id, row.appointment_type.key) : this.props.modelopen("view", row.id)} />}

@@ -35,6 +35,9 @@ class Preorder_table extends React.Component {
     openview: false,
     tabledata: [],
     preorderdata: [],
+    edit:false,
+    editData:"",
+    editopen:false
   };
 
   createData = (parameter) => {
@@ -49,13 +52,23 @@ class Preorder_table extends React.Component {
     return returnobj;
   };
 
-  modelopen = (data) => {
+  modelopen = (data,id) => {
+    alert(id)
     if (data === "view") {
       this.setState({ openview: true });
-    } else if (data === "edit") {
-      this.setState({ editopen: true });
-    }
+
+    } if (data === "edit") {
+        this.setState({ editopen: true });
+        this.setState({
+          edit: true,
+          editData:this.state.preorderdata.find((val) => val.product_id === id),
+        });
+        console.log(this.state.editData, "dataaa_idd");
+      }
   };
+
+  
+
   componentDidMount() {
    
     this.getTableData();
@@ -75,12 +88,11 @@ class Preorder_table extends React.Component {
       .then((res)=>{
        
           var preorderdata=[];
-             console.log(res,"res")
+             console.log(res,"resres")
           res.data.data.map((val,index)=>{
             console.log(val,"valeded")
             preorderdata.push({
-              product_name:val.sh_product_name,
-              
+              product_name:val.sh_product_name,             
               expected_date:val.expected_date,
               expected_quantity:val.expected_quantity,
               booked:val.booked,
@@ -103,9 +115,6 @@ class Preorder_table extends React.Component {
      
     }
     
-   
-  
-   
   
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
@@ -126,7 +135,7 @@ class Preorder_table extends React.Component {
           ]}
           rowdata={this.state.tabledata && this.state.tabledata}
           tableicon_align={"cell_eye"}
-          modelopen={(e) => this.modelopen(e)}
+          modelopen={(e,id) => this.modelopen(e,id)}
           Workflow="close"
           // EditIcon="close"
           DeleteIcon="close"

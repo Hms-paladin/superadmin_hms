@@ -54,7 +54,6 @@ class Preorder_table extends React.Component {
   };
 
   modelopen = (data,id) => {
-    alert(id)
     if (data === "view") {
       this.setState({ editopen: true });
     } else if (data === "add") {

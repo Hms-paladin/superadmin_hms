@@ -35,6 +35,10 @@ class Preorder_table extends React.Component {
     openview: false,
     tabledata: [],
     preorderdata: [],
+    edit:false,
+    insertOpen: false,
+    editopen:false,
+    editData:""
   };
 
   createData = (parameter) => {
@@ -49,13 +53,38 @@ class Preorder_table extends React.Component {
     return returnobj;
   };
 
-  modelopen = (data) => {
+  modelopen = (data,id) => {
+    alert(id)
     if (data === "view") {
-      this.setState({ openview: true });
-    } else if (data === "edit") {
       this.setState({ editopen: true });
+    } else if (data === "add") {
+      this.setState({ editopen: true });
+      this.setState({
+        edit: true,
+        editData:this.state.preorderdata.find((val) => val.id === id),
+      });
+      
     }
+    console.log(this.state.editData, "dataaa_idd");
   };
+
+  
+  insertModalOpen = () => {
+    this.setState({
+      insertOpen: true,
+      edit: false,
+    });
+  };
+
+  closemodal = () => {
+    this.setState({
+      insertOpen: false,
+      editopen: false,
+     
+    });
+  };
+
+
   componentDidMount() {
    
     this.getTableData();
@@ -73,21 +102,20 @@ class Preorder_table extends React.Component {
             
       })
       .then((res)=>{
-       
+       var tabledata=[]
           var preorderdata=[];
-             console.log(res,"res")
+             console.log(res,"resres")
           res.data.data.map((val,index)=>{
             console.log(val,"valeded")
             preorderdata.push({
-              product_name:val.sh_product_name,
-              
+              product_name:val.sh_product_name,             
               expected_date:val.expected_date,
               expected_quantity:val.expected_quantity,
               booked:val.booked,
               id:val.product_id
   
               })
-    
+    tabledata.push(val)
   
     this.setState({
       preorderdata:preorderdata,
@@ -103,9 +131,6 @@ class Preorder_table extends React.Component {
      
     }
     
-   
-  
-   
   
   closemodal = () => {
     this.setState({ openview: false, editopen: false });
@@ -126,7 +151,7 @@ class Preorder_table extends React.Component {
           ]}
           rowdata={this.state.tabledata && this.state.tabledata}
           tableicon_align={"cell_eye"}
-          modelopen={(e) => this.modelopen(e)}
+          modelopen={(e,id) => this.modelopen(e,id)}
           Workflow="close"
           // EditIcon="close"
           DeleteIcon="close"
@@ -134,18 +159,23 @@ class Preorder_table extends React.Component {
           EditIcon="close"
         />
 
-        {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-      xswidth={"xs"}
-      >
-      </Modalcomp> */}
-        {/* <StockView open={this.state.openview} onClose={this.closemodal} /> */}
+    
        
         <Modalcomp
-          visible={this.state.editopen}
+             visible={
+              this.state.insertOpen
+                ? this.state.insertOpen
+                : this.state.editopen
+            }
+          editData={this.state.editData}
           title={"ADD EXPECTED STOCK"}
           closemodal={(e) => this.closemodal(e)}
         >
-          <Editorder />
+          <Editorder  
+           closemodal={() => this.closemodal()}
+           getTableData={this.getTableData}
+           edit={this.state.edit}
+          editData={this.state.editData}/>
         </Modalcomp>
       </div>
     );

@@ -541,8 +541,8 @@ alert("dai")
     formdata.set("sh_filename", this.state.imagedata);
 
     !this.state.imageChanged && formdata.append('sh_filename', [])
-
     const isValid=this.validation()
+    
 
     if(this.state.cardEdit===true && isValid){
       this.sendCardEdit(formdata)
@@ -551,6 +551,7 @@ alert("dai")
   }
 
   sendCardEdit = (details) =>{
+   
 console.log(details,"detailcheckkk")
     alert("editShProductImage")
     // console.log(details,"editShProductImage")
@@ -564,13 +565,12 @@ console.log(details,"detailcheckkk")
       if(response.data.status == "1") {
         this.props.getTableData()
         this.props.generateAlert("Product Color & Image Updated")
-        this.loadproductInfo()
       }
       else if(response.data.status == "0") {
           this.props.generateAlert("Product Color & Image Already Exists")
         }
       
-  })
+  },()=>this.loadproductInfo())
   }
 
   deleteCard = (details) => {
@@ -770,7 +770,7 @@ console.log(details,"detailcheckkk")
                 </div>  
                 
                 </div>
-                <div style={{padding: "10px"}}>
+                <div style={{padding: "10px",fontSize:"13px"}}>
                   <div className="prod_descrip">Product Description</div>
                 <CKEditor 
                 className="description_text"

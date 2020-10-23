@@ -9,6 +9,7 @@ import dateformat from 'dateformat';
 import "./DateRange.css"
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import zIndex from "@material-ui/core/styles/zIndex";
 
 
 export default class DateRangeSelect extends React.Component {
@@ -74,7 +75,7 @@ export default class DateRangeSelect extends React.Component {
     render() {
         console.log(this.state.item, "rangedate")
         return (
-            <div style={{width:'450px'}}>
+            <div style={{width:'450px', zIndex:"1"}}>
                 <div className="rangePicker_Master">
                     <div className="rangePicker_Label">
                         Select Range:

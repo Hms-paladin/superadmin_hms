@@ -82,7 +82,7 @@ import ManageSubCatagoryTable from '../component/ManageSubcatagory/ManageSubCata
 import Product_UploadTable from "../component/Product_upload/Product_UploadTable";
 import TrackingTable from "../component/DeliveryTracking/TrackingTable";
 import MediaUploadsMaster from "../component/MediaUploads/MediaUploadsMaster";
-import Stocklist from "../component/Stock/Stocklist";
+import Stocklist_table from "../component/Stock/Stocklist_table";
 import Preorderlist from "../component/Preorder/Preorderlist";
 import ProfileComp from "../component/LabProfile/ProfileComp";
 import Notification_Category from '../component/Notification/Notification'
@@ -1335,7 +1335,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist_table uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/category`} render={() => <Notification_Category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

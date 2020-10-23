@@ -20,6 +20,7 @@ import {Select,Spin} from 'antd';
 import { message } from "antd";
 import { Card } from "@material-ui/core";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { isValid } from "date-fns";
 
 
 function getBase64(img, callback) {
@@ -149,6 +150,7 @@ export default class ManageCatagoryModal extends Component {
   handleChange = (event,data) => {
     this.setState({
       subCategory: event.target.value,
+      subCatError:false
     });
   };
   submitText = () => {
@@ -198,7 +200,8 @@ changeDynamic = (data, key) => {
   console.log("Data", data);
   console.log("key", key);
   if(key == "id") {
-    this.setState({CategoryId:data},()=>this.getAddedPackInfo());
+    this.setState({CategoryId:data,CatError:false},()=>this.getAddedPackInfo())
+    
   }
 
   this.setState({ [key]: data });
@@ -316,7 +319,6 @@ changeDynamic = (data, key) => {
    
 
     this.setState({
-     
       CategoryId:details.sh_category_id,
       subCategory : details.sh_subcategory,
       filename : details.sh_upload_filename,
@@ -339,14 +341,16 @@ changeDynamic = (data, key) => {
     !this.state.imageChanged && formdata.append('imageArray', [])
     console.log("dsfjksdhfjhdsersfjsdkjfhsd",formdata)
    
-    const isValid = this.validation()
+   
 
-    if(this.state.cardEdit== true && isValid){
+    if(this.state.cardEdit=== true){
       this.sendEditDetails(formdata)
     }
   }
 
   sendDetails =(details) =>{
+    const isValid = this.validation()
+    if(isValid){
     Axios({
       method:"POST",
       url: apiurl+'insertShSubCategory',
@@ -369,7 +373,7 @@ changeDynamic = (data, key) => {
       }
     }).catch((err) => {
       // 
-    })
+    })}
   }
 
   sendEditDetails = (details) =>{

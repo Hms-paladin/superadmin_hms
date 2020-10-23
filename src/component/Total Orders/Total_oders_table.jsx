@@ -115,7 +115,7 @@ class Total_orders_table extends React.Component {
           //     price: "380",
           //   }),
           // ]}
-          rowdata={this.props.totalorderData && this.props.totalorderData}
+          rowdata={this.props.searchData }
 
           tableicon_align={"cell_eye"}
           modelopen={(e,id) => this.modelopen(e,id)}

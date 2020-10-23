@@ -20,7 +20,7 @@ export default class ManageSubCatagoryTable extends React.Component {
     tableData: [],
     tableDatafull :[],
     totalData:[],
-    searchData:"",
+    search: null,
     insertOpen: false,
     deleteopen: false,
     open:true,
@@ -54,10 +54,11 @@ export default class ManageSubCatagoryTable extends React.Component {
 
 
   modelopen = (data, id) => {
+    alert(id)
     console.log(id, "edit_data");
 
     
-    console.log(this.state.totalData, "edit_id");
+    console.log(this.state.totalData.find((val) => val.sh_sub_category_id ), "edit_id");
     if (data === "view") {
       console.log(data, "view_data");
       this.setState({ editopen: false });
@@ -116,7 +117,6 @@ export default class ManageSubCatagoryTable extends React.Component {
       console.log(response, "response_data")
       response.data.data.map((val) => {
         console.log(val, "valdata")
-
         tableData.push({
           sh_category: val.sh_category,
           sh_subcategory:val.sh_subcategory,
@@ -134,6 +134,7 @@ export default class ManageSubCatagoryTable extends React.Component {
         })
 
         tableDatafull.push(val)
+        console.log(val, "datattta")
 
       })
 
@@ -144,9 +145,12 @@ export default class ManageSubCatagoryTable extends React.Component {
         props_loading: false,
         spinner:false
       })
+      console.log(this.state.totalData, "datata")
+
     })
   }
   deleteopen = (type, id) => {
+    alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,
@@ -197,9 +201,39 @@ export default class ManageSubCatagoryTable extends React.Component {
     });
   };
 
+  searchChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
+
+
   render() {
     var tableData = this.state.tableData;
     const { Search } = Input;
+    const searchData = []
+    this.state.tableData.filter((data, index) => {
+      console.log(data, "Search_data");
+      if (this.state.search === undefined || this.state.search === null){
+       searchData.push({
+        sh_category: data.sh_category,
+        sh_subcategory:data.sh_subcategory,
+        created_on: moment(data.created_on).format('DD MMM YYYY'),
+         })
+     }
+     else if (
+          data.sh_category !== null && data.sh_category.toLowerCase().includes(this.state.search.toLowerCase())
+       || data.sh_subcategory !== null && data.sh_subcategory.toLowerCase().includes(this.state.search.toLowerCase())
+       || data.created_on !== null && data.created_on.toLowerCase().includes(this.state.search.toLowerCase())
+
+     ) {
+        
+       searchData.push({
+        sh_category: data.sh_category,
+        sh_subcategory:data.sh_subcategory,
+        created_on: moment(data.created_on).format('DD MMM YYYY'),
+      
+         })
+     }
+   })
     return (
       <div>
           <div className="uploadmasterheader">
@@ -209,12 +243,11 @@ export default class ManageSubCatagoryTable extends React.Component {
            
               <div className="manage_content_search">
               <Search
-                  placeholder="Search"
-                  onSearch={(value) => console.log(value)}
-                  style={{ width: 150}}
-                  className="mr-2 ml-2 "
-                  onChange={(e) => this.setState({ searchData: e.target.value })}
-                />
+                placeholder=" search "
+                onChange={(e) => this.searchChange(e)}
+                style={{ width: 150 }}
+                className="search_box_container"
+              />
               </div>
 
               <img
@@ -227,7 +260,6 @@ export default class ManageSubCatagoryTable extends React.Component {
           </div>
         <Spin className="spinner_align" spinning={this.state.spinner}>
 
-        {tableData.length > 0 && (
         <Tablecomponent
           heading={[
             { id: "", label: "S.No" },
@@ -237,7 +269,7 @@ export default class ManageSubCatagoryTable extends React.Component {
             { id: "active", label: "Active" },
             { id: "", label: "Action" },
           ]}
-          rowdata={tableData.length > 0 && tableData}
+          rowdata={searchData && this.state.tableData }
           deleteopen={this.deleteopen}
           modelopen={(e,id) => this.modelopen(e,id)}
           tableicon_align={"cell_eye"}
@@ -245,7 +277,6 @@ export default class ManageSubCatagoryTable extends React.Component {
           Workflow="close"
           add="close"
         />
-        )}
         </Spin>
 
           <Modalcomp

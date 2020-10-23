@@ -195,6 +195,10 @@ export default class Editstock extends React.Component {
     super(props);
     this.state = { cancel: null };
   }
+
+  componentWillMount (){
+    console.log(this.props,"stock_popup_details")
+  }
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -244,6 +248,7 @@ export default class Editstock extends React.Component {
       { label: "Netflix", value: "option 3" },
       { label: "Tesla", value: "option 4" },
     ];
+
     return (
       <div className="stock_popup_details">
         {/* <Dialog

@@ -1,40 +1,41 @@
 import React, { Component } from "react";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { lighten, makeStyles, fade } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import ReactToPrint from "react-to-print";
+import ReactExport from 'react-data-export';
+import PrintData from "./PrintData";
+import ReactSVG from 'react-svg';
+import Pdf from '../../images/pdf.svg';
+import Print from '../../images/print.svg';
+import Excel from '../../images/excel.svg';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { Input,notification,Spin} from "antd";
+
 import Paper from "@material-ui/core/Paper";
-import StockAdd from "./StockAdd";
-import { Icon, message, Popconfirm } from "antd";
 import "./Stocklist_table.css";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import { NavLink } from "react-router-dom";
-import dateFormat from "dateformat";
 import Editstock from "./Editstock";
 import { apiurl } from "../../../src/App.js";
 import axios from 'axios';
 
 
 
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+
 
 class Stocklist_table extends React.Component {
   state = {
     openview: false,
-    tabledata: [],
+    tabledata: [], edit:false,
+    insertOpen: false,
+    editopen:false,
+    editData:"",
+    stockDetails:[],
+    stockColors:[],
+    tabledatafull:[],
+    search: null,
+    spinner: false,
   };
 
   createData = (parameter) => {
@@ -49,23 +50,41 @@ class Stocklist_table extends React.Component {
     return returnobj;
   };
 
-  modelopen = (data) => {
+  modelopen = (data,id) => {
     if (data === "view") {
       this.setState({ openview: true });
-    } else if (data === "edit") {
+    } else if (data === "add") {
       this.setState({ editopen: true });
-    }
+      this.setState({
+        edit: true,
+        editData:this.state.tabledatafull.find((val) => val.product_id === id),
+      });
+  };
+  }
+ 
+  insertModalOpen = () => {
+    this.setState({
+      insertOpen: true,
+      edit: false,
+    });
   };
 
   closemodal = () => {
-    this.setState({ openview: false, editopen: false });
+    this.setState({
+      insertOpen: false,
+      editopen: false,
+     
+    });
   };
+
   componentDidMount() {
-    // this.GetApiFunction();
-    this.getdata()
+    this.getTableData()
   }
 
-  getdata = () => {
+  getTableData = () => {
+    this.setState({spinner: true })
+
+    var self=this
     axios({
       method: "GET",
       url: apiurl + "getShStockList",
@@ -74,108 +93,213 @@ class Stocklist_table extends React.Component {
       .then((response) => {
         console.log(response, "resres");
         var tabledata = [];
-
-        response.data.data.map((val) => {
+var tabledatafull=[];
+        response.data.data.map((val,index) => {
           console.log(val, "res");
           tabledata.push({
             product_name: val.sh_product_name,
             stocknumber: val.total_stock,
-           id:val.product_id
+           id:val.product_id,
+           
           });
-
-          console.log(val,"seeking")
-          
+          tabledatafull.push(val,index)
+          self.setState({
+            product_code:val.sh_product_code,
+            stockDetails:response.data.data,
+            stockColors:response.data.data[0].color_info
+          })
+        
         });
 
         this.setState({
           tabledata: tabledata,
-         
+         tabledatafull:tabledatafull,
+         spinner: false
         });
-
+        console.log(this.state.tabledatafull,"seeking")
       })
       .catch((error) => {
         // alert(JSON.stringify(error))
       });
   };
+    //Pdf Generation
+    generatepdf = () => {
+      if (this.state.tabledata.length === 0) {
+        notification.warning({
+          message: "No data found",
+          placement: "topRight",
+        });
+      }else{
+      const doc = new jsPDF("a3")
+      var bodydata = []
+      this.state.tabledata.map((data, index) => {
+        bodydata.push([
+          index + 1,
+          data.product_name, data.stocknumber
+        ])
+      })
+      doc.autoTable({
+        beforePageContent: function (data) {
+          doc.text("Stock Quantity", 15, 23); // 15,13 for css
+        },
+        margin: { top: 30 },
+        showHead: "everyPage",
+        theme: "grid",
+        head: [['S.No', 'Product Name', 'Stock Quantity']],
+        body: bodydata,
+      })
+  
+      doc.save('Stock List.pdf')
+    }
+  };
+
+  searchChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
 
 
   render()
-  {
+  {    const { Search } = Input;
 
+    const searchData = []
+    this.state.tabledata.filter((data, index) => {
+       console.log(data, "Search_data");
+       if (this.state.search === undefined || this.state.search === null){
+        searchData.push({
+          product_name: data.product_name,
+          stocknumber:data.stocknumber,         
+          id:index
+          })
+      }
+      else if (
+           data.product_name !== null && data.product_name.toLowerCase().includes(this.state.search.toLowerCase())
+        || data.stocknumber !== null && data.stocknumber.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+      
+      ) {
+         
+        searchData.push({
+          product_name: data.product_name,
+          stocknumber:data.stocknumber,         
+          id:index
+          })
+      }
+    })
+
+// EXCEL FUNCTION
+var multiDataSetbody = []
+this.state.tabledata.map((xldata, index) => {
+  if (index % 2 !== 0) {
+    multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
+    { value: xldata.product_name },
+    { value: xldata.stocknumber },
+  
+    ])
+  } else {
+    multiDataSetbody.push([
+      { value: index + 1, style: { alignment: { horizontal: "center" }, fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.stocknumber, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+    
+    ])
+  }
+})
+
+const multiDataSet = [
+  {
+    columns: [
+      { title: "S.No", width: { wpx: 35 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Product Name", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Stock Quantity", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+    
+    ],
+    data: multiDataSetbody
+  }
+];
     return (
 
       <div>
+         <div className="stock_Totalorder">
+        <Paper>
+          <div className="stock_uploadsmasterheader">
+            <div className="titleTotalorder">STOCK LIST</div>
+
+      
+            <div
+              style={{
+                fontSize: "14px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+           
+           <Search
+                placeholder=" search "
+                onChange={(e) => this.searchChange(e)}
+                style={{ width: 150 }}
+                className="search_box_container"
+              />
+              
+              <div className="office">
+              <ReactSVG src={Pdf} style={{ marginRight: "15px", marginLeft: "15px" }} onClick={this.generatepdf}
+                style={{ marginRight: "15px", marginLeft: "15px" }} />
+
+                {this.state.tabledata.length===0?
+                <ReactSVG src={Excel} style={{ marginRight: "15px" }} onClick={this.Notification}/>:
+              <ExcelFile filename={"Stock Quantity"} element={<ReactSVG src={Excel} style={{ marginRight: "15px" }} />}>
+                <ExcelSheet dataSet={multiDataSet} name="Stock Quantity" />
+              </ExcelFile>}
+
+              {this.state.tabledata.length===0?
+              <ReactSVG src={Print}  onClick={this.Notification}/>:
+              <ReactToPrint
+                trigger={() => <ReactSVG src={Print} />}
+                content={() => this.componentRef}
+              />}
+
+            </div>
+            <div style={{ display: "none" }}>
+              <PrintData printtableData={this.state.tabledata}
+                ref={el => (this.componentRef = el)} />
+              </div>
+            </div>
+          </div>
+        </Paper>
+      </div>
+      <Spin className="spinner_align" spinning={this.state.spinner}>
+
         <Tablecomponent
          
           heading={[
             { id: "", label: "S.No" },
             { id: "product_name", label: "Product Name" },
-
-
             { id: "stocknumber", label: "Total Stock" },
-
-
             { id: "", label: "Action" },
           ]}
           
-         rowdata={this.state.tabledata && this.state.tabledata }
-         
-
-          // rowdata={[
-          //   this.createData({
-          //     stocknumber: "20",
-          //   })
-          // }]
-          //   this.createData({
-          //     product_name: "Rolling Giraffe Cycle",
-          //     total_stock: "12",
-          //   }),
-          //   this.createData({
-          //     product_name: "Woolen Boot",
-          //     total_stock: "8",
-          //   }),
-          //   this.createData({
-          //     product_name: "Woolen Boot",
-          //     total_stock: "20",
-          //   }),
-          //   this.createData({
-          //     product_name: "Rolling Giraffe Cycle",
-          //     total_stock: "5",
-          //   }),
-          //   this.createData({
-          //     product_name: "Rolling Giraffe Cycle",
-          //     total_stock: "8",
-          //   }),
-          // ]}
+          rowdata={searchData && this.state.tabledata}
           tableicon_align={"cell_eye"}
-          modelopen={(e) => this.modelopen(e)}
+          modelopen={(e,id) => this.modelopen(e,id)}
           Workflow="close"
           EditIcon="close"
           DeleteIcon="close"
-          VisibilityIcon="close"
-          // add="close"
-          
+          VisibilityIcon="close"      
         />
-        
-        {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-      xswidth={"xs"}
-      >
-      </Modalcomp> */}
-        {/* <StockView open={this.state.openview} onClose={this.closemodal} /> */}
-        <Modalcomp
-          visible={this.state.openview}
-          title={"ADD DETAILS"}
-          closemodal={(e) => this.closemodal(e)}
-          
-        >
-          <StockAdd />
-        </Modalcomp>
+        </Spin>
+   
         <Modalcomp
           visible={this.state.editopen}
           title={"ADD DETAILS"}
           closemodal={(e) => this.closemodal(e)}
+          editData={this.state.editData}
         >
-          <Editstock />
+          <Editstock 
+          closemodal={() => this.closemodal()}
+          getTableData={this.getTableData}
+          edit={this.state.edit}
+          editData={this.state.editData}
+          stockDetails={this.state.stockDetails}
+          stockColors={this.state.stockColors} 
+         />
         </Modalcomp>
       </div>
     );
@@ -183,440 +307,3 @@ class Stocklist_table extends React.Component {
 }
 
 export default Stocklist_table;
-
-// function createData(
-//   product_name,
-//   total_sale,
-//   total_stock,
-
-// ) {
-//   return { product_name, total_sale, total_stock  };
-// }
-
-// function desc(a, b, orderBy) {
-//   if (b[orderBy] < a[orderBy]) {
-//     return -1;
-//   }
-//   if (b[orderBy] > a[orderBy]) {
-//     return 1;
-//   }
-//   return 0;
-// }
-
-// function stableSort(array, cmp) {
-//   console.log("sort", array);
-//   const stabilizedThis = array.map((el, index) => [el, index]);
-//   stabilizedThis.sort((a, b) => {
-//     const order = cmp(a[0], b[0]);
-//     console.log("order", order);
-//     if (order !== 0) return order;
-//     return a[1] - b[1];
-//   });
-//   return stabilizedThis.map(el => el[0]);
-// }
-
-// function getSorting(order, orderBy) {
-//   return order === "desc"
-//     ? (a, b) => desc(a, b, orderBy)
-//     : (a, b) => -desc(a, b, orderBy);
-// }
-
-// const headRows = [
-//   { id: "sno", label: "S.No" },
-
-//   { id: "product_name", label: "Product Name" },
-//   { id: "total_sale", label: "Total Sale" },
-//   { id: "total_stock", label: "Total Stock" },
-//   { id: "action", label: "Action" }
-// ];
-
-// function EnhancedTableHead(props) {
-//   const {
-//     onSelectAllClick,
-//     order,
-//     orderBy,
-//     numSelected,
-//     rowCount,
-//     onRequestSort
-//   } = props;
-//   const createSortHandler = property => event => {
-//     onRequestSort(event, property);
-//   };
-
-//   return (
-//     <TableHead>
-//       <TableRow>
-//         {headRows.map(row => (
-//           <TableCell
-//             key={row.id}
-//             align={row.numeric ? "right" : "left"}
-//             padding={row.disablePadding ? "none" : "default"}
-//             sortDirection={orderBy === row.id ? order : false}
-//           >
-//             <TableSortLabel
-//               active={orderBy === row.id}
-//               direction={order}
-//               onClick={createSortHandler(row.id)}
-//             >
-//               {row.label}
-//             </TableSortLabel>
-//           </TableCell>
-//         ))}
-//       </TableRow>
-//     </TableHead>
-//   );
-// }
-
-// EnhancedTableHead.propTypes = {
-//   numSelected: PropTypes.number.isRequired,
-//   onRequestSort: PropTypes.func.isRequired,
-//   onSelectAllClick: PropTypes.func.isRequired,
-//   order: PropTypes.string.isRequired,
-//   orderBy: PropTypes.string.isRequired,
-//   rowCount: PropTypes.number.isRequired
-// };
-
-// const useToolbarStyles = makeStyles(theme => ({
-//   root: {
-//     paddingLeft: theme.spacing(2),
-//     paddingRight: theme.spacing(1)
-//   },
-//   highlight:
-//     theme.palette.type === "light"
-//       ? {
-//           color: theme.palette.secondary.main,
-//           backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-//         }
-//       : {
-//           color: theme.palette.text.primary,
-//           backgroundColor: theme.palette.secondary.dark
-//         },
-//   spacer: {
-//     flex: "1 1 100%"
-//   },
-//   actions: {
-//     color: theme.palette.text.secondary
-//   },
-//   title: {
-//     flex: "0 0 auto"
-//   },
-//   search: {
-//     position: "relative",
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: fade(theme.palette.common.white, 0.15),
-//     "&:hover": {
-//       backgroundColor: fade(theme.palette.common.white, 0.25)
-//     },
-//     marginLeft: 0,
-//     width: "100%",
-//     [theme.breakpoints.up("sm")]: {
-//       marginLeft: theme.spacing(1),
-//       width: "auto"
-//     }
-//   },
-//   searchIcon: {
-//     width: theme.spacing(7),
-//     height: "100%",
-//     position: "absolute",
-//     pointerEvents: "none",
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     cursor: "pointer"
-//   },
-//   inputRoot: {
-//     color: "inherit"
-//   },
-//   inputInput: {
-//     padding: theme.spacing(1, 1, 1, 7),
-//     // backgroundColor:'white',
-//     transition: theme.transitions.create("width"),
-//     width: "100%",
-//     [theme.breakpoints.up("sm")]: {
-//       // width: 120,
-//       "&:focus": {
-//         width: 200
-//       }
-//     }
-//   }
-// }));
-// // const Trainer_viewWrapped = Profilepage;
-
-// export default class Stocklist_table extends Component {
-//   constructor(props) {
-//     super(props);
-//     function createData( product_name, total_sale, total_stock )
-//        {
-//       return { product_name, total_sale, total_stock };
-//     }
-
-//     this.state = {
-//       order: "",
-//       open: false,
-//       orderBy: "media_title",
-//       selected: [],
-//       page: 0,
-//       dense: false,
-//       rowsPerPage: 5,
-//       viewmodal: false,
-//       stockdetails: [
-//         createData(
-//           "Rollin Giraffe Cycle",
-//           "5",
-//           "20",
-//         ),
-//         createData(
-//           "Rollin Giraffe Cycle",
-//           "8",
-//           "12",
-//           ),
-//           createData(
-//             "Wollen Boot",
-//             "7",
-//             "8",
-//           ),
-//           createData(
-//             "Wollen Boot",
-//             "5",
-//             "20",
-//           ),
-//           createData(
-//             "Rollin Giraffe Cycle",
-//             "3",
-//             "5",
-//           ),
-//           createData(
-//             "Rollin Giraffe Cycle",
-//             "2",
-//             "2",
-//           ),
-//       ],
-//       viewdata: null
-//     };
-//   }
-
-//   handleRequestSort = (event, property) => {
-//     const isDesc =
-//       this.state.orderBy === property && this.state.order === "desc";
-//     this.setState({ order: isDesc ? "asc" : "desc" });
-//     this.setState({ orderBy: property });
-//   };
-
-//   closemodal = () => {
-//     this.setState({ viewmodal: false });
-//   };
-
-//   // loadstockDetails(){
-//   //   fetch(Config.api_url+'getstockDetails', {
-//   //             method: 'POST',
-//   //             headers: {
-//   //               Accept: 'application/json',
-//   //               'Content-Type': 'application/json',
-//   //             },
-//   //             body: JSON.stringify({}),
-//   //           }).then((response) => response.json())
-//   //           .then((responseJson) => {
-//   //             // console.log("stock",responseJson);
-//   //             this.setState({stockdetails:responseJson.data})
-//   //           })
-//   // }
-
-//   handleClick = (event, name) => {
-//     const selectedIndex = this.state.selected.indexOf(name);
-//     let newSelected = [];
-//     if (selectedIndex === -1) {
-//       newSelected.push(this.state.selected, name);
-//     } else if (selectedIndex === 0) {
-//       // newSelected = newSelected.concat(selected.slice(1));
-//     } else if (selectedIndex === this.state.selected.length - 1) {
-//       // newSelected = newSelected.concat(selected.slice(0, -1));
-//     } else if (selectedIndex > 0) {
-//       // newSelected = newSelected.concat(
-//       //   selected.slice(0, selectedIndex),
-//       //   selected.slice(selectedIndex + 1),
-//       // );
-//     }
-//     this.setState({ selected: newSelected });
-//   };
-
-//   handleChangePage = (event, newPage) => {
-//     this.setState({ page: newPage });
-//   };
-
-//   handleChangeRowsPerPage = event => {
-//     this.setState({ rowsPerPage: +event.target.value });
-//     this.setState({ page: 0 });
-//   };
-
-//   handleChangeDense(event) {
-//     this.setState({ dense: event.target.checked });
-//   }
-//   componentWillMount() {
-//     //this.loadstockDetails();
-//   }
-//   ViewDetails = data => {
-//     console.log("viewdata", data);
-//     this.setState({ viewmodal: true, viewdata: data });
-//   };
-//   DeleteData = data => {
-//     console.log("deletedata", data);
-//   };
-//   receiveapprovaldata = (data, data1) => {
-//     console.log("receiveapproval", data);
-//     console.log("data1", data1);
-//     if (data1 == 1) {
-//       this.setState({ viewmodal: false });
-//       message.success("Your Leave Approved");
-//       this.loadVendorDetails();
-//     } else if (data1 == 2) {
-//       this.setState({ viewmodal: false });
-//       message.success("Your Leave Rejected");
-//       this.loadVendorDetails();
-//     }
-//   };
-//   receivestockdelete = data => {
-//     console.log("receivestockdelete", data);
-//     if (data.status == 0) {
-//       this.setState({ viewmodal: false });
-//       message.success(data.msg);
-//       this.loadstockDetails();
-//     }
-//   };
-//   sendapprovadata = data => {
-//     if (data.status == 0) {
-//       this.setState({ viewmodal: false });
-//       message.success(data.msg);
-//       this.loadstockDetails();
-//     }
-//   };
-//   // handleClickopenicon = () => {
-//   //     this.setState({ open: true });
-//   // };
-//   // handleclose = value => {
-//   //     this.setState({ open: false });
-//   // };
-//   //   handleClickcloseicon = () => {
-//   //     this.setState({ open: false });
-//   //   };
-//   //   confirm=(data)=> {
-//   //   console.log("dekte",data);
-//   //   message.loading('Action in progress..')
-//   //          fetch(Config.api_url+'deletestockDetails', {
-//   //             method: 'POST',
-//   //             headers: {
-//   //               Accept: 'application/json',
-//   //               'Content-Type': 'application/json',
-//   //             },
-//   //             body: JSON.stringify({
-//   //               "stockId":data.stockId
-//   //             }),
-//   //           }).then((response) => response.json())
-//   //           .then((responseJson) => {
-//   //             if(responseJson.status==0){
-//   //             this.loadstockDetails();
-//   //         message.success(responseJson.msg)
-
-//   //            }else{
-//   //               message.error(responseJson.msg);
-//   //             }
-
-//   //           })
-//   // }
-//   render() {
-//     const isSelected = name => this.state.selected.indexOf(name) !== -1;
-
-//     return (
-//       <div className="VendorDetailsDiv">
-//         <Paper className="paper">
-//           <div className="tableWrapper">
-//             <Table
-//               className="table"
-//               aria-labelledby="tableTitle"
-//               size={this.state.dense ? "small" : "medium"}
-//             >
-//               <EnhancedTableHead
-//                 numSelected={this.state.selected.length}
-//                 order={this.state.order}
-//                 orderBy={this.state.orderBy}
-//                 // onSelectAllClick={this.handleSelectAllClick}
-//                 onRequestSort={this.handleRequestSort}
-//                 rowCount={this.state.stockdetails.length}
-//               />
-//               <TableBody>
-//                 {stableSort(
-//                   this.state.stockdetails,
-//                   getSorting(this.state.order, this.state.orderBy)
-//                 )
-//                   .slice(
-//                     this.state.page * this.state.rowsPerPage,
-//                     this.state.page * this.state.rowsPerPage +
-//                       this.state.rowsPerPage
-//                   )
-//                   .map((row, index, item) => {
-//                     const isItemSelected = isSelected(row.name);
-//                     const labelId = `enhanced-table-checkbox-${index}`;
-//                     console.log("rendering", row);
-//                     return (
-//                       <TableRow
-//                         hover
-//                         onClick={event => this.handleClick(event, row.name)}
-//                         role="checkbox"
-//                         tabIndex={-1}
-//                         key={row.name}
-//                       >
-//                         <TableCell
-//                           component="th"
-//                           id={labelId}
-//                           scope="row"
-//                           padding="none"
-//                         >
-//                           {this.state.rowsPerPage * this.state.page -
-//                             1 +
-//                             index +
-//                             2}
-//                         </TableCell>
-
-//                         <TableCell align="right">{row.product_name}</TableCell>
-//                         <TableCell align="right">{row.total_sale}</TableCell>
-//                         <TableCell align="right">{row.total_stock}</TableCell>
-
-//                         <TableCell className="cell_eye" align="right">
-//                         <VisibilityIcon className="action-eye"
-//                             onClick={this.ViewDetails} />
-//                         <EditIcon className="mediaedit_icon" onClick={this.ViewDetails}/>
-//                           <DeleteIcon className="mediadelete_icon" />
-//                         </TableCell>
-//                       </TableRow>
-//                     );
-//                   })}
-//               </TableBody>
-//             </Table>
-//           </div>
-
-//           <TablePagination
-//             rowsPerPageOptions={[5, 10, 25]}
-//             component="div"
-//             count={this.state.stockdetails.length}
-//             rowsPerPage={this.state.rowsPerPage}
-//             page={this.state.page}
-//             backIconButtonProps={{
-//               "aria-label": "Previous Page"
-//             }}
-//             nextIconButtonProps={{
-//               "aria-label": "Next Page"
-//             }}
-//             onChangePage={this.handleChangePage}
-//             onChangeRowsPerPage={this.handleChangeRowsPerPage}
-//           />
-//         </Paper>
-
-//       <StockView
-//           open={this.state.viewmodal}
-//           onClose={this.closemodal}
-//           title={"VIEW STOCK DETAILS"}
-//         />
-
-//       </div>
-//     );
-//   }
-// }

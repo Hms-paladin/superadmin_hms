@@ -4,23 +4,30 @@ import { Select } from "antd";
 import "antd/dist/antd.css";
 import Moment from "react-moment";
 import RevenueDetails from "./RevenueDetails";
-import { Input } from "antd";
+import { Input,notification,Spin} from "antd";
 import Button from "@material-ui/core/Button";
-import Plus from "../../images/plus.png";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import dateFormat from "dateformat";
-import Labelbox from "../../helper/labelbox/labelbox";
 import { Paper } from "@material-ui/core";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import excel from "../../images/excel.svg";
-import pdf from "../../images/pdf.svg";
-import print from "../../images/print.svg";
+import ReactToPrint from "react-to-print";
+import ReactExport from 'react-data-export';
+import PrintData from "./PrintData";
+import ReactSVG from 'react-svg';
+import Pdf from '../../images/pdf.svg';
+import Print from '../../images/print.svg';
+import Excel from '../../images/excel.svg';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import DateRangeSelect from "../../helper/DateRange/DateRange";
 import axios from "axios";
 import { apiurl } from "../../App";
 import dateformat from 'dateformat';
 
 const current_date = dateFormat(new Date(), "dd mmm yyyy");
+
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+
 
 class RevenueMaster extends Component {
   constructor(props) {
@@ -34,7 +41,7 @@ class RevenueMaster extends Component {
       endDate: new Date(),
       spinner: false,
       grandTotal:0,
-
+      search: null,
     };
   }
   componentDidMount() {
@@ -45,6 +52,8 @@ class RevenueMaster extends Component {
   }],true)
   this.getTableData();
   }
+
+
   dayReport=(data,firstOpen)=>{
  
     console.log(data,"itemdaterange")
@@ -77,11 +86,7 @@ class RevenueMaster extends Component {
               card:val.card,
               wallet:val.wallet,
               totalcharge:val.total_charge,
-              
-                        
-
               id:val.booking_id
-  
             })
            
             this.setState({
@@ -89,7 +94,6 @@ class RevenueMaster extends Component {
               props_loading: false,
               spinner:false
             
-        
             },()=>{
               for(var i in revenuedata){
                 this.state.grandTotal=revenuedata[i].totalcharge+this.state.grandTotal
@@ -108,7 +112,37 @@ class RevenueMaster extends Component {
     })
   }
   
-  
+      //Pdf Generation
+      generatepdf = () => {
+        if (this.state.revenuedata.length === 0) {
+          notification.warning({
+            message: "No data found",
+            placement: "topRight",
+          });
+        }else{
+        const doc = new jsPDF("a3")
+        var bodydata = []
+        this.state.revenuedata.map((data, index) => {
+          bodydata.push([
+            index + 1,
+            data.bookeddate, data.customer, data.card, data.wallet, data.totalcharge
+          ])
+        })
+        doc.autoTable({
+          beforePageContent: function (data) {
+            doc.text("Revenue", 15, 23); // 15,13 for css
+          },
+          margin: { top: 30 },
+          showHead: "everyPage",
+          theme: "grid",
+          head: [['S.No','Booked Date', 'Customer', 'Card', 'Wallet', 'Total Charge(KWD)']],
+          body: bodydata,
+        })
+    
+        doc.save('Revenue.pdf')
+      }
+    };
+
   getTableData = (data) =>{
     this.setState({spinner:true})
     var self = this
@@ -138,14 +172,9 @@ class RevenueMaster extends Component {
               card:val.card,
               wallet:val.wallet,
               totalcharge:val.total_charge,
-              
-                        
-
               id:val.booking_id
             })
   
- 
-           
       })
       
         this.setState({
@@ -161,12 +190,87 @@ class RevenueMaster extends Component {
     })
   }
   
-  
+  searchChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
 
   render() {
     const { Option } = Select;
     const { Search } = Input;
     console.log(dateFormat(new Date(), "dd mmm yyyy"));
+
+    const searchData = []
+    this.state.revenuedata.filter((data, index) => {
+       console.log(data, "Search_data");
+       if (this.state.search === undefined || this.state.search === null){
+        searchData.push({
+          bookeddate: data.bookeddate,
+          customer: data.customer,
+          card:data.card,
+          wallet:data.wallet,
+          totalcharge: data.totalcharge,
+          id:index
+          })
+      }
+      else if (
+            data.bookeddate !== null && data.bookeddate.toLowerCase().includes(this.state.search.toLowerCase())
+        ||  data.customer !== null && data.customer.toLowerCase().includes(this.state.search.toLowerCase())
+        || data.card !== null && data.card.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+        || data.wallet !== null && data.wallet.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+        || data.totalcharge !== null && data.totalcharge.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+      ) {
+         
+        searchData.push({
+          bookeddate: data.bookeddate,
+          customer: data.customer,
+          card:data.card,
+          wallet:data.wallet,
+          totalcharge: data.totalcharge,
+          id:index
+          })
+      }
+    })
+
+
+    // EXCEL FUNCTION
+    var multiDataSetbody = []
+    this.state.revenuedata.map((xldata, index) => {
+      if (index % 2 !== 0) {
+        multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
+        { value: xldata.bookeddate },
+        { value: xldata.customer },
+        { value: xldata.card },
+        { value: xldata.wallet },
+        { value: xldata.totalcharge },
+        ])
+      } else {
+        multiDataSetbody.push([
+          { value: index + 1, style: { alignment: { horizontal: "center" }, fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+          { value: xldata.bookeddate, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+          { value: xldata.customer, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+          { value: xldata.card, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+          { value: xldata.wallet, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+          { value: xldata.totalcharge, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+        ])
+      }
+    })
+
+    const multiDataSet = [
+      {
+        columns: [
+          { title: "S.No", width: { wpx: 35 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Booked Date", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Customer", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Card", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Wallet", width: { wpx: 100 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Total Charge(KWD)", width: { wpx: 100 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+        ],
+        data: multiDataSetbody
+      }
+    ];
+
+
+
     return (
       <div className="doctor_revenue">
         <Paper>
@@ -174,14 +278,7 @@ class RevenueMaster extends Component {
             <div className="revenue_uploadsmasterheader_flex1">
               {" "}
               <div className="revenue-header">REVENUE</div>
-              {/* <div style={{ width: "190px", marginLeft: "10px" }}>
-                <Labelbox
-                  type="select"
-                  value="ALL"
-                  style={{ width: "150px" }}
-                  labelname="Product"
-                />
-              </div> */}
+          
             </div>
             <div
               style={{
@@ -190,23 +287,8 @@ class RevenueMaster extends Component {
                 alignItems: "center",
                 
               }}
-              // className="group_container"
             >
-              {/* <ButtonGroup
-                className="clinic_group_detailss"
-                size="small"
-                aria-label="small outlined button group"
-              >
-                <Button className="diet_details_day">This Day</Button>
-                <Button className="diet_details_month">This Month</Button>
-                <Button className="diet_details_month">This Year</Button>
-              </ButtonGroup>
-
-              <div className="currentdate">
-                <FaChevronLeft className="current_left" />
-                {current_date}
-                <FaChevronRight className="current_right" />
-              </div> */}
+         
               <div style={{zIndex:'1201'}}>
                 <DateRangeSelect
                   dynalign={"dynalign"}
@@ -214,23 +296,42 @@ class RevenueMaster extends Component {
                   />
               </div>
               <Search
-                className="revenue-search"
-                placeholder=" Search "
-                onSearch={(value) => console.log(value)}
+                placeholder=" search "
+                onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
+                className="search_box_container"
               />
 
-              <div className="office">
-                <img src={excel} className="excel" />
-                <img src={pdf} className="pdf" />
-                <img src={print} className="print" />
-              </div>
+<ReactSVG src={Pdf} style={{ marginRight: "15px", marginLeft: "15px" }} onClick={this.generatepdf}
+                style={{ marginRight: "15px", marginLeft: "15px" }} />
+
+                {this.state.revenuedata.length===0?
+                <ReactSVG src={Excel} style={{ marginRight: "15px" }} onClick={this.Notification}/>:
+              <ExcelFile filename={"Revenue"} element={<ReactSVG src={Excel} style={{ marginRight: "15px" }} />}>
+                <ExcelSheet dataSet={multiDataSet} name="Revenue" />
+              </ExcelFile>}
+
+              {this.state.revenuedata.length===0?
+              <ReactSVG src={Print}  onClick={this.Notification}/>:
+              <ReactToPrint
+                trigger={() => <ReactSVG src={Print} />}
+                content={() => this.componentRef}
+              />}
+
             </div>
-          </div>
+            <div style={{ display: "none" }}>
+              <PrintData printtableData={this.state.revenuedata}
+                ref={el => (this.componentRef = el)} />
+            </div>
+            </div>
+            <Spin className="spinner_align" spinning={this.state.spinner}>
+   
           <RevenueDetails
           revenuedata={this.state.revenuedata} 
           tableData={this.state.tabledata}
+          searchData={searchData}
           />
+          </Spin>
      <Button className="grandTotal">Grand Total : {this.state.grandTotal} KWD</Button>
 
         </Paper>

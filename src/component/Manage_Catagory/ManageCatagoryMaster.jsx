@@ -40,11 +40,7 @@ export default class ManageCatagoryMaster extends Component {
           <div className="uploadmasterheader">
             <div className="titleuser">MANAGE CATEGORY</div>
 
-            <div className="manage_container">
-              {/* <div className="manage_date">
-                <ChevronLeftIcon className="manage_icon"/>
-                  <div className="date_manage">{current_date}</div>
-                <ChevronRightIcon className="manage_icon"/></div> */}
+            <div className="manage_container" style={{display:"flex"}}>
 
               <div className="manage_content_search">
               <Search

@@ -52,7 +52,7 @@ export default class RevenueDetails extends React.Component {
             { id: "wallet", label: "Wallet" },
             { id: "totalcharge", label: "Total Charge (KWD)" },
           ]}
-          rowdata={this.props.revenuedata && this.props.revenuedata}
+          rowdata={this.props.searchData}
 
           tableicon_align={"cell_eye"}
           modelopen={(e) => this.modelopen(e)}

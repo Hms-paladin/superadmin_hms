@@ -37,15 +37,7 @@ class Stocklist extends Component {
           <div className="stock_uploadsmasterheader">
             <div className="titleTotalorder">STOCK LIST</div>
 
-            {/* <div style={{width:"190px"}}><Labelbox type="select" value="Clinic" style={{width:"150px"}} labelname="Type"/></div> */}
-            {/* <div style={{ width: "150px" }}>
-              <Labelbox
-                type="select"
-                value="Walk-In"
-                style={{ width: "150px" }}
-              />
-            </div> */}
-
+      
             <div
               // className="group_container"
               style={{
@@ -54,26 +46,7 @@ class Stocklist extends Component {
                 alignItems: "center",
               }}
             >
-              {/* <ButtonGroup
-                className="clinic_group_details"
-                size="small"
-                aria-label="small outlined button group"
-              >
-                <Button className="clinic_details">This Day</Button>
-                <Button className="clinic_details_month">This Month</Button>
-                <Button className="clinic_details_year">This Year</Button>
-              </ButtonGroup> */}
-
-              {/* <div className="currentdate">
-                <FaChevronLeft className="current_left" />
-                {current_date}
-                <FaChevronRight className="current_right" />
-              </div> */}
-              {/* <DateRangeSelect
-                dynalign={"dynalign"}
-                rangeDate={(item) => this.getRangeDate(item)}
-              /> */}
-
+           
               <Search
                 placeholder=" search "
                 onSearch={(value) => console.log(value)}

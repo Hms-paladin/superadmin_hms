@@ -20,12 +20,13 @@ export default class ManageCatagoryTable extends React.Component {
     tableData: [],
     tableDatafull :[],
     totalData:[],
-    searchData:"",
+    search: null,
     insertOpen: false,
     deleteopen: false,
     open:true,
     edit:false,
-    editData:""
+    editData:"",
+    
   };
 
   createData = (parameter) => {
@@ -118,9 +119,9 @@ export default class ManageCatagoryTable extends React.Component {
         console.log(val, "valdata")
 
         tableData.push({
-          category: val.sh_category,
+          sh_category: val.sh_category,
           created_on: moment(val.created_on).format('DD MMM YYYY'),
-          active: val.sh_active == "1" ? (
+          sh_active: val.sh_active == "1" ? (
             <Checkbox
             checked={true}
           />
@@ -197,32 +198,51 @@ export default class ManageCatagoryTable extends React.Component {
     });
   };
 
+  searchChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
+
 
   render() {
-    const searchdata = []
+  
     const { Search } = Input;
 
     var tableData = this.state.tableData;
-    this.state.tableDatafull.filter((data,index) => {
+    const  searchData =[]
+     this.state.tableDatafull.filter((data,index) => {
       console.log(data,"datadata")
       if (this.state.search === undefined || this.state.search === null){
-        searchdata.push({
-          category:  data.category,
+          searchData.push({
+          sh_category:  data.sh_category,
           created_on: moment(data.created_on).format('DD MMM YYYY'),
-         
+          sh_active: data.sh_active == "1" ? (
+            <Checkbox
+            checked={true}
+          />
+        ): (
+          <Checkbox
+          checked={false}
+        />
+        ),          id:index
           })
       }
       else if (
-          data.category !== null && data.category.toLowerCase().includes(this.state.search.toLowerCase()) ||  
+          data.sh_category !== null && data.sh_category.toLowerCase().includes(this.state.search.toLowerCase()) ||  
           data.created_on !== null && data.created_on.toLowerCase().includes(this.state.search.toLowerCase()) 
-         
-
-          
-          ){
-        searchdata.push({
-          category:  data.category,
+          )
+          {
+          searchData.push({
+          sh_category:  data.sh_category,
           created_on: moment(data.created_on).format('DD MMM YYYY'),
-           
+          sh_active: data.sh_active == "1" ? (
+            <Checkbox
+            checked={true}
+          />
+        ): (
+          <Checkbox
+          checked={false}
+        />
+        ),          id:index
         })
       }
   })
@@ -238,12 +258,11 @@ export default class ManageCatagoryTable extends React.Component {
            
               <div className="manage_content_search">
               <Search
-                  placeholder="Search"
-                  onSearch={(value) => console.log(value)}
-                  style={{ width: 150}}
-                  className="mr-2 ml-2 "
-                  onChange={(e) => this.setState({ searchData: e.target.value })}
-                />
+                placeholder=" search "
+                onChange={(e) => this.searchChange(e)}
+                style={{ width: 150 }}
+                className="search_box_container"
+              />
               </div>
 
               <img
@@ -256,7 +275,6 @@ export default class ManageCatagoryTable extends React.Component {
           </div>
 
          <Spin className="spinner_align" spinning={this.state.spinner}>
-         {tableData.length > 0 && (
         <Tablecomponent
           heading={[
             { id: "", label: "S.No" },
@@ -265,8 +283,8 @@ export default class ManageCatagoryTable extends React.Component {
             { id: "active", label: "Active" },
             { id: "", label: "Action" },
           ]}
-          // rowdata={tableData.length > 0 && tableData}
-          rowdata={searchdata.length === 0 ? [] : searchdata && tableData}
+          rowdata={searchData && this.state.tableData}
+          // rowdata={  searchData.length === 0 ? [] :   searchData && tableData}
           deleteopen={this.deleteopen}
           tableicon_align={"cell_eye"}
           modelopen={(e,id) => this.modelopen(e,id)}
@@ -274,7 +292,7 @@ export default class ManageCatagoryTable extends React.Component {
           Workflow="close"
           add="close"
         />
-         )}
+    
         </Spin>
 
         <Modalcomp

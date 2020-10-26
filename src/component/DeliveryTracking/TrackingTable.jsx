@@ -137,15 +137,7 @@ class DashboardTable extends React.Component {
     return returnobj;
   };
 
-  // modelopen = (data) => {
-  //   if (data === "view") {
-  //     this.setState({ openview: true });
-  //   } else if (data === "edit") {
-  //     this.setState({ editopen: true });
-  //   } else if (data === "workflow") {
-  //     this.setState({ workflowopen: true });
-  //   }
-  // };
+ 
   modelopen = (data, id) => {
     alert(id)
     if (data === "workflow") {

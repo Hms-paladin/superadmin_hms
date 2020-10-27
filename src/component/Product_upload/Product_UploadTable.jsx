@@ -9,9 +9,15 @@ import { Spin, notification, Input } from "antd";
 import axios from "axios";
 import { apiurl } from "../../App";
 import "./Product_UploadTable.css";
-import excel from "../../images/excel.svg";
-import pdf from "../../images/pdf.svg";
-import print from "../../images/print.svg";
+import ReactToPrint from "react-to-print";
+import ReactExport from 'react-data-export';
+import PrintData from "./PrintData";
+import ReactSVG from 'react-svg';
+import Pdf from '../../images/pdf.svg';
+import Print from '../../images/print.svg';
+import Excel from '../../images/excel.svg';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import { Paper } from "@material-ui/core";
 import plus from "../../images/plus.png";
 import ProductUploadModal from "../Product_upload/Product_UploadModal";
@@ -19,6 +25,9 @@ import DeleteMedia from "../../helper/deletemodel";
 
 
 var moment = require("moment");
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 export default class Product_Upload extends React.Component {
   state = {
@@ -34,6 +43,8 @@ export default class Product_Upload extends React.Component {
     addview: false,
     add:false,
     addData:"",
+    search: null,
+
     insertOpen: false,
     deleteopen: false,
 
@@ -141,7 +152,7 @@ export default class Product_Upload extends React.Component {
       data: {},
     }).then((response) => {
       console.log(response, "response_data");
-      response.data.data.map((val) => {
+      response.data.data.map((val,index) => {
       
         tableData.push({
           sh_product_name: val.sh_product_name,
@@ -156,7 +167,7 @@ export default class Product_Upload extends React.Component {
           id: val.product_id,
         });
 
-        tableDatafull.push(val);
+        tableDatafull.push(val,index);
         
       });
 
@@ -202,10 +213,115 @@ export default class Product_Upload extends React.Component {
     });
     this.setState({ spinner: false,props_loading:false });
   };
+  //Pdf Generation
+  generatepdf = () => {
+    if (this.state.tableData.length === 0) {
+      notification.warning({
+        message: "No data found",
+        placement: "topRight",
+      });
+    }else{
+    const doc = new jsPDF("a3")
+    var bodydata = []
+    console.log(this.state.tableData,"datasss")
+    this.state.tableData.map((data, index) => {
+      bodydata.push([
+        index + 1,
+        data.product_name, data.created_date ,data.fee ,data.active
+      ])
+    })
+    doc.autoTable({
+      beforePageContent: function (data) {
+        doc.text("Manage Product", 15, 23); // 15,13 for css
+      },
+      margin: { top: 30 },
+      showHead: "everyPage",
+      theme: "grid",
+      head: [['S.No', 'Product Name', 'Created Date','Fee','active']],
+      body: bodydata,
+    })
+
+    doc.save('Manage Product.pdf')
+  }
+};
+
+searchChange = (e) => {
+  this.setState({ search: e.target.value })
+}
+
 
   render() {
     var tableData = this.state.tableData;
     const { Search } = Input;
+    const searchData = []
+    this.state.tableData.filter((data, index) => {
+       console.log(data, "Search_data");
+       if (this.state.search === undefined || this.state.search === null){
+        searchData.push({
+          product_name: data.product_name,
+          created_date:data.created_date,   
+          fee:data.fee,  
+          active:data.active,   
+       
+          id:index
+          })
+      }
+      else if (
+           data.product_name !== null && data.product_name.toLowerCase().includes(this.state.search.toLowerCase())
+        || data.created_date !== null && data.created_date.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+        || data.fee !== null && data.fee.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+        || data.active !== null && data.active.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+
+      ) {
+         
+        searchData.push({
+          product_name: data.product_name,
+          created_date:data.created_date,   
+          fee:data.fee, 
+          active:data.active,   
+          id:index
+          })
+      }
+    })
+
+// EXCEL FUNCTION
+var multiDataSetbody = []
+this.state.tableData.map((xldata, index) => {
+  if (index % 2 !== 0) {
+    multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
+    { value: xldata.product_name },
+    { value: xldata.stocknumber },
+    { value: xldata.fee },
+    { value: xldata.active },
+
+  
+    ])
+  } else {
+    multiDataSetbody.push([
+      { value: index + 1, style: { alignment: { horizontal: "center" }, fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.stocknumber, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.fee, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.active, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+
+    ])
+  }
+})
+
+const multiDataSet = [
+  {
+    columns: [
+      { title: "S.No", width: { wpx: 35 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Product Name", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Created Date", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Fee", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Active", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+
+    ],
+    data: multiDataSetbody
+  }
+];
+  
     return (
       <div>
          <Paper>
@@ -218,14 +334,31 @@ export default class Product_Upload extends React.Component {
               <Search
                 className="revenue-search"
                 placeholder=" Search "
-                onSearch={(value) => console.log(value)}
+                onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
               />
 
-              <div className="office">
-                <img src={excel} className="excel" />
-                <img src={pdf} className="pdf" />
-                <img src={print} className="print" />
+<div className="office">
+              <ReactSVG src={Pdf} style={{ marginRight: "15px", marginLeft: "15px" }} onClick={this.generatepdf}
+                style={{ marginRight: "15px", marginLeft: "15px" }} />
+
+                {this.state.tableData.length===0?
+                <ReactSVG src={Excel} style={{ marginRight: "15px" }} onClick={this.Notification}/>:
+              <ExcelFile filename={"Manage Product"} element={<ReactSVG src={Excel} style={{ marginRight: "15px" }} />}>
+                <ExcelSheet dataSet={multiDataSet} name="Manage Product" />
+              </ExcelFile>}
+
+              {this.state.tableData.length===0?
+              <ReactSVG src={Print}  onClick={this.Notification}/>:
+              <ReactToPrint
+                trigger={() => <ReactSVG src={Print} />}
+                content={() => this.componentRef}
+              />}
+
+            </div>
+            <div style={{ display: "none" }}>
+              <PrintData printtableData={this.state.tableData}
+                ref={el => (this.componentRef = el)} />
               </div>
               <div className="manage_container">
                 <img
@@ -252,7 +385,9 @@ export default class Product_Upload extends React.Component {
                 { id: "active", label: "Active" },
                 { id: "", label: "Action" },
               ]}
-              rowdata={tableData.length > 0 && tableData}
+              rowdata={searchData && this.state.tableData}
+
+              // rowdata={tableData.length > 0 && tableData}
               tableicon_align={"cell_eye"}
               modelopen={(e,id) => this.modelopen(e,id)}
               deleteopen={this.deleteopen}

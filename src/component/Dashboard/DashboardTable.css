@@ -97,7 +97,7 @@
   display: block;
   justify-content: center;
   height: 110px !important ;
-  width: 20% !important;
+  width: 25% !important;
   border-radius: 7px !important;
   color: #ffffff !important;
   text-decoration: none !important;
@@ -205,7 +205,7 @@
 @media only screen and (max-width: 1125px) {
   .shopping_button_common_styles {
     height: 100px !important;
-    width: 24% !important;
+    width: 30% !important;
   }
   .shopping_dash_numeric_wrap {
     margin-top: 8px;

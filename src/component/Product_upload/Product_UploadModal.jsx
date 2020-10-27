@@ -360,7 +360,7 @@ changeDynamic = (data, key) => {
 
   resetFormValue = () => {
 
-    alert("wow")
+    // alert("wow")
    
     this.state.filename = "";
 
@@ -374,7 +374,7 @@ changeDynamic = (data, key) => {
 
 
 handleSubmit = () => {
-alert("Inserting")
+// alert("Inserting")
   let formdata = new FormData();
 
     formdata.set("sh_category_id", this.state.CategoryId);
@@ -403,7 +403,7 @@ alert("Inserting")
 }  
 
 submitHandle = () =>{
-  alert("Editing Content")
+  // alert("Editing Content")
   let formdata = new FormData();
 
     formdata.set("sh_category_id", this.state.CategoryId);
@@ -426,7 +426,7 @@ submitHandle = () =>{
 }
 
 updateContent =(details) =>{
-  alert("editShProductInfo")
+  // alert("editShProductInfo")
   console.log(details,"updatecontent")
   Axios({
     method:'PUT',
@@ -444,7 +444,7 @@ updateContent =(details) =>{
 
 
 addProductDetails = (details) =>{
-  alert("insertShProductInfo")
+  // alert("insertShProductInfo")
   var self=this;
   Axios({
     method:"POST",
@@ -500,7 +500,7 @@ loadproductInfo = () => {
 
   editCardContent =(details)=>{
     console.log(details,"detailsvanthuru")
-    alert("sss")
+    // alert("sss")
  
     // this.setState({
     //   cardEdit:true,
@@ -527,7 +527,7 @@ loadproductInfo = () => {
   }
 
 editingCard =()=>{
-alert("dai")
+// alert("dai")
   console.log(this.state,"vanthuru")
 
 
@@ -553,7 +553,7 @@ alert("dai")
   sendCardEdit = (details) =>{
    
 console.log(details,"detailcheckkk")
-    alert("editShProductImage")
+    // alert("editShProductImage")
     // console.log(details,"editShProductImage")
     Axios({
     method:'PUT',
@@ -582,7 +582,7 @@ console.log(details,"detailcheckkk")
     console.log(details.image_id,"detailchkdel")
 
     var self = this;
-    alert(this.state.imageId)
+    // alert(this.state.imageId)
     Axios({
       method: "DELETE",
       url: apiurl + "deleteShProductImage",

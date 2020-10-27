@@ -36,7 +36,7 @@ class Preorderlist extends Component {
       <div className="stock_Totalorder">
         <Paper>
           <div className="stock_uploadsmasterheader">
-            <div className="titleTotalorder">PRE - ORDER</div>
+            <div className="titleTotalorder">PRE - ORDERS</div>
 
             {/* <div style={{width:"190px"}}><Labelbox type="select" value="Clinic" style={{width:"150px"}} labelname="Type"/></div> */}
             {/* <div style={{ width: "150px" }}>

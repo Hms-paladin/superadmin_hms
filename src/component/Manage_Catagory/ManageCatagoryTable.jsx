@@ -56,7 +56,6 @@ export default class ManageCatagoryTable extends React.Component {
   modelopen = (data, id) => {
     console.log(data, "edit_data");
 
-    alert(id)
     console.log(this.state.totalData, "edit_id");
     if (data === "view") {
       console.log(data, "view_data");
@@ -148,7 +147,6 @@ export default class ManageCatagoryTable extends React.Component {
   }
 
   deleteopen = (type, id) => {
-    alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,
@@ -326,7 +324,7 @@ export default class ManageCatagoryTable extends React.Component {
         </Modalcomp>
         <Modalcomp
               visible={this.state.deleteopen}
-              title={"Delete"}
+              title={"Delete Category"}
               closemodal={this.closemodal}
               customwidth_dialog="cus_wid_delmodel"
               xswidth={"xs"}

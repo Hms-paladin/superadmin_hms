@@ -1,5 +1,6 @@
 .daterangeMaster {
   z-index: 1;
+  position: absolute;
 }
 
 .daterangeMaster .rdrDateRangePickerWrapper {

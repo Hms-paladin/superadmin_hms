@@ -140,12 +140,12 @@ var tabledatafull=[];
       })
       doc.autoTable({
         beforePageContent: function (data) {
-          doc.text("Stock Quantity", 15, 23); // 15,13 for css
+          doc.text("Stock List", 15, 23); // 15,13 for css
         },
         margin: { top: 30 },
         showHead: "everyPage",
         theme: "grid",
-        head: [['S.No', 'Product Name', 'Stock Quantity']],
+        head: [['S.No', 'Product Name', 'Total Stock']],
         body: bodydata,
       })
   
@@ -233,7 +233,7 @@ const multiDataSet = [
             >
            
            <Search
-                placeholder=" search "
+                placeholder=" Search "
                 onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
                 className="search_box_container"
@@ -288,7 +288,7 @@ const multiDataSet = [
    
         <Modalcomp
           visible={this.state.editopen}
-          title={"ADD DETAILS"}
+          title={"ADD PRODUCT STOCK"}
           closemodal={(e) => this.closemodal(e)}
           editData={this.state.editData}
         >

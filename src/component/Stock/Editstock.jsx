@@ -271,7 +271,7 @@ export default class Editstock extends React.Component {
           <Button className="stock_cancel" onClick={this.handleClose}>
             Cancel
           </Button>
-          <Button className="stock_update" onClick={()=>this.onSubmitData()}>Update</Button>
+          <Button className="stock_update" onClick={()=>this.onSubmitData()}>Submit</Button>
         </div>
       </div>
     );

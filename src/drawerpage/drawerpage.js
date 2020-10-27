@@ -89,6 +89,7 @@ import Notification_Category from '../component/Notification/Notification'
 import Notification_Event from '../component/NotificationEvent/NotificationEvent.jsx'
 import Notification_variable from '../component/NotificationVariable/NotificationVariable.jsx'
 import Notification_New from '../component/NotificationNew/NotificationNew.jsx'
+import { notification } from 'antd';
 
 
 
@@ -198,6 +199,15 @@ class Homepage extends React.Component {
     //  || window.location.href.includes("/revenue") || window.location.href.includes("/managecategory") || window.location.href.includes("/managesubcategory") 
     //  || window.location.href.includes("/productupload") || window.location.href.includes("/deliverytracking") || window.location.href.includes("/mediauploadshopping") 
     //  || window.location.href.includes("/stock") || window.location.href.includes("/preorder") || window.location.href.includes("/profile") || window.location.href.includes("/report")
+  };
+  generateAlert = (description) => {
+    notification.success({
+      message: "Success",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
   };
 
   handleDrawerOpen = () => {
@@ -1191,7 +1201,7 @@ class Homepage extends React.Component {
                           />
 
                         <MenuItem onClick={() => this.routeChange("productupload")} component={Link} to={`${this.props.match.path}/productupload`} className={`${current_location.includes("/productupload") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Product Upload" />
+                          <ListItemText primary="Manage Product" />
                         </MenuItem>
                       </div>
                       </NavLink>
@@ -1243,7 +1253,7 @@ class Homepage extends React.Component {
                           />
 
                         <MenuItem onClick={() => this.routeChange("preorder")} component={Link} to={`${this.props.match.path}/preorder`} className={`${current_location.includes("/preorder") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Pre-Order" />
+                          <ListItemText primary="Pre-Orders" />
                         </MenuItem>
                       </div>
                       </NavLink>
@@ -1334,7 +1344,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/managesubcategory`} render={() => <ManageSubCatagoryTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/productupload`} render={() => <Product_UploadTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/deliverytracking`} render={() => <TrackingTable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster generateAlert={this.generateAlert} uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist_table uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

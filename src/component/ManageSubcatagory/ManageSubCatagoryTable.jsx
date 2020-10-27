@@ -54,7 +54,6 @@ export default class ManageSubCatagoryTable extends React.Component {
 
 
   modelopen = (data, id) => {
-    alert(id)
     console.log(id, "edit_data");
 
     
@@ -150,7 +149,6 @@ export default class ManageSubCatagoryTable extends React.Component {
     })
   }
   deleteopen = (type, id) => {
-    alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,

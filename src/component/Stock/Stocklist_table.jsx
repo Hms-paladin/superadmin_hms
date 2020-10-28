@@ -50,6 +50,16 @@ class Stocklist_table extends React.Component {
     return returnobj;
   };
 
+  generateAlert = (description) => {
+    notification.success({
+      message: "Success",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
+
   modelopen = (data,id) => {
     if (data === "view") {
       this.setState({ openview: true });
@@ -57,8 +67,9 @@ class Stocklist_table extends React.Component {
       this.setState({ editopen: true });
       this.setState({
         edit: true,
-        editData:this.state.tabledatafull.find((val) => val.product_id === id),
-      });
+        editData:this.state.tabledatafull.find((val) => val.product_id === id)
+
+      });console.log("editDataeditData",this.state.editData)
   };
   }
  
@@ -295,6 +306,7 @@ const multiDataSet = [
           <Editstock 
           closemodal={() => this.closemodal()}
           getTableData={this.getTableData}
+          generateAlert={this.generateAlert}
           edit={this.state.edit}
           editData={this.state.editData}
           stockDetails={this.state.stockDetails}

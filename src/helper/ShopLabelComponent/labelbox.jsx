@@ -166,7 +166,7 @@ componentWillReceiveProps(props){
           format="yyyy-MM-dd"
           margin="normal"
           id="date-picker-inline"
-         value={this.state.selecteddate} 
+		  value={data.value}  
           onChange={(date)=>this.datepickerChange(date)}
          
         />

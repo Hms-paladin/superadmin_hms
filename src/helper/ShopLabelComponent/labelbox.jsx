@@ -97,7 +97,7 @@ componentWillReceiveProps(props){
 			<div className="formdiv">
 				<label className="labeltxt">{data.labelname}</label>
 				<div>
-				<input className="brdrcls" min="0"  value={this.props.value} type="number" onChange={(e)=>this.props.changeData&&this.props.changeData(e.target.value)} onKeyDown={ e => ( e.key === "e" || e.key === "." || e.key === "+" || e.key === "-") && e.preventDefault() }/>
+				<input className="brdrcls"   value={this.props.value} type="number" onChange={(e)=>this.props.changeData&&this.props.changeData(e.target.value)} onKeyDown={ e => ( e.key === "e" || e.key === "." || e.key === "+" ) && e.preventDefault() }/>
 		{
 				data.error&&
 				<div className="Errormsg">

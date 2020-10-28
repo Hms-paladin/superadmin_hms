@@ -14,7 +14,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Profile from "../../images/1.jpg";
 import "./Editorder.css";
 import { TiLocation, MdLocationOn, MdLocalPhone } from "react-icons/md";
-import Labelbox from "../../helper/labelbox/labelbox";
+import Labelbox from "../../helper/ShopLabelComponent/labelbox";
 import { DatePicker } from "antd";
 import "antd/dist/antd.css";
 import { IoIosGlobe } from "react-icons/io";

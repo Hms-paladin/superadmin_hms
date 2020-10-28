@@ -227,7 +227,7 @@ export default class Product_Upload extends React.Component {
     this.state.tableData.map((data, index) => {
       bodydata.push([
         index + 1,
-        data.product_name, data.created_date ,data.fee ,data.active
+        data.sh_product_name, data.created_on ,data.sh_mrp ,data.sh_is_active == "1" ? "Active" : "Inactive"
       ])
     })
     doc.autoTable({
@@ -237,7 +237,7 @@ export default class Product_Upload extends React.Component {
       margin: { top: 30 },
       showHead: "everyPage",
       theme: "grid",
-      head: [['S.No', 'Product Name', 'Created Date','Fee','active']],
+      head: [['S.No', 'Product Name', 'Created Date','Cost(KWD)','Status']],
       body: bodydata,
     })
 
@@ -258,27 +258,28 @@ searchChange = (e) => {
        console.log(data, "Search_data");
        if (this.state.search === undefined || this.state.search === null){
         searchData.push({
-          product_name: data.product_name,
-          created_date:data.created_date,   
-          fee:data.fee,  
-          active:data.active,   
+          sh_product_name: data.sh_product_name,
+          created_on:data.created_on,   
+          sh_mrp:data.sh_mrp,  
+          sh_is_active:data.sh_is_active,   
        
-          id:index
+          id:data.id
           })
       }
       else if (
-           data.product_name !== null && data.product_name.toLowerCase().includes(this.state.search.toLowerCase())
-        || data.created_date !== null && data.created_date.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
-        || data.fee !== null && data.fee.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
-        || data.active !== null && data.active.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+           data.sh_product_name !== null && data.sh_product_name.toLowerCase().includes(this.state.search.toLowerCase())
+          || data.created_on !== null && data.created_on.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+          || data.sh_mrp !== null && data.sh_mrp  .toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
+          // || data.active !== null && data.active.toString().toLowerCase().includes(this.state.search.toString().toLowerCase())
 
-      ) {
+      ) 
+      {
          
         searchData.push({
-          product_name: data.product_name,
-          created_date:data.created_date,   
-          fee:data.fee, 
-          active:data.active,   
+          sh_product_name: data.sh_product_name,
+          created_on:data.created_on,   
+          sh_mrp:data.sh_mrp, 
+          sh_is_active:data.sh_is_active,   
           id:index
           })
       }
@@ -289,20 +290,20 @@ var multiDataSetbody = []
 this.state.tableData.map((xldata, index) => {
   if (index % 2 !== 0) {
     multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
-    { value: xldata.product_name },
-    { value: xldata.stocknumber },
-    { value: xldata.fee },
-    { value: xldata.active },
+    { value: xldata.sh_product_name },
+    { value: xldata.created_on },
+    { value: xldata.sh_mrp },
+    { value: xldata.sh_is_active },
 
   
     ])
   } else {
     multiDataSetbody.push([
       { value: index + 1, style: { alignment: { horizontal: "center" }, fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.stocknumber, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.fee, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.active, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.sh_product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.created_on, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.sh_mrp, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.sh_is_active, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
 
     ])
   }
@@ -357,7 +358,7 @@ const multiDataSet = [
 
             </div>
             <div style={{ display: "none" }}>
-              <PrintData printtableData={this.state.tableData}
+              <PrintData printtableData={searchData}
                 ref={el => (this.componentRef = el)} />
               </div>
               <div className="manage_container">
@@ -375,7 +376,7 @@ const multiDataSet = [
         </Paper>
 
         <Spin className="spinner_align" spinning={this.state.spinner}>
-          {tableData.length > 0 && (
+          {/* {tableData.length > 0 && ( */}
             <Tablecomponent
               heading={[
                 { id: "", label: "S.No" },
@@ -385,7 +386,7 @@ const multiDataSet = [
                 { id: "active", label: "Active" },
                 { id: "", label: "Action" },
               ]}
-              rowdata={searchData && this.state.tableData}
+              rowdata={searchData}
 
               // rowdata={tableData.length > 0 && tableData}
               tableicon_align={"cell_eye"}
@@ -394,7 +395,7 @@ const multiDataSet = [
               Workflow="close"
               add="close"
             />
-          )}
+           {/* )} */}
         </Spin>
 
         <Modalcomp

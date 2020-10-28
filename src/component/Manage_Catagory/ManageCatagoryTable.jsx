@@ -276,12 +276,12 @@ export default class ManageCatagoryTable extends React.Component {
         <Tablecomponent
           heading={[
             { id: "", label: "S.No" },
-            { id: "catagory", label: "Category" },
+            { id: "category", label: "Category" },
             { id: "created_date", label: "Created Date" },
             { id: "active", label: "Active" },
             { id: "", label: "Action" },
           ]}
-          rowdata={searchData && this.state.tableData}
+          rowdata={searchData}
           // rowdata={  searchData.length === 0 ? [] :   searchData && tableData}
           deleteopen={this.deleteopen}
           tableicon_align={"cell_eye"}

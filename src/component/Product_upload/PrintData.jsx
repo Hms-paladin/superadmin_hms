@@ -7,9 +7,11 @@ class PrintData extends React.Component {
             return (
                 <tr>
                     <td>{index + 1}</td>
-                    <td>{printdata.product_name}</td>
-                    <td>{printdata.stocknumber}</td>
-                    
+                    <td>{printdata.sh_product_name}</td>
+                    <td>{printdata.created_on}</td>
+                    <td>{printdata.sh_mrp}</td>
+                    <td>{printdata.sh_is_active}</td>
+
                 </tr>
             )
         })
@@ -20,8 +22,10 @@ class PrintData extends React.Component {
                     <thead>
                         <th>S.No</th>
                         <th>Product Name</th>
-                        <th>Stock Quantity</th>
-                  
+                        <th>Created Date </th>
+                        <th>Cost(KWD) </th>
+                        <th>Status </th>
+
                     </thead>
                     <tbody>
                         {printBodyData}

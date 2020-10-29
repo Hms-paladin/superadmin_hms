@@ -1153,19 +1153,7 @@ class Homepage extends React.Component {
                       </div>
                       </NavLink> */}
                       
-                      <NavLink to={`${this.props.match.path}/revenue`} className="d-flex">
-                  <div className={`${current_location.includes("/revenue") &&"submodulealignactive"} submodulealign`}>
-                          <GreenRadio
-                            checked={current_location.includes("/revenue")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("revenue")}
-                          />
-
-                        <MenuItem onClick={() => this.routeChange("revenue")} component={Link} to={`${this.props.match.path}/revenue`} className={`${current_location.includes("/revenue") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Revenue" />
-                        </MenuItem>
-                      </div>
-                      </NavLink>
+                     
                       <NavLink to={`${this.props.match.path}/managecategory`} className="d-flex">
                   <div className={`${current_location.includes("/managecategory") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
@@ -1218,19 +1206,7 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
                       </NavLink>
-                      <NavLink to={`${this.props.match.path}/mediauploadshopping`} className="d-flex">
-                  <div className={`${current_location.includes("/mediauploadshopping") &&"submodulealignactive"} submodulealign`}>
-                          <GreenRadio
-                            checked={current_location.includes("/mediauploadshopping")}
-                            className="greenCheckWid"
-                            onClick={() => this.routeChange("mediauploadshopping")}
-                          />
-
-                        <MenuItem onClick={() => this.routeChange("mediauploadshopping")} component={Link} to={`${this.props.match.path}/mediauploadshopping`} className={`${current_location.includes("/mediauploadshopping") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Media Upload" />
-                        </MenuItem>
-                      </div>
-                      </NavLink>
+                      
                       <NavLink to={`${this.props.match.path}/stock`} className="d-flex">
                   <div className={`${current_location.includes("/stock") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
@@ -1240,7 +1216,7 @@ class Homepage extends React.Component {
                           />
 
                         <MenuItem onClick={() => this.routeChange("stock")} component={Link} to={`${this.props.match.path}/stock`} className={`${current_location.includes("/stock") && "active_text_heading"} mttrainingCat`} >
-                          <ListItemText primary="Stock" />
+                          <ListItemText primary="Stock List" />
                         </MenuItem>
                       </div>
                       </NavLink>
@@ -1257,7 +1233,33 @@ class Homepage extends React.Component {
                         </MenuItem>
                       </div>
                       </NavLink>
-                      <NavLink to={`${this.props.match.path}/profile`} className="d-flex">
+                      <NavLink to={`${this.props.match.path}/mediauploadshopping`} className="d-flex">
+                  <div className={`${current_location.includes("/mediauploadshopping") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={current_location.includes("/mediauploadshopping")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("mediauploadshopping")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("mediauploadshopping")} component={Link} to={`${this.props.match.path}/mediauploadshopping`} className={`${current_location.includes("/mediauploadshopping") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Media Upload" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                      <NavLink to={`${this.props.match.path}/revenue`} className="d-flex">
+                  <div className={`${current_location.includes("/revenue") &&"submodulealignactive"} submodulealign`}>
+                          <GreenRadio
+                            checked={current_location.includes("/revenue")}
+                            className="greenCheckWid"
+                            onClick={() => this.routeChange("revenue")}
+                          />
+
+                        <MenuItem onClick={() => this.routeChange("revenue")} component={Link} to={`${this.props.match.path}/revenue`} className={`${current_location.includes("/revenue") && "active_text_heading"} mttrainingCat`} >
+                          <ListItemText primary="Revenue" />
+                        </MenuItem>
+                      </div>
+                      </NavLink>
+                      {/* <NavLink to={`${this.props.match.path}/profile`} className="d-flex">
                   <div className={`${current_location.includes("/profile") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
                             checked={current_location.includes("/profile")}
@@ -1269,8 +1271,8 @@ class Homepage extends React.Component {
                           <ListItemText primary="Profile" />
                         </MenuItem>
                       </div>
-                      </NavLink>
-                      <NavLink to={`${this.props.match.path}/report`} className="d-flex">
+                      </NavLink> */}
+                      {/* <NavLink to={`${this.props.match.path}/report`} className="d-flex">
                   <div className={`${current_location.includes("/report") &&"submodulealignactive"} submodulealign`}>
                           <GreenRadio
                             checked={current_location.includes("/report")}
@@ -1282,7 +1284,7 @@ class Homepage extends React.Component {
                           <ListItemText primary="Report" />
                         </MenuItem>
                       </div>
-                      </NavLink>
+                      </NavLink> */}
 
 
 
@@ -1347,7 +1349,7 @@ class Homepage extends React.Component {
                 <Route exact path={`${this.props.match.path}/mediauploadshopping`} render={() => <MediaUploadsMaster generateAlert={this.generateAlert} uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/stock`} render={() => <Stocklist_table uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/preorder`} render={() => <Preorderlist uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
-                <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
+                {/* <Route exact path={`${this.props.match.path}/profile`} render={() => <ProfileComp uservalue={this.state.useraccessdata && this.state.useraccessdata} />} /> */}
                 <Route exact path={`${this.props.match.path}/category`} render={() => <Notification_Category uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/event`} render={() => <Notification_Event uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />
                 <Route exact path={`${this.props.match.path}/variable`} render={() => <Notification_variable uservalue={this.state.useraccessdata && this.state.useraccessdata} />} />

@@ -59,6 +59,15 @@ export default class Product_Upload extends React.Component {
       },
     });
   };
+  generateError = (description) => {
+    notification.error({
+      message: "Error",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
 
   createData = (parameter) => {
     var keys = Object.keys(parameter);
@@ -119,7 +128,7 @@ export default class Product_Upload extends React.Component {
   };
 
   deleteopen = (type, id) => {
-    alert(id)
+    // alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,
@@ -197,11 +206,9 @@ export default class Product_Upload extends React.Component {
         console.log("sdfjsdhafjklsdhfk", response);
         if (response.data.status == "1") {
           this.getTableData();
-          this.props.generateAlert("Sub Category Deleted Successfully");
+          this.generateAlert("Sub Category Deleted Successfully");
         } else {
-          this.props.generateAlert(
-            "Sub Category contains product and could not be deleted"
-          );
+          this.generateError(response.data.msg);
         }
       })
       .catch((err) => {

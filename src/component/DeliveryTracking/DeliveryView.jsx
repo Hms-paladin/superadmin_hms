@@ -11,7 +11,7 @@ import "./DeliveryView.css";
 import Paper from "@material-ui/core/Card";
 import Labelbox from "../../helper/labelbox/labelbox";
 import ValidationLibrary from '../../helper/validationfunction';
-
+import clock from '../../images/time (1).png'
 import CustomizedSteppers from '../../StepperStatus/Status'
 import { apiurl } from "../../App";
 import axios from 'axios';
@@ -173,7 +173,7 @@ export default class DeliveryView extends Component {
                 disablePast
               />
             </div>
-              <div className="deli_timediv">
+              <div className="deli_timediv deli_time_svg">
                 <Labelbox
                   type="timepicker"
                   labelname="Time"
@@ -182,7 +182,8 @@ export default class DeliveryView extends Component {
                   error={this.state.deliveryStatusUpdate.time.error}
                   errmsg={this.state.deliveryStatusUpdate.time.errmsg}
                   railwayTime
-                />
+                >              
+                </Labelbox>
               </div>
             </div>
           </Paper>

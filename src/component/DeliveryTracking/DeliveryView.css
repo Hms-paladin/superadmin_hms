@@ -27,8 +27,24 @@
    align-items: center; 
 }
 .deli_timediv{
-    width:40%;
+    width:43%;
     margin-top: 15px;
+}
+.deli_time_svg .MuiSvgIcon-root{
+    display: none;
+
+}
+.deli_time_svg{
+    position: relative;
+}
+.deli_time_svg .clocksvg{
+    position: absolute;
+    top: 42px;
+    right: 20px;
+    background-image: url("../../images/time (1).png");
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
 }
 .outfor_butt{
     display:flex;

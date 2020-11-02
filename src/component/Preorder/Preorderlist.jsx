@@ -73,7 +73,7 @@ class Preorderlist extends Component {
              
 
               <Search
-                placeholder=" search "
+                placeholder=" Search "
                 onSearch={(value) => console.log(value)}
                 style={{ width: 150 }}
               />

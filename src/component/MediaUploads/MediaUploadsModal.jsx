@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
-import Labelbox from '../../helper/labelbox/labelbox'
+import Labelbox from '../../helper/shlabelbox/labelbox'
 import Button from '@material-ui/core/Button';
 import './MediaUploadsModal.css'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -61,6 +61,7 @@ componentWillMount() {
   }else{
         
   }
+  
   
 }
     handleOpen=()=>

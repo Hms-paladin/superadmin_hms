@@ -245,7 +245,7 @@ export default class ManageSubCatagoryTable extends React.Component {
            
               <div className="manage_content_search">
               <Search
-                placeholder=" search "
+                placeholder=" Search "
                 onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
                 className="search_box_container"

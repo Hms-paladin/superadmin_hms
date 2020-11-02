@@ -488,7 +488,7 @@ export default class Approval_manage extends React.Component {
             <h3>APPROVAL MANAGEMENT</h3>
         </div>
         <Search className="search"
-            placeholder=" search "
+            placeholder=" Search "
             onChange={this.searchfun}
             style={{ width: 150 }} />
     </div>

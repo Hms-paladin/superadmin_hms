@@ -540,7 +540,7 @@ loadproductInfo = () => {
     this.state.imagedata=details.sh_filename
     this.state.imageProdId=details.sh_product_id
     this.state.imageId=details.image_id
-    this.state.background=details.sh_color_palette
+    this.state.background=JSON.parse(details.sh_color_palette)
 
 
     this.setState({})

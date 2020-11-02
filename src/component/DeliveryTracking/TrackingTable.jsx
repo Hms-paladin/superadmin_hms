@@ -139,7 +139,7 @@ class DashboardTable extends React.Component {
 
  
   modelopen = (data, id) => {
-    alert(id)
+    // alert(id)
     if (data === "workflow") {
       this.setState({ workflowopen: true,orderId:id});
     }

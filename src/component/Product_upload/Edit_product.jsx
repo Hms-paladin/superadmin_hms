@@ -78,7 +78,7 @@ export default class Editproduct extends Component {
   const { editData,editOpenModal } = this.props;
   console.log("asdfjdshfjsdhfjksdhfjds",this.props)
   if ( editOpenModal === true) {
-    alert(editData.product_id)
+    // alert(editData.product_id)
     this.state.edit=true
     this.state.editId= editData.product_id
     this.state.CategoryId = editData.sh_category_id

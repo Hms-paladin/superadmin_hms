@@ -175,7 +175,7 @@ class Total_orders extends Component {
             customer:val.customer,
             phone_number:val.phone_no,
             booked_on:dateformat(val.booked_date, "dd mmm yyyy"),
-            price:val.price,
+            price:val.price + "KWD",
             
 
 
@@ -251,7 +251,7 @@ class Total_orders extends Component {
           customer: data.customer,
           phone_number:data.phone_number,
           booked_on:data.booked_on,
-          price: data.price,
+          price: data.price + "KWD",
           id:data.id
           })
       }

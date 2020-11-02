@@ -88,11 +88,14 @@ componentWillMount (){
        
                        <Grid item xs={6} md={6} >
                            <div className="product_content">
-                               <h5 className="product_title">Catagory</h5></div>
+                               <h5 className="product_title">Category</h5></div>
                            
                            <div className="product_content">
-                               <h5 className="product_title">Sub Catagory</h5></div>
+                               <h5 className="product_title">Sub Category</h5></div>
                            
+                               <div className="product_content">
+                               <h5 className="product_title">Product Code</h5></div>
+
                            <div className="product_content">
                                <h5 className="product_title">Product</h5></div>
                            
@@ -118,6 +121,9 @@ componentWillMount (){
                            <div className="product_content">
                                <h5 className="Product_para">{productInfo.sh_subcategory}</h5></div>
                            
+                               <div className="product_content">
+                               <h5 className="Product_para">{productInfo.sh_product_code}</h5></div>
+
                            <div className="product_content">
                                <h5 className="Product_para">{productInfo.sh_product_name}</h5></div>
 

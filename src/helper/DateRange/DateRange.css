@@ -1,5 +1,6 @@
 .daterangeMaster {
   z-index: 1;
+  position: absolute;
 }
 
 .daterangeMaster .rdrDateRangePickerWrapper {
@@ -65,7 +66,7 @@
 }
 
 .rangePicker_Master .formdiv {
-  width: 120% !important;
+  width: 100% !important;
   /* margin-top: 20px; */
   height: 51.5px;
   display: flex;

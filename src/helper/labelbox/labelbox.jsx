@@ -199,13 +199,20 @@ componentWillReceiveProps(props){
 				<MuiPickersUtilsProvider utils={DateFnsUtils}>
 				<KeyboardTimePicker
           margin="normal"
-          id="time-picker"
+		  id="time-picker"
+		  className="clock"
           value={this.state.selectedtime} 
           onChange={(time)=>this.timepickerChange(time)}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}
         />
+		  {/* <div className="clocksvg"
+		   KeyboardButtonProps={{
+			'aria-label': 'change time',
+			
+          }}
+		  ></div> */}
         </MuiPickersUtilsProvider>
 				{
     	data.error&&

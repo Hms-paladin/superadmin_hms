@@ -11,5 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.MuiButtonBase-root:focus{
+  outline: 0px solid !important;
+}
+.cell_eye img{
+  cursor: pointer !important;  
+}
+.cell_eye svg{
+  cursor: pointer !important;  
+}
 

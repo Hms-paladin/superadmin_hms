@@ -54,7 +54,6 @@ export default class ManageSubCatagoryTable extends React.Component {
 
 
   modelopen = (data, id) => {
-    alert(id)
     console.log(id, "edit_data");
 
     
@@ -150,7 +149,6 @@ export default class ManageSubCatagoryTable extends React.Component {
     })
   }
   deleteopen = (type, id) => {
-    alert(id)
     this.setState({
       deleteopen: true,
       iddata: id,
@@ -217,6 +215,8 @@ export default class ManageSubCatagoryTable extends React.Component {
         sh_category: data.sh_category,
         sh_subcategory:data.sh_subcategory,
         created_on: moment(data.created_on).format('DD MMM YYYY'),
+        active:data.active,
+        id:data.id
          })
      }
      else if (
@@ -230,6 +230,8 @@ export default class ManageSubCatagoryTable extends React.Component {
         sh_category: data.sh_category,
         sh_subcategory:data.sh_subcategory,
         created_on: moment(data.created_on).format('DD MMM YYYY'),
+        active:data.active,
+        id:data.id
       
          })
      }
@@ -269,7 +271,7 @@ export default class ManageSubCatagoryTable extends React.Component {
             { id: "active", label: "Active" },
             { id: "", label: "Action" },
           ]}
-          rowdata={searchData && this.state.tableData }
+          rowdata={searchData}
           deleteopen={this.deleteopen}
           modelopen={(e,id) => this.modelopen(e,id)}
           tableicon_align={"cell_eye"}

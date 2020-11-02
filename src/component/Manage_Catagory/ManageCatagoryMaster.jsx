@@ -28,7 +28,7 @@ export default class ManageCatagoryMaster extends Component {
   handleClickclose = () => {
     this.setState({ open: false });
   };
-
+ 
 
 
   render() {
@@ -63,6 +63,7 @@ export default class ManageCatagoryMaster extends Component {
 
           <ManageCatagoryTable             
           searchData={this.state.searchData} 
+          generateAlert={this.generateAlert}
  />
           <div className="Upload-modal-container">
             <Modalcomp

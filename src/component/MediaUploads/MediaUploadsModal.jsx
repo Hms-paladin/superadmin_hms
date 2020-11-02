@@ -192,6 +192,8 @@ componentDidMount(){
       if(editopenModal === true){
         this.state.editId= editData.id
         this.state.mediaupload_lab.media_title.value = editData.media_title
+        this.state.mediaupload_lab.media_description.value = editData.media_description
+        
         // this.state.media_filename = editData.media_filename
         this.state.dataa = editData.dataa
         if(editData.media_filename != undefined && editData.media_filename != ''){  

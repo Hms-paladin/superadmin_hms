@@ -75,7 +75,7 @@ export default class DateRangeSelect extends React.Component {
     render() {
         console.log(this.state.item, "rangedate")
         return (
-            <div style={{width:'450px', zIndex:"1"}}>
+            <div style={{width:'400px', zIndex:"1"}}>
                 <div className="rangePicker_Master">
                     <div className="rangePicker_Label">
                         Select Range:

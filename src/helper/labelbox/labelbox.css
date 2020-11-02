@@ -14,6 +14,18 @@
     font-size: 15px;
    
 }
+.clock{
+    position: relative;
+}
+.clocksvg{
+    position: absolute;
+    top: 42px;
+    right: 20px;
+    background-image: url("../../images/time (1).png");
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
+}
 .formdiv .brdrcls{
     width: 100%;
     padding: 6px;

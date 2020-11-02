@@ -156,8 +156,8 @@ export default class Editstock extends React.Component {
 
                 {this.state.stockDetails&&this.state.stockDetails.length>0 && this.state.stockDetails.map((stockDetails) => {
                   return(
-                    <div>
-              <div>
+                    <div className="preorder_stock">
+              <div className="pro_name">
                 <Labelbox type="text" labelname="Product Name" value={stockDetails.sh_product_name}/>
               </div>
               <div className="stock_available" >

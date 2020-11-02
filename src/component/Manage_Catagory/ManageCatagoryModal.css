@@ -116,6 +116,13 @@
     font-size: 14px !important;
  
 }
+.manage_content_search{
+    margin-right: 20px;
+}
+.manage_container .manage_plus-icon{
+    width: 35px;
+    cursor: pointer;
+}
 .media_title_head{
     width: 80%;
 }

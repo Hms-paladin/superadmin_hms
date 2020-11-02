@@ -401,6 +401,36 @@ alert("Inserting")
     }
     
 }  
+addProductDetails = (details) =>{
+  alert("insertShProductInfo")
+  var self=this;
+  Axios({
+    method:"POST",
+    url: apiurl+'insertShProductInfo',
+    data: details
+  }).then((response) => {
+    this.resetFormValue()
+    console.log("insertProductres",  response.data.data)
+   
+    console.log(this.state.productId,"idcheck")
+    if(response.data.status == "1") {
+      this.props.getTableData()
+    
+      this.props.generateAlert("Product Added Successfully")
+      self.setState({
+        productId :response.data.data[0].product_id
+      },()=>this.loadproductInfo())
+
+ 
+
+    }
+    else  if(response.data.status == "0") {
+      this.props.generateAlert("Product Name already exists")
+    }
+   
+  })
+  console.log(this.state.productId,"idrecieve")
+}
 
 submitHandle = () =>{
   alert("Editing Content")
@@ -443,36 +473,7 @@ updateContent =(details) =>{
   } 
 
 
-addProductDetails = (details) =>{
-  alert("insertShProductInfo")
-  var self=this;
-  Axios({
-    method:"POST",
-    url: apiurl+'insertShProductInfo',
-    data: details
-  }).then((response) => {
-    this.resetFormValue()
-    console.log("insertProductres",  response.data.data)
-   
-    console.log(this.state.productId,"idcheck")
-    if(response.data.status == "1") {
-      this.props.getTableData()
-    
-      this.props.generateAlert("Product Added Successfully")
-      self.setState({
-        productId :response.data.data[0].product_id
-      },()=>this.loadproductInfo())
 
- 
-
-    }
-    else  if(response.data.status == "0") {
-      this.props.generateAlert("Product Name already exists")
-    }
-   
-  })
-  console.log(this.state.productId,"idrecieve")
-}
 
 loadproductInfo = () => {
   
@@ -544,7 +545,8 @@ alert("dai")
     const isValid=this.validation()
     
 
-    if(this.state.cardEdit===true && isValid){
+    if(this.state.cardEdit==true && isValid){
+      alert("insideIf")
       this.sendCardEdit(formdata)
     }
     console.log(formdata,"likeess")

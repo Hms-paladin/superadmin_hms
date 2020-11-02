@@ -371,7 +371,7 @@ export default class DashboardTable extends Component {
                   .map((row, index, item) => {
                     const isItemSelected = isSelected(row.name);
                     const labelId = `enhanced-table-checkbox-${index}`;
-                    console.log("rendering", row);
+                    // console.log("rendering", row);
                     return (
                       <TableRow
                         hover

@@ -20,6 +20,11 @@ z-index: 99999 !important;
   overflow-y: auto;
 
 }
+.validation__error_custom_qty{
+  font-size: 10px;
+    color: red;
+    margin-left: 10px;
+}
 .shop_colorpalatte_dropdown{
   padding: 10px;
 }

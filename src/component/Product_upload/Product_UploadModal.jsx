@@ -473,8 +473,6 @@ updateContent =(details) =>{
   } 
 
 
-<<<<<<< HEAD
-=======
 addProductDetails = (details) =>{
   // alert("insertShProductInfo")
   var self=this;
@@ -494,8 +492,9 @@ addProductDetails = (details) =>{
       self.setState({
         productId :response.data.data[0].product_id
       },()=>this.loadproductInfo())
->>>>>>> 7925cc23e02d661a5fef292a48603a42739b6b7f
-
+    }
+  })
+}
 
 loadproductInfo = () => {
   

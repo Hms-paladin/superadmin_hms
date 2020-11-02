@@ -311,7 +311,7 @@ class Total_orders extends Component {
               />
 
                <Search
-                placeholder=" search "
+                placeholder=" Search "
                 onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
                 className="search_box_container"

@@ -289,7 +289,7 @@ class DashboardTable extends React.Component {
               </div>
 
               <Search
-                placeholder=" search "
+                placeholder=" Search "
                 onChange={(e) => this.searchChange(e)}
                 style={{ width: 150 }}
                 className="search_box_container"

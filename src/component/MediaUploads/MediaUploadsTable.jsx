@@ -77,7 +77,7 @@ componentWillReceiveProps(newProps) {
         response.data.data[0].details.map((val,index) => {
           console.log("sdfjsdhfjdshf",val)
           // for(let i=0;i<50;i++){
-            tableData.push({ title: val.media_title,type:val.media_type,uploaded:dateformat(val.created_on,"dd mmm yyyy hh:MM TT"),status:val.is_active,id: val.id,indexid:index.toString(),sortorder:val.media_sortorder })
+            tableData.push({ title: val.media_title,type:val.media_type,uploaded:dateformat(val.created_on,"dd mmm yyyy hh:MM TT"),status:val.is_active,id: val.id,indexid:index.toString(),sortorder:val.media_sortorder, })
             console.log(val.id,"idddddd")
           // }
 

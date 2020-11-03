@@ -86,8 +86,8 @@ export default class ManageCatagoryModal extends Component {
       this.state.editId= editData.id
       this.state.CategoryId = editData.sh_category_id
       this.state.subCategory = editData.sh_subcategory
-      // this.state.filename = editData.sh_upload_filename
-      // this.state.imagedata = editData.sh_upload_filename
+      this.state.filename = editData.sh_upload_filename
+      this.state.imagedata = editData.sh_upload_filename
       this.state.checked = editData.sh_active
       this.state.subcatId=editData.sh_sub_category_id
     }

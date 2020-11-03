@@ -1,31 +1,13 @@
+
 import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Dialog from "@material-ui/core/Dialog";
-import PersonIcon from "@material-ui/icons/Person";
-import AddIcon from "@material-ui/icons/Add";
-import Typography from "@material-ui/core/Typography";
-import { blue } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
-import { withStyles } from "@material-ui/core/styles";
-import Profile from "../../images/1.jpg";
 import "./Editorder.css";
-import { TiLocation, MdLocationOn, MdLocalPhone } from "react-icons/md";
-import Labelbox from "../../helper/ShopLabelComponent/labelbox";
-import { DatePicker } from "antd";
+import Labelbox from "../../helper/labelbox/labelbox";
 import "antd/dist/antd.css";
-import { IoIosGlobe } from "react-icons/io";
-import EditIcon from "@material-ui/icons/Edit";
-import CloseIcon from "@material-ui/icons/Close";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import dateformat from 'dateformat';
 import { Select } from "antd";
-import Badge from "@material-ui/core/Badge";
-import { Dropdown } from "react-bootstrap";
-import axios from "axios";
+import Axios from "axios";
 import { apiurl } from "../../App";
 const color = (
   <div
@@ -51,10 +33,25 @@ export default class Editstock extends React.Component {
     this.state = { 
       cancel: null , 
       productID:"",
-      stockDetails:[],
-      stockColor:[]
+      stockDetails:"",
+      stockColor:[],
+      xpectedQty:"",
+      quantityError:"",
+      startdate:dateformat(new Date(), "yyyy-mm-dd"),
+      errors:{},
+      touched:{},
     };
   }
+
+  datepickerChange = (data, key) => {
+    if (key === 'expected_date') {
+        this.setState({
+            startdate: data,
+            dateError:false
+        },()=>console.log(dateformat(this.state.startdate,"yyyy-mm-dd"),"dstecheckinh"))
+    }
+  }
+  
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -67,20 +64,37 @@ export default class Editstock extends React.Component {
 
   componentDidMount(){
     const {editData, edit}=this.props
-    console.log("asdfjdshfjsdhfjksdhfjds",this.props)
+    // console.log("asdfjdshfjsdhfjksdhfjds",this.props)
     if(edit===true){
     this.state.productID=editData.id
+    }this.getModalData()
+  
     
-    }this.getTableData()
-    console.log(this.state.productID,"did")
   }
 
-  getTableData = (data) =>{
-    this.setState({spinner:true})
-    var self = this
 
-    
-    axios({
+  changeStockDetails =(value,index,key,arr)=>{
+    console.log(value,"indexchck")
+    var stockDetails=this.state.stockDetails;
+    var touched = this.state.touched;
+  if(key){
+    touched[key]=true;
+    stockDetails[key]=value;
+
+  }else if(arr) {
+    touched['mismatch']=true;
+  stockDetails.color_info[index].expected_quantity=value;
+  }console.log(stockDetails.color_info[index],"valdhffkjd");
+  this.validation();
+  this.setState({stockDetails,qtyMisMatch:false}) 
+  console.log(stockDetails.color_info[index],"proper")
+  }
+
+
+  getModalData = (data) =>{
+    this.setState({spinner:true})
+    var self = this  
+    Axios({
       method:"POST",
       url:apiurl + 'getPreOrderById',
       data:{
@@ -89,58 +103,117 @@ export default class Editstock extends React.Component {
           
     })
     .then((response)=>{
-  
            console.log(response,"resresres")
-         this.setState({
-          stockDetails:response.data.data,
-          stockColor:response.data.data[0].color_info
-         })
-            
-  
+         self.setState({
+          stockDetails:response.data.data[0],
+          // stockColor:response.data.data[0].color_info,
+         },()=>this.setting())
+        
+
 })
-           
+
+
    
+ 
   }
+
+  setting=()=>{
+    this.state.stockDetails.expected_quantity=0;
+    this.setState({})
+    // console.log(this.state.stockDetails,"djsbfjsdb")
+  }
+
+  validation = (callback) => {
+  
+    var stockDetails=this.state.stockDetails;
+    var totalcount=stockDetails.color_info.reduce((acc,obj)=>acc+parseInt(obj.expected_quantity),0);
+    var errors=this.state.errors;
+     errors={};
+     console.log("qty1",totalcount)
+     console.log("qty2",stockDetails.expected_quantity)
+
+   if(totalcount<1||totalcount!=stockDetails.expected_quantity){
+    errors['mismatch']="Qty Mismatch";
+   } 
+
+   if(!stockDetails.expected_quantity){
+    errors['expected_quantity']="Field Required";
+   }
+   if(!stockDetails.expected_date){
+    errors['date_error']="Date Required";
+  }
+  // if(!stockDetails.sh_product_details){
+  //   errors['sh_product_details']="Field Required";
+  // }
+  if(Object.keys(errors).length==0){
+    this.setState({errors},function(){
+      callback&&callback(true);
+    })
+  }else{
+    // return false;
+    this.setState({errors},function(){
+      callback&&callback(false);
+    })
+
+  }
+
+  }
+
+onSubmitData = () => {
+  
+   var addStock=this.state.stockDetails;
+     addStock.created_by= 1;
+     addStock.expected_date=this.state.startdate;
+     var touched = this.state.touched;
+     touched={};
+     touched.expected_quantity=true;
+     touched.sh_product_details=true;
+     touched.expected_date=true;
+     touched.mismatch=true;
+
+     this.setState({touched},function(){
+      this.validation((data)=>{
+        console.log("success",data)
+        if(data){
+          this.addingPreOrderInsertApi(addStock);
+        }
+      })
+    })
+
+    
+
+  };
+
+ addingPreOrderInsertApi = (details) =>{
+
+  Axios({
+    method: "POST",
+    url: apiurl + "insertExpectedStocks",
+    data: details
+  })
+  .then((response) => {
+    // console.log("insertShStock", response);
+    if(response.data.status == "1") {
+      this.props.getTableData()
+      this.props.generateAlert("Pre-Order Stock Added Successfully")
+    }
+    if(response.data.status == "0") {
+      this.props.getTableData()
+      this.props.generateAlert("Pre-Order Stock Cannot Be Added")
+    }
+  })
+  .catch((err) => {
+    //
+  });
+}
+
+
+
   render() {
-    console.log(this.state.stockDetails,"ordercheck")
-    const color = (
-      <div
-        style={{
-          backgroundColor: "#FC478A",
-          width: "50px",
-          height: "20px",
-          marginTop: "5px",
-        }}
-      />
-    );
-    const colour = (
-      <div
-        style={{
-          backgroundColor: "#F6BE3E",
-          width: "50px",
-          height: "20px",
-          marginTop: "5px",
-        }}
-      />
-    );
-    const colors = (
-      <div
-        style={{
-          backgroundColor: "#2FD1F2",
-          width: "50px",
-          height: "20px",
-          marginTop: "5px",
-        }}
-      />
-    );
-    const styles = "";
-    const { classes, onClose, cancel, selectedValue, ...other } = this.props;
-    const techCompanies = [
-      { label: "Apple", value: "option 1" },
-      { label: "Facebook", value: "option 2" },
-      { label: "Netflix", value: "option 3" },
-      { label: "Tesla", value: "option 4" },
-    ];
+    const {stockDetails,errors,touched}= this.state;
+    var stocks=this.state.stockDetails
+
+    // console.log(stocks,"ordercheck")
     return (
       <div className="stock_popup_details">
      
@@ -153,36 +226,41 @@ export default class Editstock extends React.Component {
                 width: "100%",
               }}
             >
-
-                {this.state.stockDetails&&this.state.stockDetails.length>0 && this.state.stockDetails.map((stockDetails) => {
-                  return(
-                    <div className="preorder_stock">
-              <div className="pro_name">
+  
+              <div className="stock_available">
                 <Labelbox type="text" labelname="Product Name" value={stockDetails.sh_product_name}/>
               </div>
               <div className="stock_available" >
                 <Labelbox type="text" labelname="Available Stock" value={stockDetails.avilable_quantity} />
               </div>
-              <Labelbox type="text" labelname="Expected Qty" value={stockDetails.expected_date} />
+              <div>
+              <Labelbox 
+              type="number" 
+              labelname="Expected Qty"  
+              value={stockDetails.expected_quantity}
+              changeData={(value) => this.changeStockDetails(value,null,"expected_quantity",null)} />
+              <div className="validation__error_custom">{errors.expected_quantity&&touched.expected_quantity&&errors.expected_quantity}</div>
+              </div>
 
-              <Labelbox type="datepicker" labelname="Expected Date" value={stockDetails.expected_quantity}/>
-
+              <div>
+              <Labelbox type="datepicker" labelname="Expected Date"   
+              value={this.state.startdate} disablePast={true}
+              changeData={(date) => this.datepickerChange(date,'expected_date')} />         
+              <div className="validation__error_custom">{this.state.dateError && this.state.dateError}</div>
+    
+              </div>
+               
             </div>
-                  )})}
-                  </div>
           </Grid>
          
         </Grid>
-
-        {this.state.stockColor&&this.state.stockColor.length>0 && this.state.stockColor.map((stockColor) => {
+        <div className="stock_box_container">       
+           <div className="stockcart_box">
+        {stockDetails&&stockDetails.color_info.length >0 && stockDetails.color_info.map((stockColor,index) => {
                   return(
 
-<div className="stock_box_container">       
-           <div className="stockcart_box">
-
-      
-        <div className="stock_second_content">
-          <div style={{ width: "140px" }}>
+                    <div className="stock_second_content"  >
+          <div style={{ width: "140px" }} >
             <Labelbox
               type="text"
               labelname="Color"
@@ -191,15 +269,9 @@ export default class Editstock extends React.Component {
             />
           </div>
           <div className="shop_colorpalatte_dropdown">
-            <div>
-              <label className="shop_colorpalatte_label">Color Palette </label>
-            </div>
-            <div
-              className="color_palette_box"
-             
-            >
-             <div className="color_palette" style={{backgroundColor:`${JSON.parse(stockColor.sh_color_palette)}`}}>
-             </div>
+            <div><label className="shop_colorpalatte_label">Color Palette </label></div>
+            <div className="color_palette_box">
+             <div className="color_palette" style={{backgroundColor:`${JSON.parse(stockColor.sh_color_palette)}`}}></div>
             </div>
             </div>
           <div style={{ width: "80px" }}>
@@ -207,111 +279,23 @@ export default class Editstock extends React.Component {
               type="number"
               labelname="Qty"
               className="second_content_one"
-            />
-          </div>
-          </div>
-          {/* <div className="stock_second_content">
-          <div style={{ width: "140px" }}>
-            <Labelbox
-              type="text"
-              labelname="Color"
-              placeholder="Example:Pink"
-              className="second_content_one"
-            />
-          </div>
-          <div className="shop_colorpalatte_dropdown">
-            <div>
-              <label className="shop_colorpalatte_label">Color Palette </label>
-            </div>
-            <div
-              className="color_palette_box"
-             
-            >
-             <div className="color_palette">
+              value={stockColor.expected_quantity==undefined? "0":stockColor.expected_quantity}
+              changeData={(value) => this.changeStockDetails(value,index,null,true)} />
+          <div className="validation__error_custom_qty">{errors.mismatch&&touched.mismatch &&errors.mismatch}</div>
 
-             </div>
-            </div>
-            </div>
-          <div style={{ width: "80px" }}>
-            <Labelbox
-              type="number"
-              labelname="Qty"
-              className="second_content_one"
-            />
           </div>
-          </div> */}
-          {/* <div className="stock_second_content">
-          <div style={{ width: "140px" }}>
-            <Labelbox
-              type="text"
-              labelname="Color"
-              placeholder="Example:Pink"
-              className="second_content_one"
-            />
           </div>
-          <div className="shop_colorpalatte_dropdown">
-            <div>
-              <label className="shop_colorpalatte_label">Color Palette </label>
-            </div>
-            <div
-              className="color_palette_box"
-             
-            >
-             <div className="color_palette">
-
-             </div>
-            </div>
-            </div>
-          <div style={{ width: "80px" }}>
-            <Labelbox
-              type="number"
-              labelname="Qty"
-              className="second_content_one"
-            />
-          </div>
-          </div> */}
-          {/* <div className="stock_second_content">
-          <div style={{ width: "140px" }}>
-            <Labelbox
-              type="text"
-              labelname="Color"
-              placeholder="Example:Pink"
-              className="second_content_one"
-            />
-          </div>
-          <div className="shop_colorpalatte_dropdown">
-            <div>
-              <label className="shop_colorpalatte_label">Color Palette </label>
-            </div>
-            <div
-              className="color_palette_box"
-             
-            >
-             <div className="color_palette">
-
-             </div>
-            </div>
-            </div>
-          <div style={{ width: "80px" }}>
-            <Labelbox
-              type="number"
-              labelname="Qty"
-              className="second_content_one"
-            />
-          </div>
-          </div> */}
+       )})}
+       
         </div>
-        </div>
-                  )})}
+         </div>
         <div className="stock_button">
-          <Button className="stock_cancel" onClick={this.handleClose}>
+          <Button className="stock_cancel" onClick={this.props.closemodal(false)}>
             Cancel
           </Button>
-          <Button className="stock_update">Update</Button>
+          <Button className="stock_update" onClick={()=>this.onSubmitData()}>Update</Button>
         </div>
-        {/* </Dialog> */}
       </div>
     );
   }
 }
-const Trainer_viewWrapped = withStyles(styles)(Editstock);

@@ -171,9 +171,9 @@ export default class ManageSubCatagoryTable extends React.Component {
         console.log("sdfjsdhafjklsdhfk", response);
         if (response.data.status == "1") {
           this.getTableData();
-          this.props.generateAlert("Sub Category Deleted Successfully");
+          this.generateAlert("Sub Category Deleted Successfully");
         } else {
-          this.props.generateAlert(
+          this.generateAlert(
             "Sub Category contains product and could not be deleted"
           );
         }

@@ -433,6 +433,7 @@ changeDynamic = (data, key) => {
         if (response.data.status == "1") {
           this.props.generateAlert("Sub Category Deleted Successfully");
           this.getAddedPackInfo()
+          this.props.getTableData()
         } else {
           this.props.generateAlert(
             "Sub Category contains product and could not be deleted"

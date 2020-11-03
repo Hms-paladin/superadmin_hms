@@ -22,7 +22,7 @@ class PrintData extends React.Component {
                         <th>S.No</th>
                         <th>Customer</th>
                         <th>Phone Number</th>
-                        <th>Booked On</th>
+                        <th>Booked Date</th>
                         <th>Price(KWD)</th>
                     </thead>
                     <tbody>

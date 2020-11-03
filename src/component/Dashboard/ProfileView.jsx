@@ -88,18 +88,11 @@ console.log(this.props,"1234")
                 </div>
                 <div className="shopping_details_content">
                   <label className="product_shop">Total Cost</label>
-                  <span className="product_name">{this.props.showData.cost}</span>
+                  <span className="product_name">{this.props.showData.cost} KWD</span>
                 </div>
               </div>
             </div>
-            {/* <Divider className="divide" />
-
-            <div className="shopping_quantity">
-            <div className="quantity_cost">
-              <h5 className="cost_bottom">Quatity<span className="bottom_quantity">1</span></h5>
-              <h5 className="cost_bottom">Cost (KWD)<span className="bottom_cost">80</span></h5>
-            </div>
-            </div> */}
+        
           </div>
         </Dialog>
       </div>

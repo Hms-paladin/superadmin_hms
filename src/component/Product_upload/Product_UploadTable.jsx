@@ -230,13 +230,15 @@ export default class Product_Upload extends React.Component {
     }else{
     const doc = new jsPDF("a3")
     var bodydata = []
-    console.log(this.state.tableData,"datasss")
+    // console.log(this.state.tableData,"datasss")
     this.state.tableData.map((data, index) => {
+      console.log(data.sh_is_active.props.checked,"ksdjnks")
       bodydata.push([
         index + 1,
-        data.sh_product_name, data.created_on ,data.sh_mrp ,data.sh_is_active == "1" ? "Active" : "Inactive"
+        data.sh_product_name, data.created_on ,data.sh_mrp ,data.sh_is_active.props.checked == true ? "Active" : "Inactive"
       ])
     })
+    // console.log(this.state.tableData.sh_is_active.props,"datasss")
     doc.autoTable({
       beforePageContent: function (data) {
         doc.text("Manage Product", 15, 23); // 15,13 for css

@@ -228,7 +228,7 @@ class DashboardTable extends React.Component {
               component={NavLink}
               to="/Home/mediauploadshopping"
             >
-              Media Upload
+              Media Uploads
             </Button>
             {/* <Button
               className="shopping_dash_bottom_buttons shopping_dash_bottom3"

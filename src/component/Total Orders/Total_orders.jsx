@@ -114,7 +114,7 @@ class Total_orders extends Component {
               customer:val.customer,
               phone_number:val.phone_no,
               booked_on:dateformat(val.booked_date, "dd mmm yyyy"),
-              price:val.price,
+              price:val.price + "KWD",
               
 
               id:val.order_id

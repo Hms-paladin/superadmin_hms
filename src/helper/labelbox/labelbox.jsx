@@ -5,6 +5,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import dateFormat from 'dateformat';
 import moment from 'moment';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -205,7 +206,8 @@ componentWillReceiveProps(props){
           onChange={(time)=>this.timepickerChange(time)}
           KeyboardButtonProps={{
             'aria-label': 'change time',
-          }}
+		  }}
+		  keyboardIcon={<AccessTimeIcon>add_circle</AccessTimeIcon>}
         />
 		  {/* <div className="clocksvg"
 		   KeyboardButtonProps={{

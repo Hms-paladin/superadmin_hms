@@ -30,10 +30,10 @@
     width:43%;
     margin-top: 15px;
 }
-.deli_time_svg .MuiSvgIcon-root{
+/* .deli_time_svg .MuiSvgIcon-root{
     display: none;
 
-}
+} */
 .deli_time_svg{
     position: relative;
 }

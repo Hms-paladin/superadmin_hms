@@ -187,12 +187,12 @@ class DashboardTable extends React.Component {
       })
       doc.autoTable({
         beforePageContent: function (data) {
-          doc.text("Order Processing", 15, 23); // 15,13 for css
+          doc.text("Tracking", 15, 23); // 15,13 for css
         },
         margin: { top: 30 },
         showHead: "everyPage",
         theme: "grid",
-        head: [['S.No', 'Customer', 'Product Name', 'Phone Number', 'status']],
+        head: [['S.No', 'Customer', 'Product Name', 'Phone Number', 'Status']],
         body: bodydata,
       })
   

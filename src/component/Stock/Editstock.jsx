@@ -8,7 +8,7 @@ import Labelbox from "../../helper/ShopLabelComponent/labelbox";
 import "antd/dist/antd.css";
 import Axios from "axios";
 import { apiurl } from "../../App";
-import { Select } from "antd";
+import { Select,notification } from "antd";
 
 
 const { Option } = Select;
@@ -49,6 +49,7 @@ export default class Editstock extends React.Component {
   onclose = () => {
     this.setState({ view: false });
   };
+  
   
 
   componentWillMount (){
@@ -255,7 +256,7 @@ export default class Editstock extends React.Component {
               <label className="shop_colorpalatte_label">Color Palette</label>
             </div>
             <div className="color_palette_box">
-               <div className="color_palette" style={{backgroundColor:`${JSON.parse(colorInfo.sh_color_palette)}`}}>
+               <div className="color_palette" style={{backgroundColor:`${colorInfo.sh_color_palette}`}}>
              </div>
            
             </div>

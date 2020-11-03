@@ -88,7 +88,7 @@ console.log(this.props,"1234")
                 </div>
                 <div className="shopping_details_content">
                   <label className="product_shop">Total Cost</label>
-                  <span className="product_name">{this.props.showData.cost} KWD</span>
+                  <span className="product_name">{this.props.showData.cost}</span>
                 </div>
               </div>
             </div>

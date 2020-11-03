@@ -6,7 +6,7 @@ import "./Editorder.css";
 import Labelbox from "../../helper/labelbox/labelbox";
 import "antd/dist/antd.css";
 import dateformat from 'dateformat';
-import { Select } from "antd";
+import { Select,notification } from "antd";
 import Axios from "axios";
 import { apiurl } from "../../App";
 const color = (
@@ -43,6 +43,16 @@ export default class Editstock extends React.Component {
     };
   }
 
+  generateError = (description) => {
+    notification.error({
+      message: "Error",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
+
   datepickerChange = (data, key) => {
     if (key === 'expected_date') {
         this.setState({
@@ -64,12 +74,12 @@ export default class Editstock extends React.Component {
 
   componentDidMount(){
     const {editData, edit}=this.props
-    // console.log("asdfjdshfjsdhfjksdhfjds",this.props)
+    console.log("asdfjdshfjsdhfjksdhfjds",this.props)
     if(edit===true){
     this.state.productID=editData.id
-    }this.getModalData()
+    }
   
-    
+    this.getModalData()
   }
 
 
@@ -199,7 +209,7 @@ onSubmitData = () => {
     }
     if(response.data.status == "0") {
       this.props.getTableData()
-      this.props.generateAlert("Pre-Order Stock Cannot Be Added")
+      this.generateError("Pre-Order Stock Cannot Be Added")
     }
   })
   .catch((err) => {
@@ -211,7 +221,7 @@ onSubmitData = () => {
 
   render() {
     const {stockDetails,errors,touched}= this.state;
-    var stocks=this.state.stockDetails
+    
 
     // console.log(stocks,"ordercheck")
     return (
@@ -257,6 +267,7 @@ onSubmitData = () => {
         <div className="stock_box_container">       
            <div className="stockcart_box">
         {stockDetails&&stockDetails.color_info.length >0 && stockDetails.color_info.map((stockColor,index) => {
+          console.log(stockColor,"djfjfkdf")
                   return(
 
                     <div className="stock_second_content"  >
@@ -268,12 +279,14 @@ onSubmitData = () => {
               className="second_content_one"
             />
           </div>
+
           <div className="shop_colorpalatte_dropdown">
             <div><label className="shop_colorpalatte_label">Color Palette </label></div>
             <div className="color_palette_box">
-             <div className="color_palette" style={{backgroundColor:`${JSON.parse(stockColor.sh_color_palette)}`}}></div>
+             <div className="color_palette" style={{backgroundColor:`${stockColor.sh_color_palette}`}}></div>
             </div>
             </div>
+
           <div style={{ width: "80px" }}>
             <Labelbox
               type="number"
@@ -290,7 +303,7 @@ onSubmitData = () => {
         </div>
          </div>
         <div className="stock_button">
-          <Button className="stock_cancel" onClick={this.props.closemodal(false)}>
+          <Button className="stock_cancel" onClick={() => this.props.closemodal(false)}>
             Cancel
           </Button>
           <Button className="stock_update" onClick={()=>this.onSubmitData()}>Update</Button>

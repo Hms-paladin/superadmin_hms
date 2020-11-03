@@ -430,6 +430,7 @@ const multiDataSet = [
              insertOpenModal={this.state.insertOpen}
             //  add={this.state.add}
              generateAlert={this.generateAlert}
+             generateError={this.generateError}
              editData={this.state.editData}
              editOpenModal={this.state.editopen}
              edit={this.state.edit}

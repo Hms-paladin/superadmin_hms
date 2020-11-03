@@ -51,7 +51,15 @@ export default class ManageSubCatagoryTable extends React.Component {
     });
   };
 
-
+  generateError = (description) => {
+    notification.error({
+      message: "Error",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
 
   modelopen = (data, id) => {
     console.log(id, "edit_data");
@@ -173,7 +181,7 @@ export default class ManageSubCatagoryTable extends React.Component {
           this.getTableData();
           this.generateAlert("Sub Category Deleted Successfully");
         } else {
-          this.generateAlert(
+          this.generateError(
             "Sub Category contains product and could not be deleted"
           );
         }
@@ -306,6 +314,7 @@ export default class ManageSubCatagoryTable extends React.Component {
              editOpenModal={this.state.editopen}
              edit={this.state.edit}
              generateAlert={this.generateAlert}
+             generateError={this.generateError}
 
      />
 

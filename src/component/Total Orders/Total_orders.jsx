@@ -189,7 +189,7 @@ class Total_orders extends Component {
     
     profile_image:val.profile_image,
     bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
-    cost:val.price,
+    cost:val.price+"KWD",
     id:val.order_id
   })
            

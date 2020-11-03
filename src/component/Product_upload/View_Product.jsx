@@ -141,7 +141,7 @@ componentWillMount (){
                         console.log(productColor,"productColor")
                         return(
                             <div className="colorFlex">
-                                <div style={{backgroundColor:`${JSON.parse(productColor)}`,height:"20px", width:"20px"}}/>
+                                <div style={{backgroundColor:`${productColor}`,height:"20px", width:"20px"}}/>
                              
                             </div>
                         )})}</div>

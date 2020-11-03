@@ -61,12 +61,7 @@ z-index: 99999 !important;
   font-family: "Roboto";
   margin: 15px;
 }
-.preorder_stock{
-  display: contents;
-}
-.pro_name input{
-  border:0px !important
-}
+
 .stock_content {
   /* display: flex;
   justify-content: space-evenly;

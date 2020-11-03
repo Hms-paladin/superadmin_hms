@@ -96,7 +96,7 @@ class DashboardTable extends React.Component {
           todaysData.push({
             customer:val.customer,
             
-            cost:val.price,
+            cost:val.price +"KWD",
             id:val.order_id
 
             })
@@ -108,7 +108,7 @@ class DashboardTable extends React.Component {
     
     profile_image:val.profile_image,
     bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
-    cost:val.price,
+    cost:val.price +"KWD",
     id:val.order_id
   })
   this.setState({

@@ -110,7 +110,7 @@ function EnhancedTableHead(props) {
             <TableSortLabel
               active={orderBy === row.id}
               direction={order}
-              onClick={createSortHandler(row.id)}
+              onClick={() => createSortHandler(row.id)}
             >
               {row.label}
             </TableSortLabel>

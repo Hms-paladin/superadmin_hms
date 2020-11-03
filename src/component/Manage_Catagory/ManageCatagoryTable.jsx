@@ -51,7 +51,15 @@ export default class ManageCatagoryTable extends React.Component {
     });
   };
 
-
+  generateError = (description) => {
+    notification.error({
+      message: "Error",
+      description,
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
 
   modelopen = (data, id) => {
     console.log(data, "edit_data");
@@ -169,11 +177,11 @@ export default class ManageCatagoryTable extends React.Component {
         console.log("sdfjsdhafjklsdhfk", response.data.status == "1");
         if (response.data.status == "1") {
           this.getTableData();
-          this.props.generateAlert("Category Deleted Successfully");
-        } else {
-          this.props.generateAlert(
-            "There are Products against this Subcategory. The Category cannot be deleted"
-          );
+          this.generateAlert("Category Deleted Successfully");
+        } 
+        if(response.data.status == "0") {
+          this.getTableData();
+          this.generateError("There are Products against this Subcategory. The Category cannot be deleted");
         }
       })
       .catch((err) => {
@@ -318,7 +326,7 @@ export default class ManageCatagoryTable extends React.Component {
              editOpenModal={this.state.editopen}
              edit={this.state.edit}
              generateAlert={this.generateAlert}
-
+             generateError={this.generateError}
      />
 
         </Modalcomp>

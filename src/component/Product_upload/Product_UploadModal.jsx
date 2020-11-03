@@ -388,7 +388,7 @@ handleSubmit = () => {
     formdata.set("sh_product_code", this.state.productCode);
     formdata.set("sh_product_id", this.state.productId === null ? 0 : this.state.productId);
   
-    formdata.set("sh_color_palette", JSON.stringify(this.state.background)===true ?JSON.stringify(this.state.initalColor) :JSON.stringify(this.state.background));
+    formdata.set("sh_color_palette", this.state.background===true ?this.state.initalColor :this.state.background);
     formdata.set("sh_color", this.state.colorList);
 
     formdata.set("created_by", 1);
@@ -621,7 +621,9 @@ console.log(details,"detailcheckkk")
           this.props.generateAlert("Color Based Product Deleted Successfully")
           this.loadproductInfo()
         }
-       
+        else {
+          this.generateError(response.data.msg);
+        }
         
       })
       .catch((err) => {

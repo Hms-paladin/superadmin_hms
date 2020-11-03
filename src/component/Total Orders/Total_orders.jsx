@@ -189,7 +189,7 @@ class Total_orders extends Component {
     
     profile_image:val.profile_image,
     bookeddate:dateformat(val.booked_date,"dd mmm yyyy"),
-    cost:val.price,
+    cost:val.price+"KWD",
     id:val.order_id
   })
            
@@ -284,7 +284,7 @@ class Total_orders extends Component {
           { title: "S.No", width: { wpx: 35 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
           { title: "Customer", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
           { title: "Phone Number", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
-          { title: "Booked On", width: { wpx: 100 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+          { title: "Booked Date", width: { wpx: 100 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
           { title: "Price", width: { wpx: 100 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
         ],
         data: multiDataSetbody

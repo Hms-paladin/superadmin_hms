@@ -86,8 +86,8 @@ export default class ManageCatagoryModal extends Component {
       this.state.editId= editData.id
       this.state.CategoryId = editData.sh_category_id
       this.state.subCategory = editData.sh_subcategory
-      this.state.filename = editData.sh_upload_filename
-      this.state.imagedata = editData.sh_upload_filename
+      // this.state.filename = editData.sh_upload_filename
+      // this.state.imagedata = editData.sh_upload_filename
       this.state.checked = editData.sh_active
       this.state.subcatId=editData.sh_sub_category_id
     }
@@ -368,7 +368,7 @@ changeDynamic = (data, key) => {
       }
       else  if(response.data.status === "0") {
         this.getAddedPackInfo()
-        this.props.generateAlert("Sub-Category already exists")
+        this.props.generateError("Sub-Category already exists")
         this.resetFormValue()
       }
     }).catch((err) => {
@@ -433,8 +433,9 @@ changeDynamic = (data, key) => {
         if (response.data.status == "1") {
           this.props.generateAlert("Sub Category Deleted Successfully");
           this.getAddedPackInfo()
+          this.props.getTableData()
         } else {
-          this.props.generateAlert(
+          this.props.generateError(
             "Sub Category contains product and could not be deleted"
           );
         }

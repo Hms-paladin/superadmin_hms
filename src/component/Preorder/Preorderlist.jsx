@@ -34,28 +34,28 @@ class Preorderlist extends Component {
     console.log(dateFormat(new Date(), "dd mmm yyyy"));
     return (
       <div className="stock_Totalorder">
-        <Paper>
+        {/* <Paper>
           <div className="stock_uploadsmasterheader">
             <div className="titleTotalorder">PRE - ORDER</div>
 
-            {/* <div style={{width:"190px"}}><Labelbox type="select" value="Clinic" style={{width:"150px"}} labelname="Type"/></div> */}
-            {/* <div style={{ width: "150px" }}>
+            <div style={{width:"190px"}}><Labelbox type="select" value="Clinic" style={{width:"150px"}} labelname="Type"/></div>
+            <div style={{ width: "150px" }}>
               <Labelbox
                 type="select"
                 value="Walk-In"
                 style={{ width: "150px" }}
               />
-            </div> */}
+            </div>
 
             <div
-              // className="group_container"
+              className="group_container"
               style={{
                 fontSize: "14px",
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              {/* <ButtonGroup
+              <ButtonGroup
                 className="clinic_group_details"
                 size="small"
                 aria-label="small outlined button group"
@@ -63,13 +63,13 @@ class Preorderlist extends Component {
                 <Button className="clinic_details">This Day</Button>
                 <Button className="clinic_details_month">This Month</Button>
                 <Button className="clinic_details_year">This Year</Button>
-              </ButtonGroup> */}
+              </ButtonGroup>
 
-              {/* <div className="currentdate">
+              <div className="currentdate">
                 <FaChevronLeft className="current_left" />
                 {current_date}
                 <FaChevronRight className="current_right" />
-              </div> */}
+              </div>
              
 
               <Search
@@ -83,9 +83,9 @@ class Preorderlist extends Component {
                 <img src={print} className="print" />
               </div>
             </div>
-          </div>
+          </div> */}
           <Preorder_table />
-        </Paper>
+        {/* </Paper> */}
       </div>
     );
   }

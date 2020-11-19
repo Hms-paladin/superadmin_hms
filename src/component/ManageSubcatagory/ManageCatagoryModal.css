@@ -346,6 +346,11 @@
     justify-content: center;
     margin-right: 26%;
 } */
+.product_img_div .info_icon{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 .shop_mediabutton-container{
     display: flex;
     align-items: flex-end;

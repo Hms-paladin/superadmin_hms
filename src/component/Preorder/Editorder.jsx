@@ -204,10 +204,12 @@ onSubmitData = () => {
   .then((response) => {
     // console.log("insertShStock", response);
     if(response.data.status == "1") {
+      this.props.closemodal(false)
       this.props.getTableData()
       this.props.generateAlert("Pre-Order Stock Added Successfully")
     }
     if(response.data.status == "0") {
+  
       this.props.getTableData()
       this.generateError("Pre-Order Stock Cannot Be Added")
     }

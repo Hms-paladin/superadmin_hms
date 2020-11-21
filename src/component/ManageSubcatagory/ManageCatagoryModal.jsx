@@ -77,21 +77,23 @@ export default class ManageCatagoryModal extends Component {
   componentWillMount() {
 
     this.Categorydropdown();
-    this.getAddedPackInfo();
+    // this.getAddedPackInfo();
     const { editData,editOpenModal } = this.props;
     console.log("asdfjdshfjsdhfjksdhfjds",this.props)
-    console.log(   this.state.CategoryId ,"state_CategoryId")
+   
     if ( editOpenModal === true) {
       this.state.edit=true
       this.state.editId= editData.id
       this.state.CategoryId = editData.sh_category_id
       this.state.subCategory = editData.sh_subcategory
-      this.state.filename = editData.sh_upload_filename
-      this.state.imagedata = editData.sh_upload_filename
+      this.state.filename = editData.Imagename
+      this.state.imagedata = editData.Imagename
       this.state.checked = editData.sh_active
       this.state.subcatId=editData.sh_sub_category_id
     }
     this.setState({})
+    console.log(   this.state.filename,
+      this.state.imagedata  ,"state_CategoryId")
   }
 
   detectChange = () => {
@@ -186,7 +188,7 @@ export default class ManageCatagoryModal extends Component {
         this.setState({ 
           CategoryList: response.data.data,
           // CategoryId:response.data.data.id
-        },()=>this.getAddedPackInfo()); 
+        }); 
       })
       .catch((error) => {
         // console.log(JSON.stringify(error));
@@ -200,7 +202,7 @@ changeDynamic = (data, key) => {
   console.log("Data", data);
   console.log("key", key);
   if(key == "id") {
-    this.setState({CategoryId:data,CatError:false},()=>this.getAddedPackInfo())
+    this.setState({CategoryId:data,CatError:false},()=>this.getAddedPackInfo() )
     
   }
 

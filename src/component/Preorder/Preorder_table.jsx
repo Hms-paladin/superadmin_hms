@@ -164,7 +164,7 @@ class Preorder_table extends React.Component {
       margin: { top: 30 },
       showHead: "everyPage",
       theme: "grid",
-      head: [['S.No', 'Product Name', 'Expected Date','Expected Quantity','Book']],
+      head: [['S.No', 'Product Name', 'Expected Date','Expected Quantity','Booked']],
       body: bodydata,
     })
 

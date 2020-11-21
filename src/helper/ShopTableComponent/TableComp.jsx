@@ -53,22 +53,36 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
+// function stableSort(array, cmp) {
+//   const stabilizedThis = array.map((el, index) => [el, index]);
+//   stabilizedThis.sort((a, b) => {
+//     const order = cmp(a[0], b[0]);
+//     if (order !== 0) return order;
+//     return a[1] - b[1];
+//   });
+//   return stabilizedThis.map(el => el[0]);
+// }
 function stableSort(array, cmp) {
+  console.log("sort", array);
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0]);
+    console.log("order", order);
     if (order !== 0) return order;
     return a[1] - b[1];
   });
-  return stabilizedThis.map(el => el[0]);
+  return stabilizedThis.map((el) => el[0]);
 }
-
+// function getSorting(order, orderBy) {
+//   return order === "desc"
+//     ? (a, b) => desc(a, b, orderBy)
+//     : (a, b) => -desc(a, b, orderBy);
+// }
 function getSorting(order, orderBy) {
   return order === "desc"
     ? (a, b) => desc(a, b, orderBy)
     : (a, b) => -desc(a, b, orderBy);
 }
-
 
 
 function EnhancedTableHead(props) {
@@ -93,12 +107,13 @@ function EnhancedTableHead(props) {
     { id: "action", label: "Action" }
   ];
   console.log(props.heading, "heading")
-
   return (
 
     <TableHead className={props.alignheading}>
+      
       <TableRow>
         {props.heading.map(row => (
+         
           <TableCell
             key={row.id}
             align={row.numeric ? "right" : "left"}

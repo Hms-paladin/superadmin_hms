@@ -212,7 +212,7 @@ export default class ProductUploadModal extends Component {
 handleOnChange =(e,editor) => {
 
     const data = editor.getData()
-    console.log(data,"description")
+    // console.log(data,"description")
     this.setState({
       productDesc:data,
       prodDescErr:false
@@ -282,7 +282,7 @@ handleChangeComplete = (color) => {
       // this.state.getColor=editData.colors_pallete_id
    
   }
-  console.log("colorarry",this.state.productDesc)
+  // console.log("colorarry",this.state.productDesc)
 
   }
 
@@ -294,7 +294,7 @@ handleChangeComplete = (color) => {
       
     })
       .then((response) => {
-        console.log(response, "clinic");
+        // console.log(response, "clinic");
 
         this.setState({ 
           CategoryList: response.data.data,
@@ -317,7 +317,7 @@ handleChangeComplete = (color) => {
       }
     })
       .then((response) => {
-        console.log(response, "SubCatdropdown");
+        // console.log(response, "SubCatdropdown");
 
         this.setState({ 
           SubCatList:response.data.data,
@@ -410,9 +410,9 @@ addProductDetails = (details) =>{
     data: details
   }).then((response) => {
     this.resetFormValue()
-    console.log("insertProductres",  response.data.data)
+    // console.log("insertProductres",  response.data.data)
    
-    console.log(this.state.productId,"idcheck")
+    // console.log(this.state.productId,"idcheck")
     if(response.data.status == "1") {
       this.props.getTableData()
     
@@ -429,7 +429,7 @@ addProductDetails = (details) =>{
     }
    
   })
-  console.log(this.state.productId,"idrecieve")
+  // console.log(this.state.productId,"idrecieve")
 }
 
 submitHandle = () =>{
@@ -457,14 +457,14 @@ submitHandle = () =>{
 
 updateContent =(details) =>{
   // alert("editShProductInfo")
-  console.log(details,"updatecontent")
+  // console.log(details,"updatecontent")
   Axios({
     method:'PUT',
     url:apiurl + 'editShProductInfo',
     data:details
     
   }).then((response) => {
-     console.log("insertproddetails",response)
+    //  console.log("insertproddetails",response)
      if(response.data.status == "1"){
       this.props.getTableData()    
       this.props.generateAlert("Product Detail Updated Successfully")
@@ -482,9 +482,9 @@ addProductDetails = (details) =>{
     data: details
   }).then((response) => {
     this.resetFormValue()
-    console.log("insertProductres",  response.data.data)
+    // console.log("insertProductres",  response.data.data)
    
-    console.log(this.state.productId,"idcheck")
+    // console.log(this.state.productId,"idcheck")
     if(response.data.status == "1") {
       this.props.getTableData()
     
@@ -507,7 +507,7 @@ loadproductInfo = () => {
       product_id: this.state.productId,
     }
   }).then((response) => {
-     console.log("proddetails",response)
+    //  console.log("proddetails",response)
        this.setState({
           productInfo:response.data.data,
           productImages:response.data.data[0].product_image,
@@ -521,36 +521,36 @@ loadproductInfo = () => {
   }
 
   editCardContent =(details)=>{
-    console.log(details,"detailsvanthuru")
-    // alert("sss")
+    // console.log(details,"detailsvanthuru")
+    // alert("editCardContent")
  
-    // this.setState({
-    //   cardEdit:true,
-    //   colorList:details.sh_color,
-    //   filename : details.sh_filename,
-    //   imagedata : details.sh_filename,
-    //   imageProdId:details.sh_product_id,
-    //   imageId:details.image_id,
-    //   background: JSON.parse(details.sh_color_palette),
-    // })
+    this.setState({
+      cardEdit:true,
+      colorList:details.sh_color,
+      filename : details.sh_filename,
+      imagedata : details.sh_filename,
+      imageProdId:details.sh_product_id,
+      imageId:details.image_id,
+      background: details.sh_color_palette,
+    })
 
-    this.state.cardEdit=true
-    this.state.colorList=details.sh_color
-    this.state.filename=details.sh_filename
-    this.state.imagedata=details.sh_filename
-    this.state.imageProdId=details.sh_product_id
-    this.state.imageId=details.image_id
-    this.state.background=JSON.parse(details.sh_color_palette)
+    // this.state.cardEdit=true
+    // this.state.colorList=details.sh_color
+    // this.state.filename=details.sh_filename
+    // this.state.imagedata=details.sh_filename
+    // this.state.imageProdId=details.sh_product_id
+    // this.state.imageId=details.image_id
+    // this.state.background=JSON.parse(details.sh_color_palette)
 
 
-    this.setState({})
+    // this.setState({})
    
-    console.log(this.state,"vaaadaa")
+    // console.log(this.state,"vaaadaa")
   }
 
 editingCard =()=>{
-// alert("dai")
-  console.log(this.state,"vanthuru")
+// alert("Card Clicked")
+//   console.log(this.state,"vanthuru")
 
 
     let formdata = new FormData();
@@ -570,12 +570,11 @@ editingCard =()=>{
       alert("insideIf")
       this.sendCardEdit(formdata)
     }
-    console.log(formdata,"likeess")
   }
 
   sendCardEdit = (details) =>{
    
-console.log(details,"detailcheckkk")
+// console.log(details,"detailcheckkk")
     // alert("editShProductImage")
     // console.log(details,"editShProductImage")
     Axios({
@@ -584,7 +583,7 @@ console.log(details,"detailcheckkk")
     data:details
     
   }).then((response) => {
-      console.log("insertCarddetails",response)
+      // console.log("insertCarddetails",response)
       if(response.data.status == "1") {
         this.props.getTableData()
         this.props.generateAlert("Product Color & Image Updated")
@@ -616,7 +615,7 @@ console.log(details,"detailcheckkk")
       },
     })
       .then((response) => {
-        console.log("deleteres", response);
+        // console.log("deleteres", response);
         if(response.data.status== "1"){
           this.props.generateAlert("Color Based Product Deleted Successfully")
           this.loadproductInfo()
@@ -633,7 +632,7 @@ console.log(details,"detailcheckkk")
     
   render() {
    
-    console.log("if",this.state)
+    // console.log("if",this.state)
 
     const styles = reactCSS({
     
@@ -918,6 +917,7 @@ console.log(details,"detailcheckkk")
               </Grid>
               <Grid container className="conditional_grid">
               {this.state.productImages&&this.state.productImages.length>0 && this.state.productImages.map((productImages) =>{
+                console.log(productImages)
             return(
          
               <Grid item  xs={6} md={3} className="" style={{margin: "20px"}}>

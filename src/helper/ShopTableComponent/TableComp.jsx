@@ -16,26 +16,15 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import NotfoundIcon from "../../images/NotFound.svg"
 import Workflow from "../../images/workflow.svg";
-
 import { Icon, message, Popconfirm } from "antd";
 import { Spin } from 'antd';
-
-
-
 // standard icons
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import add from '../../images/add.svg'
 import ReactSVG from "react-svg";
-
-
-
 import { apiurl } from "../../../src/App.js";
-
-
-
-
 import "./TableComp.css";
 
 const axios = require('axios');
@@ -53,31 +42,18 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
-// function stableSort(array, cmp) {
-//   const stabilizedThis = array.map((el, index) => [el, index]);
-//   stabilizedThis.sort((a, b) => {
-//     const order = cmp(a[0], b[0]);
-//     if (order !== 0) return order;
-//     return a[1] - b[1];
-//   });
-//   return stabilizedThis.map(el => el[0]);
-// }
 function stableSort(array, cmp) {
-  console.log("sort", array);
+  console.log("sortsortsort", array);
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0]);
-    console.log("order", order);
+    console.log("orderorderorder", order);
     if (order !== 0) return order;
     return a[1] - b[1];
   });
   return stabilizedThis.map((el) => el[0]);
 }
-// function getSorting(order, orderBy) {
-//   return order === "desc"
-//     ? (a, b) => desc(a, b, orderBy)
-//     : (a, b) => -desc(a, b, orderBy);
-// }
+
 function getSorting(order, orderBy) {
   return order === "desc"
     ? (a, b) => desc(a, b, orderBy)
@@ -94,7 +70,7 @@ function EnhancedTableHead(props) {
     rowCount,
     onRequestSort
   } = props;
-  const createSortHandler = property => event => {
+  const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
   const headRows = [

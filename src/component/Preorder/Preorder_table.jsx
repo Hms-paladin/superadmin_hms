@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { notification,Input } from "antd";
 import "./Preorder_table.css";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Editorder from "./Editorder";
 import axios from "axios";

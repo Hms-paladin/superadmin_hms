@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import { Input,notification,Spin} from "antd";
 import Labelbox from "../../helper/labelbox/labelbox";
@@ -104,6 +104,7 @@ class DashboardTable extends React.Component {
           phone_no: val.phone_no,
           status: val.status,
           id: val.order_id,
+          index:index
         })
         tableDatafull.push(val)
         self.setState({

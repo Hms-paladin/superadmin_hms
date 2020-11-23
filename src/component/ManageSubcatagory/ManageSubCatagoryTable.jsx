@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Checkbox from "@material-ui/core/Checkbox";
 import AddCategory from "./AddCategory";

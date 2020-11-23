@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -27,13 +27,7 @@ class Total_orders_table extends React.Component {
     return returnobj;
   };
 
-  // modelopen = (data) => {
-  //   if (data === "view") {
-  //     this.setState({ openview: true });
-  //   } else if (data === "edit") {
-  //     this.setState({ editopen: true });
-  //   }
-  // };
+  
   modelopen=(data,id)=>{
     
     if(data==="view"){
@@ -65,56 +59,7 @@ class Total_orders_table extends React.Component {
 
             { id: "", label: "Action" },
           ]}
-          // rowdata={[
-          //   this.createData({
-          //     customer: "Aamina",
-          //     phone_number: "+965 22000001",
-          //     booken_on: "11 Dec 2019",
-          //     price: "80",
-          //   }),
-          //   this.createData({
-          //     customer: "Mohammed",
-          //     phone_number: "+965 22000671",
-          //     booken_on: "11 Dec 2019",
-          //     price: "80",
-          //   }),
-          //   this.createData({
-          //     customer: "Abla",
-          //     phone_number: "+965 22000981",
-          //     booken_on: "11 Dec 2019",
-          //     price: "40",
-          //   }),
-          //   this.createData({
-          //     customer: "Zainab",
-          //     phone_number: "+965 22000541",
-          //     booken_on: "11 Dec 2019",
-          //     price: "40",
-          //   }),
-          //   this.createData({
-          //     customer: "Samrin",
-          //     phone_number: "+965 22230003",
-          //     booken_on: "11 Dec 2019",
-          //     price: "80",
-          //   }),
-          //   this.createData({
-          //     customer: "Rashid",
-          //     phone_number: "+965 22780009",
-          //     booken_on: "11 Dec 2019",
-          //     price: "80",
-          //   }),
-          //   this.createData({
-          //     customer: "Rashid",
-          //     phone_number: "+965 22000066",
-          //     booken_on: "11 Dec 2019",
-          //     price: "80",
-          //   }),
-          //   this.createData({
-          //     customer: "Rashid",
-          //     phone_number: "+965 22000999",
-          //     booken_on: "11 Dec 2019",
-          //     price: "380",
-          //   }),
-          // ]}
+       
           rowdata={this.props.searchData }
 
           tableicon_align={"cell_eye"}
@@ -125,10 +70,7 @@ class Total_orders_table extends React.Component {
           add="close"
         />
 
-        {/* <Modalcomp  visible={this.state.openview} title={"View details"} closemodal={(e)=>this.closemodal(e)}
-        xswidth={"xs"}
-        >
-        </Modalcomp> */}
+     
         <OrderView
          open={this.state.openview}
          onClose={this.closemodal}

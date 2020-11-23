@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import View_Product from "../Product_upload/View_Product";
 import Product_UploadModal from "../Product_upload/Product_UploadModal";

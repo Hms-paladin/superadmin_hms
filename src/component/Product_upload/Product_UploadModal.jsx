@@ -527,8 +527,8 @@ loadproductInfo = () => {
     this.setState({
       cardEdit:true,
       colorList:details.sh_color,
-      filename : details.sh_filename,
-      imagedata : details.sh_filename,
+      filename : details.Imagename,
+      imagedata : details.Imagename,
       imageProdId:details.sh_product_id,
       imageId:details.image_id,
       background: details.sh_color_palette,
@@ -567,7 +567,7 @@ editingCard =()=>{
     
 
     if(this.state.cardEdit==true && isValid){
-      alert("insideIf")
+      // alert("insideIf")
       this.sendCardEdit(formdata)
     }
   }
@@ -917,7 +917,7 @@ editingCard =()=>{
               </Grid>
               <Grid container className="conditional_grid">
               {this.state.productImages&&this.state.productImages.length>0 && this.state.productImages.map((productImages) =>{
-                console.log(productImages)
+                console.log(productImages.Imagename,"Imagename")
             return(
          
               <Grid item  xs={6} md={3} className="" style={{margin: "20px"}}>

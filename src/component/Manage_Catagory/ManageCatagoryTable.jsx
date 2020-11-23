@@ -1,5 +1,5 @@
 import React from "react";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Spin,notification,Input } from 'antd';
@@ -248,7 +248,7 @@ export default class ManageCatagoryTable extends React.Component {
           <Checkbox
           checked={false}
         />
-        ),          id:index
+        ),          id:data.id
         })
       }
   })

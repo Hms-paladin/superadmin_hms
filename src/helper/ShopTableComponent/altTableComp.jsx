@@ -24,6 +24,7 @@ import add from '../../images/add.svg'
 import Workflow from "../../images/workflow.svg";
 import "./TableComp.css";
 import ReactSVG from "react-svg";
+import NotfoundIcon from "../../images/NotFound.svg"
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -295,10 +296,19 @@ export default class Tablecomponent extends Component {
     }
   };
 
+    UNSAFE_componentWillReceiveProps(newProps) {
+    console.log(newProps, "componentWillReceivePropsrowdata")
+    let tablebodydata = this.props.rowdata
+    this.setState({
+      rows: newProps.rowdata
+    })
+    console.log("current state", this.state.rows)
+  }
+
   render() {
     const isSelected = (name) => this.state.selected.indexOf(name) !== -1;
     const { rows, rowsPerPage, page } = this.state;
-    console.log(this.props.rowdata, "thispropsrowdata");
+    console.log(this.state.rows, "thispropsrowdata");
 
     return (
       <div className="VendorDetailsDiv">
@@ -318,6 +328,9 @@ export default class Tablecomponent extends Component {
               rowCount={this.state.rows && this.state.rows.length}
             />
             <TableBody>
+            {
+                  this.state.rows.length === 0 && <TableCell className={"noFoundIconCenter"} colSpan={12}><img src={NotfoundIcon} alt="notfound" /><div>No Data Found</div></TableCell>
+                }
               {stableSort(
                 this.state.rows,
                 getSorting(this.state.order, this.state.orderBy)
@@ -328,80 +341,66 @@ export default class Tablecomponent extends Component {
                     this.state.rowsPerPage
                 )
                 .map((row, index, item) => {
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
-                  console.log("rendering", row);
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => this.handleClick(event, row.name)}
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.name}
-                    >
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
-                        {this.state.rowsPerPage * this.state.page -
-                          1 +
-                          index +
-                          2}
-                      </TableCell>
+                                      const isItemSelected = isSelected(row.name);
+                                      const labelId = `enhanced-table-checkbox-${index}`;
+                                      console.log("labelid", labelId)
+                                      console.log("rendering", row);
+                                      return (
+                                        <TableRow
+                                          hover
+                                          onClick={event => this.handleClick(event, row.name)}
+                                          role="checkbox"
+                                          tabIndex={-1}
+                                          key={index}
+                                        >
+                                          <TableCell
+                                            component="th"
+                                            id={labelId}
+                                            scope="row"
+                                            padding="none"
+                                          >
+                                            {this.state.rowsPerPage * this.state.page - 1 + index + 2}
+                                          </TableCell>
+                  
+                                          {[row].map(((data, index) => {
+                                            console.log(row, "tyu")
+                                            var keys = Object.keys(data)
+                                            console.log(keys.length,"tabledatatabledata")
+                  
+                                            var arrval = []
+                                            for (var m = 0; m < keys.length - 1; m++) {
+                                              arrval.push(<TableCell key={data.id + "" + m}>{data[keys[m]]}</TableCell>)
+                                            }
+                                            return arrval
+                                          }) )}
+                                          
+                                          
+               
+                
+                        {this.props.actionclose === "close" ? null :
+                          <TableCell className={`${this.props.tableicon_align}`}>
 
-                      {[row].map((data) => {
-                        var keys = Object.keys(data);
-                        var tablearr = [];
-                        for (var m = 0; m < keys.length; m++) {
-                          tablearr.push(
-                            <TableCell align="right">{data[keys[m]]}</TableCell>
-                          );
-                        }
-                        return tablearr;
-                      })}
-
-                      {this.props.actionclose === "close" ? null : (
-                        <TableCell className={`${this.props.tableicon_align}`}>
                           {this.props.Workflow === "close" ? null : (
                             <img
                               src={Workflow}
-                              onClick={() => this.props.modelopen("workflow")}
+                              onClick={() => this.props.modelopen("workflow",row.id)}
                             />
                           )}
-                          {this.props.VisibilityIcon === "close" ? null : (
-                            <VisibilityIcon
-                              className="tableeye_icon"
-                              onClick={() => this.props.modelopen("view")}
-                            />
-                          )}
-                          {this.props.add === "close" ? null : (
+
+                            {this.props.VisibilityIcon === "close" ? null :
+                              <VisibilityIcon className="tableeye_icon" onClick={() => this.props.specialProp ? this.props.modelopen("view", row.id, row.appointment_type.key, row.appointment_date) : this.props.dashprop ? this.props.modelopen("view", row.id, row.appointment_type.key) : this.props.modelopen("view", row.id)} />}
+                              {this.props.add === "close" ? null : 
                             <ReactSVG
                               className="tableadd_icon"
                               src={add}
-                              onClick={() => this.props.modelopen("view")}
+                              onClick={() => this.props.modelopen("add",row.id)}
                             />
-                          )}
-                          {this.props.EditIcon === "close" ? null : (
-                            <EditIcon
-                              className="tableedit_icon"
-                              onClick={() => this.props.modelopen("edit")}
-                            />
-                          )}
-                          {this.props.DeleteIcon === "close" ? null : (
-                            <DeleteIcon
-                              className="tabledelete_icon"
-                              onClick={() =>
-                                this.handleClickOpen(
-                                  "delete_profile",
-                                  "Delete Media"
-                                )
-                              }
-                            />
-                          )}
-                        </TableCell>
-                      )}
+                          }
+                            {this.props.EditIcon === "close" ? null :
+                              <EditIcon className="tableedit_icon" onClick={() => this.props.modelopen("edit", row.id)} />}
+                            {this.props.DeleteIcon === "close" ? null :
+                              <DeleteIcon className="tabledelete_icon" onClick={() => this.props.deleteopen("delete", row.id)} />}
+                          </TableCell>}
                     </TableRow>
                   );
                 })}
@@ -447,3 +446,4 @@ export default class Tablecomponent extends Component {
     );
   }
 }
+

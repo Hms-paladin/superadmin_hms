@@ -12,7 +12,7 @@ import { Input,notification,Spin} from "antd";
 
 import Paper from "@material-ui/core/Paper";
 import "./Stocklist_table.css";
-import Tablecomponent from "../../helper/ShopTableComponent/TableComp";
+import Tablecomponent from "../../helper/ShopTableComponent/altTableComp";
 import Modalcomp from "../../helper/ModalComp/ModalComp";
 import Editstock from "./Editstock";
 import { apiurl } from "../../../src/App.js";

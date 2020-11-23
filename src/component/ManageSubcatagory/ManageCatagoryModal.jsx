@@ -90,6 +90,7 @@ export default class ManageCatagoryModal extends Component {
       this.state.imagedata = editData.Imagename
       this.state.checked = editData.sh_active
       this.state.subcatId=editData.sh_sub_category_id
+      this.getAddedPackInfo();
     }
     this.setState({})
     console.log(   this.state.filename,

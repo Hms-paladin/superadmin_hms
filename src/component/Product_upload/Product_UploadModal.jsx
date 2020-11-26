@@ -521,7 +521,7 @@ loadproductInfo = () => {
   }
 
   editCardContent =(details)=>{
-    // console.log(details,"detailsvanthuru")
+    console.log(details,"detailsvanthuru")
     // alert("editCardContent")
  
     this.setState({
@@ -545,12 +545,12 @@ loadproductInfo = () => {
 
     // this.setState({})
    
-    // console.log(this.state,"vaaadaa")
+    console.log(this.state,"vaaadaa")
   }
 
 editingCard =()=>{
 // alert("Card Clicked")
-//   console.log(this.state,"vanthuru")
+  console.log(this.state,"vanthuru")
 
 
     let formdata = new FormData();

@@ -226,8 +226,9 @@ const multiDataSet = [
     data: multiDataSetbody
   }
 ];
+console.log(searchData, "Search_dataSearch_data")
     return (
-
+    
       <div>
          <div className="stock_Totalorder">
         <Paper>
@@ -269,7 +270,7 @@ const multiDataSet = [
 
             </div>
             <div style={{ display: "none" }}>
-              <PrintData printtableData={this.state.tabledata}
+              <PrintData printtableData={searchData}
                 ref={el => (this.componentRef = el)} />
               </div>
             </div>
@@ -287,7 +288,7 @@ const multiDataSet = [
             { id: "", label: "Action" },
           ]}
           
-          rowdata={searchData && this.state.tabledata}
+          rowdata={searchData }
           tableicon_align={"cell_eye"}
           modelopen={(e,id) => this.modelopen(e,id)}
           Workflow="close"

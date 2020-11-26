@@ -186,6 +186,7 @@ searchChange = (e) => {
 
   render() {
     var tabledata = this.state.tabledata;
+    console.log(this.state.tabledata,"tableexcel")
     const { Search } = Input;
     const searchData = []
     this.state.tabledata.filter((data, index) => {
@@ -222,11 +223,13 @@ searchChange = (e) => {
 // EXCEL FUNCTION
 var multiDataSetbody = []
 this.state.tabledata.map((xldata, index) => {
+  console.log(this.state.tabledata,"tableexcel")
+
   if (index % 2 !== 0) {
     multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
     { value: xldata.sh_product_name },
-    { value: xldata.expected_date },
-    { value: xldata.expected_quantity },
+    { value: xldata.expected_date==null ? "Date Not Available" :xldata.expected_date },
+    { value: xldata.expected_quantity==null ? "Qty Not Available" : xldata.expected_quantity},
     { value: xldata.booked },
 
   
@@ -235,8 +238,8 @@ this.state.tabledata.map((xldata, index) => {
     multiDataSetbody.push([
       { value: index + 1, style: { alignment: { horizontal: "center" }, fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
       { value: xldata.sh_product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.expected_date, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.expected_quantity, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.expected_date==null ? "Date Not Available" :xldata.expected_date, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      {  value: xldata.expected_quantity==null ? "Qty Not Available" : xldata.expected_quantity, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
       { value: xldata.booked, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
 
     ])

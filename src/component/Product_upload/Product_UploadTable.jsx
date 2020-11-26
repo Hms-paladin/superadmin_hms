@@ -297,12 +297,14 @@ searchChange = (e) => {
 // EXCEL FUNCTION
 var multiDataSetbody = []
 this.state.tableData.map((xldata, index) => {
+  console.log(this.state.tableData,"tableexcel")
+  console.log(xldata.sh_is_active.props.checked== true ? "Active" : "Inactive","ksdjnksksdjnks")
   if (index % 2 !== 0) {
     multiDataSetbody.push([{ value: index + 1, style: { alignment: { horizontal: "center" } } },
     { value: xldata.sh_product_name },
     { value: xldata.created_on },
     { value: xldata.sh_mrp },
-    { value: xldata.sh_is_active },
+    { value: xldata.sh_is_active.props.checked== true ? "Active" : "Inactive" },
 
   
     ])
@@ -312,7 +314,7 @@ this.state.tableData.map((xldata, index) => {
       { value: xldata.sh_product_name, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
       { value: xldata.created_on, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
       { value: xldata.sh_mrp, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
-      { value: xldata.sh_is_active, style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
+      { value: xldata.sh_is_active.props.checked== true ? "Active" : "Inactive", style: { fill: { patternType: "solid", fgColor: { rgb: "e2e0e0" } } } },
 
     ])
   }
@@ -325,7 +327,7 @@ const multiDataSet = [
       { title: "Product Name", width: { wch: 20 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
       { title: "Created Date", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
       { title: "Fee", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
-      { title: "Active", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
+      { title: "Status", width: { wpx: 90 }, style: { fill: { patternType: "solid", fgColor: { rgb: "86b149" } } } },
 
     ],
     data: multiDataSetbody

@@ -34,6 +34,20 @@
     display: none;
 
 } */
+
+.MuiPickersToolbar-toolbar,
+.MuiPickersClock-pin,
+.MuiPickersClockPointer-pointer,
+.MuiPickersClockPointer-noPoint{
+    background-color: #63D088 !important ;
+}
+.MuiPickersClockPointer-thumb
+{
+    border: 14px solid #63D088 !important;
+}
+.MuiButton-textPrimary{
+    color: #63D088 !important ;
+}
 .deli_time_svg{
     position: relative;
 }
